@@ -1,12 +1,12 @@
 import type { AnyMessageContent, proto, WAMessage } from "@whiskeysockets/baileys";
 import { DisconnectReason, isJidGroup } from "@whiskeysockets/baileys";
-import { createInboundDebouncer, formatLocationText } from "openclaw/plugin-sdk/channel-inbound";
-import { recordChannelActivity } from "openclaw/plugin-sdk/infra-runtime";
-import { saveMediaBuffer } from "openclaw/plugin-sdk/media-runtime";
-import { logVerbose, shouldLogVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { createSubsystemLogger } from "openclaw/plugin-sdk/runtime-env";
-import { getChildLogger } from "openclaw/plugin-sdk/text-runtime";
-import { jidToE164, resolveJidToE164 } from "openclaw/plugin-sdk/text-runtime";
+import { createInboundDebouncer, formatLocationText } from "aikaclaw/plugin-sdk/channel-inbound";
+import { recordChannelActivity } from "aikaclaw/plugin-sdk/infra-runtime";
+import { saveMediaBuffer } from "aikaclaw/plugin-sdk/media-runtime";
+import { logVerbose, shouldLogVerbose } from "aikaclaw/plugin-sdk/runtime-env";
+import { createSubsystemLogger } from "aikaclaw/plugin-sdk/runtime-env";
+import { getChildLogger } from "aikaclaw/plugin-sdk/text-runtime";
+import { jidToE164, resolveJidToE164 } from "aikaclaw/plugin-sdk/text-runtime";
 import { createWaSocket, getStatusCode, waitForWaConnection } from "../session.js";
 import { checkInboundAccessControl } from "./access-control.js";
 import {

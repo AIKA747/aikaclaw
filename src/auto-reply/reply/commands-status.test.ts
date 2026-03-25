@@ -3,7 +3,7 @@ import {
   addSubagentRunForTests,
   resetSubagentRegistryForTests,
 } from "../../agents/subagent-registry.js";
-import type { OpenClawConfig } from "../../config/config.js";
+import type { AikaClawConfig } from "../../config/config.js";
 import { buildStatusReply } from "./commands-status.js";
 import { buildCommandTestParams } from "./commands.test-harness.js";
 
@@ -45,7 +45,7 @@ describe("buildStatusReply subagent summary", () => {
       commands: { text: true },
       channels: { whatsapp: { allowFrom: ["*"] } },
       session: { mainKey: "main", scope: "per-sender" },
-    } as OpenClawConfig;
+    } as AikaClawConfig;
     const params = buildCommandTestParams("/status", cfg);
     const reply = await buildStatusReply({
       cfg,
@@ -100,7 +100,7 @@ describe("buildStatusReply subagent summary", () => {
       commands: { text: true },
       channels: { whatsapp: { allowFrom: ["*"] } },
       session: { mainKey: "main", scope: "per-sender" },
-    } as OpenClawConfig;
+    } as AikaClawConfig;
     const params = buildCommandTestParams("/status", cfg);
     const reply = await buildStatusReply({
       cfg,
@@ -178,7 +178,7 @@ describe("buildStatusReply subagent summary", () => {
       commands: { text: true },
       channels: { whatsapp: { allowFrom: ["*"] } },
       session: { mainKey: "main", scope: "per-sender" },
-    } as OpenClawConfig;
+    } as AikaClawConfig;
     const params = buildCommandTestParams("/status", cfg);
     const reply = await buildStatusReply({
       cfg,

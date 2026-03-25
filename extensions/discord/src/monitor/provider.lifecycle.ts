@@ -1,9 +1,9 @@
 import type { Client } from "@buape/carbon";
 import type { GatewayPlugin } from "@buape/carbon/gateway";
-import { createArmableStallWatchdog } from "openclaw/plugin-sdk/channel-lifecycle";
-import { createConnectedChannelStatusPatch } from "openclaw/plugin-sdk/gateway-runtime";
-import { danger } from "openclaw/plugin-sdk/runtime-env";
-import type { RuntimeEnv } from "openclaw/plugin-sdk/runtime-env";
+import { createArmableStallWatchdog } from "aikaclaw/plugin-sdk/channel-lifecycle";
+import { createConnectedChannelStatusPatch } from "aikaclaw/plugin-sdk/gateway-runtime";
+import { danger } from "aikaclaw/plugin-sdk/runtime-env";
+import type { RuntimeEnv } from "aikaclaw/plugin-sdk/runtime-env";
 import { attachDiscordGatewayLogging } from "../gateway-logging.js";
 import { getDiscordGatewayEmitter, waitForDiscordGatewayStop } from "../monitor.gateway.js";
 import type { DiscordVoiceManager } from "../voice/manager.js";
@@ -307,7 +307,7 @@ export async function runDiscordGatewayLifecycle(params: {
       return;
     }
 
-    // Carbon starts the gateway during client construction, before OpenClaw can
+    // Carbon starts the gateway during client construction, before AikaClaw can
     // attach lifecycle listeners. Require a READY/RESUMED-connected gateway
     // before continuing so the monitor does not look healthy while silently
     // missing inbound events.

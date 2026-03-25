@@ -2,14 +2,14 @@ import {
   type ChannelOutboundAdapter,
   createAttachedChannelResultAdapter,
   createEmptyChannelResult,
-} from "openclaw/plugin-sdk/channel-send-result";
-import { resolveOutboundSendDep } from "openclaw/plugin-sdk/outbound-runtime";
+} from "aikaclaw/plugin-sdk/channel-send-result";
+import { resolveOutboundSendDep } from "aikaclaw/plugin-sdk/outbound-runtime";
 import {
   resolveSendableOutboundReplyParts,
   sendTextMediaPayload,
-} from "openclaw/plugin-sdk/reply-payload";
-import { chunkText } from "openclaw/plugin-sdk/reply-runtime";
-import { shouldLogVerbose } from "openclaw/plugin-sdk/runtime-env";
+} from "aikaclaw/plugin-sdk/reply-payload";
+import { chunkText } from "aikaclaw/plugin-sdk/reply-runtime";
+import { shouldLogVerbose } from "aikaclaw/plugin-sdk/runtime-env";
 import { resolveWhatsAppOutboundTarget } from "./runtime-api.js";
 import { sendMessageWhatsApp, sendPollWhatsApp } from "./send.js";
 

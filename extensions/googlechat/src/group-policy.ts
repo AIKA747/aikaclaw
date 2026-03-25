@@ -1,8 +1,8 @@
-import { resolveChannelGroupRequireMention } from "openclaw/plugin-sdk/channel-policy";
-import type { OpenClawConfig } from "openclaw/plugin-sdk/core";
+import { resolveChannelGroupRequireMention } from "aikaclaw/plugin-sdk/channel-policy";
+import type { AikaClawConfig } from "aikaclaw/plugin-sdk/core";
 
 type GoogleChatGroupContext = {
-  cfg: OpenClawConfig;
+  cfg: AikaClawConfig;
   accountId?: string | null;
   groupId?: string | null;
 };

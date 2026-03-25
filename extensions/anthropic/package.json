@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/anthropic-provider",
+  "name": "@aikaclaw/anthropic-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw Anthropic provider plugin",
+  "description": "AikaClaw Anthropic provider plugin",
   "type": "module",
-  "openclaw": {
+  "aikaclaw": {
     "extensions": [
       "./index.ts"
     ]

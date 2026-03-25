@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/groq-provider",
+  "name": "@aikaclaw/groq-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw Groq media-understanding provider",
+  "description": "AikaClaw Groq media-understanding provider",
   "type": "module",
-  "openclaw": {
+  "aikaclaw": {
     "extensions": [
       "./index.ts"
     ]

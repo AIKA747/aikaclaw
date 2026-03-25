@@ -1,21 +1,21 @@
 {
-  "name": "@openclaw/memory-core",
+  "name": "@aikaclaw/memory-core",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw core memory search plugin",
+  "description": "AikaClaw core memory search plugin",
   "type": "module",
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "aikaclaw": "workspace:*"
   },
   "peerDependencies": {
-    "openclaw": ">=2026.3.22"
+    "aikaclaw": ">=2026.3.22"
   },
   "peerDependenciesMeta": {
-    "openclaw": {
+    "aikaclaw": {
       "optional": true
     }
   },
-  "openclaw": {
+  "aikaclaw": {
     "extensions": [
       "./index.ts"
     ]

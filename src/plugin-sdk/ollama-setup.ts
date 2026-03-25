@@ -1,5 +1,5 @@
 export type {
-  OpenClawPluginApi,
+  AikaClawPluginApi,
   ProviderAuthContext,
   ProviderAuthMethodNonInteractiveContext,
   ProviderAuthResult,

@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import type { OpenClawConfig } from "../config/config.js";
+import type { AikaClawConfig } from "../config/config.js";
 import {
   buildPluginStatusReport,
   loadConfig,
@@ -29,12 +29,12 @@ describe("plugins cli uninstall", () => {
         installs: {
           alpha: {
             source: "path",
-            sourcePath: "/tmp/openclaw-state/extensions/alpha",
-            installPath: "/tmp/openclaw-state/extensions/alpha",
+            sourcePath: "/tmp/aikaclaw-state/extensions/alpha",
+            installPath: "/tmp/aikaclaw-state/extensions/alpha",
           },
         },
       },
-    } as OpenClawConfig);
+    } as AikaClawConfig);
     buildPluginStatusReport.mockReturnValue({
       plugins: [{ id: "alpha", name: "alpha" }],
       diagnostics: [],
@@ -56,18 +56,18 @@ describe("plugins cli uninstall", () => {
         installs: {
           alpha: {
             source: "path",
-            sourcePath: "/tmp/openclaw-state/extensions/alpha",
-            installPath: "/tmp/openclaw-state/extensions/alpha",
+            sourcePath: "/tmp/aikaclaw-state/extensions/alpha",
+            installPath: "/tmp/aikaclaw-state/extensions/alpha",
           },
         },
       },
-    } as OpenClawConfig;
+    } as AikaClawConfig;
     const nextConfig = {
       plugins: {
         entries: {},
         installs: {},
       },
-    } as OpenClawConfig;
+    } as AikaClawConfig;
 
     loadConfig.mockReturnValue(baseConfig);
     buildPluginStatusReport.mockReturnValue({
@@ -106,7 +106,7 @@ describe("plugins cli uninstall", () => {
         entries: {},
         installs: {},
       },
-    } as OpenClawConfig);
+    } as AikaClawConfig);
     buildPluginStatusReport.mockReturnValue({
       plugins: [{ id: "alpha", name: "alpha" }],
       diagnostics: [],
@@ -134,7 +134,7 @@ describe("plugins cli uninstall", () => {
           },
         },
       },
-    } as OpenClawConfig);
+    } as AikaClawConfig);
     buildPluginStatusReport.mockReturnValue({
       plugins: [{ id: "linkmind-context", name: "linkmind-context" }],
       diagnostics: [],
@@ -165,7 +165,7 @@ describe("plugins cli uninstall", () => {
           },
         },
       },
-    } as OpenClawConfig);
+    } as AikaClawConfig);
     buildPluginStatusReport.mockReturnValue({
       plugins: [{ id: "linkmind-context", name: "linkmind-context" }],
       diagnostics: [],

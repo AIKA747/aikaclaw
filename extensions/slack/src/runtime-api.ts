@@ -3,13 +3,13 @@ export {
   PAIRING_APPROVED_MESSAGE,
   projectCredentialSnapshotFields,
   resolveConfiguredFromRequiredCredentialStatuses,
-} from "openclaw/plugin-sdk/channel-status";
-export { DEFAULT_ACCOUNT_ID } from "openclaw/plugin-sdk/account-id";
+} from "aikaclaw/plugin-sdk/channel-status";
+export { DEFAULT_ACCOUNT_ID } from "aikaclaw/plugin-sdk/account-id";
 export {
   looksLikeSlackTargetId,
   normalizeSlackMessagingTarget,
-} from "openclaw/plugin-sdk/slack-targets";
-export type { ChannelPlugin, OpenClawConfig, SlackAccountConfig } from "openclaw/plugin-sdk/slack";
+} from "aikaclaw/plugin-sdk/slack-targets";
+export type { ChannelPlugin, AikaClawConfig, SlackAccountConfig } from "aikaclaw/plugin-sdk/slack";
 export {
   buildChannelConfigSchema,
   getChatChannelMeta,
@@ -21,4 +21,4 @@ export {
   readStringParam,
   SlackConfigSchema,
   withNormalizedTimestamp,
-} from "openclaw/plugin-sdk/slack-core";
+} from "aikaclaw/plugin-sdk/slack-core";

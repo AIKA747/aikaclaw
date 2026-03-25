@@ -1,28 +1,28 @@
-import { appendCronStyleCurrentTimeLine } from "openclaw/plugin-sdk/agent-runtime";
-import { loadConfig } from "openclaw/plugin-sdk/config-runtime";
+import { appendCronStyleCurrentTimeLine } from "aikaclaw/plugin-sdk/agent-runtime";
+import { loadConfig } from "aikaclaw/plugin-sdk/config-runtime";
 import {
   loadSessionStore,
   resolveSessionKey,
   resolveStorePath,
   updateSessionStore,
-} from "openclaw/plugin-sdk/config-runtime";
-import { emitHeartbeatEvent, resolveIndicatorType } from "openclaw/plugin-sdk/infra-runtime";
-import { resolveHeartbeatVisibility } from "openclaw/plugin-sdk/infra-runtime";
+} from "aikaclaw/plugin-sdk/config-runtime";
+import { emitHeartbeatEvent, resolveIndicatorType } from "aikaclaw/plugin-sdk/infra-runtime";
+import { resolveHeartbeatVisibility } from "aikaclaw/plugin-sdk/infra-runtime";
 import {
   hasOutboundReplyContent,
   resolveSendableOutboundReplyParts,
-} from "openclaw/plugin-sdk/reply-payload";
-import { resolveHeartbeatReplyPayload } from "openclaw/plugin-sdk/reply-runtime";
+} from "aikaclaw/plugin-sdk/reply-payload";
+import { resolveHeartbeatReplyPayload } from "aikaclaw/plugin-sdk/reply-runtime";
 import {
   DEFAULT_HEARTBEAT_ACK_MAX_CHARS,
   resolveHeartbeatPrompt,
   stripHeartbeatToken,
-} from "openclaw/plugin-sdk/reply-runtime";
-import { getReplyFromConfig } from "openclaw/plugin-sdk/reply-runtime";
-import { HEARTBEAT_TOKEN } from "openclaw/plugin-sdk/reply-runtime";
-import { normalizeMainKey } from "openclaw/plugin-sdk/routing";
-import { getChildLogger } from "openclaw/plugin-sdk/runtime-env";
-import { redactIdentifier } from "openclaw/plugin-sdk/text-runtime";
+} from "aikaclaw/plugin-sdk/reply-runtime";
+import { getReplyFromConfig } from "aikaclaw/plugin-sdk/reply-runtime";
+import { HEARTBEAT_TOKEN } from "aikaclaw/plugin-sdk/reply-runtime";
+import { normalizeMainKey } from "aikaclaw/plugin-sdk/routing";
+import { getChildLogger } from "aikaclaw/plugin-sdk/runtime-env";
+import { redactIdentifier } from "aikaclaw/plugin-sdk/text-runtime";
 import { newConnectionId } from "../reconnect.js";
 import { resolveWhatsAppHeartbeatRecipients } from "../runtime-api.js";
 import { sendMessageWhatsApp } from "../send.js";

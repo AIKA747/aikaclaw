@@ -14,12 +14,12 @@ import type {
 } from "../channels/plugins/types.core.js";
 import type { ChannelPlugin } from "../channels/plugins/types.plugin.js";
 import { getChatChannelMeta } from "../channels/registry.js";
-import type { OpenClawConfig } from "../config/config.js";
+import type { AikaClawConfig } from "../config/config.js";
 import type { ReplyToMode } from "../config/types.base.js";
 import { buildOutboundBaseSessionKey } from "../infra/outbound/base-session-key.js";
 import { emptyPluginConfigSchema } from "../plugins/config-schema.js";
 import type { PluginRuntime } from "../plugins/runtime/types.js";
-import type { OpenClawPluginApi, OpenClawPluginConfigSchema } from "../plugins/types.js";
+import type { AikaClawPluginApi, AikaClawPluginConfigSchema } from "../plugins/types.js";
 import { createScopedDmSecurityResolver } from "./channel-config-helpers.js";
 import { createTextPairingAdapter } from "./channel-pairing.js";
 import { createAttachedChannelResultAdapter } from "./channel-send-result.js";
@@ -28,7 +28,7 @@ import { definePluginEntry } from "./plugin-entry.js";
 export type {
   AnyAgentTool,
   MediaUnderstandingProviderPlugin,
-  OpenClawPluginConfigSchema,
+  AikaClawPluginConfigSchema,
   ProviderDiscoveryContext,
   ProviderCatalogContext,
   ProviderCatalogResult,
@@ -52,22 +52,22 @@ export type {
   SpeechProviderPlugin,
   ProviderThinkingPolicyContext,
   ProviderWrapStreamFnContext,
-  OpenClawPluginService,
-  OpenClawPluginServiceContext,
+  AikaClawPluginService,
+  AikaClawPluginServiceContext,
   ProviderAuthContext,
   ProviderAuthDoctorHintContext,
   ProviderAuthMethodNonInteractiveContext,
   ProviderAuthMethod,
   ProviderAuthResult,
-  OpenClawPluginToolContext,
-  OpenClawPluginToolFactory,
-  OpenClawPluginCommandDefinition,
-  OpenClawPluginDefinition,
+  AikaClawPluginToolContext,
+  AikaClawPluginToolFactory,
+  AikaClawPluginCommandDefinition,
+  AikaClawPluginDefinition,
   PluginCommandContext,
   PluginLogger,
   PluginInteractiveTelegramHandlerContext,
 } from "../plugins/types.js";
-export type { OpenClawConfig } from "../config/config.js";
+export type { AikaClawConfig } from "../config/config.js";
 export { isSecretRef } from "../config/types.secrets.js";
 export type { GatewayRequestHandlerOptions } from "../gateway/server-methods/types.js";
 export type {
@@ -81,7 +81,7 @@ export type {
 } from "../infra/provider-usage.types.js";
 export type { ChannelMessageActionContext } from "../channels/plugins/types.js";
 export type { ChannelPlugin } from "../channels/plugins/types.plugin.js";
-export type { OpenClawPluginApi } from "../plugins/types.js";
+export type { AikaClawPluginApi } from "../plugins/types.js";
 export type { PluginRuntime } from "../plugins/runtime/types.js";
 
 export { emptyPluginConfigSchema } from "../plugins/config-schema.js";
@@ -161,7 +161,7 @@ export function stripTargetKindPrefix(raw: string): string {
  * message adapters.
  */
 export function buildChannelOutboundSessionRoute(params: {
-  cfg: OpenClawConfig;
+  cfg: AikaClawConfig;
   agentId: string;
   channel: string;
   accountId?: string | null;
@@ -195,9 +195,9 @@ type DefineChannelPluginEntryOptions<TPlugin = ChannelPlugin> = {
   name: string;
   description: string;
   plugin: TPlugin;
-  configSchema?: OpenClawPluginConfigSchema | (() => OpenClawPluginConfigSchema);
+  configSchema?: AikaClawPluginConfigSchema | (() => AikaClawPluginConfigSchema);
   setRuntime?: (runtime: PluginRuntime) => void;
-  registerFull?: (api: OpenClawPluginApi) => void;
+  registerFull?: (api: AikaClawPluginApi) => void;
 };
 
 type CreateChannelPluginBaseOptions<TResolvedAccount> = {
@@ -257,7 +257,7 @@ export function defineChannelPluginEntry<TPlugin>({
     name,
     description,
     configSchema,
-    register(api: OpenClawPluginApi) {
+    register(api: AikaClawPluginApi) {
       setRuntime?.(api.runtime);
       api.registerChannel({ plugin: plugin as ChannelPlugin });
       if (api.registrationMode !== "full") {
@@ -318,7 +318,7 @@ type ChatChannelThreadingReplyModeOptions<TResolvedAccount> =
   | { topLevelReplyToMode: string }
   | {
       scopedAccountReplyToMode: {
-        resolveAccount: (cfg: OpenClawConfig, accountId?: string | null) => TResolvedAccount;
+        resolveAccount: (cfg: AikaClawConfig, accountId?: string | null) => TResolvedAccount;
         resolveReplyToMode: (
           account: TResolvedAccount,
           chatType?: string | null,

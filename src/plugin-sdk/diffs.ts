@@ -2,12 +2,12 @@
 // Keep this list additive and scoped to symbols used under extensions/diffs.
 
 export { definePluginEntry } from "./plugin-entry.js";
-export type { OpenClawConfig } from "../config/config.js";
-export { resolvePreferredOpenClawTmpDir } from "../infra/tmp-openclaw-dir.js";
+export type { AikaClawConfig } from "../config/config.js";
+export { resolvePreferredAikaClawTmpDir } from "../infra/tmp-aikaclaw-dir.ts";
 export type {
   AnyAgentTool,
-  OpenClawPluginApi,
-  OpenClawPluginConfigSchema,
-  OpenClawPluginToolContext,
+  AikaClawPluginApi,
+  AikaClawPluginConfigSchema,
+  AikaClawPluginToolContext,
   PluginLogger,
 } from "../plugins/types.js";

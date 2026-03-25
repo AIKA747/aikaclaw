@@ -14,7 +14,7 @@ import {
   globalInstallFallbackArgs,
   isExplicitPackageInstallSpec,
   isMainPackageTarget,
-  OPENCLAW_MAIN_PACKAGE_SPEC,
+  AIKACLAW_MAIN_PACKAGE_SPEC,
   resolveGlobalPackageRoot,
   resolveGlobalInstallSpec,
   resolveGlobalRoot,
@@ -30,19 +30,19 @@ describe("update global helpers", () => {
   });
 
   it("prefers explicit package spec overrides", () => {
-    envSnapshot = captureEnv(["OPENCLAW_UPDATE_PACKAGE_SPEC"]);
-    process.env.OPENCLAW_UPDATE_PACKAGE_SPEC = "file:/tmp/openclaw.tgz";
+    envSnapshot = captureEnv(["AIKACLAW_UPDATE_PACKAGE_SPEC"]);
+    process.env.AIKACLAW_UPDATE_PACKAGE_SPEC = "file:/tmp/aikaclaw.tgz";
 
-    expect(resolveGlobalInstallSpec({ packageName: "openclaw", tag: "latest" })).toBe(
-      "file:/tmp/openclaw.tgz",
+    expect(resolveGlobalInstallSpec({ packageName: "aikaclaw", tag: "latest" })).toBe(
+      "file:/tmp/aikaclaw.tgz",
     );
     expect(
       resolveGlobalInstallSpec({
-        packageName: "openclaw",
+        packageName: "aikaclaw",
         tag: "beta",
-        env: { OPENCLAW_UPDATE_PACKAGE_SPEC: "openclaw@next" },
+        env: { AIKACLAW_UPDATE_PACKAGE_SPEC: "aikaclaw@next" },
       }),
-    ).toBe("openclaw@next");
+    ).toBe("aikaclaw@next");
   });
 
   it("resolves global roots and package roots from runner output", async () => {
@@ -62,26 +62,26 @@ describe("update global helpers", () => {
       path.join(".bun", "install", "global", "node_modules"),
     );
     await expect(resolveGlobalPackageRoot("npm", runCommand, 1000)).resolves.toBe(
-      path.join("/tmp/npm-root", "openclaw"),
+      path.join("/tmp/npm-root", "aikaclaw"),
     );
   });
 
   it("maps main and explicit install specs for global installs", () => {
-    expect(resolveGlobalInstallSpec({ packageName: "openclaw", tag: "main" })).toBe(
-      OPENCLAW_MAIN_PACKAGE_SPEC,
+    expect(resolveGlobalInstallSpec({ packageName: "aikaclaw", tag: "main" })).toBe(
+      AIKACLAW_MAIN_PACKAGE_SPEC,
     );
     expect(
       resolveGlobalInstallSpec({
-        packageName: "openclaw",
-        tag: "github:openclaw/openclaw#feature/my-branch",
+        packageName: "aikaclaw",
+        tag: "github:aikaclaw/aikaclaw#feature/my-branch",
       }),
-    ).toBe("github:openclaw/openclaw#feature/my-branch");
+    ).toBe("github:aikaclaw/aikaclaw#feature/my-branch");
     expect(
       resolveGlobalInstallSpec({
-        packageName: "openclaw",
-        tag: "https://example.com/openclaw-main.tgz",
+        packageName: "aikaclaw",
+        tag: "https://example.com/aikaclaw-main.tgz",
       }),
-    ).toBe("https://example.com/openclaw-main.tgz");
+    ).toBe("https://example.com/aikaclaw-main.tgz");
   });
 
   it("classifies main and raw install specs separately from registry selectors", () => {
@@ -89,26 +89,26 @@ describe("update global helpers", () => {
     expect(isMainPackageTarget(" MAIN ")).toBe(true);
     expect(isMainPackageTarget("beta")).toBe(false);
 
-    expect(isExplicitPackageInstallSpec("github:openclaw/openclaw#main")).toBe(true);
-    expect(isExplicitPackageInstallSpec("https://example.com/openclaw-main.tgz")).toBe(true);
-    expect(isExplicitPackageInstallSpec("file:/tmp/openclaw-main.tgz")).toBe(true);
+    expect(isExplicitPackageInstallSpec("github:aikaclaw/aikaclaw#main")).toBe(true);
+    expect(isExplicitPackageInstallSpec("https://example.com/aikaclaw-main.tgz")).toBe(true);
+    expect(isExplicitPackageInstallSpec("file:/tmp/aikaclaw-main.tgz")).toBe(true);
     expect(isExplicitPackageInstallSpec("beta")).toBe(false);
 
     expect(canResolveRegistryVersionForPackageTarget("latest")).toBe(true);
     expect(canResolveRegistryVersionForPackageTarget("2026.3.22")).toBe(true);
     expect(canResolveRegistryVersionForPackageTarget("main")).toBe(false);
-    expect(canResolveRegistryVersionForPackageTarget("github:openclaw/openclaw#main")).toBe(false);
+    expect(canResolveRegistryVersionForPackageTarget("github:aikaclaw/aikaclaw#main")).toBe(false);
   });
 
   it("detects install managers from resolved roots and on-disk presence", async () => {
-    const base = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-update-global-"));
+    const base = await fs.mkdtemp(path.join(os.tmpdir(), "aikaclaw-update-global-"));
     const npmRoot = path.join(base, "npm-root");
     const pnpmRoot = path.join(base, "pnpm-root");
     const bunRoot = path.join(base, ".bun", "install", "global", "node_modules");
-    const pkgRoot = path.join(pnpmRoot, "openclaw");
+    const pkgRoot = path.join(pnpmRoot, "aikaclaw");
     await fs.mkdir(pkgRoot, { recursive: true });
-    await fs.mkdir(path.join(npmRoot, "openclaw"), { recursive: true });
-    await fs.mkdir(path.join(bunRoot, "openclaw"), { recursive: true });
+    await fs.mkdir(path.join(npmRoot, "aikaclaw"), { recursive: true });
+    await fs.mkdir(path.join(bunRoot, "aikaclaw"), { recursive: true });
 
     envSnapshot = captureEnv(["BUN_INSTALL"]);
     process.env.BUN_INSTALL = path.join(base, ".bun");
@@ -128,71 +128,71 @@ describe("update global helpers", () => {
     );
     await expect(detectGlobalInstallManagerByPresence(runCommand, 1000)).resolves.toBe("npm");
 
-    await fs.rm(path.join(npmRoot, "openclaw"), { recursive: true, force: true });
-    await fs.rm(path.join(pnpmRoot, "openclaw"), { recursive: true, force: true });
+    await fs.rm(path.join(npmRoot, "aikaclaw"), { recursive: true, force: true });
+    await fs.rm(path.join(pnpmRoot, "aikaclaw"), { recursive: true, force: true });
     await expect(detectGlobalInstallManagerByPresence(runCommand, 1000)).resolves.toBe("bun");
   });
 
   it("builds install argv and npm fallback argv", () => {
-    expect(globalInstallArgs("npm", "openclaw@latest")).toEqual([
+    expect(globalInstallArgs("npm", "aikaclaw@latest")).toEqual([
       "npm",
       "i",
       "-g",
-      "openclaw@latest",
+      "aikaclaw@latest",
       "--no-fund",
       "--no-audit",
       "--loglevel=error",
     ]);
-    expect(globalInstallArgs("pnpm", "openclaw@latest")).toEqual([
+    expect(globalInstallArgs("pnpm", "aikaclaw@latest")).toEqual([
       "pnpm",
       "add",
       "-g",
-      "openclaw@latest",
+      "aikaclaw@latest",
     ]);
-    expect(globalInstallArgs("bun", "openclaw@latest")).toEqual([
+    expect(globalInstallArgs("bun", "aikaclaw@latest")).toEqual([
       "bun",
       "add",
       "-g",
-      "openclaw@latest",
+      "aikaclaw@latest",
     ]);
 
-    expect(globalInstallFallbackArgs("npm", "openclaw@latest")).toEqual([
+    expect(globalInstallFallbackArgs("npm", "aikaclaw@latest")).toEqual([
       "npm",
       "i",
       "-g",
-      "openclaw@latest",
+      "aikaclaw@latest",
       "--omit=optional",
       "--no-fund",
       "--no-audit",
       "--loglevel=error",
     ]);
-    expect(globalInstallFallbackArgs("pnpm", "openclaw@latest")).toBeNull();
+    expect(globalInstallFallbackArgs("pnpm", "aikaclaw@latest")).toBeNull();
   });
 
   it("cleans only renamed package directories", async () => {
-    const root = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-update-cleanup-"));
-    await fs.mkdir(path.join(root, ".openclaw-123"), { recursive: true });
-    await fs.mkdir(path.join(root, ".openclaw-456"), { recursive: true });
-    await fs.writeFile(path.join(root, ".openclaw-file"), "nope", "utf8");
-    await fs.mkdir(path.join(root, "openclaw"), { recursive: true });
+    const root = await fs.mkdtemp(path.join(os.tmpdir(), "aikaclaw-update-cleanup-"));
+    await fs.mkdir(path.join(root, ".aikaclaw-123"), { recursive: true });
+    await fs.mkdir(path.join(root, ".aikaclaw-456"), { recursive: true });
+    await fs.writeFile(path.join(root, ".aikaclaw-file"), "nope", "utf8");
+    await fs.mkdir(path.join(root, "aikaclaw"), { recursive: true });
 
     await expect(
       cleanupGlobalRenameDirs({
         globalRoot: root,
-        packageName: "openclaw",
+        packageName: "aikaclaw",
       }),
     ).resolves.toEqual({
-      removed: [".openclaw-123", ".openclaw-456"],
+      removed: [".aikaclaw-123", ".aikaclaw-456"],
     });
-    await expect(fs.stat(path.join(root, "openclaw"))).resolves.toBeDefined();
-    await expect(fs.stat(path.join(root, ".openclaw-file"))).resolves.toBeDefined();
+    await expect(fs.stat(path.join(root, "aikaclaw"))).resolves.toBeDefined();
+    await expect(fs.stat(path.join(root, ".aikaclaw-file"))).resolves.toBeDefined();
   });
 
   it("checks bundled runtime sidecars, including Matrix helper-api", async () => {
-    const packageRoot = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-update-global-pkg-"));
+    const packageRoot = await fs.mkdtemp(path.join(os.tmpdir(), "aikaclaw-update-global-pkg-"));
     await fs.writeFile(
       path.join(packageRoot, "package.json"),
-      JSON.stringify({ name: "openclaw", version: "1.0.0" }),
+      JSON.stringify({ name: "aikaclaw", version: "1.0.0" }),
       "utf-8",
     );
     for (const relativePath of BUNDLED_RUNTIME_SIDECAR_PATHS) {

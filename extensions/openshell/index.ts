@@ -1,5 +1,5 @@
-import type { OpenClawPluginApi } from "openclaw/plugin-sdk/core";
-import { registerSandboxBackend } from "openclaw/plugin-sdk/sandbox";
+import type { AikaClawPluginApi } from "aikaclaw/plugin-sdk/core";
+import { registerSandboxBackend } from "aikaclaw/plugin-sdk/sandbox";
 import {
   createOpenShellSandboxBackendFactory,
   createOpenShellSandboxBackendManager,
@@ -11,7 +11,7 @@ const plugin = {
   name: "OpenShell Sandbox",
   description: "OpenShell-backed sandbox runtime for agent exec and file tools.",
   configSchema: createOpenShellPluginConfigSchema(),
-  register(api: OpenClawPluginApi) {
+  register(api: AikaClawPluginApi) {
     if (api.registrationMode !== "full") {
       return;
     }

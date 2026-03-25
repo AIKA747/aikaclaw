@@ -12,7 +12,7 @@ import {
   type StringSelectMenuInteraction,
 } from "@buape/carbon";
 import { ButtonStyle } from "discord-api-types/v10";
-import { resolveDefaultModelForAgent } from "openclaw/plugin-sdk/agent-runtime";
+import { resolveDefaultModelForAgent } from "aikaclaw/plugin-sdk/agent-runtime";
 import {
   buildCommandTextFromArgs,
   findCommandByNativeName,
@@ -24,12 +24,12 @@ import {
   type CommandArgDefinition,
   type CommandArgValues,
   type CommandArgs,
-} from "openclaw/plugin-sdk/command-auth";
-import type { OpenClawConfig, loadConfig } from "openclaw/plugin-sdk/config-runtime";
-import { loadSessionStore, resolveStorePath } from "openclaw/plugin-sdk/config-runtime";
-import type { ResolvedAgentRoute } from "openclaw/plugin-sdk/routing";
-import { logVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { chunkItems, withTimeout } from "openclaw/plugin-sdk/text-runtime";
+} from "aikaclaw/plugin-sdk/command-auth";
+import type { AikaClawConfig, loadConfig } from "aikaclaw/plugin-sdk/config-runtime";
+import { loadSessionStore, resolveStorePath } from "aikaclaw/plugin-sdk/config-runtime";
+import type { ResolvedAgentRoute } from "aikaclaw/plugin-sdk/routing";
+import { logVerbose } from "aikaclaw/plugin-sdk/runtime-env";
+import { chunkItems, withTimeout } from "aikaclaw/plugin-sdk/text-runtime";
 import { resolveDiscordChannelConfigWithFallback, resolveDiscordGuildEntry } from "./allow-list.js";
 import { resolveDiscordChannelInfo } from "./message-utils.js";
 import {
@@ -51,7 +51,7 @@ import { resolveDiscordNativeInteractionRouteState } from "./native-command-rout
 import type { ThreadBindingManager } from "./thread-bindings.js";
 import { resolveDiscordThreadParentInfo } from "./threading.js";
 
-type DiscordConfig = NonNullable<OpenClawConfig["channels"]>["discord"];
+type DiscordConfig = NonNullable<AikaClawConfig["channels"]>["discord"];
 
 const DISCORD_COMMAND_ARG_CUSTOM_ID_KEY = "cmdarg";
 

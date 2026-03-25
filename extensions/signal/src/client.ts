@@ -1,6 +1,6 @@
-import { resolveFetch } from "openclaw/plugin-sdk/infra-runtime";
-import { generateSecureUuid } from "openclaw/plugin-sdk/infra-runtime";
-import { fetchWithTimeout } from "openclaw/plugin-sdk/text-runtime";
+import { resolveFetch } from "aikaclaw/plugin-sdk/infra-runtime";
+import { generateSecureUuid } from "aikaclaw/plugin-sdk/infra-runtime";
+import { fetchWithTimeout } from "aikaclaw/plugin-sdk/text-runtime";
 
 export type SignalRpcOptions = {
   baseUrl: string;

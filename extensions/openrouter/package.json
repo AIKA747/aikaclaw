@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/openrouter-provider",
+  "name": "@aikaclaw/openrouter-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw OpenRouter provider plugin",
+  "description": "AikaClaw OpenRouter provider plugin",
   "type": "module",
-  "openclaw": {
+  "aikaclaw": {
     "extensions": [
       "./index.ts"
     ]

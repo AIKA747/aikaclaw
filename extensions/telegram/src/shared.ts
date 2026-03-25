@@ -1,16 +1,16 @@
-import { formatAllowFromLowercase } from "openclaw/plugin-sdk/allow-from";
+import { formatAllowFromLowercase } from "aikaclaw/plugin-sdk/allow-from";
 import {
   adaptScopedAccountAccessor,
   createScopedChannelConfigAdapter,
-} from "openclaw/plugin-sdk/channel-config-helpers";
-import { createChannelPluginBase } from "openclaw/plugin-sdk/core";
+} from "aikaclaw/plugin-sdk/channel-config-helpers";
+import { createChannelPluginBase } from "aikaclaw/plugin-sdk/core";
 import {
   buildChannelConfigSchema,
   getChatChannelMeta,
   normalizeAccountId,
   TelegramConfigSchema,
   type ChannelPlugin,
-  type OpenClawConfig,
+  type AikaClawConfig,
 } from "../runtime-api.js";
 import { inspectTelegramAccount } from "./account-inspect.js";
 import {
@@ -23,7 +23,7 @@ import {
 export const TELEGRAM_CHANNEL = "telegram" as const;
 
 export function findTelegramTokenOwnerAccountId(params: {
-  cfg: OpenClawConfig;
+  cfg: AikaClawConfig;
   accountId: string;
 }): string | null {
   const normalizedAccountId = normalizeAccountId(params.accountId);

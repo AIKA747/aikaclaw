@@ -28,8 +28,8 @@ const buildGatewayInstallPlan = vi.fn(
     programArguments: ["/bin/node", "cli", "gateway", "--port", String(params.port)],
     workingDirectory: process.cwd(),
     environment: {
-      OPENCLAW_GATEWAY_PORT: String(params.port),
-      ...(params.token ? { OPENCLAW_GATEWAY_TOKEN: params.token } : {}),
+      AIKACLAW_GATEWAY_PORT: String(params.port),
+      ...(params.token ? { AIKACLAW_GATEWAY_TOKEN: params.token } : {}),
     },
   }),
 );
@@ -126,15 +126,15 @@ describe("daemon-cli coverage", () => {
   beforeEach(() => {
     daemonProgram = createDaemonProgram();
     envSnapshot = captureEnv([
-      "OPENCLAW_STATE_DIR",
-      "OPENCLAW_CONFIG_PATH",
-      "OPENCLAW_GATEWAY_PORT",
-      "OPENCLAW_PROFILE",
+      "AIKACLAW_STATE_DIR",
+      "AIKACLAW_CONFIG_PATH",
+      "AIKACLAW_GATEWAY_PORT",
+      "AIKACLAW_PROFILE",
     ]);
-    process.env.OPENCLAW_STATE_DIR = "/tmp/openclaw-cli-state";
-    process.env.OPENCLAW_CONFIG_PATH = "/tmp/openclaw-cli-state/openclaw.json";
-    delete process.env.OPENCLAW_GATEWAY_PORT;
-    delete process.env.OPENCLAW_PROFILE;
+    process.env.AIKACLAW_STATE_DIR = "/tmp/aikaclaw-cli-state";
+    process.env.AIKACLAW_CONFIG_PATH = "/tmp/aikaclaw-cli-state/aikaclaw.json";
+    delete process.env.AIKACLAW_GATEWAY_PORT;
+    delete process.env.AIKACLAW_PROFILE;
     serviceReadCommand.mockResolvedValue(null);
     resolveGatewayProbeAuthWithSecretInputs.mockClear();
     buildGatewayInstallPlan.mockClear();
@@ -164,12 +164,12 @@ describe("daemon-cli coverage", () => {
     serviceReadCommand.mockResolvedValueOnce({
       programArguments: ["/bin/node", "cli", "gateway", "--port", "19001"],
       environment: {
-        OPENCLAW_PROFILE: "dev",
-        OPENCLAW_STATE_DIR: "/tmp/openclaw-daemon-state",
-        OPENCLAW_CONFIG_PATH: "/tmp/openclaw-daemon-state/openclaw.json",
-        OPENCLAW_GATEWAY_PORT: "19001",
+        AIKACLAW_PROFILE: "dev",
+        AIKACLAW_STATE_DIR: "/tmp/aikaclaw-daemon-state",
+        AIKACLAW_CONFIG_PATH: "/tmp/aikaclaw-daemon-state/aikaclaw.json",
+        AIKACLAW_GATEWAY_PORT: "19001",
       },
-      sourcePath: "/tmp/ai.openclaw.gateway.plist",
+      sourcePath: "/tmp/ai.aikaclaw.gateway.plist",
     });
 
     await runDaemonCommand(["daemon", "status", "--json"]);

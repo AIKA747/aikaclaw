@@ -6,9 +6,9 @@ describe("buildPairingReply", () => {
   let envSnapshot: ReturnType<typeof captureEnv>;
 
   beforeEach(() => {
-    envSnapshot = captureEnv(["OPENCLAW_CONTAINER_HINT", "OPENCLAW_PROFILE"]);
-    delete process.env.OPENCLAW_CONTAINER_HINT;
-    process.env.OPENCLAW_PROFILE = "isolated";
+    envSnapshot = captureEnv(["AIKACLAW_CONTAINER_HINT", "AIKACLAW_PROFILE"]);
+    delete process.env.AIKACLAW_CONTAINER_HINT;
+    process.env.AIKACLAW_PROFILE = "isolated";
   });
 
   afterEach(() => {
@@ -54,9 +54,9 @@ describe("buildPairingReply", () => {
       expect(text).toContain(testCase.idLine);
       expect(text).toContain("Pairing code:");
       expect(text).toContain(`\n\`\`\`\n${testCase.code}\n\`\`\`\n`);
-      // CLI commands should respect OPENCLAW_PROFILE when set (most tests run with isolated profile)
+      // CLI commands should respect AIKACLAW_PROFILE when set (most tests run with isolated profile)
       const commandRe = new RegExp(
-        `(?:openclaw|openclaw) --profile isolated pairing approve ${testCase.channel} ${testCase.code}`,
+        `(?:aikaclaw|aikaclaw) --profile isolated pairing approve ${testCase.channel} ${testCase.code}`,
       );
       expect(text).toMatch(commandRe);
       expect(text).toContain("\n```\n");

@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../../../src/config/config.js";
+import type { AikaClawConfig } from "../../../src/config/config.js";
 import { isNumericTelegramUserId, normalizeTelegramAllowFromEntry } from "./allow-from.js";
 import {
   resolveTelegramGroupRequireMention,
@@ -20,8 +20,8 @@ const loadCronStore = vi.fn();
 const resolveCronStorePath = vi.fn();
 const saveCronStore = vi.fn();
 
-vi.mock("openclaw/plugin-sdk/config-runtime", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("openclaw/plugin-sdk/config-runtime")>();
+vi.mock("aikaclaw/plugin-sdk/config-runtime", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("aikaclaw/plugin-sdk/config-runtime")>();
   return {
     ...actual,
     readConfigFileSnapshotForWrite,
@@ -251,7 +251,7 @@ describe("maybePersistResolvedTelegramTarget", () => {
 
   it("skips writeback when target is already numeric", async () => {
     await maybePersistResolvedTelegramTarget({
-      cfg: {} as OpenClawConfig,
+      cfg: {} as AikaClawConfig,
       rawTarget: "-100123",
       resolvedChatId: "-100123",
     });
@@ -276,7 +276,7 @@ describe("maybePersistResolvedTelegramTarget", () => {
           },
         },
       },
-      writeOptions: { expectedConfigPath: "/tmp/openclaw.json" },
+      writeOptions: { expectedConfigPath: "/tmp/aikaclaw.json" },
     });
     loadCronStore.mockResolvedValue({
       version: 1,
@@ -289,7 +289,7 @@ describe("maybePersistResolvedTelegramTarget", () => {
     await maybePersistResolvedTelegramTarget({
       cfg: {
         cron: { store: "/tmp/cron/jobs.json" },
-      } as OpenClawConfig,
+      } as AikaClawConfig,
       rawTarget: "t.me/mychannel",
       resolvedChatId: "-100123",
     });
@@ -308,7 +308,7 @@ describe("maybePersistResolvedTelegramTarget", () => {
           },
         },
       }),
-      expect.objectContaining({ expectedConfigPath: "/tmp/openclaw.json" }),
+      expect.objectContaining({ expectedConfigPath: "/tmp/aikaclaw.json" }),
     );
     expect(saveCronStore).toHaveBeenCalledTimes(1);
     expect(saveCronStore).toHaveBeenCalledWith(
@@ -338,7 +338,7 @@ describe("maybePersistResolvedTelegramTarget", () => {
     loadCronStore.mockResolvedValue({ version: 1, jobs: [] });
 
     await maybePersistResolvedTelegramTarget({
-      cfg: {} as OpenClawConfig,
+      cfg: {} as AikaClawConfig,
       rawTarget: "t.me/mychannel:topic:9",
       resolvedChatId: "-100123",
     });
@@ -374,7 +374,7 @@ describe("maybePersistResolvedTelegramTarget", () => {
     });
 
     await maybePersistResolvedTelegramTarget({
-      cfg: {} as OpenClawConfig,
+      cfg: {} as AikaClawConfig,
       rawTarget: "@MyChannel",
       resolvedChatId: "-100123",
     });

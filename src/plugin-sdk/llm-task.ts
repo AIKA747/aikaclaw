@@ -2,11 +2,11 @@
 // Keep this list additive and scoped to symbols used under extensions/llm-task.
 
 export { definePluginEntry } from "./plugin-entry.js";
-export { resolvePreferredOpenClawTmpDir } from "../infra/tmp-openclaw-dir.js";
+export { resolvePreferredAikaClawTmpDir } from "../infra/tmp-aikaclaw-dir.ts";
 export {
   formatThinkingLevels,
   formatXHighModelHint,
   normalizeThinkLevel,
   supportsXHighThinking,
 } from "../auto-reply/thinking.js";
-export type { AnyAgentTool, OpenClawPluginApi } from "../plugins/types.js";
+export type { AnyAgentTool, AikaClawPluginApi } from "../plugins/types.js";

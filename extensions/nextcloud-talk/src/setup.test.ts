@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { DEFAULT_ACCOUNT_ID } from "openclaw/plugin-sdk/routing";
+import { DEFAULT_ACCOUNT_ID } from "aikaclaw/plugin-sdk/routing";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   createSendCfgThreadingRuntime,
@@ -390,7 +390,7 @@ describe("resolveNextcloudTalkAccount", () => {
   });
 
   it.runIf(process.platform !== "win32")("rejects symlinked botSecretFile paths", () => {
-    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-nextcloud-talk-"));
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "aikaclaw-nextcloud-talk-"));
     const secretFile = path.join(dir, "secret.txt");
     const secretLink = path.join(dir, "secret-link.txt");
     fs.writeFileSync(secretFile, "bot-secret\n", "utf8");

@@ -1,1 +1,1 @@
-export * from "openclaw/plugin-sdk/github-copilot-token";
+export * from "aikaclaw/plugin-sdk/github-copilot-token";

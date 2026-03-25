@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/openai-provider",
+  "name": "@aikaclaw/openai-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw OpenAI provider plugins",
+  "description": "AikaClaw OpenAI provider plugins",
   "type": "module",
-  "openclaw": {
+  "aikaclaw": {
     "extensions": [
       "./index.ts"
     ]

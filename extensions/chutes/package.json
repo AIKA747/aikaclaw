@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/chutes-provider",
+  "name": "@aikaclaw/chutes-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw Chutes.ai provider plugin",
+  "description": "AikaClaw Chutes.ai provider plugin",
   "type": "module",
-  "openclaw": {
+  "aikaclaw": {
     "extensions": [
       "./index.ts"
     ]

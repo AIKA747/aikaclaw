@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../config/config.js";
+import type { AikaClawConfig } from "../config/config.js";
 import { withFetchPreconnect } from "../test-utils/fetch-mock.js";
 
 vi.mock("../plugins/tools.js", () => ({
@@ -78,15 +78,15 @@ vi.mock("./tools/tts-tool.js", () => ({
   createTtsTool: mockToolFactory("tts_stub"),
 }));
 
-function asConfig(value: unknown): OpenClawConfig {
-  return value as OpenClawConfig;
+function asConfig(value: unknown): AikaClawConfig {
+  return value as AikaClawConfig;
 }
 
 let secretsRuntime: typeof import("../secrets/runtime.js");
-let createOpenClawTools: typeof import("./openclaw-tools.js").createOpenClawTools;
+let createAikaClawTools: typeof import("./aikaclaw-tools.js").createAikaClawTools;
 
-function findTool(name: string, config: OpenClawConfig) {
-  const allTools = createOpenClawTools({ config, sandboxed: true });
+function findTool(name: string, config: AikaClawConfig) {
+  const allTools = createAikaClawTools({ config, sandboxed: true });
   const tool = allTools.find((candidate) => candidate.name === name);
   expect(tool).toBeDefined();
   if (!tool) {
@@ -101,24 +101,24 @@ function makeHeaders(map: Record<string, string>): { get: (key: string) => strin
   };
 }
 
-async function prepareAndActivate(params: { config: OpenClawConfig; env?: NodeJS.ProcessEnv }) {
+async function prepareAndActivate(params: { config: AikaClawConfig; env?: NodeJS.ProcessEnv }) {
   const snapshot = await secretsRuntime.prepareSecretsRuntimeSnapshot({
     config: params.config,
     env: params.env,
-    agentDirs: ["/tmp/openclaw-agent-main"],
+    agentDirs: ["/tmp/aikaclaw-agent-main"],
     loadAuthStore: () => ({ version: 1, profiles: {} }),
   });
   secretsRuntime.activateSecretsRuntimeSnapshot(snapshot);
   return snapshot;
 }
 
-describe("openclaw tools runtime web metadata wiring", () => {
+describe("aikaclaw tools runtime web metadata wiring", () => {
   const priorFetch = global.fetch;
 
   beforeEach(async () => {
     vi.resetModules();
     secretsRuntime = await import("../secrets/runtime.js");
-    ({ createOpenClawTools } = await import("./openclaw-tools.js"));
+    ({ createAikaClawTools } = await import("./aikaclaw-tools.js"));
   });
 
   afterEach(() => {

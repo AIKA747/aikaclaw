@@ -167,7 +167,7 @@ vi.mock("../config-update.js", () => ({
 
 vi.mock("../device-health.js", () => ({
   summarizeMatrixDeviceHealth: vi.fn(() => ({
-    staleOpenClawDevices: [],
+    staleAikaClawDevices: [],
   })),
 }));
 
@@ -426,7 +426,7 @@ describe("matrix plugin registration", () => {
       loadRuntimeApiExportTypesViaJiti({
         modulePath: runtimeApiPath,
         exportNames: ["resolveMatrixAccountStringValues"],
-        realPluginSdkSpecifiers: ["openclaw/plugin-sdk/matrix"],
+        realPluginSdkSpecifiers: ["aikaclaw/plugin-sdk/matrix"],
       }),
     ).toEqual({
       resolveMatrixAccountStringValues: "function",

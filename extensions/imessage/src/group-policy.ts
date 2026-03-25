@@ -2,11 +2,11 @@ import {
   resolveChannelGroupRequireMention,
   resolveChannelGroupToolsPolicy,
   type GroupToolPolicyConfig,
-} from "openclaw/plugin-sdk/channel-policy";
-import type { OpenClawConfig } from "openclaw/plugin-sdk/core";
+} from "aikaclaw/plugin-sdk/channel-policy";
+import type { AikaClawConfig } from "aikaclaw/plugin-sdk/core";
 
 type IMessageGroupContext = {
-  cfg: OpenClawConfig;
+  cfg: AikaClawConfig;
   accountId?: string | null;
   groupId?: string | null;
   senderId?: string | null;

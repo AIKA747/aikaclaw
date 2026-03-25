@@ -11,19 +11,19 @@ export {
   ssrfPolicyFromAllowPrivateNetwork,
   type LookupFn,
   type SsrFPolicy,
-} from "openclaw/plugin-sdk/ssrf-runtime";
+} from "aikaclaw/plugin-sdk/ssrf-runtime";
 export {
   setMatrixThreadBindingIdleTimeoutBySessionKey,
   setMatrixThreadBindingMaxAgeBySessionKey,
 } from "./thread-bindings-runtime.js";
-export { writeJsonFileAtomically } from "openclaw/plugin-sdk/json-store";
+export { writeJsonFileAtomically } from "aikaclaw/plugin-sdk/json-store";
 export type {
   ChannelDirectoryEntry,
   ChannelMessageActionContext,
-  OpenClawConfig,
+  AikaClawConfig,
   PluginRuntime,
   RuntimeLogger,
   RuntimeEnv,
   WizardPrompter,
-} from "openclaw/plugin-sdk/matrix";
-export { formatZonedTimestamp } from "openclaw/plugin-sdk/matrix";
+} from "aikaclaw/plugin-sdk/matrix";
+export { formatZonedTimestamp } from "aikaclaw/plugin-sdk/matrix";

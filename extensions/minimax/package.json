@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/minimax-provider",
+  "name": "@aikaclaw/minimax-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw MiniMax provider and OAuth plugin",
+  "description": "AikaClaw MiniMax provider and OAuth plugin",
   "type": "module",
-  "openclaw": {
+  "aikaclaw": {
     "extensions": [
       "./index.ts"
     ]

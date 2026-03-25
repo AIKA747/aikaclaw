@@ -1,24 +1,24 @@
 {
-  "name": "@openclaw/googlechat",
+  "name": "@aikaclaw/googlechat",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw Google Chat channel plugin",
+  "description": "AikaClaw Google Chat channel plugin",
   "type": "module",
   "dependencies": {
     "google-auth-library": "^10.6.2"
   },
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "aikaclaw": "workspace:*"
   },
   "peerDependencies": {
-    "openclaw": ">=2026.3.22"
+    "aikaclaw": ">=2026.3.22"
   },
   "peerDependenciesMeta": {
-    "openclaw": {
+    "aikaclaw": {
       "optional": true
     }
   },
-  "openclaw": {
+  "aikaclaw": {
     "extensions": [
       "./index.ts"
     ],
@@ -38,7 +38,7 @@
       "order": 55
     },
     "install": {
-      "npmSpec": "@openclaw/googlechat",
+      "npmSpec": "@aikaclaw/googlechat",
       "localPath": "extensions/googlechat",
       "defaultChoice": "npm",
       "minHostVersion": ">=2026.3.22"

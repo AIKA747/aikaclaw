@@ -1,4 +1,4 @@
-import { type RoutePeer } from "openclaw/plugin-sdk/routing";
+import { type RoutePeer } from "aikaclaw/plugin-sdk/routing";
 import {
   looksLikeUuid,
   resolveSignalPeerId,

@@ -8,7 +8,7 @@ import {
   parseReleaseVersion,
   resolveNpmCommandInvocation,
   utcCalendarDayDistance,
-} from "../scripts/openclaw-npm-release-check.ts";
+} from "../scripts/aikaclaw-npm-release-check.ts";
 
 describe("parseReleaseVersion", () => {
   it("parses stable CalVer releases", () => {
@@ -117,8 +117,8 @@ describe("resolveNpmCommandInvocation", () => {
 
 describe("parseNpmPackJsonOutput", () => {
   it("parses a plain npm pack JSON array", () => {
-    expect(parseNpmPackJsonOutput('[{"filename":"openclaw.tgz","files":[]}]')).toEqual([
-      { filename: "openclaw.tgz", files: [] },
+    expect(parseNpmPackJsonOutput('[{"filename":"aikaclaw.tgz","files":[]}]')).toEqual([
+      { filename: "aikaclaw.tgz", files: [] },
     ]);
   });
 
@@ -126,23 +126,23 @@ describe("parseNpmPackJsonOutput", () => {
     const stdout = [
       'npm warn Unknown project config "node-linker".',
       "",
-      "> openclaw@2026.3.23 prepack",
+      "> aikaclaw@2026.3.23 prepack",
       "> pnpm build && pnpm ui:build",
       "",
       "[copy-hook-metadata] Copied 4 hook metadata files.",
-      '[{"filename":"openclaw.tgz","files":[{"path":"dist/control-ui/index.html"}]}]',
+      '[{"filename":"aikaclaw.tgz","files":[{"path":"dist/control-ui/index.html"}]}]',
     ].join("\n");
 
     expect(parseNpmPackJsonOutput(stdout)).toEqual([
       {
-        filename: "openclaw.tgz",
+        filename: "aikaclaw.tgz",
         files: [{ path: "dist/control-ui/index.html" }],
       },
     ]);
   });
 
   it("returns null when no JSON payload is present", () => {
-    expect(parseNpmPackJsonOutput("> openclaw@2026.3.23 prepack")).toBeNull();
+    expect(parseNpmPackJsonOutput("> aikaclaw@2026.3.23 prepack")).toBeNull();
   });
 });
 
@@ -220,11 +220,11 @@ describe("collectReleasePackageMetadataErrors", () => {
   it("validates the expected npm package metadata", () => {
     expect(
       collectReleasePackageMetadataErrors({
-        name: "openclaw",
+        name: "aikaclaw",
         description: "Multi-channel AI gateway with extensible messaging integrations",
         license: "MIT",
-        repository: { url: "git+https://github.com/openclaw/openclaw.git" },
-        bin: { openclaw: "openclaw.mjs" },
+        repository: { url: "git+https://github.com/aikaclaw/aikaclaw.git" },
+        bin: { aikaclaw: "aikaclaw.mjs" },
         peerDependencies: { "node-llama-cpp": "3.16.2" },
         peerDependenciesMeta: { "node-llama-cpp": { optional: true } },
       }),
@@ -234,11 +234,11 @@ describe("collectReleasePackageMetadataErrors", () => {
   it("requires node-llama-cpp to stay an optional peer", () => {
     expect(
       collectReleasePackageMetadataErrors({
-        name: "openclaw",
+        name: "aikaclaw",
         description: "Multi-channel AI gateway with extensible messaging integrations",
         license: "MIT",
-        repository: { url: "git+https://github.com/openclaw/openclaw.git" },
-        bin: { openclaw: "openclaw.mjs" },
+        repository: { url: "git+https://github.com/aikaclaw/aikaclaw.git" },
+        bin: { aikaclaw: "aikaclaw.mjs" },
         peerDependencies: { "node-llama-cpp": "3.16.2" },
       }),
     ).toContain('package.json peerDependenciesMeta["node-llama-cpp"].optional must be true.');

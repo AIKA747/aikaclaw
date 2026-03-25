@@ -1,8 +1,8 @@
 import { buildElevenLabsSpeechProvider } from "../../extensions/elevenlabs/speech-provider.js";
 import { buildMicrosoftSpeechProvider } from "../../extensions/microsoft/speech-provider.js";
 import { buildOpenAISpeechProvider } from "../../extensions/openai/speech-provider.js";
-import type { OpenClawConfig } from "../config/config.js";
-import { loadOpenClawPlugins } from "../plugins/loader.js";
+import type { AikaClawConfig } from "../config/config.js";
+import { loadAikaClawPlugins } from "../plugins/loader.js";
 import { getActivePluginRegistry } from "../plugins/runtime.js";
 import type { SpeechProviderPlugin } from "../plugins/types.js";
 import type { SpeechProviderId } from "./provider-types.js";
@@ -28,16 +28,16 @@ export function normalizeSpeechProviderId(
   return normalized === "edge" ? "microsoft" : normalized;
 }
 
-function resolveSpeechProviderPluginEntries(cfg?: OpenClawConfig): SpeechProviderPlugin[] {
+function resolveSpeechProviderPluginEntries(cfg?: AikaClawConfig): SpeechProviderPlugin[] {
   const active = getActivePluginRegistry();
   const registry =
     (active?.speechProviders?.length ?? 0) > 0 || !cfg
       ? active
-      : loadOpenClawPlugins({ config: cfg });
+      : loadAikaClawPlugins({ config: cfg });
   return registry?.speechProviders?.map((entry) => entry.provider) ?? [];
 }
 
-function buildProviderMaps(cfg?: OpenClawConfig): {
+function buildProviderMaps(cfg?: AikaClawConfig): {
   canonical: Map<string, SpeechProviderPlugin>;
   aliases: Map<string, SpeechProviderPlugin>;
 } {
@@ -68,13 +68,13 @@ function buildProviderMaps(cfg?: OpenClawConfig): {
   return { canonical, aliases };
 }
 
-export function listSpeechProviders(cfg?: OpenClawConfig): SpeechProviderPlugin[] {
+export function listSpeechProviders(cfg?: AikaClawConfig): SpeechProviderPlugin[] {
   return [...buildProviderMaps(cfg).canonical.values()];
 }
 
 export function getSpeechProvider(
   providerId: string | undefined,
-  cfg?: OpenClawConfig,
+  cfg?: AikaClawConfig,
 ): SpeechProviderPlugin | undefined {
   const normalized = normalizeSpeechProviderId(providerId);
   if (!normalized) {

@@ -5,9 +5,9 @@ import {
   type RequestClient,
 } from "@buape/carbon";
 import { ChannelType, Routes } from "discord-api-types/v10";
-import { loadConfig, type OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
-import { recordChannelActivity } from "openclaw/plugin-sdk/infra-runtime";
-import { loadWebMedia } from "openclaw/plugin-sdk/web-media";
+import { loadConfig, type AikaClawConfig } from "aikaclaw/plugin-sdk/config-runtime";
+import { recordChannelActivity } from "aikaclaw/plugin-sdk/infra-runtime";
+import { loadWebMedia } from "aikaclaw/plugin-sdk/web-media";
 import { resolveDiscordAccount } from "./accounts.js";
 import { registerDiscordComponentEntries } from "./components-registry.js";
 import {
@@ -42,7 +42,7 @@ function extractComponentAttachmentNames(spec: DiscordComponentMessageSpec): str
 }
 
 type DiscordComponentSendOpts = {
-  cfg?: OpenClawConfig;
+  cfg?: AikaClawConfig;
   accountId?: string;
   token?: string;
   rest?: RequestClient;

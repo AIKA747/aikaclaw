@@ -2,9 +2,9 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import OpenAI from "openai";
-import * as providerAuth from "openclaw/plugin-sdk/provider-auth";
+import * as providerAuth from "aikaclaw/plugin-sdk/provider-auth";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../../src/config/config.js";
+import type { AikaClawConfig } from "../../src/config/config.js";
 import { loadConfig } from "../../src/config/config.js";
 import { encodePngRgba, fillPixel } from "../../src/media/png-encode.js";
 import type { ResolvedTtsConfig } from "../../src/tts/tts.js";
@@ -20,7 +20,7 @@ const runtimeMocks = vi.hoisted(() => ({
   getOAuthApiKey: vi.fn(),
 }));
 
-vi.mock("openclaw/plugin-sdk/infra-runtime", () => ({
+vi.mock("aikaclaw/plugin-sdk/infra-runtime", () => ({
   ensureGlobalUndiciEnvProxyDispatcher: runtimeMocks.ensureGlobalUndiciEnvProxyDispatcher,
 }));
 
@@ -31,10 +31,10 @@ vi.mock("@mariozechner/pi-ai/oauth", () => ({
 import { getOAuthApiKey as getCodexOAuthApiKey } from "./openai-codex-provider.runtime.js";
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY ?? "";
-const LIVE_MODEL_ID = process.env.OPENCLAW_LIVE_OPENAI_PLUGIN_MODEL?.trim() || "gpt-5.4-nano";
-const LIVE_IMAGE_MODEL = process.env.OPENCLAW_LIVE_OPENAI_IMAGE_MODEL?.trim() || "gpt-image-1";
-const LIVE_VISION_MODEL = process.env.OPENCLAW_LIVE_OPENAI_VISION_MODEL?.trim() || "gpt-4.1-mini";
-const liveEnabled = OPENAI_API_KEY.trim().length > 0 && process.env.OPENCLAW_LIVE_TEST === "1";
+const LIVE_MODEL_ID = process.env.AIKACLAW_LIVE_OPENAI_PLUGIN_MODEL?.trim() || "gpt-5.4-nano";
+const LIVE_IMAGE_MODEL = process.env.AIKACLAW_LIVE_OPENAI_IMAGE_MODEL?.trim() || "gpt-image-1";
+const LIVE_VISION_MODEL = process.env.AIKACLAW_LIVE_OPENAI_VISION_MODEL?.trim() || "gpt-4.1-mini";
+const liveEnabled = OPENAI_API_KEY.trim().length > 0 && process.env.AIKACLAW_LIVE_TEST === "1";
 const describeLive = liveEnabled ? describe : describe.skip;
 const EMPTY_AUTH_STORE = { version: 1, profiles: {} } as const;
 
@@ -111,7 +111,7 @@ function createReferencePng(): Buffer {
   return encodePngRgba(buf, width, height);
 }
 
-function createLiveConfig(): OpenClawConfig {
+function createLiveConfig(): AikaClawConfig {
   const cfg = loadConfig();
   return {
     ...cfg,
@@ -126,7 +126,7 @@ function createLiveConfig(): OpenClawConfig {
         },
       },
     },
-  } as OpenClawConfig;
+  } as AikaClawConfig;
 }
 
 function createLiveTtsConfig(): ResolvedTtsConfig {
@@ -376,7 +376,7 @@ describeLive("openai plugin live", () => {
 
     // oxlint-disable-next-line typescript/no-explicit-any
     const audioFile = await (speechProvider as any).synthesize({
-      text: "OpenClaw integration test OK.",
+      text: "AikaClaw integration test OK.",
       cfg,
       config: ttsConfig,
       target: "audio-file",
@@ -406,7 +406,7 @@ describeLive("openai plugin live", () => {
 
     // oxlint-disable-next-line typescript/no-explicit-any
     const synthesized = await (speechProvider as any).synthesize({
-      text: "OpenClaw integration test OK.",
+      text: "AikaClaw integration test OK.",
       cfg,
       config: ttsConfig,
       target: "audio-file",
@@ -423,7 +423,7 @@ describeLive("openai plugin live", () => {
 
     const text = String(transcription?.text ?? "").toLowerCase();
     expect(text.length).toBeGreaterThan(0);
-    expect(text).toContain("openclaw");
+    expect(text).toContain("aikaclaw");
     expect(text).toMatch(/\bok\b/);
   }, 45_000);
 

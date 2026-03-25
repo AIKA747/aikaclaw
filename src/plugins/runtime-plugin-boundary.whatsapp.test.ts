@@ -19,7 +19,7 @@ type HeavyModule = {
 const tempDirs: string[] = [];
 
 function createBundledWhatsAppRuntimeFixture() {
-  const rootDir = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-whatsapp-boundary-"));
+  const rootDir = fs.mkdtempSync(path.join(os.tmpdir(), "aikaclaw-whatsapp-boundary-"));
   tempDirs.push(rootDir);
   const distRoot = path.join(rootDir, "dist");
   const whatsappDistDir = path.join(distRoot, "extensions", "whatsapp");
@@ -28,10 +28,10 @@ function createBundledWhatsAppRuntimeFixture() {
     path.join(rootDir, "package.json"),
     JSON.stringify(
       {
-        name: "openclaw",
+        name: "aikaclaw",
         type: "module",
         bin: {
-          openclaw: "openclaw.mjs",
+          aikaclaw: "aikaclaw.mjs",
         },
         exports: {
           "./plugin-sdk": {
@@ -44,7 +44,7 @@ function createBundledWhatsAppRuntimeFixture() {
     ),
     "utf8",
   );
-  fs.writeFileSync(path.join(rootDir, "openclaw.mjs"), "export {};\n", "utf8");
+  fs.writeFileSync(path.join(rootDir, "aikaclaw.mjs"), "export {};\n", "utf8");
   fs.writeFileSync(path.join(whatsappDistDir, "index.js"), "export default {};\n", "utf8");
   fs.writeFileSync(
     path.join(whatsappDistDir, "light-runtime-api.js"),
@@ -59,7 +59,7 @@ function createBundledWhatsAppRuntimeFixture() {
   fs.writeFileSync(
     path.join(distRoot, "active-listener.js"),
     [
-      'const key = Symbol.for("openclaw.whatsapp.activeListenerState");',
+      'const key = Symbol.for("aikaclaw.whatsapp.activeListenerState");',
       "const g = globalThis;",
       "if (!g[key]) {",
       "  g[key] = { listeners: new Map(), current: null };",

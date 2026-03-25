@@ -1,4 +1,4 @@
-export type { OpenClawConfig } from "../config/config.js";
+export type { AikaClawConfig } from "../config/config.js";
 export type { LineChannelData, LineConfig } from "../../extensions/line/api.js";
 export {
   createTopLevelChannelDmPolicy,

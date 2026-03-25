@@ -1,13 +1,13 @@
 import { resolveAgentWorkspaceDir, resolveDefaultAgentId } from "../agents/agent-scope.js";
 import { resolveDefaultAgentWorkspaceDir } from "../agents/workspace.js";
 import { loadConfig } from "../config/config.js";
-import { normalizeOpenClawVersionBase } from "../config/version.js";
+import { normalizeAikaClawVersionBase } from "../config/version.js";
 import { createSubsystemLogger } from "../logging/subsystem.js";
 import { resolveRuntimeServiceVersion } from "../version.js";
 import { inspectBundleLspRuntimeSupport } from "./bundle-lsp.js";
 import { inspectBundleMcpRuntimeSupport } from "./bundle-mcp.js";
 import { normalizePluginsConfig } from "./config-state.js";
-import { loadOpenClawPlugins } from "./loader.js";
+import { loadAikaClawPlugins } from "./loader.js";
 import { createPluginLoaderLogger } from "./logger.js";
 import type { PluginRegistry } from "./registry.js";
 import type { PluginDiagnostic, PluginHookName } from "./types.js";
@@ -124,8 +124,8 @@ function resolveReportedPluginVersion(
     return plugin.version;
   }
   return (
-    normalizeOpenClawVersionBase(resolveRuntimeServiceVersion(env)) ??
-    normalizeOpenClawVersionBase(plugin.version) ??
+    normalizeAikaClawVersionBase(resolveRuntimeServiceVersion(env)) ??
+    normalizeAikaClawVersionBase(plugin.version) ??
     plugin.version
   );
 }
@@ -142,7 +142,7 @@ export function buildPluginStatusReport(params?: {
     : (resolveAgentWorkspaceDir(config, resolveDefaultAgentId(config)) ??
       resolveDefaultAgentWorkspaceDir());
 
-  const registry = loadOpenClawPlugins({
+  const registry = loadAikaClawPlugins({
     config,
     workspaceDir,
     env: params?.env,

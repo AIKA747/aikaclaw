@@ -1,9 +1,9 @@
-import { definePluginEntry } from "openclaw/plugin-sdk/plugin-entry";
-import { createProviderApiKeyAuthMethod } from "openclaw/plugin-sdk/provider-auth";
+import { definePluginEntry } from "aikaclaw/plugin-sdk/plugin-entry";
+import { createProviderApiKeyAuthMethod } from "aikaclaw/plugin-sdk/provider-auth";
 import {
   isMiniMaxModernModelId,
   OPENCODE_ZEN_DEFAULT_MODEL,
-} from "openclaw/plugin-sdk/provider-models";
+} from "aikaclaw/plugin-sdk/provider-models";
 import { applyOpencodeZenConfig } from "./onboard.js";
 
 const PROVIDER_ID = "opencode";

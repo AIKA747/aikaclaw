@@ -50,7 +50,7 @@ let channelsAddCommand: typeof import("./channels.js").channelsAddCommand;
 function createMSTeamsCatalogEntry(): ChannelPluginCatalogEntry {
   return {
     id: "msteams",
-    pluginId: "@openclaw/msteams-plugin",
+    pluginId: "@aikaclaw/msteams-plugin",
     meta: {
       id: "msteams",
       label: "Microsoft Teams",
@@ -59,7 +59,7 @@ function createMSTeamsCatalogEntry(): ChannelPluginCatalogEntry {
       blurb: "teams channel",
     },
     install: {
-      npmSpec: "@openclaw/msteams",
+      npmSpec: "@aikaclaw/msteams",
     },
   };
 }
@@ -86,7 +86,7 @@ function createMSTeamsSetupPlugin(): ChannelPlugin {
   } as ChannelPlugin;
 }
 
-function registerMSTeamsSetupPlugin(pluginId = "@openclaw/msteams-plugin"): void {
+function registerMSTeamsSetupPlugin(pluginId = "@aikaclaw/msteams-plugin"): void {
   vi.mocked(loadChannelSetupPluginRegistrySnapshotForChannel).mockReturnValue(
     createTestRegistry([{ pluginId, plugin: createMSTeamsSetupPlugin(), source: "test" }]),
   );
@@ -217,7 +217,7 @@ describe("channelsAddCommand", () => {
     expect(loadChannelSetupPluginRegistrySnapshotForChannel).toHaveBeenCalledWith(
       expect.objectContaining({
         channel: "msteams",
-        pluginId: "@openclaw/msteams-plugin",
+        pluginId: "@aikaclaw/msteams-plugin",
       }),
     );
     expect(configMocks.writeConfigFile).toHaveBeenCalledWith(
@@ -242,7 +242,7 @@ describe("channelsAddCommand", () => {
     manifestRegistryMocks.loadPluginManifestRegistry.mockReturnValue({
       plugins: [
         {
-          id: "@openclaw/msteams-plugin",
+          id: "@aikaclaw/msteams-plugin",
           channels: ["msteams"],
         } as never,
       ],
@@ -264,7 +264,7 @@ describe("channelsAddCommand", () => {
     expect(loadChannelSetupPluginRegistrySnapshotForChannel).toHaveBeenCalledWith(
       expect.objectContaining({
         channel: "msteams",
-        pluginId: "@openclaw/msteams-plugin",
+        pluginId: "@aikaclaw/msteams-plugin",
       }),
     );
     expect(configMocks.writeConfigFile).toHaveBeenCalledWith(
@@ -284,7 +284,7 @@ describe("channelsAddCommand", () => {
     setActivePluginRegistry(createTestRegistry());
     const catalogEntry: ChannelPluginCatalogEntry = {
       id: "msteams",
-      pluginId: "@openclaw/msteams-plugin",
+      pluginId: "@aikaclaw/msteams-plugin",
       meta: {
         id: "msteams",
         label: "Microsoft Teams",
@@ -293,7 +293,7 @@ describe("channelsAddCommand", () => {
         blurb: "teams channel",
       },
       install: {
-        npmSpec: "@openclaw/msteams",
+        npmSpec: "@aikaclaw/msteams",
       },
     };
     catalogMocks.listChannelPluginCatalogEntries.mockReturnValue([catalogEntry]);

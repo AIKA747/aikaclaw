@@ -40,13 +40,13 @@ const BASE_CFG: Config = {
   agents: {
     defaults: {
       model: { primary: "anthropic/claude-opus-4-5" },
-      workspace: "/tmp/openclaw",
+      workspace: "/tmp/aikaclaw",
     },
   },
   messages: {
     inbound: { debounceMs: 0 },
   },
-  session: { store: "/tmp/openclaw-sessions.json" },
+  session: { store: "/tmp/aikaclaw-sessions.json" },
 };
 
 const CATEGORY_GUILD_CFG = {
@@ -237,7 +237,7 @@ describe("discord tool result dispatch", () => {
     expect(upsertPairingRequestMock).toHaveBeenCalled();
     expect(sendMock).toHaveBeenCalledTimes(1);
     const pairingReply = String(sendMock.mock.calls[0]?.[1] ?? "");
-    expect(pairingReply).toContain("OpenClaw: access not configured.");
+    expect(pairingReply).toContain("AikaClaw: access not configured.");
     expect(pairingReply).toContain("Your Discord user id: u2");
     expect(pairingReply).toContain("Pairing code:");
     expect(pairingReply).toContain("```\nPAIRCODE\n```");

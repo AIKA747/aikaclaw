@@ -1,21 +1,21 @@
 {
-  "name": "@openclaw/line",
+  "name": "@aikaclaw/line",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw LINE channel plugin",
+  "description": "AikaClaw LINE channel plugin",
   "type": "module",
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "aikaclaw": "workspace:*"
   },
   "peerDependencies": {
-    "openclaw": ">=2026.3.22"
+    "aikaclaw": ">=2026.3.22"
   },
   "peerDependenciesMeta": {
-    "openclaw": {
+    "aikaclaw": {
       "optional": true
     }
   },
-  "openclaw": {
+  "aikaclaw": {
     "extensions": [
       "./index.ts"
     ],
@@ -31,7 +31,7 @@
       "quickstartAllowFrom": true
     },
     "install": {
-      "npmSpec": "@openclaw/line",
+      "npmSpec": "@aikaclaw/line",
       "localPath": "extensions/line",
       "defaultChoice": "npm",
       "minHostVersion": ">=2026.3.22"

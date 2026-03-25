@@ -1,37 +1,37 @@
 import { ChannelType, MessageType, type Message, type User } from "@buape/carbon";
 import { Routes, type APIMessage } from "discord-api-types/v10";
-import { formatAllowlistMatchMeta } from "openclaw/plugin-sdk/allow-from";
+import { formatAllowlistMatchMeta } from "aikaclaw/plugin-sdk/allow-from";
 import {
   buildMentionRegexes,
   logInboundDrop,
   matchesMentionWithExplicit,
   resolveMentionGatingWithBypass,
-} from "openclaw/plugin-sdk/channel-inbound";
-import { resolveControlCommandGate } from "openclaw/plugin-sdk/command-auth";
-import { hasControlCommand } from "openclaw/plugin-sdk/command-auth";
-import { shouldHandleTextCommands } from "openclaw/plugin-sdk/command-auth";
-import { loadConfig } from "openclaw/plugin-sdk/config-runtime";
-import { isDangerousNameMatchingEnabled } from "openclaw/plugin-sdk/config-runtime";
+} from "aikaclaw/plugin-sdk/channel-inbound";
+import { resolveControlCommandGate } from "aikaclaw/plugin-sdk/command-auth";
+import { hasControlCommand } from "aikaclaw/plugin-sdk/command-auth";
+import { shouldHandleTextCommands } from "aikaclaw/plugin-sdk/command-auth";
+import { loadConfig } from "aikaclaw/plugin-sdk/config-runtime";
+import { isDangerousNameMatchingEnabled } from "aikaclaw/plugin-sdk/config-runtime";
 import {
   ensureConfiguredBindingRouteReady,
   resolveConfiguredBindingRoute,
-} from "openclaw/plugin-sdk/conversation-runtime";
+} from "aikaclaw/plugin-sdk/conversation-runtime";
 import {
   getSessionBindingService,
   type SessionBindingRecord,
-} from "openclaw/plugin-sdk/conversation-runtime";
-import { buildPairingReply } from "openclaw/plugin-sdk/conversation-runtime";
-import { isPluginOwnedSessionBindingRecord } from "openclaw/plugin-sdk/conversation-runtime";
-import { recordChannelActivity } from "openclaw/plugin-sdk/infra-runtime";
-import { enqueueSystemEvent } from "openclaw/plugin-sdk/infra-runtime";
+} from "aikaclaw/plugin-sdk/conversation-runtime";
+import { buildPairingReply } from "aikaclaw/plugin-sdk/conversation-runtime";
+import { isPluginOwnedSessionBindingRecord } from "aikaclaw/plugin-sdk/conversation-runtime";
+import { recordChannelActivity } from "aikaclaw/plugin-sdk/infra-runtime";
+import { enqueueSystemEvent } from "aikaclaw/plugin-sdk/infra-runtime";
 import {
   recordPendingHistoryEntryIfEnabled,
   type HistoryEntry,
-} from "openclaw/plugin-sdk/reply-history";
-import { DEFAULT_ACCOUNT_ID } from "openclaw/plugin-sdk/routing";
-import { logVerbose, shouldLogVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { getChildLogger } from "openclaw/plugin-sdk/runtime-env";
-import { logDebug } from "openclaw/plugin-sdk/text-runtime";
+} from "aikaclaw/plugin-sdk/reply-history";
+import { DEFAULT_ACCOUNT_ID } from "aikaclaw/plugin-sdk/routing";
+import { logVerbose, shouldLogVerbose } from "aikaclaw/plugin-sdk/runtime-env";
+import { getChildLogger } from "aikaclaw/plugin-sdk/runtime-env";
+import { logDebug } from "aikaclaw/plugin-sdk/text-runtime";
 import { fetchPluralKitMessageInfo } from "../pluralkit.js";
 import { sendMessageDiscord } from "../send.js";
 import {

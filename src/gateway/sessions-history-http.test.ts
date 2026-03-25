@@ -22,7 +22,7 @@ afterEach(async () => {
 });
 
 async function createSessionStoreFile(): Promise<string> {
-  const dir = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-session-history-"));
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), "aikaclaw-session-history-"));
   cleanupDirs.push(dir);
   const storePath = path.join(dir, "sessions.json");
   testState.sessionStorePath = storePath;
@@ -108,9 +108,9 @@ describe("session history HTTP endpoints", () => {
       expect(
         (
           body.messages?.[0] as {
-            __openclaw?: { id?: string; seq?: number };
+            __aikaclaw?: { id?: string; seq?: number };
           }
-        )?.__openclaw,
+        )?.__aikaclaw,
       ).toMatchObject({
         seq: 1,
       });
@@ -237,8 +237,8 @@ describe("session history HTTP endpoints", () => {
       expect(firstPage.status).toBe(200);
       const firstBody = (await firstPage.json()) as {
         sessionKey?: string;
-        items?: Array<{ content?: Array<{ text?: string }>; __openclaw?: { seq?: number } }>;
-        messages?: Array<{ content?: Array<{ text?: string }>; __openclaw?: { seq?: number } }>;
+        items?: Array<{ content?: Array<{ text?: string }>; __aikaclaw?: { seq?: number } }>;
+        messages?: Array<{ content?: Array<{ text?: string }>; __aikaclaw?: { seq?: number } }>;
         nextCursor?: string;
         hasMore?: boolean;
       };
@@ -247,7 +247,7 @@ describe("session history HTTP endpoints", () => {
         "second message",
         "third message",
       ]);
-      expect(firstBody.messages?.map((message) => message.__openclaw?.seq)).toEqual([2, 3]);
+      expect(firstBody.messages?.map((message) => message.__aikaclaw?.seq)).toEqual([2, 3]);
       expect(firstBody.hasMore).toBe(true);
       expect(firstBody.nextCursor).toBe("2");
 
@@ -259,15 +259,15 @@ describe("session history HTTP endpoints", () => {
       );
       expect(secondPage.status).toBe(200);
       const secondBody = (await secondPage.json()) as {
-        items?: Array<{ content?: Array<{ text?: string }>; __openclaw?: { seq?: number } }>;
-        messages?: Array<{ __openclaw?: { seq?: number } }>;
+        items?: Array<{ content?: Array<{ text?: string }>; __aikaclaw?: { seq?: number } }>;
+        messages?: Array<{ __aikaclaw?: { seq?: number } }>;
         nextCursor?: string;
         hasMore?: boolean;
       };
       expect(secondBody.items?.map((message) => message.content?.[0]?.text)).toEqual([
         "first message",
       ]);
-      expect(secondBody.messages?.map((message) => message.__openclaw?.seq)).toEqual([1]);
+      expect(secondBody.messages?.map((message) => message.__aikaclaw?.seq)).toEqual([1]);
       expect(secondBody.hasMore).toBe(false);
       expect(secondBody.nextCursor).toBeUndefined();
     } finally {
@@ -382,9 +382,9 @@ describe("session history HTTP endpoints", () => {
       expect(
         (
           messageEvent.data as {
-            message?: { __openclaw?: { id?: string; seq?: number } };
+            message?: { __aikaclaw?: { id?: string; seq?: number } };
           }
-        ).message?.__openclaw,
+        ).message?.__aikaclaw,
       ).toMatchObject({
         id: appended.ok ? appended.messageId : undefined,
         seq: 2,

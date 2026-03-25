@@ -2,7 +2,7 @@ import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vite
 import type { PluginRuntime } from "../../../src/plugins/runtime/types.js";
 import { createStartAccountContext } from "../../../test/helpers/extensions/start-account-context.js";
 import type { ResolvedDiscordAccount } from "./accounts.js";
-import type { OpenClawConfig } from "./runtime-api.js";
+import type { AikaClawConfig } from "./runtime-api.js";
 let discordPlugin: typeof import("./channel.js").discordPlugin;
 let setDiscordRuntime: typeof import("./runtime.js").setDiscordRuntime;
 
@@ -34,7 +34,7 @@ vi.mock("./audit.js", async (importOriginal) => {
   };
 });
 
-function createCfg(): OpenClawConfig {
+function createCfg(): AikaClawConfig {
   return {
     channels: {
       discord: {
@@ -42,14 +42,14 @@ function createCfg(): OpenClawConfig {
         token: "discord-token",
       },
     },
-  } as OpenClawConfig;
+  } as AikaClawConfig;
 }
 
-function resolveAccount(cfg: OpenClawConfig): ResolvedDiscordAccount {
+function resolveAccount(cfg: AikaClawConfig): ResolvedDiscordAccount {
   return discordPlugin.config.resolveAccount(cfg, "default") as ResolvedDiscordAccount;
 }
 
-function startDiscordAccount(cfg: OpenClawConfig) {
+function startDiscordAccount(cfg: AikaClawConfig) {
   return discordPlugin.gateway!.startAccount!(
     createStartAccountContext({
       account: resolveAccount(cfg),
@@ -93,7 +93,7 @@ describe("discordPlugin outbound", () => {
     });
 
     const result = await discordPlugin.outbound!.sendMedia!({
-      cfg: {} as OpenClawConfig,
+      cfg: {} as AikaClawConfig,
       to: "channel:123",
       text: "hi",
       mediaUrl: "/tmp/image.png",
@@ -203,7 +203,7 @@ describe("discordPlugin security", () => {
           dm: { policy: "allowlist", allowFrom: ["  discord:<@!123456789>  "] },
         },
       },
-    } as OpenClawConfig;
+    } as AikaClawConfig;
 
     const result = resolveDmPolicy({
       cfg,
@@ -240,7 +240,7 @@ describe("discordPlugin groups", () => {
           },
         },
       },
-    } as OpenClawConfig;
+    } as AikaClawConfig;
 
     expect(
       discordPlugin.groups?.resolveRequireMention?.({

@@ -8,7 +8,7 @@ title: "Kimi Search"
 
 # Kimi Search
 
-OpenClaw supports Kimi as a `web_search` provider, using Moonshot web search
+AikaClaw supports Kimi as a `web_search` provider, using Moonshot web search
 to produce AI-synthesized answers with citations.
 
 ## Get an API key
@@ -22,7 +22,7 @@ to produce AI-synthesized answers with citations.
     configure via:
 
     ```bash
-    openclaw configure --section web
+    aikaclaw configure --section web
     ```
 
   </Step>
@@ -54,7 +54,7 @@ to produce AI-synthesized answers with citations.
 ```
 
 **Environment alternative:** set `KIMI_API_KEY` or `MOONSHOT_API_KEY` in the
-Gateway environment. For a gateway install, put it in `~/.openclaw/.env`.
+Gateway environment. For a gateway install, put it in `~/.aikaclaw/.env`.
 
 ## How it works
 

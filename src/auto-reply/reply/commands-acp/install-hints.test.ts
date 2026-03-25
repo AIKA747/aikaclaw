@@ -2,13 +2,13 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../../../config/config.js";
+import type { AikaClawConfig } from "../../../config/config.js";
 import { resolveAcpInstallCommandHint, resolveConfiguredAcpBackendId } from "./install-hints.js";
 
 const tempDirs: string[] = [];
 
-function withAcpConfig(acp: OpenClawConfig["acp"]): OpenClawConfig {
-  return { acp } as OpenClawConfig;
+function withAcpConfig(acp: AikaClawConfig["acp"]): AikaClawConfig {
+  return { acp } as AikaClawConfig;
 }
 
 afterEach(() => {
@@ -21,9 +21,9 @@ afterEach(() => {
 describe("ACP install hints", () => {
   it("prefers explicit runtime install command", () => {
     const cfg = withAcpConfig({
-      runtime: { installCommand: "pnpm openclaw plugins install acpx" },
+      runtime: { installCommand: "pnpm aikaclaw plugins install acpx" },
     });
-    expect(resolveAcpInstallCommandHint(cfg)).toBe("pnpm openclaw plugins install acpx");
+    expect(resolveAcpInstallCommandHint(cfg)).toBe("pnpm aikaclaw plugins install acpx");
   });
 
   it("uses local acpx extension path when present", () => {
@@ -34,7 +34,7 @@ describe("ACP install hints", () => {
 
     const cfg = withAcpConfig({ backend: "acpx" });
     const hint = resolveAcpInstallCommandHint(cfg);
-    expect(hint).toContain("openclaw plugins install ");
+    expect(hint).toContain("aikaclaw plugins install ");
     expect(hint).toContain(path.join("extensions", "acpx"));
   });
 
@@ -44,7 +44,7 @@ describe("ACP install hints", () => {
     vi.spyOn(process, "cwd").mockReturnValue(tempRoot);
 
     const cfg = withAcpConfig({ backend: "acpx" });
-    expect(resolveAcpInstallCommandHint(cfg)).toBe("openclaw plugins install acpx");
+    expect(resolveAcpInstallCommandHint(cfg)).toBe("aikaclaw plugins install acpx");
   });
 
   it("returns generic plugin hint for non-acpx backend", () => {

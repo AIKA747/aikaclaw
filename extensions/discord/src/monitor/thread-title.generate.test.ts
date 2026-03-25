@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
+import type { AikaClawConfig } from "aikaclaw/plugin-sdk/config-runtime";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 const hoisted = vi.hoisted(() => ({
@@ -7,8 +7,8 @@ const hoisted = vi.hoisted(() => ({
   extractAssistantTextMock: vi.fn(),
 }));
 
-vi.mock("openclaw/plugin-sdk/agent-runtime", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("openclaw/plugin-sdk/agent-runtime")>();
+vi.mock("aikaclaw/plugin-sdk/agent-runtime", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("aikaclaw/plugin-sdk/agent-runtime")>();
   return {
     ...actual,
     completeWithPreparedSimpleCompletionModel:
@@ -33,7 +33,7 @@ beforeEach(() => {
     selection: {
       provider: "anthropic",
       modelId: "claude-opus-4-6",
-      agentDir: "/tmp/openclaw-agent",
+      agentDir: "/tmp/aikaclaw-agent",
     },
     model: {
       provider: "anthropic",
@@ -56,7 +56,7 @@ describe("generateThreadTitle", () => {
         provider: "openrouter",
         modelId: "anthropic/claude-sonnet-4-5",
         profileId: "work",
-        agentDir: "/tmp/openclaw-agent",
+        agentDir: "/tmp/aikaclaw-agent",
       },
       model: {
         provider: "openrouter",
@@ -74,7 +74,7 @@ describe("generateThreadTitle", () => {
           model: "openrouter/anthropic/claude-sonnet-4-5@work",
         },
       },
-    } as OpenClawConfig;
+    } as AikaClawConfig;
 
     await generateThreadTitle({
       cfg,
@@ -90,7 +90,7 @@ describe("generateThreadTitle", () => {
   });
 
   it("passes model override refs into shared model prep", async () => {
-    const cfg = {} as OpenClawConfig;
+    const cfg = {} as AikaClawConfig;
     await generateThreadTitle({
       cfg,
       agentId: "main",
@@ -112,7 +112,7 @@ describe("generateThreadTitle", () => {
     });
 
     const result = await generateThreadTitle({
-      cfg: {} as OpenClawConfig,
+      cfg: {} as AikaClawConfig,
       agentId: "main",
       messageText: "Need a thread title.",
     });
@@ -127,12 +127,12 @@ describe("generateThreadTitle", () => {
       selection: {
         provider: "anthropic",
         modelId: "claude-opus-4-6",
-        agentDir: "/tmp/openclaw-agent",
+        agentDir: "/tmp/aikaclaw-agent",
       },
     });
 
     const result = await generateThreadTitle({
-      cfg: {} as OpenClawConfig,
+      cfg: {} as AikaClawConfig,
       agentId: "main",
       messageText: "Need a thread title.",
     });
@@ -143,7 +143,7 @@ describe("generateThreadTitle", () => {
 
   it("builds contextual prompt and forwards completion options", async () => {
     const result = await generateThreadTitle({
-      cfg: {} as OpenClawConfig,
+      cfg: {} as AikaClawConfig,
       agentId: "main",
       messageText: "Summarize deployment blockers and owner follow-ups.",
       channelName: "release-status",
@@ -186,7 +186,7 @@ describe("generateThreadTitle", () => {
     );
 
     const result = await generateThreadTitle({
-      cfg: {} as OpenClawConfig,
+      cfg: {} as AikaClawConfig,
       agentId: "main",
       messageText: "Generate title.",
     });

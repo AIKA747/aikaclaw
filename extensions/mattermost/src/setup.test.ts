@@ -1,8 +1,8 @@
-import { DEFAULT_ACCOUNT_ID } from "openclaw/plugin-sdk/setup";
+import { DEFAULT_ACCOUNT_ID } from "aikaclaw/plugin-sdk/setup";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createTestPluginApi } from "../../../test/helpers/extensions/plugin-api.js";
 import plugin from "../index.js";
-import type { OpenClawConfig, OpenClawPluginApi } from "../runtime-api.js";
+import type { AikaClawConfig, AikaClawPluginApi } from "../runtime-api.js";
 import { mattermostSetupWizard } from "./setup-surface.js";
 
 const resolveMattermostAccount = vi.hoisted(() => vi.fn());
@@ -33,15 +33,15 @@ vi.mock("./secret-input.js", async (importOriginal) => {
 });
 
 function createApi(
-  registrationMode: OpenClawPluginApi["registrationMode"],
+  registrationMode: AikaClawPluginApi["registrationMode"],
   registerHttpRoute = vi.fn(),
-): OpenClawPluginApi {
+): AikaClawPluginApi {
   return createTestPluginApi({
     id: "mattermost",
     name: "Mattermost",
     source: "test",
     config: {},
-    runtime: {} as OpenClawPluginApi["runtime"],
+    runtime: {} as AikaClawPluginApi["runtime"],
     registrationMode,
     registerHttpRoute,
   });
@@ -227,7 +227,7 @@ describe("mattermost setup", () => {
               },
             },
           },
-        } as OpenClawConfig,
+        } as AikaClawConfig,
       });
 
       expect(configured).toBe(true);
@@ -241,7 +241,7 @@ describe("mattermost setup", () => {
           channels: {
             mattermost: {},
           },
-        } as OpenClawConfig,
+        } as AikaClawConfig,
         accountId: "default",
       } as never),
     ).toBe(true);
@@ -259,7 +259,7 @@ describe("mattermost setup", () => {
               },
             },
           },
-        } as OpenClawConfig,
+        } as AikaClawConfig,
         accountId: "default",
       } as never),
     ).toBe(false);
@@ -271,14 +271,14 @@ describe("mattermost setup", () => {
 
     expect(
       mattermostSetupWizard.envShortcut?.isAvailable?.({
-        cfg: { channels: { mattermost: {} } } as OpenClawConfig,
+        cfg: { channels: { mattermost: {} } } as AikaClawConfig,
         accountId: "default",
       } as never),
     ).toBe(true);
 
     expect(
       mattermostSetupWizard.envShortcut?.isAvailable?.({
-        cfg: { channels: { mattermost: {} } } as OpenClawConfig,
+        cfg: { channels: { mattermost: {} } } as AikaClawConfig,
         accountId: "work",
       } as never),
     ).toBe(false);
@@ -287,7 +287,7 @@ describe("mattermost setup", () => {
   it("keeps env shortcut as a no-op patch for the selected account", () => {
     expect(
       mattermostSetupWizard.envShortcut?.apply?.({
-        cfg: { channels: { mattermost: { enabled: false } } } as OpenClawConfig,
+        cfg: { channels: { mattermost: { enabled: false } } } as AikaClawConfig,
         accountId: "default",
       } as never),
     ).toEqual({

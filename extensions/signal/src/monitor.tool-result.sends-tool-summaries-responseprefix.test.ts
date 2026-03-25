@@ -1,7 +1,7 @@
-import { resolveAgentRoute } from "openclaw/plugin-sdk/routing";
-import { normalizeE164 } from "openclaw/plugin-sdk/text-runtime";
+import { resolveAgentRoute } from "aikaclaw/plugin-sdk/routing";
+import { normalizeE164 } from "aikaclaw/plugin-sdk/text-runtime";
 import { describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../../../src/config/config.js";
+import type { AikaClawConfig } from "../../../src/config/config.js";
 import {
   createSignalToolResultConfig,
   config,
@@ -32,7 +32,7 @@ type MonitorSignalProviderOptions = Parameters<typeof monitorSignalProvider>[0];
 
 async function runMonitorWithMocks(opts: MonitorSignalProviderOptions) {
   return monitorSignalProvider({
-    config: config as OpenClawConfig,
+    config: config as AikaClawConfig,
     waitForTransportReady: waitForTransportReadyMock as any,
     ...opts,
   });
@@ -65,7 +65,7 @@ async function receiveSignalPayloads(params: {
 
 function hasQueuedReactionEventFor(sender: string) {
   const route = resolveAgentRoute({
-    cfg: config as OpenClawConfig,
+    cfg: config as AikaClawConfig,
     channel: "signal",
     accountId: "default",
     peer: { kind: "direct", id: normalizeE164(sender) },
@@ -167,7 +167,7 @@ describe("monitorSignalProvider tool results", () => {
     expect(upsertPairingRequestMock).toHaveBeenCalled();
     expect(sendMock).toHaveBeenCalledTimes(1);
     const pairingReply = String(sendMock.mock.calls[0]?.[1] ?? "");
-    expect(pairingReply).toContain("OpenClaw: access not configured.");
+    expect(pairingReply).toContain("AikaClaw: access not configured.");
     expect(pairingReply).toContain("Your Signal number: +15550001111");
     expect(pairingReply).toContain("Pairing code:");
     expect(pairingReply).toContain("```\nPAIRCODE\n```");

@@ -118,8 +118,8 @@ describe("scripts/test-parallel lane planning", () => {
       cwd: repoRoot,
       env: {
         ...process.env,
-        OPENCLAW_TEST_LIST_LANES: "1",
-        OPENCLAW_TEST_PROFILE: "serial",
+        AIKACLAW_TEST_LIST_LANES: "1",
+        AIKACLAW_TEST_PROFILE: "serial",
       },
       encoding: "utf8",
     });
@@ -135,9 +135,9 @@ describe("scripts/test-parallel lane planning", () => {
       env: {
         ...process.env,
         CI: "",
-        OPENCLAW_TEST_LIST_LANES: "1",
-        OPENCLAW_TEST_UNIT_FAST_LANES: "1",
-        OPENCLAW_TEST_UNIT_FAST_BATCH_TARGET_MS: "1",
+        AIKACLAW_TEST_LIST_LANES: "1",
+        AIKACLAW_TEST_UNIT_FAST_LANES: "1",
+        AIKACLAW_TEST_UNIT_FAST_BATCH_TARGET_MS: "1",
       },
       encoding: "utf8",
     });

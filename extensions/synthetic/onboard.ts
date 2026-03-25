@@ -3,17 +3,17 @@ import {
   SYNTHETIC_BASE_URL,
   SYNTHETIC_DEFAULT_MODEL_REF,
   SYNTHETIC_MODEL_CATALOG,
-} from "openclaw/plugin-sdk/provider-models";
+} from "aikaclaw/plugin-sdk/provider-models";
 import {
   createModelCatalogPresetAppliers,
-  type OpenClawConfig,
-} from "openclaw/plugin-sdk/provider-onboard";
+  type AikaClawConfig,
+} from "aikaclaw/plugin-sdk/provider-onboard";
 
 export { SYNTHETIC_DEFAULT_MODEL_REF };
 
 const syntheticPresetAppliers = createModelCatalogPresetAppliers({
   primaryModelRef: SYNTHETIC_DEFAULT_MODEL_REF,
-  resolveParams: (_cfg: OpenClawConfig) => ({
+  resolveParams: (_cfg: AikaClawConfig) => ({
     providerId: "synthetic",
     api: "anthropic-messages",
     baseUrl: SYNTHETIC_BASE_URL,
@@ -22,10 +22,10 @@ const syntheticPresetAppliers = createModelCatalogPresetAppliers({
   }),
 });
 
-export function applySyntheticProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applySyntheticProviderConfig(cfg: AikaClawConfig): AikaClawConfig {
   return syntheticPresetAppliers.applyProviderConfig(cfg);
 }
 
-export function applySyntheticConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applySyntheticConfig(cfg: AikaClawConfig): AikaClawConfig {
   return syntheticPresetAppliers.applyConfig(cfg);
 }

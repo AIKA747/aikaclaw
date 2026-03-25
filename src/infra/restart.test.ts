@@ -63,19 +63,19 @@ afterEach(() => {
 });
 
 describe.runIf(process.platform !== "win32")("findGatewayPidsOnPortSync", () => {
-  it("parses lsof output and filters non-openclaw/current processes", () => {
+  it("parses lsof output and filters non-aikaclaw/current processes", () => {
     spawnSyncMock.mockReturnValue({
       error: undefined,
       status: 0,
       stdout: [
         `p${process.pid}`,
-        "copenclaw",
+        "caikaclaw",
         "p4100",
-        "copenclaw-gateway",
+        "caikaclaw-gateway",
         "p4200",
         "cnode",
         "p4300",
-        "cOpenClaw",
+        "cAikaClaw",
       ].join("\n"),
     });
 
@@ -107,7 +107,7 @@ describe.runIf(process.platform !== "win32")("cleanStaleGatewayProcessesSync", (
       .mockReturnValueOnce({
         error: undefined,
         status: 0,
-        stdout: ["p6001", "copenclaw", "p6002", "copenclaw-gateway"].join("\n"),
+        stdout: ["p6001", "caikaclaw", "p6002", "caikaclaw-gateway"].join("\n"),
       })
       .mockReturnValue({
         error: undefined,
@@ -131,7 +131,7 @@ describe.runIf(process.platform !== "win32")("cleanStaleGatewayProcessesSync", (
       .mockReturnValueOnce({
         error: undefined,
         status: 0,
-        stdout: ["p7001", "copenclaw"].join("\n"),
+        stdout: ["p7001", "caikaclaw"].join("\n"),
       })
       .mockReturnValue({
         error: undefined,

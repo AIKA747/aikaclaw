@@ -1,8 +1,8 @@
-import { resolveAckReaction } from "openclaw/plugin-sdk/agent-runtime";
+import { resolveAckReaction } from "aikaclaw/plugin-sdk/agent-runtime";
 import {
   shouldAckReaction as shouldAckReactionGate,
   type AckReactionScope,
-} from "openclaw/plugin-sdk/channel-feedback";
+} from "aikaclaw/plugin-sdk/channel-feedback";
 import {
   buildMentionRegexes,
   formatInboundEnvelope,
@@ -10,26 +10,26 @@ import {
   matchesMentionWithExplicit,
   resolveEnvelopeFormatOptions,
   resolveMentionGatingWithBypass,
-} from "openclaw/plugin-sdk/channel-inbound";
-import { resolveControlCommandGate } from "openclaw/plugin-sdk/command-auth";
-import { hasControlCommand } from "openclaw/plugin-sdk/command-auth";
-import { shouldHandleTextCommands } from "openclaw/plugin-sdk/command-auth";
-import { readSessionUpdatedAt, resolveStorePath } from "openclaw/plugin-sdk/config-runtime";
+} from "aikaclaw/plugin-sdk/channel-inbound";
+import { resolveControlCommandGate } from "aikaclaw/plugin-sdk/command-auth";
+import { hasControlCommand } from "aikaclaw/plugin-sdk/command-auth";
+import { shouldHandleTextCommands } from "aikaclaw/plugin-sdk/command-auth";
+import { readSessionUpdatedAt, resolveStorePath } from "aikaclaw/plugin-sdk/config-runtime";
 import {
   recordInboundSession,
   resolveConversationLabel,
-} from "openclaw/plugin-sdk/conversation-runtime";
-import { enqueueSystemEvent } from "openclaw/plugin-sdk/infra-runtime";
+} from "aikaclaw/plugin-sdk/conversation-runtime";
+import { enqueueSystemEvent } from "aikaclaw/plugin-sdk/infra-runtime";
 import {
   buildPendingHistoryContextFromMap,
   recordPendingHistoryEntryIfEnabled,
-} from "openclaw/plugin-sdk/reply-history";
-import { finalizeInboundContext } from "openclaw/plugin-sdk/reply-runtime";
-import type { FinalizedMsgContext } from "openclaw/plugin-sdk/reply-runtime";
-import { resolveAgentRoute } from "openclaw/plugin-sdk/routing";
-import { resolveThreadSessionKeys } from "openclaw/plugin-sdk/routing";
-import { logVerbose, shouldLogVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { resolvePinnedMainDmOwnerFromAllowlist } from "openclaw/plugin-sdk/security-runtime";
+} from "aikaclaw/plugin-sdk/reply-history";
+import { finalizeInboundContext } from "aikaclaw/plugin-sdk/reply-runtime";
+import type { FinalizedMsgContext } from "aikaclaw/plugin-sdk/reply-runtime";
+import { resolveAgentRoute } from "aikaclaw/plugin-sdk/routing";
+import { resolveThreadSessionKeys } from "aikaclaw/plugin-sdk/routing";
+import { logVerbose, shouldLogVerbose } from "aikaclaw/plugin-sdk/runtime-env";
+import { resolvePinnedMainDmOwnerFromAllowlist } from "aikaclaw/plugin-sdk/security-runtime";
 import { resolveSlackReplyToMode, type ResolvedSlackAccount } from "../../accounts.js";
 import { reactSlackMessage } from "../../actions.js";
 import { sendMessageSlack } from "../../send.js";

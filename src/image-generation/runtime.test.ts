@@ -1,5 +1,5 @@
 import { afterEach, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import type { OpenClawConfig } from "../config/config.js";
+import type { AikaClawConfig } from "../config/config.js";
 import { createEmptyPluginRegistry } from "../plugins/registry.js";
 import { setActivePluginRegistry } from "../plugins/runtime.js";
 
@@ -58,7 +58,7 @@ describe("image-generation runtime helpers", () => {
           },
         },
       },
-    } as OpenClawConfig;
+    } as AikaClawConfig;
 
     const result = await generateImage({
       cfg,
@@ -169,15 +169,15 @@ describe("image-generation runtime helpers", () => {
     setActivePluginRegistry(pluginRegistry);
 
     await expect(
-      generateImage({ cfg: {} as OpenClawConfig, prompt: "draw a cat" }),
+      generateImage({ cfg: {} as AikaClawConfig, prompt: "draw a cat" }),
     ).rejects.toThrow(
       'Set agents.defaults.imageGenerationModel.primary to a provider/model like "google/gemini-3-pro-image-preview".',
     );
     await expect(
-      generateImage({ cfg: {} as OpenClawConfig, prompt: "draw a cat" }),
+      generateImage({ cfg: {} as AikaClawConfig, prompt: "draw a cat" }),
     ).rejects.toThrow("google: GEMINI_API_KEY / GOOGLE_API_KEY");
     await expect(
-      generateImage({ cfg: {} as OpenClawConfig, prompt: "draw a cat" }),
+      generateImage({ cfg: {} as AikaClawConfig, prompt: "draw a cat" }),
     ).rejects.toThrow("openai: OPENAI_API_KEY");
   });
 
@@ -202,7 +202,7 @@ describe("image-generation runtime helpers", () => {
     setActivePluginRegistry(pluginRegistry);
 
     await expect(
-      generateImage({ cfg: {} as OpenClawConfig, prompt: "draw a cat" }),
+      generateImage({ cfg: {} as AikaClawConfig, prompt: "draw a cat" }),
     ).rejects.toThrow("No image-generation model configured.");
   });
 });

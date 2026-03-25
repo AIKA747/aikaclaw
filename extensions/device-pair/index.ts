@@ -12,10 +12,10 @@ import {
   revokeDeviceBootstrapToken,
   resolveGatewayBindUrl,
   resolveGatewayPort,
-  resolvePreferredOpenClawTmpDir,
+  resolvePreferredAikaClawTmpDir,
   runPluginCommandWithTimeout,
   resolveTailnetHostWithRunner,
-  type OpenClawPluginApi,
+  type AikaClawPluginApi,
 } from "./api.js";
 import {
   armPairNotifyOnce,
@@ -31,7 +31,7 @@ async function renderQrDataUrl(data: string): Promise<string> {
 
 async function writeQrPngTempFile(data: string): Promise<string> {
   const pngBase64 = await renderQrPngBase64(data);
-  const tmpRoot = resolvePreferredOpenClawTmpDir();
+  const tmpRoot = resolvePreferredAikaClawTmpDir();
   const qrDir = await mkdtemp(path.join(tmpRoot, "device-pair-qr-"));
   const filePath = path.join(qrDir, "pair-qr.png");
   await writeFile(filePath, Buffer.from(pngBase64, "base64"));
@@ -75,7 +75,7 @@ type QrCommandContext = {
 };
 
 type QrChannelSender = {
-  resolveSend: (api: OpenClawPluginApi) => QrSendFn | undefined;
+  resolveSend: (api: AikaClawPluginApi) => QrSendFn | undefined;
   createOpts: (params: {
     ctx: QrCommandContext;
     qrFilePath: string;
@@ -175,7 +175,7 @@ function parseNormalizedGatewayUrl(raw: string): string | null {
 }
 
 function resolveScheme(
-  cfg: OpenClawPluginApi["config"],
+  cfg: AikaClawPluginApi["config"],
   opts?: { forceSecure?: boolean },
 ): "ws" | "wss" {
   if (opts?.forceSecure) {
@@ -265,12 +265,12 @@ async function resolveTailnetHost(): Promise<string | null> {
   );
 }
 
-function resolveAuthLabel(cfg: OpenClawPluginApi["config"]): ResolveAuthLabelResult {
+function resolveAuthLabel(cfg: AikaClawPluginApi["config"]): ResolveAuthLabelResult {
   const mode = cfg.gateway?.auth?.mode;
   const token =
-    pickFirstDefined([process.env.OPENCLAW_GATEWAY_TOKEN, cfg.gateway?.auth?.token]) ?? undefined;
+    pickFirstDefined([process.env.AIKACLAW_GATEWAY_TOKEN, cfg.gateway?.auth?.token]) ?? undefined;
   const password =
-    pickFirstDefined([process.env.OPENCLAW_GATEWAY_PASSWORD, cfg.gateway?.auth?.password]) ??
+    pickFirstDefined([process.env.AIKACLAW_GATEWAY_PASSWORD, cfg.gateway?.auth?.password]) ??
     undefined;
 
   if (mode === "token" || mode === "password") {
@@ -312,7 +312,7 @@ function resolveRequiredAuthLabel(
     : { error: "Gateway auth is set to password, but no password is configured." };
 }
 
-async function resolveGatewayUrl(api: OpenClawPluginApi): Promise<ResolveUrlResult> {
+async function resolveGatewayUrl(api: AikaClawPluginApi): Promise<ResolveUrlResult> {
   const cfg = api.config;
   const pluginCfg = (api.pluginConfig ?? {}) as DevicePairPluginConfig;
   const scheme = resolveScheme(cfg);
@@ -506,7 +506,7 @@ async function issueSetupPayload(url: string): Promise<SetupPayload> {
 }
 
 async function sendQrPngToSupportedChannel(params: {
-  api: OpenClawPluginApi;
+  api: AikaClawPluginApi;
   ctx: QrCommandContext;
   target: string;
   caption: string;
@@ -538,8 +538,8 @@ async function sendQrPngToSupportedChannel(params: {
 export default definePluginEntry({
   id: "device-pair",
   name: "Device Pair",
-  description: "QR/bootstrap pairing helpers for OpenClaw devices",
-  register(api: OpenClawPluginApi) {
+  description: "QR/bootstrap pairing helpers for AikaClaw devices",
+  register(api: AikaClawPluginApi) {
     registerPairingNotifierService(api);
 
     api.registerCommand({
@@ -677,7 +677,7 @@ export default definePluginEntry({
                 api,
                 ctx,
                 target,
-                caption: ["Scan this QR code with the OpenClaw iOS app:", "", ...infoLines].join(
+                caption: ["Scan this QR code with the AikaClaw iOS app:", "", ...infoLines].join(
                   "\n",
                 ),
                 qrFilePath,
@@ -729,7 +729,7 @@ export default definePluginEntry({
             }
             return {
               text: [
-                "Scan this QR code with the OpenClaw iOS app:",
+                "Scan this QR code with the AikaClaw iOS app:",
                 "",
                 formatQrInfoMarkdown({
                   payload,
@@ -738,7 +738,7 @@ export default definePluginEntry({
                   expiresAtMs: payload.expiresAtMs,
                 }),
                 "",
-                `![OpenClaw pairing QR](${qrDataUrl})`,
+                `![AikaClaw pairing QR](${qrDataUrl})`,
               ].join("\n"),
             };
           }

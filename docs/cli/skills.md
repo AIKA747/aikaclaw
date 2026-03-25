@@ -1,5 +1,5 @@
 ---
-summary: "CLI reference for `openclaw skills` (search/install/update/list/info/check)"
+summary: "CLI reference for `aikaclaw skills` (search/install/update/list/info/check)"
 read_when:
   - You want to see which skills are available and ready to run
   - You want to search, install, or update skills from ClawHub
@@ -7,7 +7,7 @@ read_when:
 title: "skills"
 ---
 
-# `openclaw skills`
+# `aikaclaw skills`
 
 Inspect local skills and install/update skills from ClawHub.
 
@@ -20,15 +20,15 @@ Related:
 ## Commands
 
 ```bash
-openclaw skills search "calendar"
-openclaw skills install <slug>
-openclaw skills install <slug> --version <version>
-openclaw skills update <slug>
-openclaw skills update --all
-openclaw skills list
-openclaw skills list --eligible
-openclaw skills info <name>
-openclaw skills check
+aikaclaw skills search "calendar"
+aikaclaw skills install <slug>
+aikaclaw skills install <slug> --version <version>
+aikaclaw skills update <slug>
+aikaclaw skills update --all
+aikaclaw skills list
+aikaclaw skills list --eligible
+aikaclaw skills info <name>
+aikaclaw skills check
 ```
 
 `search`/`install`/`update` use ClawHub directly and install into the active

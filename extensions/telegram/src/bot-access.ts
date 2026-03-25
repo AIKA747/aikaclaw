@@ -3,8 +3,8 @@ import {
   isSenderIdAllowed,
   mergeDmAllowFromSources,
   type AllowlistMatch,
-} from "openclaw/plugin-sdk/allow-from";
-import { createSubsystemLogger } from "openclaw/plugin-sdk/runtime-env";
+} from "aikaclaw/plugin-sdk/allow-from";
+import { createSubsystemLogger } from "aikaclaw/plugin-sdk/runtime-env";
 
 export type NormalizedAllowFrom = {
   entries: string[];

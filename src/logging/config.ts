@@ -1,6 +1,6 @@
-import { loadConfig, type OpenClawConfig } from "../config/config.js";
+import { loadConfig, type AikaClawConfig } from "../config/config.js";
 
-type LoggingConfig = OpenClawConfig["logging"];
+type LoggingConfig = AikaClawConfig["logging"];
 
 export function readLoggingConfig(): LoggingConfig | undefined {
   try {

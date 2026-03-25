@@ -1,11 +1,11 @@
 import os from "node:os";
 import path from "node:path";
-import { normalizeAccountId as normalizeSharedAccountId } from "openclaw/plugin-sdk/account-id";
-import { normalizeProviderId } from "openclaw/plugin-sdk/agent-runtime";
-import { withFileLock } from "openclaw/plugin-sdk/infra-runtime";
-import { resolveRequiredHomeDir } from "openclaw/plugin-sdk/infra-runtime";
-import { readJsonFileWithFallback, writeJsonFileAtomically } from "openclaw/plugin-sdk/json-store";
-import { resolveStateDir } from "openclaw/plugin-sdk/state-paths";
+import { normalizeAccountId as normalizeSharedAccountId } from "aikaclaw/plugin-sdk/account-id";
+import { normalizeProviderId } from "aikaclaw/plugin-sdk/agent-runtime";
+import { withFileLock } from "aikaclaw/plugin-sdk/infra-runtime";
+import { resolveRequiredHomeDir } from "aikaclaw/plugin-sdk/infra-runtime";
+import { readJsonFileWithFallback, writeJsonFileAtomically } from "aikaclaw/plugin-sdk/json-store";
+import { resolveStateDir } from "aikaclaw/plugin-sdk/state-paths";
 
 const MODEL_PICKER_PREFERENCES_LOCK_OPTIONS = {
   retries: {

@@ -167,7 +167,7 @@ vi.mock("../infra/provider-usage.js", createProviderUsageModuleMock);
 
 let createSessionStatusTool: typeof import("./tools/session-status-tool.js").createSessionStatusTool;
 
-async function loadFreshOpenClawToolsForSessionStatusTest() {
+async function loadFreshAikaClawToolsForSessionStatusTest() {
   vi.resetModules();
   vi.doMock("../config/sessions.js", createSessionsModuleMock);
   vi.doMock("../gateway/call.js", createGatewayCallModuleMock);
@@ -185,7 +185,7 @@ async function loadFreshOpenClawToolsForSessionStatusTest() {
     resolveQueueSettings: () => ({ mode: "interrupt" }),
   }));
   vi.doMock("../auto-reply/status.js", () => ({
-    buildStatusMessage: () => "OpenClaw\n🧠 Model: GPT-5.4",
+    buildStatusMessage: () => "AikaClaw\n🧠 Model: GPT-5.4",
   }));
   ({ createSessionStatusTool } = await import("./tools/session-status-tool.js"));
 }
@@ -287,7 +287,7 @@ function getSessionStatusTool(agentSessionKey = "main", options?: { sandboxed?: 
 
 describe("session_status tool", () => {
   beforeEach(async () => {
-    await loadFreshOpenClawToolsForSessionStatusTest();
+    await loadFreshAikaClawToolsForSessionStatusTest();
   });
 
   it("returns a status card for the current session", async () => {
@@ -303,7 +303,7 @@ describe("session_status tool", () => {
     const result = await tool.execute("call1", {});
     const details = result.details as { ok?: boolean; statusText?: string };
     expect(details.ok).toBe(true);
-    expect(details.statusText).toContain("OpenClaw");
+    expect(details.statusText).toContain("AikaClaw");
     expect(details.statusText).toContain("🧠 Model:");
     expect(details.statusText).not.toContain("OAuth/token status");
   });

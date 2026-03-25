@@ -105,10 +105,10 @@ export async function spawnGatewayInstance(name: string): Promise<GatewayInstanc
   const port = await getFreePort();
   const hookToken = `token-${name}-${randomUUID()}`;
   const gatewayToken = `gateway-${name}-${randomUUID()}`;
-  const homeDir = await fs.mkdtemp(path.join(os.tmpdir(), `openclaw-e2e-${name}-`));
-  const configDir = path.join(homeDir, ".openclaw");
+  const homeDir = await fs.mkdtemp(path.join(os.tmpdir(), `aikaclaw-e2e-${name}-`));
+  const configDir = path.join(homeDir, ".aikaclaw");
   await fs.mkdir(configDir, { recursive: true });
-  const configPath = path.join(configDir, "openclaw.json");
+  const configPath = path.join(configDir, "aikaclaw.json");
   const stateDir = path.join(configDir, "state");
   const config = {
     gateway: {
@@ -141,17 +141,17 @@ export async function spawnGatewayInstance(name: string): Promise<GatewayInstanc
         env: {
           ...process.env,
           HOME: homeDir,
-          OPENCLAW_CONFIG_PATH: configPath,
-          OPENCLAW_STATE_DIR: stateDir,
-          OPENCLAW_GATEWAY_TOKEN: "",
-          OPENCLAW_GATEWAY_PASSWORD: "",
-          OPENCLAW_SKIP_CHANNELS: "1",
-          OPENCLAW_SKIP_PROVIDERS: "1",
-          OPENCLAW_SKIP_GMAIL_WATCHER: "1",
-          OPENCLAW_SKIP_CRON: "1",
-          OPENCLAW_SKIP_BROWSER_CONTROL_SERVER: "1",
-          OPENCLAW_SKIP_CANVAS_HOST: "1",
-          OPENCLAW_TEST_MINIMAL_GATEWAY: "1",
+          AIKACLAW_CONFIG_PATH: configPath,
+          AIKACLAW_STATE_DIR: stateDir,
+          AIKACLAW_GATEWAY_TOKEN: "",
+          AIKACLAW_GATEWAY_PASSWORD: "",
+          AIKACLAW_SKIP_CHANNELS: "1",
+          AIKACLAW_SKIP_PROVIDERS: "1",
+          AIKACLAW_SKIP_GMAIL_WATCHER: "1",
+          AIKACLAW_SKIP_CRON: "1",
+          AIKACLAW_SKIP_BROWSER_CONTROL_SERVER: "1",
+          AIKACLAW_SKIP_CANVAS_HOST: "1",
+          AIKACLAW_TEST_MINIMAL_GATEWAY: "1",
           VITEST: "1",
         },
         stdio: ["ignore", "pipe", "pipe"],

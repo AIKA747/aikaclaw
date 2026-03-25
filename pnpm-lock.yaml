@@ -101,6 +101,9 @@ importers:
       gaxios:
         specifier: 7.1.4
         version: 7.1.4
+      grammy:
+        specifier: ^1.41.1
+        version: 1.41.1
       hono:
         specifier: 4.12.8
         version: 4.12.8
@@ -140,6 +143,9 @@ importers:
       playwright-core:
         specifier: 1.58.2
         version: 1.58.2
+      pnpm:
+        specifier: ^10.33.0
+        version: 10.33.0
       qrcode-terminal:
         specifier: ^0.12.0
         version: 0.12.0
@@ -255,7 +261,7 @@ importers:
         specifier: ^4.3.6
         version: 4.3.6
     devDependencies:
-      openclaw:
+      aikaclaw:
         specifier: workspace:*
         version: link:../..
 
@@ -339,7 +345,7 @@ importers:
         specifier: ^0.1.1
         version: 0.1.1
     devDependencies:
-      openclaw:
+      aikaclaw:
         specifier: workspace:*
         version: link:../..
 
@@ -366,7 +372,7 @@ importers:
         specifier: ^4.3.6
         version: 4.3.6
     devDependencies:
-      openclaw:
+      aikaclaw:
         specifier: workspace:*
         version: link:../..
 
@@ -382,7 +388,7 @@ importers:
         specifier: ^10.6.2
         version: 10.6.2
     devDependencies:
-      openclaw:
+      aikaclaw:
         specifier: workspace:*
         version: link:../..
 
@@ -404,7 +410,7 @@ importers:
 
   extensions/line:
     devDependencies:
-      openclaw:
+      aikaclaw:
         specifier: workspace:*
         version: link:../..
 
@@ -444,7 +450,7 @@ importers:
         specifier: ^4.3.6
         version: 4.3.6
     devDependencies:
-      openclaw:
+      aikaclaw:
         specifier: workspace:*
         version: link:../..
 
@@ -460,13 +466,13 @@ importers:
         specifier: ^4.3.6
         version: 4.3.6
     devDependencies:
-      openclaw:
+      aikaclaw:
         specifier: workspace:*
         version: link:../..
 
   extensions/memory-core:
     devDependencies:
-      openclaw:
+      aikaclaw:
         specifier: workspace:*
         version: link:../..
 
@@ -508,7 +514,7 @@ importers:
         specifier: ^5.2.1
         version: 5.2.1
     devDependencies:
-      openclaw:
+      aikaclaw:
         specifier: workspace:*
         version: link:../..
 
@@ -518,7 +524,7 @@ importers:
         specifier: ^4.3.6
         version: 4.3.6
     devDependencies:
-      openclaw:
+      aikaclaw:
         specifier: workspace:*
         version: link:../..
 
@@ -531,7 +537,7 @@ importers:
         specifier: ^4.3.6
         version: 4.3.6
     devDependencies:
-      openclaw:
+      aikaclaw:
         specifier: workspace:*
         version: link:../..
 
@@ -608,7 +614,7 @@ importers:
         specifier: ^4.3.6
         version: 4.3.6
     devDependencies:
-      openclaw:
+      aikaclaw:
         specifier: workspace:*
         version: link:../..
 
@@ -650,7 +656,7 @@ importers:
         specifier: ^4.3.6
         version: 4.3.6
     devDependencies:
-      openclaw:
+      aikaclaw:
         specifier: workspace:*
         version: link:../..
 
@@ -665,7 +671,7 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0
     devDependencies:
-      openclaw:
+      aikaclaw:
         specifier: workspace:*
         version: link:../..
 
@@ -684,7 +690,7 @@ importers:
         specifier: ^4.3.6
         version: 4.3.6
     devDependencies:
-      openclaw:
+      aikaclaw:
         specifier: workspace:*
         version: link:../..
 
@@ -700,19 +706,19 @@ importers:
         specifier: ^4.3.6
         version: 4.3.6
     devDependencies:
-      openclaw:
+      aikaclaw:
         specifier: workspace:*
         version: link:../..
 
   packages/clawdbot:
     dependencies:
-      openclaw:
+      aikaclaw:
         specifier: workspace:*
         version: link:../..
 
   packages/moltbot:
     dependencies:
-      openclaw:
+      aikaclaw:
         specifier: workspace:*
         version: link:../..
 
@@ -3681,8 +3687,8 @@ packages:
       link-preview-js:
         optional: true
 
-  '@whiskeysockets/libsignal-node@https://codeload.github.com/whiskeysockets/libsignal-node/tar.gz/1c30d7d7e76a3b0aa120b04dc6a26f5a12dccf67':
-    resolution: {tarball: https://codeload.github.com/whiskeysockets/libsignal-node/tar.gz/1c30d7d7e76a3b0aa120b04dc6a26f5a12dccf67}
+  '@whiskeysockets/libsignal-node@git+https://github.com/whiskeysockets/libsignal-node.git#1c30d7d7e76a3b0aa120b04dc6a26f5a12dccf67':
+    resolution: {commit: 1c30d7d7e76a3b0aa120b04dc6a26f5a12dccf67, repo: https://github.com/whiskeysockets/libsignal-node.git, type: git}
     version: 2.0.1
 
   abbrev@1.1.1:
@@ -5758,6 +5764,11 @@ packages:
   pngjs@7.0.0:
     resolution: {integrity: sha512-LKWqWJRhstyYo9pGvgor/ivk2w94eSjE3RGVuzLGlr3NmD8bf7RcYGze1mNdEHRP6TRP6rMuDHk5t44hnTRyow==}
     engines: {node: '>=14.19.0'}
+
+  pnpm@10.33.0:
+    resolution: {integrity: sha512-EFaLtKavtYyes2MNqQzJUWQXq+vT+rvmc58K55VyjaFJHp21pUTHatjrdXD1xLs9bGN7LLQb/c20f6gjyGSTGQ==}
+    engines: {node: '>=18.12'}
+    hasBin: true
 
   postcss@8.5.8:
     resolution: {integrity: sha512-OW/rX8O/jXnm82Ey1k44pObPtdblfiuWnrd8X7GJ7emImCOstunGbXUpp7HdBrFQX6rJzn3sPT397Wp5aCwCHg==}
@@ -10222,7 +10233,7 @@ snapshots:
       '@cacheable/node-cache': 1.7.6
       '@hapi/boom': 9.1.4
       async-mutex: 0.5.0
-      libsignal: '@whiskeysockets/libsignal-node@https://codeload.github.com/whiskeysockets/libsignal-node/tar.gz/1c30d7d7e76a3b0aa120b04dc6a26f5a12dccf67'
+      libsignal: '@whiskeysockets/libsignal-node@git+https://github.com/whiskeysockets/libsignal-node.git#1c30d7d7e76a3b0aa120b04dc6a26f5a12dccf67'
       lru-cache: 11.2.6
       music-metadata: 11.12.3
       p-queue: 9.1.0
@@ -10238,7 +10249,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@whiskeysockets/libsignal-node@https://codeload.github.com/whiskeysockets/libsignal-node/tar.gz/1c30d7d7e76a3b0aa120b04dc6a26f5a12dccf67':
+  '@whiskeysockets/libsignal-node@git+https://github.com/whiskeysockets/libsignal-node.git#1c30d7d7e76a3b0aa120b04dc6a26f5a12dccf67':
     dependencies:
       curve25519-js: 0.0.4
       protobufjs: 6.8.8
@@ -12534,6 +12545,8 @@ snapshots:
   pngjs@6.0.0: {}
 
   pngjs@7.0.0: {}
+
+  pnpm@10.33.0: {}
 
   postcss@8.5.8:
     dependencies:

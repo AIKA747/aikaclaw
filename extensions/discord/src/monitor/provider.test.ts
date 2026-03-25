@@ -1,7 +1,7 @@
 import { EventEmitter } from "node:events";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { AcpRuntimeError } from "../../../../src/acp/runtime/errors.js";
-import type { OpenClawConfig } from "../../../../src/config/config.js";
+import type { AikaClawConfig } from "../../../../src/config/config.js";
 import {
   baseConfig,
   baseRuntime,
@@ -38,7 +38,7 @@ const {
 
 let monitorDiscordProvider: typeof import("./provider.js").monitorDiscordProvider;
 
-function createConfigWithDiscordAccount(overrides: Record<string, unknown> = {}): OpenClawConfig {
+function createConfigWithDiscordAccount(overrides: Record<string, unknown> = {}): AikaClawConfig {
   return {
     channels: {
       discord: {
@@ -50,12 +50,12 @@ function createConfigWithDiscordAccount(overrides: Record<string, unknown> = {})
         },
       },
     },
-  } as OpenClawConfig;
+  } as AikaClawConfig;
 }
 
-vi.mock("openclaw/plugin-sdk/plugin-runtime", async () => {
-  const actual = await vi.importActual<typeof import("openclaw/plugin-sdk/plugin-runtime")>(
-    "openclaw/plugin-sdk/plugin-runtime",
+vi.mock("aikaclaw/plugin-sdk/plugin-runtime", async () => {
+  const actual = await vi.importActual<typeof import("aikaclaw/plugin-sdk/plugin-runtime")>(
+    "aikaclaw/plugin-sdk/plugin-runtime",
   );
   return {
     ...actual,
@@ -73,7 +73,7 @@ vi.mock("../voice/manager.runtime.js", () => {
 
 describe("monitorDiscordProvider", () => {
   type ReconcileHealthProbeParams = {
-    cfg: OpenClawConfig;
+    cfg: AikaClawConfig;
     accountId: string;
     sessionKey: string;
     binding: unknown;
@@ -81,7 +81,7 @@ describe("monitorDiscordProvider", () => {
   };
 
   type ReconcileStartupParams = {
-    cfg: OpenClawConfig;
+    cfg: AikaClawConfig;
     healthProbe?: (
       params: ReconcileHealthProbeParams,
     ) => Promise<{ status: string; reason?: string }>;

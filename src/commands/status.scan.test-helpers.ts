@@ -1,9 +1,9 @@
 import { vi } from "vitest";
-import type { OpenClawConfig } from "../config/types.js";
+import type { AikaClawConfig } from "../config/types.js";
 
 export function createStatusScanSharedMocks(configPathLabel: string) {
   return {
-    resolveConfigPath: vi.fn(() => `/tmp/openclaw-${configPathLabel}-missing-${process.pid}.json`),
+    resolveConfigPath: vi.fn(() => `/tmp/aikaclaw-${configPathLabel}-missing-${process.pid}.json`),
     hasPotentialConfiguredChannels: vi.fn(),
     readBestEffortConfig: vi.fn(),
     resolveCommandSecretRefsViaGateway: vi.fn(),
@@ -192,14 +192,14 @@ export async function loadStatusScanModuleForTest(
   return await import("./status.scan.js");
 }
 
-export function createStatusScanConfig<T extends object = OpenClawConfig>(
+export function createStatusScanConfig<T extends object = AikaClawConfig>(
   overrides: T = {} as T,
-): OpenClawConfig & T {
+): AikaClawConfig & T {
   return {
     session: {},
     gateway: {},
     ...overrides,
-  } as OpenClawConfig & T;
+  } as AikaClawConfig & T;
 }
 
 export function createStatusSummary(
@@ -258,7 +258,7 @@ export function createStatusGatewayProbeFailure() {
   };
 }
 
-export function createStatusMemorySearchConfig(): OpenClawConfig {
+export function createStatusMemorySearchConfig(): AikaClawConfig {
   return createStatusScanConfig({
     agents: {
       defaults: {
@@ -286,8 +286,8 @@ export function applyStatusScanDefaults(
   mocks: StatusScanSharedMocks,
   options: {
     hasConfiguredChannels?: boolean;
-    sourceConfig?: OpenClawConfig;
-    resolvedConfig?: OpenClawConfig;
+    sourceConfig?: AikaClawConfig;
+    resolvedConfig?: AikaClawConfig;
     summary?: ReturnType<typeof createStatusSummary>;
     update?: ReturnType<typeof createStatusUpdateResult> | false;
     gatewayProbe?: ReturnType<typeof createStatusGatewayProbeFailure> | false;

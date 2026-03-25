@@ -3,24 +3,24 @@ import {
   VLLM_DEFAULT_BASE_URL,
   VLLM_MODEL_PLACEHOLDER,
   VLLM_PROVIDER_LABEL,
-} from "openclaw/plugin-sdk/agent-runtime";
+} from "aikaclaw/plugin-sdk/agent-runtime";
 import {
   definePluginEntry,
-  type OpenClawPluginApi,
+  type AikaClawPluginApi,
   type ProviderAuthMethodNonInteractiveContext,
-} from "openclaw/plugin-sdk/plugin-entry";
+} from "aikaclaw/plugin-sdk/plugin-entry";
 
 const PROVIDER_ID = "vllm";
 
 async function loadProviderSetup() {
-  return await import("openclaw/plugin-sdk/self-hosted-provider-setup");
+  return await import("aikaclaw/plugin-sdk/self-hosted-provider-setup");
 }
 
 export default definePluginEntry({
   id: "vllm",
   name: "vLLM Provider",
   description: "Bundled vLLM provider plugin",
-  register(api: OpenClawPluginApi) {
+  register(api: AikaClawPluginApi) {
     api.registerProvider({
       id: PROVIDER_ID,
       label: "vLLM",

@@ -4,7 +4,7 @@ import path from "node:path";
 import sharp from "sharp";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { resolveStateDir } from "../../../src/config/paths.js";
-import { resolvePreferredOpenClawTmpDir } from "../../../src/infra/tmp-openclaw-dir.js";
+import { resolvePreferredAikaClawTmpDir } from "../../../src/infra/tmp-aikaclaw-dir.js";
 import { optimizeImageToPng } from "../../../src/media/image-ops.js";
 import { mockPinnedHostnameResolution } from "../../../src/test-helpers/ssrf.js";
 import { captureEnv } from "../../../test/helpers/extensions/env.js";
@@ -27,9 +27,9 @@ vi.mock("../../../src/media/image-ops.js", async () => {
   };
 });
 
-vi.mock("openclaw/plugin-sdk/media-runtime", async () => {
-  const actual = await vi.importActual<typeof import("openclaw/plugin-sdk/media-runtime")>(
-    "openclaw/plugin-sdk/media-runtime",
+vi.mock("aikaclaw/plugin-sdk/media-runtime", async () => {
+  const actual = await vi.importActual<typeof import("aikaclaw/plugin-sdk/media-runtime")>(
+    "aikaclaw/plugin-sdk/media-runtime",
   );
   return {
     ...actual,
@@ -80,7 +80,7 @@ beforeAll(async () => {
   ({ LocalMediaAccessError, loadWebMedia, loadWebMediaRaw, optimizeImageToJpeg } =
     await import("./media.js"));
   fixtureRoot = await fs.mkdtemp(
-    path.join(resolvePreferredOpenClawTmpDir(), "openclaw-media-test-"),
+    path.join(resolvePreferredAikaClawTmpDir(), "aikaclaw-media-test-"),
   );
   largeJpegBuffer = await sharp({
     create: {
@@ -139,14 +139,14 @@ afterEach(() => {
 
 describe("web media loading", () => {
   beforeAll(() => {
-    // Ensure state dir is stable and not influenced by other tests that stub OPENCLAW_STATE_DIR.
-    // Also keep it outside the OpenClaw temp root so default localRoots doesn't accidentally make all state readable.
-    stateDirSnapshot = captureEnv(["OPENCLAW_STATE_DIR"]);
-    process.env.OPENCLAW_STATE_DIR = path.join(
+    // Ensure state dir is stable and not influenced by other tests that stub AIKACLAW_STATE_DIR.
+    // Also keep it outside the AikaClaw temp root so default localRoots doesn't accidentally make all state readable.
+    stateDirSnapshot = captureEnv(["AIKACLAW_STATE_DIR"]);
+    process.env.AIKACLAW_STATE_DIR = path.join(
       path.parse(os.tmpdir()).root,
       "var",
       "lib",
-      "openclaw-media-state-test",
+      "aikaclaw-media-state-test",
     );
   });
 
@@ -397,7 +397,7 @@ describe("local media root guard", () => {
 
   it("allows local paths under an explicit root", async () => {
     const result = await loadWebMedia(tinyPngFile, 1024 * 1024, {
-      localRoots: [resolvePreferredOpenClawTmpDir()],
+      localRoots: [resolvePreferredAikaClawTmpDir()],
     });
     expect(result.kind).toBe("image");
   });
@@ -408,7 +408,7 @@ describe("local media root guard", () => {
     try {
       await expect(
         loadWebMedia("file://attacker/share/evil.png", 1024 * 1024, {
-          localRoots: [resolvePreferredOpenClawTmpDir()],
+          localRoots: [resolvePreferredAikaClawTmpDir()],
         }),
       ).rejects.toMatchObject({ code: "invalid-file-url" });
       expect(realpathSpy).not.toHaveBeenCalled();
@@ -430,7 +430,7 @@ describe("local media root guard", () => {
 
     try {
       const result = await loadWebMedia(tinyPngFile, 1024 * 1024, {
-        localRoots: [resolvePreferredOpenClawTmpDir()],
+        localRoots: [resolvePreferredAikaClawTmpDir()],
       });
       expect(result.kind).toBe("image");
       expect(result.buffer.length).toBeGreaterThan(0);
@@ -448,7 +448,7 @@ describe("local media root guard", () => {
     try {
       await expect(
         loadWebMedia("\\\\attacker\\share\\evil.png", 1024 * 1024, {
-          localRoots: [resolvePreferredOpenClawTmpDir()],
+          localRoots: [resolvePreferredAikaClawTmpDir()],
         }),
       ).rejects.toMatchObject({ code: "network-path-not-allowed" });
       expect(realpathSpy).not.toHaveBeenCalled();
@@ -490,7 +490,7 @@ describe("local media root guard", () => {
     ).rejects.toMatchObject({ code: "invalid-root" });
   });
 
-  it("allows default OpenClaw state workspace and sandbox roots", async () => {
+  it("allows default AikaClaw state workspace and sandbox roots", async () => {
     const stateDir = resolveStateDir();
     const readFile = vi.fn(async () => Buffer.from("generated-media"));
 
@@ -517,7 +517,7 @@ describe("local media root guard", () => {
     );
   });
 
-  it("rejects default OpenClaw state per-agent workspace-* roots without explicit local roots", async () => {
+  it("rejects default AikaClaw state per-agent workspace-* roots without explicit local roots", async () => {
     const stateDir = resolveStateDir();
     const readFile = vi.fn(async () => Buffer.from("generated-media"));
 

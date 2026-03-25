@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import type { OpenClawConfig } from "../config/config.js";
+import type { AikaClawConfig } from "../config/config.js";
 import { captureEnv } from "../test-utils/env.js";
 import {
   writeBundleProbeMcpServer,
@@ -19,7 +19,7 @@ describe("runCliAgent bundle MCP e2e", () => {
     { timeout: E2E_TIMEOUT_MS },
     async () => {
       const envSnapshot = captureEnv(["HOME"]);
-      const tempHome = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-cli-bundle-mcp-"));
+      const tempHome = await fs.mkdtemp(path.join(os.tmpdir(), "aikaclaw-cli-bundle-mcp-"));
       process.env.HOME = tempHome;
 
       const workspaceDir = path.join(tempHome, "workspace");
@@ -27,13 +27,13 @@ describe("runCliAgent bundle MCP e2e", () => {
       const binDir = path.join(tempHome, "bin");
       const serverScriptPath = path.join(tempHome, "mcp", "bundle-probe.mjs");
       const fakeClaudePath = path.join(binDir, "fake-claude.mjs");
-      const pluginRoot = path.join(tempHome, ".openclaw", "extensions", "bundle-probe");
+      const pluginRoot = path.join(tempHome, ".aikaclaw", "extensions", "bundle-probe");
       await fs.mkdir(workspaceDir, { recursive: true });
       await writeBundleProbeMcpServer(serverScriptPath);
       await writeFakeClaudeCli(fakeClaudePath);
       await writeClaudeBundle({ pluginRoot, serverScriptPath });
 
-      const config: OpenClawConfig = {
+      const config: AikaClawConfig = {
         agents: {
           defaults: {
             workspace: workspaceDir,

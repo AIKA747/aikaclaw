@@ -19,9 +19,9 @@ vi.mock("../config/config.js", async (importOriginal) => {
 
 import "./test-helpers/fast-core-tools.js";
 
-let createOpenClawTools: typeof import("./openclaw-tools.js").createOpenClawTools;
+let createAikaClawTools: typeof import("./aikaclaw-tools.js").createAikaClawTools;
 
-async function loadFreshOpenClawToolsModuleForTest() {
+async function loadFreshAikaClawToolsModuleForTest() {
   vi.resetModules();
   vi.doMock("../gateway/call.js", () => ({
     callGateway: (opts: unknown) => callGatewayMock(opts),
@@ -34,11 +34,11 @@ async function loadFreshOpenClawToolsModuleForTest() {
       resolveGatewayPort: () => 18789,
     };
   });
-  ({ createOpenClawTools } = await import("./openclaw-tools.js"));
+  ({ createAikaClawTools } = await import("./aikaclaw-tools.js"));
 }
 
 function getSessionsHistoryTool(options?: { sandboxed?: boolean }) {
-  const tool = createOpenClawTools({
+  const tool = createAikaClawTools({
     agentSessionKey: "main",
     sandboxed: options?.sandboxed,
   }).find((candidate) => candidate.name === "sessions_history");
@@ -68,7 +68,7 @@ function mockGatewayWithHistory(
 
 describe("sessions tools visibility", () => {
   beforeEach(async () => {
-    await loadFreshOpenClawToolsModuleForTest();
+    await loadFreshAikaClawToolsModuleForTest();
   });
 
   it("defaults to tree visibility (self + spawned) for sessions_history", async () => {

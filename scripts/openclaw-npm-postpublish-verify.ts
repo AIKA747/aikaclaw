@@ -5,7 +5,7 @@ import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
-import { parseReleaseVersion, resolveNpmCommandInvocation } from "./openclaw-npm-release-check.ts";
+import { parseReleaseVersion, resolveNpmCommandInvocation } from "./aikaclaw-npm-release-check.ts";
 
 const REQUIRED_RUNTIME_SIDECARS = [
   "dist/extensions/whatsapp/light-runtime-api.js",
@@ -32,7 +32,7 @@ export function buildPublishedInstallScenarios(version: string): PublishedInstal
     throw new Error(`Unsupported release version "${version}".`);
   }
 
-  const exactSpec = `openclaw@${version}`;
+  const exactSpec = `aikaclaw@${version}`;
   const scenarios: PublishedInstallScenario[] = [
     {
       name: "fresh-exact",
@@ -44,7 +44,7 @@ export function buildPublishedInstallScenarios(version: string): PublishedInstal
   if (parsed.channel === "stable" && parsed.correctionNumber !== undefined) {
     scenarios.push({
       name: "upgrade-from-base-stable",
-      installSpecs: [`openclaw@${parsed.baseVersion}`, exactSpec],
+      installSpecs: [`aikaclaw@${parsed.baseVersion}`, exactSpec],
       expectedVersion: version,
     });
   }
@@ -97,7 +97,7 @@ function installSpec(prefixDir: string, spec: string, cwd: string): void {
 }
 
 function verifyScenario(version: string, scenario: PublishedInstallScenario): void {
-  const workingDir = mkdtempSync(join(tmpdir(), `openclaw-postpublish-${scenario.name}.`));
+  const workingDir = mkdtempSync(join(tmpdir(), `aikaclaw-postpublish-${scenario.name}.`));
   const prefixDir = join(workingDir, "prefix");
 
   try {
@@ -106,7 +106,7 @@ function verifyScenario(version: string, scenario: PublishedInstallScenario): vo
     }
 
     const globalRoot = resolveGlobalRoot(prefixDir, workingDir);
-    const packageRoot = join(globalRoot, "openclaw");
+    const packageRoot = join(globalRoot, "aikaclaw");
     const pkg = JSON.parse(
       readFileSync(join(packageRoot, "package.json"), "utf8"),
     ) as InstalledPackageJson;
@@ -120,7 +120,7 @@ function verifyScenario(version: string, scenario: PublishedInstallScenario): vo
       throw new Error(`${scenario.name} failed:\n- ${errors.join("\n- ")}`);
     }
 
-    console.log(`openclaw-npm-postpublish-verify: ${scenario.name} OK (${version})`);
+    console.log(`aikaclaw-npm-postpublish-verify: ${scenario.name} OK (${version})`);
   } finally {
     rmSync(workingDir, { force: true, recursive: true });
   }
@@ -130,7 +130,7 @@ function main(): void {
   const version = process.argv[2]?.trim();
   if (!version) {
     throw new Error(
-      "Usage: node --import tsx scripts/openclaw-npm-postpublish-verify.ts <version>",
+      "Usage: node --import tsx scripts/aikaclaw-npm-postpublish-verify.ts <version>",
     );
   }
 
@@ -140,7 +140,7 @@ function main(): void {
   }
 
   console.log(
-    `openclaw-npm-postpublish-verify: verified published npm install paths for ${version}.`,
+    `aikaclaw-npm-postpublish-verify: verified published npm install paths for ${version}.`,
   );
 }
 
@@ -150,7 +150,7 @@ if (entrypoint !== null && import.meta.url === entrypoint) {
     main();
   } catch (error) {
     console.error(
-      `openclaw-npm-postpublish-verify: ${error instanceof Error ? error.message : String(error)}`,
+      `aikaclaw-npm-postpublish-verify: ${error instanceof Error ? error.message : String(error)}`,
     );
     process.exitCode = 1;
   }

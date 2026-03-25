@@ -14,11 +14,11 @@ describe("msteams conversation store (fs)", () => {
   });
 
   it("filters and prunes expired entries (but keeps legacy ones)", async () => {
-    const stateDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "openclaw-msteams-store-"));
+    const stateDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "aikaclaw-msteams-store-"));
 
     const env: NodeJS.ProcessEnv = {
       ...process.env,
-      OPENCLAW_STATE_DIR: stateDir,
+      AIKACLAW_STATE_DIR: stateDir,
     };
 
     const store = createMSTeamsConversationStoreFs({ env, ttlMs: 1_000 });
@@ -75,9 +75,9 @@ describe("msteams conversation store (fs)", () => {
   });
 
   it("stores and retrieves timezone from conversation reference", async () => {
-    const stateDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "openclaw-msteams-store-"));
+    const stateDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "aikaclaw-msteams-store-"));
     const store = createMSTeamsConversationStoreFs({
-      env: { ...process.env, OPENCLAW_STATE_DIR: stateDir },
+      env: { ...process.env, AIKACLAW_STATE_DIR: stateDir },
       ttlMs: 60_000,
     });
 
@@ -97,9 +97,9 @@ describe("msteams conversation store (fs)", () => {
   });
 
   it("preserves existing timezone when upsert omits timezone", async () => {
-    const stateDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "openclaw-msteams-store-"));
+    const stateDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "aikaclaw-msteams-store-"));
     const store = createMSTeamsConversationStoreFs({
-      env: { ...process.env, OPENCLAW_STATE_DIR: stateDir },
+      env: { ...process.env, AIKACLAW_STATE_DIR: stateDir },
       ttlMs: 60_000,
     });
 

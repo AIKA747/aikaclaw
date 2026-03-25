@@ -1,29 +1,29 @@
-import { describeAccountSnapshot } from "openclaw/plugin-sdk/account-helpers";
-import { formatAllowFromLowercase } from "openclaw/plugin-sdk/allow-from";
+import { describeAccountSnapshot } from "aikaclaw/plugin-sdk/account-helpers";
+import { formatAllowFromLowercase } from "aikaclaw/plugin-sdk/allow-from";
 import {
   adaptScopedAccountAccessor,
   createScopedChannelConfigAdapter,
   createScopedDmSecurityResolver,
-} from "openclaw/plugin-sdk/channel-config-helpers";
-import { createAccountStatusSink } from "openclaw/plugin-sdk/channel-lifecycle";
+} from "aikaclaw/plugin-sdk/channel-config-helpers";
+import { createAccountStatusSink } from "aikaclaw/plugin-sdk/channel-lifecycle";
 import {
   createLoggedPairingApprovalNotifier,
   createPairingPrefixStripper,
-} from "openclaw/plugin-sdk/channel-pairing";
-import { createAllowlistProviderRouteAllowlistWarningCollector } from "openclaw/plugin-sdk/channel-policy";
-import { createChatChannelPlugin } from "openclaw/plugin-sdk/core";
-import { runStoppablePassiveMonitor } from "openclaw/plugin-sdk/extension-shared";
+} from "aikaclaw/plugin-sdk/channel-pairing";
+import { createAllowlistProviderRouteAllowlistWarningCollector } from "aikaclaw/plugin-sdk/channel-policy";
+import { createChatChannelPlugin } from "aikaclaw/plugin-sdk/core";
+import { runStoppablePassiveMonitor } from "aikaclaw/plugin-sdk/extension-shared";
 import {
   createComputedAccountStatusAdapter,
   createDefaultChannelRuntimeState,
-} from "openclaw/plugin-sdk/status-helpers";
+} from "aikaclaw/plugin-sdk/status-helpers";
 import {
   buildBaseChannelStatusSummary,
   buildChannelConfigSchema,
   clearAccountEntryFields,
   DEFAULT_ACCOUNT_ID,
   type ChannelPlugin,
-  type OpenClawConfig,
+  type AikaClawConfig,
 } from "../runtime-api.js";
 import {
   listNextcloudTalkAccountIds,
@@ -218,7 +218,7 @@ export const nextcloudTalkPlugin: ChannelPlugin<ResolvedNextcloudTalkAccount> =
           });
         },
         logoutAccount: async ({ accountId, cfg }) => {
-          const nextCfg = { ...cfg } as OpenClawConfig;
+          const nextCfg = { ...cfg } as AikaClawConfig;
           const nextSection = cfg.channels?.["nextcloud-talk"]
             ? { ...cfg.channels["nextcloud-talk"] }
             : undefined;
@@ -256,7 +256,7 @@ export const nextcloudTalkPlugin: ChannelPlugin<ResolvedNextcloudTalkAccount> =
               const nextChannels = { ...nextCfg.channels } as Record<string, unknown>;
               delete nextChannels["nextcloud-talk"];
               if (Object.keys(nextChannels).length > 0) {
-                nextCfg.channels = nextChannels as OpenClawConfig["channels"];
+                nextCfg.channels = nextChannels as AikaClawConfig["channels"];
               } else {
                 delete nextCfg.channels;
               }
@@ -284,7 +284,7 @@ export const nextcloudTalkPlugin: ChannelPlugin<ResolvedNextcloudTalkAccount> =
     pairing: {
       text: {
         idLabel: "nextcloudUserId",
-        message: "OpenClaw: your access has been approved.",
+        message: "AikaClaw: your access has been approved.",
         normalizeAllowEntry: createPairingPrefixStripper(
           /^(nextcloud-talk|nc-talk|nc):/i,
           (entry) => entry.toLowerCase(),

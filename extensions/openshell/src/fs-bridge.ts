@@ -5,8 +5,8 @@ import type {
   SandboxFsBridge,
   SandboxFsStat,
   SandboxResolvedPath,
-} from "openclaw/plugin-sdk/sandbox";
-import { resolveWritableRenameTargetsForBridge } from "openclaw/plugin-sdk/sandbox";
+} from "aikaclaw/plugin-sdk/sandbox";
+import { resolveWritableRenameTargetsForBridge } from "aikaclaw/plugin-sdk/sandbox";
 import type { OpenShellSandboxBackend } from "./backend.js";
 import { movePathWithCopyFallback } from "./mirror.js";
 
@@ -88,7 +88,7 @@ class OpenShellFsBridge implements SandboxFsBridge {
     }
     const tempPath = path.join(
       parentDir,
-      `.openclaw-openshell-write-${path.basename(hostPath)}-${process.pid}-${Date.now()}`,
+      `.aikaclaw-openshell-write-${path.basename(hostPath)}-${process.pid}-${Date.now()}`,
     );
     await fsPromises.writeFile(tempPath, buffer);
     await fsPromises.rename(tempPath, hostPath);

@@ -16,7 +16,7 @@ vi.mock("../config/config.js", async (importOriginal) => {
 
 import "./test-helpers/fast-core-tools.js";
 
-let createOpenClawTools: typeof import("./openclaw-tools.js").createOpenClawTools;
+let createAikaClawTools: typeof import("./aikaclaw-tools.js").createAikaClawTools;
 
 describe("agents_list", () => {
   type AgentConfig = NonNullable<NonNullable<typeof configOverride.agents>["list"]>[number];
@@ -31,7 +31,7 @@ describe("agents_list", () => {
   }
 
   function requireAgentsListTool() {
-    const tool = createOpenClawTools({
+    const tool = createAikaClawTools({
       agentSessionKey: "main",
     }).find((candidate) => candidate.name === "agents_list");
     if (!tool) {
@@ -51,7 +51,7 @@ describe("agents_list", () => {
       session: createPerSenderSessionConfig(),
     };
     await import("./test-helpers/fast-core-tools.js");
-    ({ createOpenClawTools } = await import("./openclaw-tools.js"));
+    ({ createAikaClawTools } = await import("./aikaclaw-tools.js"));
   });
 
   it("defaults to the requester agent only", async () => {

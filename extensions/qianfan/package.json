@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/qianfan-provider",
+  "name": "@aikaclaw/qianfan-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw Qianfan provider plugin",
+  "description": "AikaClaw Qianfan provider plugin",
   "type": "module",
-  "openclaw": {
+  "aikaclaw": {
     "extensions": [
       "./index.ts"
     ]

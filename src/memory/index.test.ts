@@ -132,7 +132,7 @@ describe("memory index", () => {
     vi.resetModules();
     await import("./test-runtime-mocks.js");
     ({ getMemorySearchManager, closeAllMemorySearchManagers } = await import("./index.js"));
-    fixtureRoot = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-mem-fixtures-"));
+    fixtureRoot = await fs.mkdtemp(path.join(os.tmpdir(), "aikaclaw-mem-fixtures-"));
     workspaceDir = path.join(fixtureRoot, "workspace");
     memoryDir = path.join(workspaceDir, "memory");
     extraDir = path.join(workspaceDir, "extra");
@@ -165,7 +165,7 @@ describe("memory index", () => {
   beforeEach(async () => {
     // Perf: most suites don't need atomic swap behavior for full reindexes.
     // Keep atomic reindex tests on the safe path.
-    vi.stubEnv("OPENCLAW_TEST_MEMORY_UNSAFE_REINDEX", "1");
+    vi.stubEnv("AIKACLAW_TEST_MEMORY_UNSAFE_REINDEX", "1");
     embedBatchCalls = 0;
     embedBatchInputCalls = 0;
     providerCalls = [];
@@ -467,8 +467,8 @@ describe("memory index", () => {
       `${sourceChangeSessionLogLines}\n`,
     );
 
-    const previousStateDir = process.env.OPENCLAW_STATE_DIR;
-    process.env.OPENCLAW_STATE_DIR = stateDir;
+    const previousStateDir = process.env.AIKACLAW_STATE_DIR;
+    process.env.AIKACLAW_STATE_DIR = stateDir;
 
     const firstCfg = createCfg({
       storePath: indexSourceChangePath,
@@ -504,9 +504,9 @@ describe("memory index", () => {
       await secondManager.close?.();
     } finally {
       if (previousStateDir === undefined) {
-        delete process.env.OPENCLAW_STATE_DIR;
+        delete process.env.AIKACLAW_STATE_DIR;
       } else {
-        process.env.OPENCLAW_STATE_DIR = previousStateDir;
+        process.env.AIKACLAW_STATE_DIR = previousStateDir;
       }
       await fs.rm(stateDir, { recursive: true, force: true });
     }
@@ -518,8 +518,8 @@ describe("memory index", () => {
     const firstSessionPath = path.join(sessionDir, "targeted-first.jsonl");
     const secondSessionPath = path.join(sessionDir, "targeted-second.jsonl");
     const storePath = path.join(workspaceDir, `index-targeted-${randomUUID()}.sqlite`);
-    const previousStateDir = process.env.OPENCLAW_STATE_DIR;
-    process.env.OPENCLAW_STATE_DIR = stateDir;
+    const previousStateDir = process.env.AIKACLAW_STATE_DIR;
+    process.env.AIKACLAW_STATE_DIR = stateDir;
 
     await fs.mkdir(sessionDir, { recursive: true });
     await fs.writeFile(
@@ -626,9 +626,9 @@ describe("memory index", () => {
       await manager.close?.();
     } finally {
       if (previousStateDir === undefined) {
-        delete process.env.OPENCLAW_STATE_DIR;
+        delete process.env.AIKACLAW_STATE_DIR;
       } else {
-        process.env.OPENCLAW_STATE_DIR = previousStateDir;
+        process.env.AIKACLAW_STATE_DIR = previousStateDir;
       }
       await fs.rm(stateDir, { recursive: true, force: true });
     }
@@ -640,8 +640,8 @@ describe("memory index", () => {
     const firstSessionPath = path.join(sessionDir, "targeted-dirty-first.jsonl");
     const secondSessionPath = path.join(sessionDir, "targeted-dirty-second.jsonl");
     const storePath = path.join(workspaceDir, `index-targeted-dirty-${randomUUID()}.sqlite`);
-    const previousStateDir = process.env.OPENCLAW_STATE_DIR;
-    process.env.OPENCLAW_STATE_DIR = stateDir;
+    const previousStateDir = process.env.AIKACLAW_STATE_DIR;
+    process.env.AIKACLAW_STATE_DIR = stateDir;
 
     await fs.mkdir(sessionDir, { recursive: true });
     await fs.writeFile(
@@ -733,9 +733,9 @@ describe("memory index", () => {
       await manager.close?.();
     } finally {
       if (previousStateDir === undefined) {
-        delete process.env.OPENCLAW_STATE_DIR;
+        delete process.env.AIKACLAW_STATE_DIR;
       } else {
-        process.env.OPENCLAW_STATE_DIR = previousStateDir;
+        process.env.AIKACLAW_STATE_DIR = previousStateDir;
       }
       await fs.rm(stateDir, { recursive: true, force: true });
       await fs.rm(storePath, { force: true });
@@ -747,8 +747,8 @@ describe("memory index", () => {
     const sessionDir = path.join(stateDir, "agents", "main", "sessions");
     const sessionPath = path.join(sessionDir, "targeted-queued.jsonl");
     const storePath = path.join(workspaceDir, `index-targeted-queued-${randomUUID()}.sqlite`);
-    const previousStateDir = process.env.OPENCLAW_STATE_DIR;
-    process.env.OPENCLAW_STATE_DIR = stateDir;
+    const previousStateDir = process.env.AIKACLAW_STATE_DIR;
+    process.env.AIKACLAW_STATE_DIR = stateDir;
 
     await fs.mkdir(sessionDir, { recursive: true });
     await fs.writeFile(
@@ -829,9 +829,9 @@ describe("memory index", () => {
       await manager.close?.();
     } finally {
       if (previousStateDir === undefined) {
-        delete process.env.OPENCLAW_STATE_DIR;
+        delete process.env.AIKACLAW_STATE_DIR;
       } else {
-        process.env.OPENCLAW_STATE_DIR = previousStateDir;
+        process.env.AIKACLAW_STATE_DIR = previousStateDir;
       }
       await fs.rm(stateDir, { recursive: true, force: true });
       await fs.rm(storePath, { force: true });
@@ -843,8 +843,8 @@ describe("memory index", () => {
     const sessionDir = path.join(stateDir, "agents", "main", "sessions");
     const sessionPath = path.join(sessionDir, "targeted-fallback.jsonl");
     const storePath = path.join(workspaceDir, `index-targeted-fallback-${randomUUID()}.sqlite`);
-    const previousStateDir = process.env.OPENCLAW_STATE_DIR;
-    process.env.OPENCLAW_STATE_DIR = stateDir;
+    const previousStateDir = process.env.AIKACLAW_STATE_DIR;
+    process.env.AIKACLAW_STATE_DIR = stateDir;
 
     await fs.mkdir(sessionDir, { recursive: true });
     await fs.writeFile(
@@ -917,9 +917,9 @@ describe("memory index", () => {
       await manager.close?.();
     } finally {
       if (previousStateDir === undefined) {
-        delete process.env.OPENCLAW_STATE_DIR;
+        delete process.env.AIKACLAW_STATE_DIR;
       } else {
-        process.env.OPENCLAW_STATE_DIR = previousStateDir;
+        process.env.AIKACLAW_STATE_DIR = previousStateDir;
       }
       await fs.rm(stateDir, { recursive: true, force: true });
       await fs.rm(storePath, { force: true });
@@ -1071,7 +1071,7 @@ describe("memory index", () => {
     await fs.writeFile(path.join(memoryDir, "2026-01-13.md"), "beta line\n");
 
     const stateDir = path.join(fixtureRoot, `state-status-${randomUUID()}`);
-    vi.stubEnv("OPENCLAW_STATE_DIR", stateDir);
+    vi.stubEnv("AIKACLAW_STATE_DIR", stateDir);
     const sessionDir = path.join(stateDir, "agents", "main", "sessions");
     await fs.mkdir(sessionDir, { recursive: true });
     await fs.writeFile(

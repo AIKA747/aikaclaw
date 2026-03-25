@@ -1,12 +1,12 @@
-import type { ChannelSetupAdapter, ChannelSetupInput } from "openclaw/plugin-sdk/channel-setup";
-import type { DmPolicy } from "openclaw/plugin-sdk/config-runtime";
-import { normalizeAccountId } from "openclaw/plugin-sdk/routing";
+import type { ChannelSetupAdapter, ChannelSetupInput } from "aikaclaw/plugin-sdk/channel-setup";
+import type { DmPolicy } from "aikaclaw/plugin-sdk/config-runtime";
+import { normalizeAccountId } from "aikaclaw/plugin-sdk/routing";
 import {
   applyAccountNameToChannelSection,
   createTopLevelChannelAllowFromSetter,
   createTopLevelChannelDmPolicySetter,
   patchScopedAccountConfig,
-} from "openclaw/plugin-sdk/setup";
+} from "aikaclaw/plugin-sdk/setup";
 import type { CoreConfig, IrcAccountConfig, IrcNickServConfig } from "./types.js";
 
 const channel = "irc" as const;

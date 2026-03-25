@@ -31,7 +31,7 @@ describe("bundled plugin metadata", () => {
   });
 
   it("prefers built generated paths when present and falls back to source paths", () => {
-    const tempRoot = createGeneratedPluginTempRoot("openclaw-bundled-plugin-metadata-");
+    const tempRoot = createGeneratedPluginTempRoot("aikaclaw-bundled-plugin-metadata-");
 
     fs.mkdirSync(path.join(tempRoot, "plugin"), { recursive: true });
     fs.writeFileSync(path.join(tempRoot, "plugin", "index.ts"), "export {};\n", "utf8");
@@ -52,16 +52,16 @@ describe("bundled plugin metadata", () => {
   });
 
   it("supports check mode for stale generated artifacts", () => {
-    const tempRoot = createGeneratedPluginTempRoot("openclaw-bundled-plugin-generated-");
+    const tempRoot = createGeneratedPluginTempRoot("aikaclaw-bundled-plugin-generated-");
 
     writeJson(path.join(tempRoot, "extensions", "alpha", "package.json"), {
-      name: "@openclaw/alpha",
+      name: "@aikaclaw/alpha",
       version: "0.0.1",
-      openclaw: {
+      aikaclaw: {
         extensions: ["./index.ts"],
       },
     });
-    writeJson(path.join(tempRoot, "extensions", "alpha", "openclaw.plugin.json"), {
+    writeJson(path.join(tempRoot, "extensions", "alpha", "aikaclaw.plugin.json"), {
       id: "alpha",
       configSchema: { type: "object" },
     });

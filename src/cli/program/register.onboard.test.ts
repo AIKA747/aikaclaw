@@ -161,10 +161,10 @@ describe("registerOnboardCommand", () => {
   });
 
   it("forwards --gateway-token-ref-env", async () => {
-    await runCli(["onboard", "--gateway-token-ref-env", "OPENCLAW_GATEWAY_TOKEN"]);
+    await runCli(["onboard", "--gateway-token-ref-env", "AIKACLAW_GATEWAY_TOKEN"]);
     expect(setupWizardCommandMock).toHaveBeenCalledWith(
       expect.objectContaining({
-        gatewayTokenRefEnv: "OPENCLAW_GATEWAY_TOKEN",
+        gatewayTokenRefEnv: "AIKACLAW_GATEWAY_TOKEN",
       }),
       runtime,
     );

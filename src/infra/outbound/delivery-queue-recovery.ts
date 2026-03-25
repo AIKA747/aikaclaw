@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../../config/config.js";
+import type { AikaClawConfig } from "../../config/config.js";
 import {
   ackDelivery,
   failDelivery,
@@ -17,7 +17,7 @@ export type RecoverySummary = {
 
 export type DeliverFn = (
   params: {
-    cfg: OpenClawConfig;
+    cfg: AikaClawConfig;
   } & QueuedDeliveryPayload & {
       skipQueue?: boolean;
     },
@@ -61,7 +61,7 @@ function createEmptyRecoverySummary(): RecoverySummary {
   };
 }
 
-function buildRecoveryDeliverParams(entry: QueuedDelivery, cfg: OpenClawConfig) {
+function buildRecoveryDeliverParams(entry: QueuedDelivery, cfg: AikaClawConfig) {
   return {
     cfg,
     channel: entry.channel,
@@ -147,7 +147,7 @@ export function isPermanentDeliveryError(error: string): boolean {
 export async function recoverPendingDeliveries(opts: {
   deliver: DeliverFn;
   log: RecoveryLogger;
-  cfg: OpenClawConfig;
+  cfg: AikaClawConfig;
   stateDir?: string;
   /** Maximum wall-clock time for recovery in ms. Remaining entries are deferred to next startup. Default: 60 000. */
   maxRecoveryMs?: number;

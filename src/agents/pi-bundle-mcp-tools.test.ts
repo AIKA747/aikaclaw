@@ -20,8 +20,8 @@ afterEach(async () => {
 });
 
 async function createBundledRuntime(options?: { reservedToolNames?: string[] }) {
-  const workspaceDir = await makeTempDir("openclaw-bundle-mcp-tools-");
-  const pluginRoot = path.join(workspaceDir, ".openclaw", "extensions", "bundle-probe");
+  const workspaceDir = await makeTempDir("aikaclaw-bundle-mcp-tools-");
+  const pluginRoot = path.join(workspaceDir, ".aikaclaw", "extensions", "bundle-probe");
   const serverScriptPath = path.join(pluginRoot, "servers", "bundle-probe.mjs");
   await writeBundleProbeMcpServer(serverScriptPath);
   await writeClaudeBundle({ pluginRoot, serverScriptPath });
@@ -70,7 +70,7 @@ describe("createBundleMcpToolRuntime", () => {
   });
 
   it("loads configured stdio MCP tools without a bundle", async () => {
-    const workspaceDir = await makeTempDir("openclaw-bundle-mcp-tools-");
+    const workspaceDir = await makeTempDir("aikaclaw-bundle-mcp-tools-");
     const serverScriptPath = path.join(workspaceDir, "servers", "configured-probe.mjs");
     await writeBundleProbeMcpServer(serverScriptPath);
 

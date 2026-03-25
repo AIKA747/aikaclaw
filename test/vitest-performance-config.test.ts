@@ -14,7 +14,7 @@ describe("loadVitestExperimentalConfig", () => {
     expect(
       loadVitestExperimentalConfig(
         {
-          OPENCLAW_VITEST_FS_MODULE_CACHE: "1",
+          AIKACLAW_VITEST_FS_MODULE_CACHE: "1",
         },
         "linux",
       ),
@@ -33,7 +33,7 @@ describe("loadVitestExperimentalConfig", () => {
     expect(
       loadVitestExperimentalConfig(
         {
-          OPENCLAW_VITEST_FS_MODULE_CACHE: "1",
+          AIKACLAW_VITEST_FS_MODULE_CACHE: "1",
         },
         "win32",
       ),
@@ -48,7 +48,7 @@ describe("loadVitestExperimentalConfig", () => {
     expect(
       loadVitestExperimentalConfig(
         {
-          OPENCLAW_VITEST_FS_MODULE_CACHE: "0",
+          AIKACLAW_VITEST_FS_MODULE_CACHE: "0",
         },
         "linux",
       ),
@@ -59,8 +59,8 @@ describe("loadVitestExperimentalConfig", () => {
     expect(
       loadVitestExperimentalConfig(
         {
-          OPENCLAW_VITEST_IMPORT_DURATIONS: "true",
-          OPENCLAW_VITEST_PRINT_IMPORT_BREAKDOWN: "1",
+          AIKACLAW_VITEST_IMPORT_DURATIONS: "true",
+          AIKACLAW_VITEST_PRINT_IMPORT_BREAKDOWN: "1",
         },
         "linux",
       ),

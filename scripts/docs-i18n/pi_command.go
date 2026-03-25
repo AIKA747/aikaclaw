@@ -13,9 +13,9 @@ import (
 )
 
 const (
-	envDocsPiExecutable     = "OPENCLAW_DOCS_I18N_PI_EXECUTABLE"
-	envDocsPiArgs           = "OPENCLAW_DOCS_I18N_PI_ARGS"
-	envDocsPiPackageVersion = "OPENCLAW_DOCS_I18N_PI_PACKAGE_VERSION"
+	envDocsPiExecutable     = "AIKACLAW_DOCS_I18N_PI_EXECUTABLE"
+	envDocsPiArgs           = "AIKACLAW_DOCS_I18N_PI_ARGS"
+	envDocsPiPackageVersion = "AIKACLAW_DOCS_I18N_PI_PACKAGE_VERSION"
 	defaultPiPackageVersion = "0.58.3"
 )
 
@@ -109,7 +109,7 @@ func getMaterializedPiRuntimeDir() (string, error) {
 	if err != nil {
 		cacheDir = os.TempDir()
 	}
-	return filepath.Join(cacheDir, "openclaw", "docs-i18n", "pi-runtime", getMaterializedPiPackageVersion()), nil
+	return filepath.Join(cacheDir, "aikaclaw", "docs-i18n", "pi-runtime", getMaterializedPiPackageVersion()), nil
 }
 
 func getMaterializedPiPackageVersion() string {

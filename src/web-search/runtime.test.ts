@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it } from "vitest";
-import type { OpenClawConfig } from "../config/config.js";
+import type { AikaClawConfig } from "../config/config.js";
 import { createEmptyPluginRegistry } from "../plugins/registry.js";
 import { setActivePluginRegistry } from "../plugins/runtime.js";
 import { activateSecretsRuntimeSnapshot, clearSecretsRuntimeSnapshot } from "../secrets/runtime.js";
@@ -98,7 +98,7 @@ describe("web search runtime", () => {
     });
     setActivePluginRegistry(registry);
 
-    const config: OpenClawConfig = {
+    const config: AikaClawConfig = {
       plugins: {
         entries: {
           "custom-search": {

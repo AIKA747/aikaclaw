@@ -1,7 +1,7 @@
-import type { BackoffPolicy } from "openclaw/plugin-sdk/infra-runtime";
-import { computeBackoff, sleepWithAbort } from "openclaw/plugin-sdk/infra-runtime";
-import { logVerbose, shouldLogVerbose } from "openclaw/plugin-sdk/runtime-env";
-import type { RuntimeEnv } from "openclaw/plugin-sdk/runtime-env";
+import type { BackoffPolicy } from "aikaclaw/plugin-sdk/infra-runtime";
+import { computeBackoff, sleepWithAbort } from "aikaclaw/plugin-sdk/infra-runtime";
+import { logVerbose, shouldLogVerbose } from "aikaclaw/plugin-sdk/runtime-env";
+import type { RuntimeEnv } from "aikaclaw/plugin-sdk/runtime-env";
 import { type SignalSseEvent, streamSignalEvents } from "./client.js";
 
 const DEFAULT_RECONNECT_POLICY: BackoffPolicy = {

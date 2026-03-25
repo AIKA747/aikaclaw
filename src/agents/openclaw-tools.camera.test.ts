@@ -14,7 +14,7 @@ vi.mock("../media/image-ops.js", () => ({
   resizeToJpeg: vi.fn(async () => Buffer.from("jpeg")),
 }));
 
-let createOpenClawTools: typeof import("./openclaw-tools.js").createOpenClawTools;
+let createAikaClawTools: typeof import("./aikaclaw-tools.js").createAikaClawTools;
 
 const NODE_ID = "mac-1";
 const BASE_RUN_INPUT = { action: "run", node: NODE_ID, command: ["echo", "hi"] } as const;
@@ -59,7 +59,7 @@ function getNodesTool(options?: { modelHasVision?: boolean; allowMediaInvokeComm
   if (options?.allowMediaInvokeCommands !== undefined) {
     toolOptions.allowMediaInvokeCommands = options.allowMediaInvokeCommands;
   }
-  const tool = createOpenClawTools(toolOptions).find((candidate) => candidate.name === "nodes");
+  const tool = createAikaClawTools(toolOptions).find((candidate) => candidate.name === "nodes");
   if (!tool) {
     throw new Error("missing nodes tool");
   }
@@ -197,7 +197,7 @@ async function executePhotosLatest(params: { modelHasVision: boolean }) {
 beforeEach(async () => {
   callGateway.mockClear();
   vi.unstubAllGlobals();
-  await loadOpenClawToolsForTest();
+  await loadAikaClawToolsForTest();
 });
 
 describe("nodes camera_snap", () => {
@@ -260,7 +260,7 @@ describe("nodes camera_snap", () => {
 
     expectNoImages(result);
     expect(result.content ?? []).toEqual([]);
-    expect(expectFirstMediaUrl(result)).toMatch(/openclaw-camera-snap-front-.*\.jpg$/);
+    expect(expectFirstMediaUrl(result)).toMatch(/aikaclaw-camera-snap-front-.*\.jpg$/);
   });
 
   it("passes deviceId when provided", async () => {
@@ -427,7 +427,7 @@ describe("nodes photos_latest", () => {
       height: 1,
       createdAt: "2026-03-04T00:00:00Z",
     });
-    expect(expectFirstMediaUrl(result)).toMatch(/openclaw-camera-snap-.*\.jpg$/);
+    expect(expectFirstMediaUrl(result)).toMatch(/aikaclaw-camera-snap-.*\.jpg$/);
   });
 
   it("includes inline image blocks when model has vision", async () => {
@@ -436,7 +436,7 @@ describe("nodes photos_latest", () => {
     const result = await executePhotosLatest({ modelHasVision: true });
 
     expectSingleImage(result, { mimeType: "image/jpeg" });
-    expect(expectFirstMediaUrl(result)).toMatch(/openclaw-camera-snap-.*\.jpg$/);
+    expect(expectFirstMediaUrl(result)).toMatch(/aikaclaw-camera-snap-.*\.jpg$/);
   });
 });
 
@@ -789,8 +789,8 @@ describe("nodes invoke", () => {
     });
   });
 });
-async function loadOpenClawToolsForTest(): Promise<void> {
+async function loadAikaClawToolsForTest(): Promise<void> {
   vi.resetModules();
   await import("./test-helpers/fast-core-tools.js");
-  ({ createOpenClawTools } = await import("./openclaw-tools.js"));
+  ({ createAikaClawTools } = await import("./aikaclaw-tools.js"));
 }

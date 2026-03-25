@@ -1,19 +1,19 @@
 import path from "node:path";
-import { resolveApiKeyForProvider } from "openclaw/plugin-sdk/agent-runtime";
-import type { ModelCatalogEntry } from "openclaw/plugin-sdk/agent-runtime";
+import { resolveApiKeyForProvider } from "aikaclaw/plugin-sdk/agent-runtime";
+import type { ModelCatalogEntry } from "aikaclaw/plugin-sdk/agent-runtime";
 import {
   findModelInCatalog,
   loadModelCatalog,
   modelSupportsVision,
-} from "openclaw/plugin-sdk/agent-runtime";
-import { resolveDefaultModelForAgent } from "openclaw/plugin-sdk/agent-runtime";
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
-import { loadJsonFile, saveJsonFile } from "openclaw/plugin-sdk/json-store";
-import { AUTO_IMAGE_KEY_PROVIDERS, DEFAULT_IMAGE_MODELS } from "openclaw/plugin-sdk/media-runtime";
-import { resolveAutoImageModel } from "openclaw/plugin-sdk/media-runtime";
-import { describeImageFileWithModel } from "openclaw/plugin-sdk/media-understanding-runtime";
-import { logVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { STATE_DIR } from "openclaw/plugin-sdk/state-paths";
+} from "aikaclaw/plugin-sdk/agent-runtime";
+import { resolveDefaultModelForAgent } from "aikaclaw/plugin-sdk/agent-runtime";
+import type { AikaClawConfig } from "aikaclaw/plugin-sdk/config-runtime";
+import { loadJsonFile, saveJsonFile } from "aikaclaw/plugin-sdk/json-store";
+import { AUTO_IMAGE_KEY_PROVIDERS, DEFAULT_IMAGE_MODELS } from "aikaclaw/plugin-sdk/media-runtime";
+import { resolveAutoImageModel } from "aikaclaw/plugin-sdk/media-runtime";
+import { describeImageFileWithModel } from "aikaclaw/plugin-sdk/media-understanding-runtime";
+import { logVerbose } from "aikaclaw/plugin-sdk/runtime-env";
+import { STATE_DIR } from "aikaclaw/plugin-sdk/state-paths";
 
 const CACHE_FILE = path.join(STATE_DIR, "telegram", "sticker-cache.json");
 const CACHE_VERSION = 1;
@@ -146,7 +146,7 @@ const STICKER_DESCRIPTION_PROMPT =
 
 export interface DescribeStickerParams {
   imagePath: string;
-  cfg: OpenClawConfig;
+  cfg: AikaClawConfig;
   agentDir?: string;
   agentId?: string;
 }

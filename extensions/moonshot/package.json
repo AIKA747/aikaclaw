@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/moonshot-provider",
+  "name": "@aikaclaw/moonshot-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw Moonshot provider plugin",
+  "description": "AikaClaw Moonshot provider plugin",
   "type": "module",
-  "openclaw": {
+  "aikaclaw": {
     "extensions": [
       "./index.ts"
     ]

@@ -1,9 +1,9 @@
-import { resolveMentionGating } from "openclaw/plugin-sdk/channel-inbound";
-import { hasControlCommand } from "openclaw/plugin-sdk/command-auth";
-import type { loadConfig } from "openclaw/plugin-sdk/config-runtime";
-import { recordPendingHistoryEntryIfEnabled } from "openclaw/plugin-sdk/reply-history";
-import { parseActivationCommand } from "openclaw/plugin-sdk/reply-runtime";
-import { normalizeE164 } from "openclaw/plugin-sdk/text-runtime";
+import { resolveMentionGating } from "aikaclaw/plugin-sdk/channel-inbound";
+import { hasControlCommand } from "aikaclaw/plugin-sdk/command-auth";
+import type { loadConfig } from "aikaclaw/plugin-sdk/config-runtime";
+import { recordPendingHistoryEntryIfEnabled } from "aikaclaw/plugin-sdk/reply-history";
+import { parseActivationCommand } from "aikaclaw/plugin-sdk/reply-runtime";
+import { normalizeE164 } from "aikaclaw/plugin-sdk/text-runtime";
 import type { MentionConfig } from "../mentions.js";
 import { buildMentionConfig, debugMention, resolveOwnerList } from "../mentions.js";
 import type { WebInboundMsg } from "../types.js";

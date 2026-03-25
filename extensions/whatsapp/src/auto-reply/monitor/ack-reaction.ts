@@ -1,6 +1,6 @@
-import { shouldAckReactionForWhatsApp } from "openclaw/plugin-sdk/channel-feedback";
-import type { loadConfig } from "openclaw/plugin-sdk/config-runtime";
-import { logVerbose } from "openclaw/plugin-sdk/runtime-env";
+import { shouldAckReactionForWhatsApp } from "aikaclaw/plugin-sdk/channel-feedback";
+import type { loadConfig } from "aikaclaw/plugin-sdk/config-runtime";
+import { logVerbose } from "aikaclaw/plugin-sdk/runtime-env";
 import { sendReactionWhatsApp } from "../../send.js";
 import { formatError } from "../../session.js";
 import type { WebInboundMsg } from "../types.js";

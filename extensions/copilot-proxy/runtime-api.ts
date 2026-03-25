@@ -1,6 +1,6 @@
-export { definePluginEntry } from "openclaw/plugin-sdk/plugin-entry";
+export { definePluginEntry } from "aikaclaw/plugin-sdk/plugin-entry";
 export type {
-  OpenClawPluginApi,
+  AikaClawPluginApi,
   ProviderAuthContext,
   ProviderAuthResult,
-} from "openclaw/plugin-sdk/core";
+} from "aikaclaw/plugin-sdk/core";

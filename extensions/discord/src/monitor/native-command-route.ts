@@ -1,9 +1,9 @@
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
+import type { AikaClawConfig } from "aikaclaw/plugin-sdk/config-runtime";
 import {
   ensureConfiguredBindingRouteReady,
   resolveConfiguredBindingRoute,
-} from "openclaw/plugin-sdk/conversation-runtime";
-import type { ResolvedAgentRoute } from "openclaw/plugin-sdk/routing";
+} from "aikaclaw/plugin-sdk/conversation-runtime";
+import type { ResolvedAgentRoute } from "aikaclaw/plugin-sdk/routing";
 import {
   resolveDiscordBoundConversationRoute,
   resolveDiscordEffectiveRoute,
@@ -25,7 +25,7 @@ export type DiscordNativeInteractionRouteState = {
 };
 
 export async function resolveDiscordNativeInteractionRouteState(params: {
-  cfg: OpenClawConfig;
+  cfg: AikaClawConfig;
   accountId: string;
   guildId?: string;
   memberRoleIds?: string[];

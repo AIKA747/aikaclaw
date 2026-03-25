@@ -1,7 +1,7 @@
 import type { ButtonInteraction, ComponentData, StringSelectMenuInteraction } from "@buape/carbon";
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
-import type { DiscordAccountConfig } from "openclaw/plugin-sdk/config-runtime";
-import { buildAgentSessionKey } from "openclaw/plugin-sdk/routing";
+import type { AikaClawConfig } from "aikaclaw/plugin-sdk/config-runtime";
+import type { DiscordAccountConfig } from "aikaclaw/plugin-sdk/config-runtime";
+import { buildAgentSessionKey } from "aikaclaw/plugin-sdk/routing";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { peekSystemEvents, resetSystemEventsForTest } from "../../../../src/infra/system-events.ts";
 import {
@@ -19,7 +19,7 @@ describe("agent components", () => {
     peer: { kind: "direct", id: "123456789" },
   });
 
-  const createCfg = (): OpenClawConfig => ({}) as OpenClawConfig;
+  const createCfg = (): AikaClawConfig => ({}) as AikaClawConfig;
 
   const createBaseDmInteraction = (overrides: Record<string, unknown> = {}) => {
     const reply = vi.fn().mockResolvedValue(undefined);
@@ -78,7 +78,7 @@ describe("agent components", () => {
     expect(pairingText).toContain("Pairing code:");
     const code = pairingText.match(/Pairing code:\s*```[\r\n]+([A-Z2-9]{8})/)?.[1];
     expect(code).toBeDefined();
-    expect(pairingText).toContain(`openclaw pairing approve discord ${code}`);
+    expect(pairingText).toContain(`aikaclaw pairing approve discord ${code}`);
     expect(peekSystemEvents(defaultDmSessionKey)).toEqual([]);
     expect(readAllowFromStoreMock).toHaveBeenCalledWith("discord", "default");
   });

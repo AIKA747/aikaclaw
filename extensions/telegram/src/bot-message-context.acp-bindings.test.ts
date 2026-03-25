@@ -5,7 +5,7 @@ const ensureConfiguredBindingRouteReadyMock = vi.hoisted(() => vi.fn());
 const recordInboundSessionMock = vi.hoisted(() => vi.fn().mockResolvedValue(undefined));
 const resolveConfiguredBindingRouteMock = vi.hoisted(() => vi.fn());
 
-vi.mock("openclaw/plugin-sdk/conversation-runtime", async (importOriginal) => {
+vi.mock("aikaclaw/plugin-sdk/conversation-runtime", async (importOriginal) => {
   return {
     ...(await createConfiguredBindingConversationRuntimeModuleMock(
       {
@@ -150,7 +150,7 @@ describe("buildTelegramMessageContext ACP configured bindings", () => {
     const ctx = await buildTelegramMessageContextForTest({
       accountId: "work",
       message: {
-        chat: { id: -1001234567890, type: "supergroup", title: "OpenClaw", is_forum: true },
+        chat: { id: -1001234567890, type: "supergroup", title: "AikaClaw", is_forum: true },
         message_thread_id: 42,
         text: "hello",
       },
@@ -170,7 +170,7 @@ describe("buildTelegramMessageContext ACP configured bindings", () => {
     const ctx = await buildTelegramMessageContextForTest({
       accountId: "work",
       message: {
-        chat: { id: -1001234567890, type: "supergroup", title: "OpenClaw", is_forum: true },
+        chat: { id: -1001234567890, type: "supergroup", title: "AikaClaw", is_forum: true },
         message_thread_id: 42,
         text: "hello",
       },
@@ -189,7 +189,7 @@ describe("buildTelegramMessageContext ACP configured bindings", () => {
     const ctx = await buildTelegramMessageContextForTest({
       accountId: "work",
       message: {
-        chat: { id: -1001234567890, type: "supergroup", title: "OpenClaw", is_forum: true },
+        chat: { id: -1001234567890, type: "supergroup", title: "AikaClaw", is_forum: true },
         message_thread_id: 42,
         text: "/new",
       },
@@ -217,7 +217,7 @@ describe("buildTelegramMessageContext ACP configured bindings", () => {
     const ctx = await buildTelegramMessageContextForTest({
       accountId: "work",
       message: {
-        chat: { id: -1001234567890, type: "supergroup", title: "OpenClaw", is_forum: true },
+        chat: { id: -1001234567890, type: "supergroup", title: "AikaClaw", is_forum: true },
         message_thread_id: 42,
         text: "hello",
       },

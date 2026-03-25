@@ -10,7 +10,7 @@ import {
   type WizardPrompter,
 } from "../../../test/helpers/extensions/setup-wizard.js";
 import { createStartAccountContext } from "../../../test/helpers/extensions/start-account-context.js";
-import type { OpenClawConfig, PluginRuntime, ResolvedLineAccount } from "../api.js";
+import type { AikaClawConfig, PluginRuntime, ResolvedLineAccount } from "../api.js";
 import { linePlugin } from "./channel.js";
 import { setLineRuntime } from "./runtime.js";
 
@@ -113,7 +113,7 @@ function collectRuntimeApiOverlapExports(params: {
     if (!moduleSpecifier) {
       continue;
     }
-    if (moduleSpecifier === "openclaw/plugin-sdk/line-runtime") {
+    if (moduleSpecifier === "aikaclaw/plugin-sdk/line-runtime") {
       pluginSdkLineRuntimeSeen = true;
       continue;
     }
@@ -192,7 +192,7 @@ function collectRuntimeApiPreExports(runtimeApiPath: string): string[] {
     if (!moduleSpecifier) {
       continue;
     }
-    if (moduleSpecifier === "openclaw/plugin-sdk/line-runtime") {
+    if (moduleSpecifier === "aikaclaw/plugin-sdk/line-runtime") {
       break;
     }
     const normalized = normalizeModuleSpecifier(moduleSpecifier);
@@ -225,7 +225,7 @@ describe("line setup wizard", () => {
 
     const result = await runSetupWizardConfigure({
       configure: lineConfigure,
-      cfg: {} as OpenClawConfig,
+      cfg: {} as AikaClawConfig,
       prompter,
       options: {},
     });
@@ -267,9 +267,9 @@ describe("probeLineBot", () => {
 
   it("returns bot info when available", async () => {
     getBotInfoMock.mockResolvedValue({
-      displayName: "OpenClaw",
+      displayName: "AikaClaw",
       userId: "U123",
-      basicId: "@openclaw",
+      basicId: "@aikaclaw",
       pictureUrl: "https://example.com/bot.png",
     });
 
@@ -294,7 +294,7 @@ describe("line runtime api", () => {
           "probeLineBot",
           "pushMessageLine",
         ],
-        realPluginSdkSpecifiers: ["openclaw/plugin-sdk/line-runtime"],
+        realPluginSdkSpecifiers: ["aikaclaw/plugin-sdk/line-runtime"],
       }),
     ).toEqual({
       buildTemplateMessageFromPayload: "function",

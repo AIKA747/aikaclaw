@@ -1,1 +1,1 @@
-export { createOpenClawTools } from "./openclaw-tools.js";
+export { createAikaClawTools } from "./aikaclaw-tools.js";

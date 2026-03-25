@@ -1,17 +1,17 @@
-import { createScopedDmSecurityResolver } from "openclaw/plugin-sdk/channel-config-helpers";
-import { createAccountStatusSink } from "openclaw/plugin-sdk/channel-lifecycle";
-import { createPairingPrefixStripper } from "openclaw/plugin-sdk/channel-pairing";
+import { createScopedDmSecurityResolver } from "aikaclaw/plugin-sdk/channel-config-helpers";
+import { createAccountStatusSink } from "aikaclaw/plugin-sdk/channel-lifecycle";
+import { createPairingPrefixStripper } from "aikaclaw/plugin-sdk/channel-pairing";
 import {
   createOpenGroupPolicyRestrictSendersWarningCollector,
   projectAccountWarningCollector,
-} from "openclaw/plugin-sdk/channel-policy";
-import { createAttachedChannelResultAdapter } from "openclaw/plugin-sdk/channel-send-result";
-import { createChatChannelPlugin } from "openclaw/plugin-sdk/core";
-import { createLazyRuntimeNamedExport } from "openclaw/plugin-sdk/lazy-runtime";
+} from "aikaclaw/plugin-sdk/channel-policy";
+import { createAttachedChannelResultAdapter } from "aikaclaw/plugin-sdk/channel-send-result";
+import { createChatChannelPlugin } from "aikaclaw/plugin-sdk/core";
+import { createLazyRuntimeNamedExport } from "aikaclaw/plugin-sdk/lazy-runtime";
 import {
   createComputedAccountStatusAdapter,
   createDefaultChannelRuntimeState,
-} from "openclaw/plugin-sdk/status-helpers";
+} from "aikaclaw/plugin-sdk/status-helpers";
 import {
   listBlueBubblesAccountIds,
   type ResolvedBlueBubblesAccount,

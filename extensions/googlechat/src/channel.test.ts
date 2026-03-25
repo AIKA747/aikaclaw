@@ -3,7 +3,7 @@ import {
   createDirectoryTestRuntime,
   expectDirectorySurface,
 } from "../../../test/helpers/extensions/directory.ts";
-import type { OpenClawConfig, PluginRuntime } from "../runtime-api.js";
+import type { AikaClawConfig, PluginRuntime } from "../runtime-api.js";
 
 const uploadGoogleChatAttachmentMock = vi.hoisted(() => vi.fn());
 const sendGoogleChatMessageMock = vi.hoisted(() => vi.fn());
@@ -52,7 +52,7 @@ afterEach(() => {
   );
 });
 
-function createGoogleChatCfg(): OpenClawConfig {
+function createGoogleChatCfg(): AikaClawConfig {
   return {
     channels: {
       googlechat: {
@@ -391,7 +391,7 @@ describe("googlechat directory", () => {
           },
         },
       },
-    } as unknown as OpenClawConfig;
+    } as unknown as AikaClawConfig;
 
     const directory = expectDirectorySurface(googlechatPlugin.directory);
 
@@ -434,7 +434,7 @@ describe("googlechat directory", () => {
           dm: { allowFrom: [" users/alice ", " googlechat:user:Bob@Example.com "] },
         },
       },
-    } as unknown as OpenClawConfig;
+    } as unknown as AikaClawConfig;
 
     const directory = expectDirectorySurface(googlechatPlugin.directory);
 
@@ -476,7 +476,7 @@ describe("googlechatPlugin security", () => {
           },
         },
       },
-    } as OpenClawConfig;
+    } as AikaClawConfig;
 
     const account = googlechatPlugin.config.resolveAccount(cfg, "default");
     const resolved = resolveDmPolicy!({ cfg, account });

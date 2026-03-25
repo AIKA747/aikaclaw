@@ -1,7 +1,7 @@
 {
-  "name": "@openclaw/msteams",
+  "name": "@aikaclaw/msteams",
   "version": "2026.3.22",
-  "description": "OpenClaw Microsoft Teams channel plugin",
+  "description": "AikaClaw Microsoft Teams channel plugin",
   "type": "module",
   "dependencies": {
     "@microsoft/teams.api": "2.0.5",
@@ -9,17 +9,17 @@
     "express": "^5.2.1"
   },
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "aikaclaw": "workspace:*"
   },
   "peerDependencies": {
-    "openclaw": ">=2026.3.22"
+    "aikaclaw": ">=2026.3.22"
   },
   "peerDependenciesMeta": {
-    "openclaw": {
+    "aikaclaw": {
       "optional": true
     }
   },
-  "openclaw": {
+  "aikaclaw": {
     "extensions": [
       "./index.ts"
     ],
@@ -37,7 +37,7 @@
       "order": 60
     },
     "install": {
-      "npmSpec": "@openclaw/msteams",
+      "npmSpec": "@aikaclaw/msteams",
       "localPath": "extensions/msteams",
       "defaultChoice": "npm",
       "minHostVersion": ">=2026.3.22"

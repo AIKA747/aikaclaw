@@ -1,12 +1,12 @@
-import { definePluginEntry } from "openclaw/plugin-sdk/plugin-entry";
+import { definePluginEntry } from "aikaclaw/plugin-sdk/plugin-entry";
 import {
   createProviderApiKeyAuthMethod,
   resolveOAuthApiKeyMarker,
   type ProviderAuthContext,
   type ProviderAuthResult,
-} from "openclaw/plugin-sdk/provider-auth";
-import { buildOauthProviderAuthResult } from "openclaw/plugin-sdk/provider-auth";
-import { loginChutes } from "openclaw/plugin-sdk/provider-auth-login";
+} from "aikaclaw/plugin-sdk/provider-auth";
+import { buildOauthProviderAuthResult } from "aikaclaw/plugin-sdk/provider-auth";
+import { loginChutes } from "aikaclaw/plugin-sdk/provider-auth-login";
 import {
   CHUTES_DEFAULT_MODEL_REF,
   applyChutesApiKeyConfig,

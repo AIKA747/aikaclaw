@@ -4,17 +4,17 @@ import {
   formatLocationText,
   resolveInboundSessionEnvelopeContext,
   toLocationContext,
-} from "openclaw/plugin-sdk/channel-inbound";
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
+} from "aikaclaw/plugin-sdk/channel-inbound";
+import type { AikaClawConfig } from "aikaclaw/plugin-sdk/config-runtime";
 import {
   recordInboundSession,
   resolvePinnedMainDmOwnerFromAllowlist,
-} from "openclaw/plugin-sdk/conversation-runtime";
-import { recordChannelActivity } from "openclaw/plugin-sdk/infra-runtime";
-import type { HistoryEntry } from "openclaw/plugin-sdk/reply-history";
-import { finalizeInboundContext } from "openclaw/plugin-sdk/reply-runtime";
-import { resolveAgentRoute } from "openclaw/plugin-sdk/routing";
-import { logVerbose, shouldLogVerbose } from "openclaw/plugin-sdk/runtime-env";
+} from "aikaclaw/plugin-sdk/conversation-runtime";
+import { recordChannelActivity } from "aikaclaw/plugin-sdk/infra-runtime";
+import type { HistoryEntry } from "aikaclaw/plugin-sdk/reply-history";
+import { finalizeInboundContext } from "aikaclaw/plugin-sdk/reply-runtime";
+import { resolveAgentRoute } from "aikaclaw/plugin-sdk/routing";
+import { logVerbose, shouldLogVerbose } from "aikaclaw/plugin-sdk/runtime-env";
 import { normalizeAllowFrom } from "./bot-access.js";
 import { resolveLineGroupConfigEntry, resolveLineGroupHistoryKey } from "./group-keys.js";
 import type { LineGroupConfig, ResolvedLineAccount } from "./types.js";
@@ -27,7 +27,7 @@ interface MediaRef {
 interface BuildLineMessageContextParams {
   event: MessageEvent;
   allMedia: MediaRef[];
-  cfg: OpenClawConfig;
+  cfg: AikaClawConfig;
   account: ResolvedLineAccount;
   commandAuthorized: boolean;
   groupHistories?: Map<string, HistoryEntry[]>;
@@ -73,7 +73,7 @@ function buildPeerId(source: EventSource): string {
 
 function resolveLineInboundRoute(params: {
   source: EventSource;
-  cfg: OpenClawConfig;
+  cfg: AikaClawConfig;
   account: ResolvedLineAccount;
 }): {
   userId?: string;
@@ -226,7 +226,7 @@ function resolveLineGroupSystemPrompt(
 }
 
 async function finalizeLineInboundContext(params: {
-  cfg: OpenClawConfig;
+  cfg: AikaClawConfig;
   account: ResolvedLineAccount;
   event: MessageEvent | PostbackEvent;
   route: LineRouteInfo;
@@ -453,7 +453,7 @@ export async function buildLineMessageContext(params: BuildLineMessageContextPar
 
 export async function buildLinePostbackContext(params: {
   event: PostbackEvent;
-  cfg: OpenClawConfig;
+  cfg: AikaClawConfig;
   account: ResolvedLineAccount;
   commandAuthorized: boolean;
 }) {

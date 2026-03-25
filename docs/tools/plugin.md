@@ -1,5 +1,5 @@
 ---
-summary: "Install, configure, and manage OpenClaw plugins"
+summary: "Install, configure, and manage AikaClaw plugins"
 read_when:
   - Installing or configuring plugins
   - Understanding plugin discovery and load rules
@@ -10,34 +10,34 @@ sidebarTitle: "Install and Configure"
 
 # Plugins
 
-Plugins extend OpenClaw with new capabilities: channels, model providers, tools,
+Plugins extend AikaClaw with new capabilities: channels, model providers, tools,
 skills, speech, image generation, and more. Some plugins are **core** (shipped
-with OpenClaw), others are **external** (published on npm by the community).
+with AikaClaw), others are **external** (published on npm by the community).
 
 ## Quick start
 
 <Steps>
   <Step title="See what is loaded">
     ```bash
-    openclaw plugins list
+    aikaclaw plugins list
     ```
   </Step>
 
   <Step title="Install a plugin">
     ```bash
     # From npm
-    openclaw plugins install @openclaw/voice-call
+    aikaclaw plugins install @aikaclaw/voice-call
 
     # From a local directory or archive
-    openclaw plugins install ./my-plugin
-    openclaw plugins install ./my-plugin.tgz
+    aikaclaw plugins install ./my-plugin
+    aikaclaw plugins install ./my-plugin.tgz
     ```
 
   </Step>
 
   <Step title="Restart the Gateway">
     ```bash
-    openclaw gateway restart
+    aikaclaw gateway restart
     ```
 
     Then configure under `plugins.entries.\<id\>.config` in your config file.
@@ -48,7 +48,7 @@ with OpenClaw), others are **external** (published on npm by the community).
 If you prefer chat-native control, enable `commands.plugins: true` and use:
 
 ```text
-/plugin install clawhub:@openclaw/voice-call
+/plugin install clawhub:@aikaclaw/voice-call
 /plugin show voice-call
 /plugin enable voice-call
 ```
@@ -58,14 +58,14 @@ The install path uses the same resolver as the CLI: local path/archive, explicit
 
 ## Plugin types
 
-OpenClaw recognizes two plugin formats:
+AikaClaw recognizes two plugin formats:
 
 | Format     | How it works                                                       | Examples                                               |
 | ---------- | ------------------------------------------------------------------ | ------------------------------------------------------ |
-| **Native** | `openclaw.plugin.json` + runtime module; executes in-process       | Official plugins, community npm packages               |
-| **Bundle** | Codex/Claude/Cursor-compatible layout; mapped to OpenClaw features | `.codex-plugin/`, `.claude-plugin/`, `.cursor-plugin/` |
+| **Native** | `aikaclaw.plugin.json` + runtime module; executes in-process       | Official plugins, community npm packages               |
+| **Bundle** | Codex/Claude/Cursor-compatible layout; mapped to AikaClaw features | `.codex-plugin/`, `.claude-plugin/`, `.cursor-plugin/` |
 
-Both show up under `openclaw plugins list`. See [Plugin Bundles](/plugins/bundles) for bundle details.
+Both show up under `aikaclaw plugins list`. See [Plugin Bundles](/plugins/bundles) for bundle details.
 
 If you are writing a native plugin, start with [Building Plugins](/plugins/building-plugins)
 and the [Plugin SDK Overview](/plugins/sdk-overview).
@@ -76,14 +76,14 @@ and the [Plugin SDK Overview](/plugins/sdk-overview).
 
 | Plugin          | Package                | Docs                                 |
 | --------------- | ---------------------- | ------------------------------------ |
-| Matrix          | `@openclaw/matrix`     | [Matrix](/channels/matrix)           |
-| Microsoft Teams | `@openclaw/msteams`    | [Microsoft Teams](/channels/msteams) |
-| Nostr           | `@openclaw/nostr`      | [Nostr](/channels/nostr)             |
-| Voice Call      | `@openclaw/voice-call` | [Voice Call](/plugins/voice-call)    |
-| Zalo            | `@openclaw/zalo`       | [Zalo](/channels/zalo)               |
-| Zalo Personal   | `@openclaw/zalouser`   | [Zalo Personal](/plugins/zalouser)   |
+| Matrix          | `@aikaclaw/matrix`     | [Matrix](/channels/matrix)           |
+| Microsoft Teams | `@aikaclaw/msteams`    | [Microsoft Teams](/channels/msteams) |
+| Nostr           | `@aikaclaw/nostr`      | [Nostr](/channels/nostr)             |
+| Voice Call      | `@aikaclaw/voice-call` | [Voice Call](/plugins/voice-call)    |
+| Zalo            | `@aikaclaw/zalo`       | [Zalo](/channels/zalo)               |
+| Zalo Personal   | `@aikaclaw/zalouser`   | [Zalo Personal](/plugins/zalouser)   |
 
-### Core (shipped with OpenClaw)
+### Core (shipped with AikaClaw)
 
 <AccordionGroup>
   <Accordion title="Model providers (enabled by default)">
@@ -136,7 +136,7 @@ Looking for third-party plugins? See [Community Plugins](/plugins/community).
 | `entries.\<id\>` | Per-plugin toggles + config                               |
 
 Config changes **require a gateway restart**. If the Gateway is running with config
-watch + in-process restart enabled (the default `openclaw gateway` path), that
+watch + in-process restart enabled (the default `aikaclaw gateway` path), that
 restart is usually performed automatically a moment after the config write lands.
 
 <Accordion title="Plugin states: disabled vs missing vs invalid">
@@ -147,7 +147,7 @@ restart is usually performed automatically a moment after the config write lands
 
 ## Discovery and precedence
 
-OpenClaw scans for plugins in this order (first match wins):
+AikaClaw scans for plugins in this order (first match wins):
 
 <Steps>
   <Step title="Config paths">
@@ -155,15 +155,15 @@ OpenClaw scans for plugins in this order (first match wins):
   </Step>
 
   <Step title="Workspace extensions">
-    `\<workspace\>/.openclaw/extensions/*.ts` and `\<workspace\>/.openclaw/extensions/*/index.ts`.
+    `\<workspace\>/.aikaclaw/extensions/*.ts` and `\<workspace\>/.aikaclaw/extensions/*/index.ts`.
   </Step>
 
   <Step title="Global extensions">
-    `~/.openclaw/extensions/*.ts` and `~/.openclaw/extensions/*/index.ts`.
+    `~/.aikaclaw/extensions/*.ts` and `~/.aikaclaw/extensions/*/index.ts`.
   </Step>
 
   <Step title="Bundled plugins">
-    Shipped with OpenClaw. Many are enabled by default (model providers, speech).
+    Shipped with AikaClaw. Many are enabled by default (model providers, speech).
     Others require explicit enablement.
   </Step>
 </Steps>
@@ -200,24 +200,24 @@ Some categories are exclusive (only one active at a time):
 ## CLI reference
 
 ```bash
-openclaw plugins list                    # compact inventory
-openclaw plugins inspect <id>            # deep detail
-openclaw plugins inspect <id> --json     # machine-readable
-openclaw plugins status                  # operational summary
-openclaw plugins doctor                  # diagnostics
+aikaclaw plugins list                    # compact inventory
+aikaclaw plugins inspect <id>            # deep detail
+aikaclaw plugins inspect <id> --json     # machine-readable
+aikaclaw plugins status                  # operational summary
+aikaclaw plugins doctor                  # diagnostics
 
-openclaw plugins install <package>        # install (ClawHub first, then npm)
-openclaw plugins install clawhub:<pkg>   # install from ClawHub only
-openclaw plugins install <path>          # install from local path
-openclaw plugins install -l <path>       # link (no copy) for dev
-openclaw plugins update <id>             # update one plugin
-openclaw plugins update --all            # update all
+aikaclaw plugins install <package>        # install (ClawHub first, then npm)
+aikaclaw plugins install clawhub:<pkg>   # install from ClawHub only
+aikaclaw plugins install <path>          # install from local path
+aikaclaw plugins install -l <path>       # link (no copy) for dev
+aikaclaw plugins update <id>             # update one plugin
+aikaclaw plugins update --all            # update all
 
-openclaw plugins enable <id>
-openclaw plugins disable <id>
+aikaclaw plugins enable <id>
+aikaclaw plugins disable <id>
 ```
 
-See [`openclaw plugins` CLI reference](/cli/plugins) for full details.
+See [`aikaclaw plugins` CLI reference](/cli/plugins) for full details.
 
 ## Plugin API overview
 

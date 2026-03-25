@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/volcengine-provider",
+  "name": "@aikaclaw/volcengine-provider",
   "version": "2026.3.22",
   "private": true,
-  "description": "OpenClaw Volcengine provider plugin",
+  "description": "AikaClaw Volcengine provider plugin",
   "type": "module",
-  "openclaw": {
+  "aikaclaw": {
     "extensions": [
       "./index.ts"
     ]

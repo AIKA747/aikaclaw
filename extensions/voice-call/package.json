@@ -1,7 +1,7 @@
 {
-  "name": "@openclaw/voice-call",
+  "name": "@aikaclaw/voice-call",
   "version": "2026.3.22",
-  "description": "OpenClaw voice-call plugin",
+  "description": "AikaClaw voice-call plugin",
   "type": "module",
   "dependencies": {
     "@sinclair/typebox": "0.34.48",
@@ -10,17 +10,17 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "aikaclaw": "workspace:*"
   },
   "peerDependencies": {
-    "openclaw": ">=2026.3.22"
+    "aikaclaw": ">=2026.3.22"
   },
   "peerDependenciesMeta": {
-    "openclaw": {
+    "aikaclaw": {
       "optional": true
     }
   },
-  "openclaw": {
+  "aikaclaw": {
     "extensions": [
       "./index.ts"
     ],

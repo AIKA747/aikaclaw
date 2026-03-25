@@ -1,6 +1,6 @@
 import { ChannelType } from "discord-api-types/v10";
 import { beforeAll, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig, loadConfig } from "../../../../src/config/config.js";
+import type { AikaClawConfig, loadConfig } from "../../../../src/config/config.js";
 let listNativeCommandSpecs: typeof import("../../../../src/auto-reply/commands-registry.js").listNativeCommandSpecs;
 let createDiscordNativeCommand: typeof import("./native-command.js").createDiscordNativeCommand;
 let createNoopThreadBindingManager: typeof import("./thread-bindings.js").createNoopThreadBindingManager;
@@ -9,7 +9,7 @@ function createNativeCommand(
   name: string,
   opts?: {
     cfg?: ReturnType<typeof loadConfig>;
-    discordConfig?: NonNullable<OpenClawConfig["channels"]>["discord"];
+    discordConfig?: NonNullable<AikaClawConfig["channels"]>["discord"];
   },
 ): ReturnType<typeof import("./native-command.js").createDiscordNativeCommand> {
   const command = listNativeCommandSpecs({ provider: "discord" }).find(
@@ -20,7 +20,7 @@ function createNativeCommand(
   }
   const cfg = (opts?.cfg ?? {}) as ReturnType<typeof loadConfig>;
   const discordConfig = (opts?.discordConfig ?? {}) as NonNullable<
-    OpenClawConfig["channels"]
+    AikaClawConfig["channels"]
   >["discord"];
   return createDiscordNativeCommand({
     command,

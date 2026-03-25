@@ -7,7 +7,7 @@ import {
   findCommandByNativeName,
   resolveCommandArgChoices,
 } from "../../../../src/auto-reply/commands-registry.js";
-import type { OpenClawConfig, loadConfig } from "../../../../src/config/config.js";
+import type { AikaClawConfig, loadConfig } from "../../../../src/config/config.js";
 import { clearSessionStoreCacheForTest } from "../../../../src/config/sessions/store.js";
 import { createConfiguredBindingConversationRuntimeModuleMock } from "../../../../test/helpers/extensions/configured-binding-runtime.js";
 import { resolveDiscordNativeChoiceContext } from "./native-command-ui.js";
@@ -37,7 +37,7 @@ const resolveConfiguredBindingRouteMock = vi.hoisted(() =>
   >(() => null),
 );
 
-vi.mock("openclaw/plugin-sdk/conversation-runtime", async (importOriginal) => {
+vi.mock("aikaclaw/plugin-sdk/conversation-runtime", async (importOriginal) => {
   return await createConfiguredBindingConversationRuntimeModuleMock(
     {
       ensureConfiguredBindingRouteReadyMock,
@@ -49,7 +49,7 @@ vi.mock("openclaw/plugin-sdk/conversation-runtime", async (importOriginal) => {
 
 const STORE_PATH = path.join(
   os.tmpdir(),
-  `openclaw-discord-think-autocomplete-${process.pid}.json`,
+  `aikaclaw-discord-think-autocomplete-${process.pid}.json`,
 );
 const SESSION_KEY = "agent:main:main";
 

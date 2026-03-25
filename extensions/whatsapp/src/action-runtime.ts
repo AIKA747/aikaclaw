@@ -5,7 +5,7 @@ import {
   jsonResult,
   readReactionParams,
   readStringParam,
-  type OpenClawConfig,
+  type AikaClawConfig,
 } from "./runtime-api.js";
 import { sendReactionWhatsApp } from "./send.js";
 
@@ -16,7 +16,7 @@ export const whatsAppActionRuntime = {
 
 export async function handleWhatsAppAction(
   params: Record<string, unknown>,
-  cfg: OpenClawConfig,
+  cfg: AikaClawConfig,
 ): Promise<AgentToolResult<unknown>> {
   const action = readStringParam(params, "action", { required: true });
   const isActionEnabled = createActionGate(cfg.channels?.whatsapp?.actions);

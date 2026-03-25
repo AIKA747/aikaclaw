@@ -2,7 +2,7 @@ import { EventEmitter } from "node:events";
 import fsSync from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { resetLogger, setLoggerOverride } from "openclaw/plugin-sdk/runtime-env";
+import { resetLogger, setLoggerOverride } from "aikaclaw/plugin-sdk/runtime-env";
 import { afterEach, beforeEach, expect, vi } from "vitest";
 import {
   loadConfigMock,
@@ -76,8 +76,8 @@ function createMockSock(): MockSock {
   };
 }
 
-vi.mock("openclaw/plugin-sdk/media-runtime", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("openclaw/plugin-sdk/media-runtime")>();
+vi.mock("aikaclaw/plugin-sdk/media-runtime", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("aikaclaw/plugin-sdk/media-runtime")>();
   return {
     ...actual,
     saveMediaBuffer: vi.fn().mockResolvedValue({
@@ -180,7 +180,7 @@ export function expectPairingPromptSent(sock: MockSock, jid: string, senderE164:
   const sendCall = sock.sendMessage.mock.calls[0];
   expect(sendCall?.[0]).toBe(jid);
   const text = String((sendCall?.[1] as { text?: string } | undefined)?.text ?? "");
-  expect(text).toContain("OpenClaw: access not configured.");
+  expect(text).toContain("AikaClaw: access not configured.");
   expect(text).toContain(`Your WhatsApp phone number: ${senderE164}`);
   expect(text).toContain("Pairing code:");
   expect(text).toContain("```\nPAIRCODE\n```");
@@ -210,7 +210,7 @@ export function installWebMonitorInboxUnitTestHooks(opts?: { authDir?: boolean }
     const { resetWebInboundDedupe } = inboundModule;
     resetWebInboundDedupe();
     if (createAuthDir) {
-      authDir = fsSync.mkdtempSync(path.join(os.tmpdir(), "openclaw-auth-"));
+      authDir = fsSync.mkdtempSync(path.join(os.tmpdir(), "aikaclaw-auth-"));
     } else {
       authDir = undefined;
     }

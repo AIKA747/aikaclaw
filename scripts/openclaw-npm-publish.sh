@@ -5,7 +5,7 @@ set -euo pipefail
 mode="${1:-}"
 
 if [[ "${mode}" != "--publish" ]]; then
-  echo "usage: bash scripts/openclaw-npm-publish.sh --publish" >&2
+  echo "usage: bash scripts/aikaclaw-npm-publish.sh --publish" >&2
   exit 2
 fi
 

@@ -3,7 +3,7 @@ export {
   formatDocsLink,
   setSetupChannelEnabled,
   splitSetupEntries,
-} from "openclaw/plugin-sdk/setup";
-export type { ChannelSetupDmPolicy, ChannelSetupWizard } from "openclaw/plugin-sdk/setup";
+} from "aikaclaw/plugin-sdk/setup";
+export type { ChannelSetupDmPolicy, ChannelSetupWizard } from "aikaclaw/plugin-sdk/setup";
 export { listLineAccountIds, normalizeAccountId, resolveLineAccount } from "./accounts.js";
 export type { LineConfig } from "./types.js";

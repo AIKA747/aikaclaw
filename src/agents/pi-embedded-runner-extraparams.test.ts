@@ -13,7 +13,7 @@ import { __testing as providerCapabilitiesTesting } from "./provider-capabilitie
 const resolveProviderCapabilitiesWithPluginMock = vi.fn(
   (params: {
     provider: string;
-    config?: import("../config/config.js").OpenClawConfig;
+    config?: import("../config/config.js").AikaClawConfig;
     workspaceDir?: string;
     env?: NodeJS.ProcessEnv;
   }): Partial<ProviderCapabilities> | undefined => {
@@ -1265,8 +1265,8 @@ describe("applyExtraParamsToAgent", () => {
 
     expect(calls).toHaveLength(1);
     expect(calls[0]?.headers).toEqual({
-      "HTTP-Referer": "https://openclaw.ai",
-      "X-OpenRouter-Title": "OpenClaw",
+      "HTTP-Referer": "https://aikaclaw.ai",
+      "X-OpenRouter-Title": "AikaClaw",
       "X-OpenRouter-Categories": "cli-agent",
       "X-Custom": "1",
     });

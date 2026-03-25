@@ -40,16 +40,16 @@ function createGatewayToolModuleMocks() {
 
 vi.mock("./tools/gateway.js", () => createGatewayToolModuleMocks());
 
-let createOpenClawTools: typeof import("./openclaw-tools.js").createOpenClawTools;
+let createAikaClawTools: typeof import("./aikaclaw-tools.js").createAikaClawTools;
 
-async function loadFreshOpenClawToolsModuleForTest() {
+async function loadFreshAikaClawToolsModuleForTest() {
   vi.resetModules();
   vi.doMock("./tools/gateway.js", () => createGatewayToolModuleMocks());
-  ({ createOpenClawTools } = await import("./openclaw-tools.js"));
+  ({ createAikaClawTools } = await import("./aikaclaw-tools.js"));
 }
 
 function requireGatewayTool(agentSessionKey?: string) {
-  const tool = createOpenClawTools({
+  const tool = createAikaClawTools({
     ...(agentSessionKey ? { agentSessionKey } : {}),
     config: { commands: { restart: true } },
   }).find((candidate) => candidate.name === "gateway");
@@ -84,7 +84,7 @@ function expectConfigMutationCall(params: {
 
 describe("gateway tool", () => {
   beforeEach(async () => {
-    await loadFreshOpenClawToolsModuleForTest();
+    await loadFreshAikaClawToolsModuleForTest();
   });
 
   it("marks gateway as owner-only", async () => {
@@ -95,11 +95,11 @@ describe("gateway tool", () => {
   it("schedules SIGUSR1 restart", async () => {
     vi.useFakeTimers();
     const kill = vi.spyOn(process, "kill").mockImplementation(() => true);
-    const stateDir = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-test-"));
+    const stateDir = await fs.mkdtemp(path.join(os.tmpdir(), "aikaclaw-test-"));
 
     try {
       await withEnvAsync(
-        { OPENCLAW_STATE_DIR: stateDir, OPENCLAW_PROFILE: "isolated" },
+        { AIKACLAW_STATE_DIR: stateDir, AIKACLAW_PROFILE: "isolated" },
         async () => {
           const tool = requireGatewayTool();
 
@@ -121,7 +121,7 @@ describe("gateway tool", () => {
           };
           expect(parsed.payload?.kind).toBe("restart");
           expect(parsed.payload?.doctorHint).toBe(
-            "Run: openclaw --profile isolated doctor --non-interactive",
+            "Run: aikaclaw --profile isolated doctor --non-interactive",
           );
 
           expect(kill).not.toHaveBeenCalled();
@@ -141,7 +141,7 @@ describe("gateway tool", () => {
     const sessionKey = "agent:main:whatsapp:dm:+15555550123";
     const tool = requireGatewayTool(sessionKey);
 
-    const raw = '{\n  agents: { defaults: { workspace: "~/openclaw" } }\n}\n';
+    const raw = '{\n  agents: { defaults: { workspace: "~/aikaclaw" } }\n}\n';
     await tool.execute("call2", {
       action: "config.apply",
       raw,

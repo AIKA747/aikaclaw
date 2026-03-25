@@ -1,1 +1,1 @@
-export type { OpenClawPluginCommandDefinition } from "openclaw/plugin-sdk/core";
+export type { AikaClawPluginCommandDefinition } from "aikaclaw/plugin-sdk/core";

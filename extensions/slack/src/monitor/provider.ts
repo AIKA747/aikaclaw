@@ -6,25 +6,25 @@ import {
   mergeAllowlist,
   patchAllowlistUsersInConfigEntries,
   summarizeMapping,
-} from "openclaw/plugin-sdk/allow-from";
-import { loadConfig } from "openclaw/plugin-sdk/config-runtime";
-import { isDangerousNameMatchingEnabled } from "openclaw/plugin-sdk/config-runtime";
+} from "aikaclaw/plugin-sdk/allow-from";
+import { loadConfig } from "aikaclaw/plugin-sdk/config-runtime";
+import { isDangerousNameMatchingEnabled } from "aikaclaw/plugin-sdk/config-runtime";
 import {
   resolveOpenProviderRuntimeGroupPolicy,
   resolveDefaultGroupPolicy,
   warnMissingProviderGroupPolicyFallbackOnce,
-} from "openclaw/plugin-sdk/config-runtime";
-import type { SessionScope } from "openclaw/plugin-sdk/config-runtime";
-import { createConnectedChannelStatusPatch } from "openclaw/plugin-sdk/gateway-runtime";
-import { computeBackoff, sleepWithAbort } from "openclaw/plugin-sdk/infra-runtime";
-import { installRequestBodyLimitGuard } from "openclaw/plugin-sdk/infra-runtime";
-import { DEFAULT_GROUP_HISTORY_LIMIT } from "openclaw/plugin-sdk/reply-history";
-import { resolveTextChunkLimit } from "openclaw/plugin-sdk/reply-runtime";
-import { normalizeMainKey } from "openclaw/plugin-sdk/routing";
-import { warn } from "openclaw/plugin-sdk/runtime-env";
-import { createNonExitingRuntime, type RuntimeEnv } from "openclaw/plugin-sdk/runtime-env";
-import { normalizeResolvedSecretInputString } from "openclaw/plugin-sdk/secret-input";
-import { normalizeStringEntries } from "openclaw/plugin-sdk/text-runtime";
+} from "aikaclaw/plugin-sdk/config-runtime";
+import type { SessionScope } from "aikaclaw/plugin-sdk/config-runtime";
+import { createConnectedChannelStatusPatch } from "aikaclaw/plugin-sdk/gateway-runtime";
+import { computeBackoff, sleepWithAbort } from "aikaclaw/plugin-sdk/infra-runtime";
+import { installRequestBodyLimitGuard } from "aikaclaw/plugin-sdk/infra-runtime";
+import { DEFAULT_GROUP_HISTORY_LIMIT } from "aikaclaw/plugin-sdk/reply-history";
+import { resolveTextChunkLimit } from "aikaclaw/plugin-sdk/reply-runtime";
+import { normalizeMainKey } from "aikaclaw/plugin-sdk/routing";
+import { warn } from "aikaclaw/plugin-sdk/runtime-env";
+import { createNonExitingRuntime, type RuntimeEnv } from "aikaclaw/plugin-sdk/runtime-env";
+import { normalizeResolvedSecretInputString } from "aikaclaw/plugin-sdk/secret-input";
+import { normalizeStringEntries } from "aikaclaw/plugin-sdk/text-runtime";
 import { resolveSlackAccount } from "../accounts.js";
 import { resolveSlackWebClientOptions } from "../client.js";
 import { normalizeSlackWebhookPath, registerSlackHttpHandler } from "../http/index.js";

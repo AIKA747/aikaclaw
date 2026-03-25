@@ -1,10 +1,10 @@
 import path from "node:path";
 import { GrammyError } from "grammy";
-import { formatErrorMessage } from "openclaw/plugin-sdk/infra-runtime";
-import { retryAsync } from "openclaw/plugin-sdk/infra-runtime";
-import { fetchRemoteMedia } from "openclaw/plugin-sdk/media-runtime";
-import { saveMediaBuffer } from "openclaw/plugin-sdk/media-runtime";
-import { logVerbose, warn } from "openclaw/plugin-sdk/runtime-env";
+import { formatErrorMessage } from "aikaclaw/plugin-sdk/infra-runtime";
+import { retryAsync } from "aikaclaw/plugin-sdk/infra-runtime";
+import { fetchRemoteMedia } from "aikaclaw/plugin-sdk/media-runtime";
+import { saveMediaBuffer } from "aikaclaw/plugin-sdk/media-runtime";
+import { logVerbose, warn } from "aikaclaw/plugin-sdk/runtime-env";
 import {
   resolveTelegramApiBase,
   shouldRetryTelegramTransportFallback,

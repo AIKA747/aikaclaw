@@ -1,4 +1,4 @@
-import { DEFAULT_ACCOUNT_ID } from "openclaw/plugin-sdk/setup";
+import { DEFAULT_ACCOUNT_ID } from "aikaclaw/plugin-sdk/setup";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   createPluginSetupWizardConfigure,
@@ -12,7 +12,7 @@ import {
   startAccountAndTrackLifecycle,
   waitForStartedMocks,
 } from "../../../test/helpers/extensions/start-account-lifecycle.js";
-import type { OpenClawConfig } from "../runtime-api.js";
+import type { AikaClawConfig } from "../runtime-api.js";
 import { resolveGoogleChatAccount, type ResolvedGoogleChatAccount } from "./accounts.js";
 import { googlechatPlugin } from "./channel.js";
 import { googlechatSetupAdapter } from "./setup-core.js";
@@ -146,7 +146,7 @@ describe("googlechat setup", () => {
 
     const result = await runSetupWizardConfigure({
       configure: googlechatConfigure,
-      cfg: {} as OpenClawConfig,
+      cfg: {} as AikaClawConfig,
       prompter,
       options: {},
     });
@@ -187,7 +187,7 @@ describe("googlechat setup", () => {
 
 describe("resolveGoogleChatAccount", () => {
   it("inherits shared defaults from accounts.default for named accounts", () => {
-    const cfg: OpenClawConfig = {
+    const cfg: AikaClawConfig = {
       channels: {
         googlechat: {
           accounts: {
@@ -212,7 +212,7 @@ describe("resolveGoogleChatAccount", () => {
   });
 
   it("prefers top-level and account overrides over accounts.default", () => {
-    const cfg: OpenClawConfig = {
+    const cfg: AikaClawConfig = {
       channels: {
         googlechat: {
           audienceType: "project-number",
@@ -238,7 +238,7 @@ describe("resolveGoogleChatAccount", () => {
   });
 
   it("does not inherit disabled state from accounts.default for named accounts", () => {
-    const cfg: OpenClawConfig = {
+    const cfg: AikaClawConfig = {
       channels: {
         googlechat: {
           accounts: {
@@ -262,7 +262,7 @@ describe("resolveGoogleChatAccount", () => {
   });
 
   it("does not inherit default-account credentials into named accounts", () => {
-    const cfg: OpenClawConfig = {
+    const cfg: AikaClawConfig = {
       channels: {
         googlechat: {
           accounts: {
@@ -290,7 +290,7 @@ describe("resolveGoogleChatAccount", () => {
   });
 
   it("does not inherit dangerous name matching from accounts.default", () => {
-    const cfg: OpenClawConfig = {
+    const cfg: AikaClawConfig = {
       channels: {
         googlechat: {
           accounts: {

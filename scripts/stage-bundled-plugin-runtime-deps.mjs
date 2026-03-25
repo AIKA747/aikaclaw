@@ -38,7 +38,7 @@ function hasRuntimeDeps(packageJson) {
 }
 
 function shouldStageRuntimeDeps(packageJson) {
-  return packageJson.openclaw?.bundle?.stageRuntimeDependencies === true;
+  return packageJson.aikaclaw?.bundle?.stageRuntimeDependencies === true;
 }
 
 function sanitizeBundledManifestForRuntimeInstall(pluginDir) {
@@ -46,9 +46,9 @@ function sanitizeBundledManifestForRuntimeInstall(pluginDir) {
   const packageJson = readJson(manifestPath);
   let changed = false;
 
-  if (packageJson.peerDependencies?.openclaw) {
+  if (packageJson.peerDependencies?.aikaclaw) {
     const nextPeerDependencies = { ...packageJson.peerDependencies };
-    delete nextPeerDependencies.openclaw;
+    delete nextPeerDependencies.aikaclaw;
     if (Object.keys(nextPeerDependencies).length === 0) {
       delete packageJson.peerDependencies;
     } else {
@@ -57,9 +57,9 @@ function sanitizeBundledManifestForRuntimeInstall(pluginDir) {
     changed = true;
   }
 
-  if (packageJson.peerDependenciesMeta?.openclaw) {
+  if (packageJson.peerDependenciesMeta?.aikaclaw) {
     const nextPeerDependenciesMeta = { ...packageJson.peerDependenciesMeta };
-    delete nextPeerDependenciesMeta.openclaw;
+    delete nextPeerDependenciesMeta.aikaclaw;
     if (Object.keys(nextPeerDependenciesMeta).length === 0) {
       delete packageJson.peerDependenciesMeta;
     } else {
@@ -68,9 +68,9 @@ function sanitizeBundledManifestForRuntimeInstall(pluginDir) {
     changed = true;
   }
 
-  if (packageJson.devDependencies?.openclaw) {
+  if (packageJson.devDependencies?.aikaclaw) {
     const nextDevDependencies = { ...packageJson.devDependencies };
-    delete nextDevDependencies.openclaw;
+    delete nextDevDependencies.aikaclaw;
     if (Object.keys(nextDevDependencies).length === 0) {
       delete packageJson.devDependencies;
     } else {
@@ -114,7 +114,7 @@ export function resolveNpmRunner(params = {}) {
     throw new Error(
       `failed to resolve a toolchain-local npm next to ${execPath}. ` +
         `Checked: ${expectedPaths.join(", ")}. ` +
-        "OpenClaw refuses to shell out to bare npm on Windows; install a Node.js toolchain that bundles npm or run with a matching Node installation.",
+        "AikaClaw refuses to shell out to bare npm on Windows; install a Node.js toolchain that bundles npm or run with a matching Node installation.",
     );
   }
   const pathKey = resolvePathEnvKey(env);

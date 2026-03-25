@@ -1,23 +1,23 @@
 import { type Bot, GrammyError, InputFile } from "grammy";
-import type { ReplyToMode } from "openclaw/plugin-sdk/config-runtime";
-import type { MarkdownTableMode } from "openclaw/plugin-sdk/config-runtime";
-import { fireAndForgetHook } from "openclaw/plugin-sdk/hook-runtime";
-import { createInternalHookEvent, triggerInternalHook } from "openclaw/plugin-sdk/hook-runtime";
+import type { ReplyToMode } from "aikaclaw/plugin-sdk/config-runtime";
+import type { MarkdownTableMode } from "aikaclaw/plugin-sdk/config-runtime";
+import { fireAndForgetHook } from "aikaclaw/plugin-sdk/hook-runtime";
+import { createInternalHookEvent, triggerInternalHook } from "aikaclaw/plugin-sdk/hook-runtime";
 import {
   buildCanonicalSentMessageHookContext,
   toInternalMessageSentContext,
   toPluginMessageContext,
   toPluginMessageSentEvent,
-} from "openclaw/plugin-sdk/hook-runtime";
-import { formatErrorMessage } from "openclaw/plugin-sdk/infra-runtime";
-import { buildOutboundMediaLoadOptions } from "openclaw/plugin-sdk/media-runtime";
-import { isGifMedia, kindFromMime } from "openclaw/plugin-sdk/media-runtime";
-import { getGlobalHookRunner } from "openclaw/plugin-sdk/plugin-runtime";
-import type { ReplyPayload } from "openclaw/plugin-sdk/reply-runtime";
-import { chunkMarkdownTextWithMode, type ChunkMode } from "openclaw/plugin-sdk/reply-runtime";
-import type { RuntimeEnv } from "openclaw/plugin-sdk/runtime-env";
-import { danger, logVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { loadWebMedia } from "openclaw/plugin-sdk/web-media";
+} from "aikaclaw/plugin-sdk/hook-runtime";
+import { formatErrorMessage } from "aikaclaw/plugin-sdk/infra-runtime";
+import { buildOutboundMediaLoadOptions } from "aikaclaw/plugin-sdk/media-runtime";
+import { isGifMedia, kindFromMime } from "aikaclaw/plugin-sdk/media-runtime";
+import { getGlobalHookRunner } from "aikaclaw/plugin-sdk/plugin-runtime";
+import type { ReplyPayload } from "aikaclaw/plugin-sdk/reply-runtime";
+import { chunkMarkdownTextWithMode, type ChunkMode } from "aikaclaw/plugin-sdk/reply-runtime";
+import type { RuntimeEnv } from "aikaclaw/plugin-sdk/runtime-env";
+import { danger, logVerbose } from "aikaclaw/plugin-sdk/runtime-env";
+import { loadWebMedia } from "aikaclaw/plugin-sdk/web-media";
 import type { TelegramInlineButtons } from "../button-types.js";
 import { splitTelegramCaption } from "../caption.js";
 import {
