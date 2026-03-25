@@ -29,10 +29,10 @@ describe("matchesExecAllowlistPattern", () => {
     const prevHome = process.env.HOME;
     process.env.AIKACLAW_HOME = "/srv/aikaclaw-home";
     process.env.HOME = "/home/other";
-    const openClawHome = path.join(path.resolve("/srv/aikaclaw-home"), "bin", "tool");
+    const aikaClawHome = path.join(path.resolve("/srv/aikaclaw-home"), "bin", "tool");
     const fallbackHome = path.join(path.resolve("/home/other"), "bin", "tool");
     try {
-      expect(matchesExecAllowlistPattern("~/bin/tool", openClawHome)).toBe(true);
+      expect(matchesExecAllowlistPattern("~/bin/tool", aikaClawHome)).toBe(true);
       expect(matchesExecAllowlistPattern("~/bin/tool", fallbackHome)).toBe(false);
     } finally {
       if (prevAikaClawHome === undefined) {

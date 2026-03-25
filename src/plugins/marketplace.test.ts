@@ -131,9 +131,9 @@ describe("marketplace plugins", () => {
 
   it("resolves Claude-style plugin@marketplace shortcuts from known_marketplaces.json", async () => {
     await withTempDir(async (homeDir) => {
-      const openClawHome = path.join(homeDir, "aikaclaw-home");
+      const aikaClawHome = path.join(homeDir, "aikaclaw-home");
       await fs.mkdir(path.join(homeDir, ".claude", "plugins"), { recursive: true });
-      await fs.mkdir(openClawHome, { recursive: true });
+      await fs.mkdir(aikaClawHome, { recursive: true });
       await fs.writeFile(
         path.join(homeDir, ".claude", "plugins", "known_marketplaces.json"),
         JSON.stringify({
@@ -149,7 +149,7 @@ describe("marketplace plugins", () => {
 
       const { resolveMarketplaceInstallShortcut } = await import("./marketplace.js");
       const shortcut = await withEnvAsync(
-        { HOME: homeDir, AIKACLAW_HOME: openClawHome },
+        { HOME: homeDir, AIKACLAW_HOME: aikaClawHome },
         async () => await resolveMarketplaceInstallShortcut("superpowers@claude-plugins-official"),
       );
 
