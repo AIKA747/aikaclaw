@@ -1,1 +1,1 @@
-Maintainer skills now live in [`aikaclaw/maintainers`](https://github.com/aikaclaw/maintainers/).
+Maintainer skills now live in [`AIKA747/maintainers`](https://github.com/AIKA747/maintainers/).

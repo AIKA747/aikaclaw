@@ -4,7 +4,7 @@ Welcome to the lobster tank! 🦞
 
 ## Quick Links
 
-- **GitHub:** https://github.com/aikaclaw/aikaclaw
+- **GitHub:** https://github.com/AIKA747/aikaclaw
 - **Vision:** [`VISION.md`](VISION.md)
 - **Discord:** https://discord.gg/qkhbAGHRBT
 - **X/Twitter:** [@steipete](https://x.com/steipete) / [@aikaclaw](https://x.com/aikaclaw)
@@ -80,7 +80,7 @@ Welcome to the lobster tank! 🦞
 ## How to Contribute
 
 1. **Bugs & small fixes** → Open a PR!
-2. **New features / architecture** → Start a [GitHub Discussion](https://github.com/aikaclaw/aikaclaw/discussions) or ask in Discord first
+2. **New features / architecture** → Start a [GitHub Discussion](https://github.com/AIKA747/aikaclaw/discussions) or ask in Discord first
 3. **Refactor-only PRs** → Don't open a PR. We are not accepting refactor-only changes unless a maintainer explicitly asks for them as part of a concrete fix.
 4. **Test/CI-only PRs for known `main` failures** → Don't open a PR. The Maintainer team is already tracking those failures, and PRs that only tweak tests or CI to chase them will be closed unless they are required to validate a new fix.
 5. **Questions** → Discord [#help](https://discord.com/channels/1456350064065904867/1459642797895319552) / [#users-helping-users](https://discord.com/channels/1456350064065904867/1459007081603403828)
@@ -97,7 +97,7 @@ Welcome to the lobster tank! 🦞
   - If you changed broader runtime behavior, still run the relevant wider lanes (`pnpm test:extensions`, `pnpm test:channels`, or `pnpm test`) before asking for review
 - If you have access to Codex, run `codex review --base origin/main` locally before opening or updating your PR. Treat this as the current highest standard of AI review, even if GitHub Codex review also runs.
 - Do not submit refactor-only PRs unless a maintainer explicitly requested that refactor for an active fix or deliverable.
-- Do not submit test or CI-config fixes for failures already red on `main` CI. If a failure is already visible in the [main branch CI runs](https://github.com/aikaclaw/aikaclaw/actions), it's a known issue the Maintainer team is tracking, and a PR that only addresses those failures will be closed automatically. If you spot a _new_ regression not yet shown in main CI, report it as an issue first.
+- Do not submit test or CI-config fixes for failures already red on `main` CI. If a failure is already visible in the [main branch CI runs](https://github.com/AIKA747/aikaclaw/actions), it's a known issue the Maintainer team is tracking, and a PR that only addresses those failures will be closed automatically. If you spot a _new_ regression not yet shown in main CI, report it as an issue first.
 - Do not submit test-only PRs that just try to make known `main` CI failures pass. Test changes are acceptable when they are required to validate a new fix or cover new behavior in the same PR.
 - Ensure CI checks pass
 - Keep PRs focused (one thing per PR; do not mix unrelated concerns)
@@ -158,7 +158,7 @@ We are currently prioritizing:
 - **Skills**: For skill contributions, head to [ClawHub](https://clawhub.ai/) — the community hub for AikaClaw skills.
 - **Performance**: Optimizing token usage and compaction logic.
 
-Check the [GitHub Issues](https://github.com/aikaclaw/aikaclaw/issues) for "good first issue" labels!
+Check the [GitHub Issues](https://github.com/AIKA747/aikaclaw/issues) for "good first issue" labels!
 
 ## Maintainers
 
@@ -184,12 +184,12 @@ Please allow a few weeks for a response.
 
 We take security reports seriously. Report vulnerabilities directly to the repository where the issue lives:
 
-- **Core CLI and gateway** — [aikaclaw/aikaclaw](https://github.com/aikaclaw/aikaclaw)
-- **macOS desktop app** — [aikaclaw/aikaclaw](https://github.com/aikaclaw/aikaclaw) (apps/macos)
-- **iOS app** — [aikaclaw/aikaclaw](https://github.com/aikaclaw/aikaclaw) (apps/ios)
-- **Android app** — [aikaclaw/aikaclaw](https://github.com/aikaclaw/aikaclaw) (apps/android)
-- **ClawHub** — [aikaclaw/clawhub](https://github.com/aikaclaw/clawhub)
-- **Trust and threat model** — [aikaclaw/trust](https://github.com/aikaclaw/trust)
+- **Core CLI and gateway** — [AIKA747/aikaclaw](https://github.com/AIKA747/aikaclaw)
+- **macOS desktop app** — [AIKA747/aikaclaw](https://github.com/AIKA747/aikaclaw) (apps/macos)
+- **iOS app** — [AIKA747/aikaclaw](https://github.com/AIKA747/aikaclaw) (apps/ios)
+- **Android app** — [AIKA747/aikaclaw](https://github.com/AIKA747/aikaclaw) (apps/android)
+- **ClawHub** — [AIKA747/clawhub](https://github.com/AIKA747/clawhub)
+- **Trust and threat model** — [AIKA747/trust](https://github.com/AIKA747/trust)
 
 For issues that don't fit a specific repo, or if you're unsure, email **security@aikaclaw.ai** and we'll route it.
 
