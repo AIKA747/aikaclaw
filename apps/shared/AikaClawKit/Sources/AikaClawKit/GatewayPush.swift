@@ -1,4 +1,4 @@
-import OpenClawProtocol
+import AikaClawProtocol
 
 /// Server-push messages from the gateway websocket.
 ///

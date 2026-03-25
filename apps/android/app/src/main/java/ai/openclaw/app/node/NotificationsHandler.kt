@@ -1,7 +1,7 @@
-package ai.openclaw.app.node
+package ai.aikaclaw.app.node
 
 import android.content.Context
-import ai.openclaw.app.gateway.GatewaySession
+import ai.aikaclaw.app.gateway.GatewaySession
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject

@@ -1,4 +1,4 @@
-package ai.openclaw.app.gateway
+package ai.aikaclaw.app.gateway
 
 data class ParsedInvokeError(
   val code: String,

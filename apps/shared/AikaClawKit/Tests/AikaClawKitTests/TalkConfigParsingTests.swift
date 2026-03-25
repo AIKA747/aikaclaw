@@ -1,4 +1,4 @@
-import OpenClawKit
+import AikaClawKit
 import Testing
 
 struct TalkConfigParsingTests {

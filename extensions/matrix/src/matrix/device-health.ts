@@ -20,12 +20,12 @@ export function summarizeMatrixDeviceHealth(
   devices: MatrixManagedDeviceInfo[],
 ): MatrixDeviceHealthSummary {
   const currentDeviceId = devices.find((device) => device.current)?.deviceId ?? null;
-  const openClawDevices = devices.filter((device) =>
+  const aikaClawDevices = devices.filter((device) =>
     isAikaClawManagedMatrixDevice(device.displayName),
   );
   return {
     currentDeviceId,
-    staleAikaClawDevices: openClawDevices.filter((device) => !device.current),
-    currentAikaClawDevices: openClawDevices.filter((device) => device.current),
+    staleAikaClawDevices: aikaClawDevices.filter((device) => !device.current),
+    currentAikaClawDevices: aikaClawDevices.filter((device) => device.current),
   };
 }

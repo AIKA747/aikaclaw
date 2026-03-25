@@ -219,7 +219,7 @@ export async function handleInlineActions(params: {
         resolveGatewayMessageChannel(ctx.Provider) ??
         undefined;
 
-      const { createAikaClawTools } = await import("../../agents/aikaclaw-tools.runtime.js");
+      const { createAikaClawTools } = await import("../../agents/aikaclaw-tools.runtime");
       const tools = createAikaClawTools({
         agentSessionKey: sessionKey,
         agentChannel: channel,

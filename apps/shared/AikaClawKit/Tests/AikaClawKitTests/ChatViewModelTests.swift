@@ -1,7 +1,7 @@
-import OpenClawKit
+import AikaClawKit
 import Foundation
 import Testing
-@testable import OpenClawChatUI
+@testable import AikaClawChatUI
 
 private func chatTextMessage(role: String, text: String, timestamp: Double) -> AnyCodable {
     AnyCodable([
@@ -14,17 +14,17 @@ private func chatTextMessage(role: String, text: String, timestamp: Double) -> A
 private func historyPayload(
     sessionKey: String = "main",
     sessionId: String? = "sess-main",
-    messages: [AnyCodable] = []) -> OpenClawChatHistoryPayload
+    messages: [AnyCodable] = []) -> AikaClawChatHistoryPayload
 {
-    OpenClawChatHistoryPayload(
+    AikaClawChatHistoryPayload(
         sessionKey: sessionKey,
         sessionId: sessionId,
         messages: messages,
         thinkingLevel: "off")
 }
 
-private func sessionEntry(key: String, updatedAt: Double) -> OpenClawChatSessionEntry {
-    OpenClawChatSessionEntry(
+private func sessionEntry(key: String, updatedAt: Double) -> AikaClawChatSessionEntry {
+    AikaClawChatSessionEntry(
         key: key,
         kind: nil,
         displayName: nil,
@@ -50,9 +50,9 @@ private func sessionEntry(
     key: String,
     updatedAt: Double,
     model: String?,
-    modelProvider: String? = nil) -> OpenClawChatSessionEntry
+    modelProvider: String? = nil) -> AikaClawChatSessionEntry
 {
-    OpenClawChatSessionEntry(
+    AikaClawChatSessionEntry(
         key: key,
         kind: nil,
         displayName: nil,
@@ -74,22 +74,22 @@ private func sessionEntry(
         contextTokens: nil)
 }
 
-private func modelChoice(id: String, name: String, provider: String = "anthropic") -> OpenClawChatModelChoice {
-    OpenClawChatModelChoice(modelID: id, name: name, provider: provider, contextWindow: nil)
+private func modelChoice(id: String, name: String, provider: String = "anthropic") -> AikaClawChatModelChoice {
+    AikaClawChatModelChoice(modelID: id, name: name, provider: provider, contextWindow: nil)
 }
 
 private func makeViewModel(
     sessionKey: String = "main",
-    historyResponses: [OpenClawChatHistoryPayload],
-    sessionsResponses: [OpenClawChatSessionsListResponse] = [],
-    modelResponses: [[OpenClawChatModelChoice]] = [],
+    historyResponses: [AikaClawChatHistoryPayload],
+    sessionsResponses: [AikaClawChatSessionsListResponse] = [],
+    modelResponses: [[AikaClawChatModelChoice]] = [],
     resetSessionHook: (@Sendable (String) async throws -> Void)? = nil,
     compactSessionHook: (@Sendable (String) async throws -> Void)? = nil,
     setSessionModelHook: (@Sendable (String?) async throws -> Void)? = nil,
     setSessionThinkingHook: (@Sendable (String) async throws -> Void)? = nil,
     initialThinkingLevel: String? = nil,
     onThinkingLevelChanged: (@MainActor @Sendable (String) -> Void)? = nil) async
-    -> (TestChatTransport, OpenClawChatViewModel)
+    -> (TestChatTransport, AikaClawChatViewModel)
 {
     let transport = TestChatTransport(
         historyResponses: historyResponses,
@@ -100,7 +100,7 @@ private func makeViewModel(
         setSessionModelHook: setSessionModelHook,
         setSessionThinkingHook: setSessionThinkingHook)
     let vm = await MainActor.run {
-        OpenClawChatViewModel(
+        AikaClawChatViewModel(
             sessionKey: sessionKey,
             transport: transport,
             initialThinkingLevel: initialThinkingLevel,
@@ -110,7 +110,7 @@ private func makeViewModel(
 }
 
 private func loadAndWaitBootstrap(
-    vm: OpenClawChatViewModel,
+    vm: AikaClawChatViewModel,
     sessionId: String? = nil) async throws
 {
     await MainActor.run { vm.load() }
@@ -121,7 +121,7 @@ private func loadAndWaitBootstrap(
     }
 }
 
-private func sendUserMessage(_ vm: OpenClawChatViewModel, text: String = "hi") async {
+private func sendUserMessage(_ vm: AikaClawChatViewModel, text: String = "hi") async {
     await MainActor.run {
         vm.input = text
         vm.send()
@@ -131,7 +131,7 @@ private func sendUserMessage(_ vm: OpenClawChatViewModel, text: String = "hi") a
 @discardableResult
 private func sendMessageAndEmitFinal(
     transport: TestChatTransport,
-    vm: OpenClawChatViewModel,
+    vm: AikaClawChatViewModel,
     text: String,
     sessionKey: String = "main") async throws -> String
 {
@@ -141,7 +141,7 @@ private func sendMessageAndEmitFinal(
     let runId = try #require(await transport.lastSentRunId())
     transport.emit(
         .chat(
-            OpenClawChatEventPayload(
+            AikaClawChatEventPayload(
                 runId: runId,
                 sessionKey: sessionKey,
                 state: "final",
@@ -158,7 +158,7 @@ private func emitAssistantText(
 {
     transport.emit(
         .agent(
-            OpenClawAgentEventPayload(
+            AikaClawAgentEventPayload(
                 runId: runId,
                 seq: seq,
                 stream: "assistant",
@@ -173,7 +173,7 @@ private func emitToolStart(
 {
     transport.emit(
         .agent(
-            OpenClawAgentEventPayload(
+            AikaClawAgentEventPayload(
                 runId: runId,
                 seq: seq,
                 stream: "tool",
@@ -193,7 +193,7 @@ private func emitExternalFinal(
 {
     transport.emit(
         .chat(
-            OpenClawChatEventPayload(
+            AikaClawChatEventPayload(
                 runId: runId,
                 sessionKey: sessionKey,
                 state: "final",
@@ -247,23 +247,23 @@ private actor TestChatTransportState {
     var patchedThinkingLevels: [String] = []
 }
 
-private final class TestChatTransport: @unchecked Sendable, OpenClawChatTransport {
+private final class TestChatTransport: @unchecked Sendable, AikaClawChatTransport {
     private let state = TestChatTransportState()
-    private let historyResponses: [OpenClawChatHistoryPayload]
-    private let sessionsResponses: [OpenClawChatSessionsListResponse]
-    private let modelResponses: [[OpenClawChatModelChoice]]
+    private let historyResponses: [AikaClawChatHistoryPayload]
+    private let sessionsResponses: [AikaClawChatSessionsListResponse]
+    private let modelResponses: [[AikaClawChatModelChoice]]
     private let resetSessionHook: (@Sendable (String) async throws -> Void)?
     private let compactSessionHook: (@Sendable (String) async throws -> Void)?
     private let setSessionModelHook: (@Sendable (String?) async throws -> Void)?
     private let setSessionThinkingHook: (@Sendable (String) async throws -> Void)?
 
-    private let stream: AsyncStream<OpenClawChatTransportEvent>
-    private let continuation: AsyncStream<OpenClawChatTransportEvent>.Continuation
+    private let stream: AsyncStream<AikaClawChatTransportEvent>
+    private let continuation: AsyncStream<AikaClawChatTransportEvent>.Continuation
 
     init(
-        historyResponses: [OpenClawChatHistoryPayload],
-        sessionsResponses: [OpenClawChatSessionsListResponse] = [],
-        modelResponses: [[OpenClawChatModelChoice]] = [],
+        historyResponses: [AikaClawChatHistoryPayload],
+        sessionsResponses: [AikaClawChatSessionsListResponse] = [],
+        modelResponses: [[AikaClawChatModelChoice]] = [],
         resetSessionHook: (@Sendable (String) async throws -> Void)? = nil,
         compactSessionHook: (@Sendable (String) async throws -> Void)? = nil,
         setSessionModelHook: (@Sendable (String?) async throws -> Void)? = nil,
@@ -276,26 +276,26 @@ private final class TestChatTransport: @unchecked Sendable, OpenClawChatTranspor
         self.compactSessionHook = compactSessionHook
         self.setSessionModelHook = setSessionModelHook
         self.setSessionThinkingHook = setSessionThinkingHook
-        var cont: AsyncStream<OpenClawChatTransportEvent>.Continuation!
+        var cont: AsyncStream<AikaClawChatTransportEvent>.Continuation!
         self.stream = AsyncStream { c in
             cont = c
         }
         self.continuation = cont
     }
 
-    func events() -> AsyncStream<OpenClawChatTransportEvent> {
+    func events() -> AsyncStream<AikaClawChatTransportEvent> {
         self.stream
     }
 
     func setActiveSessionKey(_: String) async throws {}
 
-    func requestHistory(sessionKey: String) async throws -> OpenClawChatHistoryPayload {
+    func requestHistory(sessionKey: String) async throws -> AikaClawChatHistoryPayload {
         let idx = await self.state.historyCallCount
         await self.state.setHistoryCallCount(idx + 1)
         if idx < self.historyResponses.count {
             return self.historyResponses[idx]
         }
-        return self.historyResponses.last ?? OpenClawChatHistoryPayload(
+        return self.historyResponses.last ?? AikaClawChatHistoryPayload(
             sessionKey: sessionKey,
             sessionId: nil,
             messages: [],
@@ -307,24 +307,24 @@ private final class TestChatTransport: @unchecked Sendable, OpenClawChatTranspor
         message _: String,
         thinking: String,
         idempotencyKey: String,
-        attachments _: [OpenClawChatAttachmentPayload]) async throws -> OpenClawChatSendResponse
+        attachments _: [AikaClawChatAttachmentPayload]) async throws -> AikaClawChatSendResponse
     {
         await self.state.sentRunIdsAppend(idempotencyKey)
         await self.state.sentThinkingLevelsAppend(thinking)
-        return OpenClawChatSendResponse(runId: idempotencyKey, status: "ok")
+        return AikaClawChatSendResponse(runId: idempotencyKey, status: "ok")
     }
 
     func abortRun(sessionKey _: String, runId: String) async throws {
         await self.state.abortedRunIdsAppend(runId)
     }
 
-    func listSessions(limit _: Int?) async throws -> OpenClawChatSessionsListResponse {
+    func listSessions(limit _: Int?) async throws -> AikaClawChatSessionsListResponse {
         let idx = await self.state.sessionsCallCount
         await self.state.setSessionsCallCount(idx + 1)
         if idx < self.sessionsResponses.count {
             return self.sessionsResponses[idx]
         }
-        return self.sessionsResponses.last ?? OpenClawChatSessionsListResponse(
+        return self.sessionsResponses.last ?? AikaClawChatSessionsListResponse(
             ts: nil,
             path: nil,
             count: 0,
@@ -332,7 +332,7 @@ private final class TestChatTransport: @unchecked Sendable, OpenClawChatTranspor
             sessions: [])
     }
 
-    func listModels() async throws -> [OpenClawChatModelChoice] {
+    func listModels() async throws -> [AikaClawChatModelChoice] {
         let idx = await self.state.modelsCallCount
         await self.state.setModelsCallCount(idx + 1)
         if idx < self.modelResponses.count {
@@ -373,7 +373,7 @@ private final class TestChatTransport: @unchecked Sendable, OpenClawChatTranspor
         true
     }
 
-    func emit(_ evt: OpenClawChatTransportEvent) {
+    func emit(_ evt: AikaClawChatTransportEvent) {
         self.continuation.yield(evt)
     }
 
@@ -480,7 +480,7 @@ extension TestChatTransportState {
         let runId = try #require(await transport.lastSentRunId())
         transport.emit(
             .chat(
-                OpenClawChatEventPayload(
+                AikaClawChatEventPayload(
                     runId: runId,
                     sessionKey: "main",
                     state: "final",
@@ -648,7 +648,7 @@ extension TestChatTransportState {
         let runId = try #require(await transport.lastSentRunId())
         transport.emit(
             .chat(
-                OpenClawChatEventPayload(
+                AikaClawChatEventPayload(
                     runId: runId,
                     sessionKey: "agent:main:main",
                     state: "final",
@@ -677,7 +677,7 @@ extension TestChatTransportState {
 
         transport.emit(
             .chat(
-                OpenClawChatEventPayload(
+                AikaClawChatEventPayload(
                     runId: "external-run",
                     sessionKey: "agent:main:main",
                     state: "final",
@@ -760,7 +760,7 @@ extension TestChatTransportState {
         let recentOlder = now - (5 * 60 * 60 * 1000)
         let stale = now - (26 * 60 * 60 * 1000)
         let history = historyPayload()
-        let sessions = OpenClawChatSessionsListResponse(
+        let sessions = AikaClawChatSessionsListResponse(
             ts: now,
             path: nil,
             count: 4,
@@ -784,7 +784,7 @@ extension TestChatTransportState {
         let now = Date().timeIntervalSince1970 * 1000
         let recent = now - (30 * 60 * 1000)
         let history = historyPayload(sessionKey: "custom", sessionId: "sess-custom")
-        let sessions = OpenClawChatSessionsListResponse(
+        let sessions = AikaClawChatSessionsListResponse(
             ts: now,
             path: nil,
             count: 1,
@@ -809,16 +809,16 @@ extension TestChatTransportState {
         let recent = now - (30 * 60 * 1000)
         let recentOlder = now - (90 * 60 * 1000)
         let history = historyPayload(sessionKey: "Luke’s MacBook Pro", sessionId: "sess-main")
-        let sessions = OpenClawChatSessionsListResponse(
+        let sessions = AikaClawChatSessionsListResponse(
             ts: now,
             path: nil,
             count: 2,
-            defaults: OpenClawChatSessionsDefaults(
+            defaults: AikaClawChatSessionsDefaults(
                 model: nil,
                 contextTokens: nil,
                 mainSessionKey: "Luke’s MacBook Pro"),
             sessions: [
-                OpenClawChatSessionEntry(
+                AikaClawChatSessionEntry(
                     key: "Luke’s MacBook Pro",
                     kind: nil,
                     displayName: "Luke’s MacBook Pro",
@@ -857,16 +857,16 @@ extension TestChatTransportState {
         let recent = now - (2 * 60 * 1000)
         let recentOlder = now - (5 * 60 * 1000)
         let history = historyPayload(sessionKey: "agent:main:main", sessionId: "sess-main")
-        let sessions = OpenClawChatSessionsListResponse(
+        let sessions = AikaClawChatSessionsListResponse(
             ts: now,
             path: nil,
             count: 2,
-            defaults: OpenClawChatSessionsDefaults(
+            defaults: AikaClawChatSessionsDefaults(
                 model: nil,
                 contextTokens: nil,
                 mainSessionKey: "agent:main:main"),
             sessions: [
-                OpenClawChatSessionEntry(
+                AikaClawChatSessionEntry(
                     key: "agent:main:onboarding",
                     kind: nil,
                     displayName: "Luke’s MacBook Pro",
@@ -886,7 +886,7 @@ extension TestChatTransportState {
                     modelProvider: nil,
                     model: nil,
                     contextTokens: nil),
-                OpenClawChatSessionEntry(
+                AikaClawChatSessionEntry(
                     key: "agent:main:main",
                     kind: nil,
                     displayName: "Luke’s MacBook Pro",
@@ -1086,11 +1086,11 @@ extension TestChatTransportState {
     @Test func bootstrapsModelSelectionFromSessionAndDefaults() async throws {
         let now = Date().timeIntervalSince1970 * 1000
         let history = historyPayload()
-        let sessions = OpenClawChatSessionsListResponse(
+        let sessions = AikaClawChatSessionsListResponse(
             ts: now,
             path: nil,
             count: 1,
-            defaults: OpenClawChatSessionsDefaults(model: "openai/gpt-4.1-mini", contextTokens: nil),
+            defaults: AikaClawChatSessionsDefaults(model: "openai/gpt-4.1-mini", contextTokens: nil),
             sessions: [
                 sessionEntry(key: "main", updatedAt: now, model: "anthropic/claude-opus-4-6"),
             ])
@@ -1114,11 +1114,11 @@ extension TestChatTransportState {
     @Test func selectingDefaultModelPatchesNilAndUpdatesSelection() async throws {
         let now = Date().timeIntervalSince1970 * 1000
         let history = historyPayload()
-        let sessions = OpenClawChatSessionsListResponse(
+        let sessions = AikaClawChatSessionsListResponse(
             ts: now,
             path: nil,
             count: 1,
-            defaults: OpenClawChatSessionsDefaults(model: "openai/gpt-4.1-mini", contextTokens: nil),
+            defaults: AikaClawChatSessionsDefaults(model: "openai/gpt-4.1-mini", contextTokens: nil),
             sessions: [
                 sessionEntry(key: "main", updatedAt: now, model: "anthropic/claude-opus-4-6"),
             ])
@@ -1134,24 +1134,24 @@ extension TestChatTransportState {
 
         try await loadAndWaitBootstrap(vm: vm)
 
-        await MainActor.run { vm.selectModel(OpenClawChatViewModel.defaultModelSelectionID) }
+        await MainActor.run { vm.selectModel(AikaClawChatViewModel.defaultModelSelectionID) }
 
         try await waitUntil("session model patched") {
             let patched = await transport.patchedModels()
             return patched == [nil]
         }
 
-        #expect(await MainActor.run { vm.modelSelectionID } == OpenClawChatViewModel.defaultModelSelectionID)
+        #expect(await MainActor.run { vm.modelSelectionID } == AikaClawChatViewModel.defaultModelSelectionID)
     }
 
     @Test func selectingProviderQualifiedModelDisambiguatesDuplicateModelIDs() async throws {
         let now = Date().timeIntervalSince1970 * 1000
         let history = historyPayload()
-        let sessions = OpenClawChatSessionsListResponse(
+        let sessions = AikaClawChatSessionsListResponse(
             ts: now,
             path: nil,
             count: 1,
-            defaults: OpenClawChatSessionsDefaults(model: "openrouter/gpt-4.1-mini", contextTokens: nil),
+            defaults: AikaClawChatSessionsDefaults(model: "openrouter/gpt-4.1-mini", contextTokens: nil),
             sessions: [
                 sessionEntry(key: "main", updatedAt: now, model: "gpt-4.1-mini", modelProvider: "openrouter"),
             ])
@@ -1180,7 +1180,7 @@ extension TestChatTransportState {
     @Test func slashModelIDsStayProviderQualifiedInSelectionAndPatch() async throws {
         let now = Date().timeIntervalSince1970 * 1000
         let history = historyPayload()
-        let sessions = OpenClawChatSessionsListResponse(
+        let sessions = AikaClawChatSessionsListResponse(
             ts: now,
             path: nil,
             count: 1,
@@ -1213,7 +1213,7 @@ extension TestChatTransportState {
     @Test func staleModelPatchCompletionsDoNotOverwriteNewerSelection() async throws {
         let now = Date().timeIntervalSince1970 * 1000
         let history = historyPayload()
-        let sessions = OpenClawChatSessionsListResponse(
+        let sessions = AikaClawChatSessionsListResponse(
             ts: now,
             path: nil,
             count: 1,
@@ -1256,7 +1256,7 @@ extension TestChatTransportState {
     @Test func sendWaitsForInFlightModelPatchToFinish() async throws {
         let now = Date().timeIntervalSince1970 * 1000
         let history = historyPayload()
-        let sessions = OpenClawChatSessionsListResponse(
+        let sessions = AikaClawChatSessionsListResponse(
             ts: now,
             path: nil,
             count: 1,
@@ -1309,7 +1309,7 @@ extension TestChatTransportState {
     @Test func failedLatestModelSelectionDoesNotReplayAfterOlderCompletionFinishes() async throws {
         let now = Date().timeIntervalSince1970 * 1000
         let history = historyPayload()
-        let sessions = OpenClawChatSessionsListResponse(
+        let sessions = AikaClawChatSessionsListResponse(
             ts: now,
             path: nil,
             count: 1,
@@ -1359,7 +1359,7 @@ extension TestChatTransportState {
     @Test func failedLatestModelSelectionRestoresEarlierSuccessWithoutReplay() async throws {
         let now = Date().timeIntervalSince1970 * 1000
         let history = historyPayload()
-        let sessions = OpenClawChatSessionsListResponse(
+        let sessions = AikaClawChatSessionsListResponse(
             ts: now,
             path: nil,
             count: 1,
@@ -1407,7 +1407,7 @@ extension TestChatTransportState {
 
     @Test func switchingSessionsIgnoresLateModelPatchCompletionFromPreviousSession() async throws {
         let now = Date().timeIntervalSince1970 * 1000
-        let sessions = OpenClawChatSessionsListResponse(
+        let sessions = AikaClawChatSessionsListResponse(
             ts: now,
             path: nil,
             count: 2,
@@ -1446,13 +1446,13 @@ extension TestChatTransportState {
             return patched == ["openai/gpt-5.4"]
         }
 
-        #expect(await MainActor.run { vm.modelSelectionID } == OpenClawChatViewModel.defaultModelSelectionID)
+        #expect(await MainActor.run { vm.modelSelectionID } == AikaClawChatViewModel.defaultModelSelectionID)
         #expect(await MainActor.run { vm.sessions.first(where: { $0.key == "other" })?.model } == nil)
     }
 
     @Test func lateModelCompletionDoesNotReplayCurrentSessionSelectionIntoPreviousSession() async throws {
         let now = Date().timeIntervalSince1970 * 1000
-        let initialSessions = OpenClawChatSessionsListResponse(
+        let initialSessions = AikaClawChatSessionsListResponse(
             ts: now,
             path: nil,
             count: 2,
@@ -1461,7 +1461,7 @@ extension TestChatTransportState {
                 sessionEntry(key: "main", updatedAt: now, model: nil),
                 sessionEntry(key: "other", updatedAt: now - 1000, model: nil),
             ])
-        let sessionsAfterOtherSelection = OpenClawChatSessionsListResponse(
+        let sessionsAfterOtherSelection = AikaClawChatSessionsListResponse(
             ts: now,
             path: nil,
             count: 2,
@@ -1523,7 +1523,7 @@ extension TestChatTransportState {
     }
 
     @Test func explicitThinkingLevelWinsOverHistoryAndPersistsChanges() async throws {
-        let history = OpenClawChatHistoryPayload(
+        let history = AikaClawChatHistoryPayload(
             sessionKey: "main",
             sessionId: "sess-main",
             messages: [],
@@ -1552,7 +1552,7 @@ extension TestChatTransportState {
     }
 
     @Test func serverProvidedThinkingLevelsOutsideMenuArePreservedForSend() async throws {
-        let history = OpenClawChatHistoryPayload(
+        let history = AikaClawChatHistoryPayload(
             sessionKey: "main",
             sessionId: "sess-main",
             messages: [],
@@ -1570,7 +1570,7 @@ extension TestChatTransportState {
     }
 
     @Test func staleThinkingPatchCompletionReappliesLatestSelection() async throws {
-        let history = OpenClawChatHistoryPayload(
+        let history = AikaClawChatHistoryPayload(
             sessionKey: "main",
             sessionId: "sess-main",
             messages: [],
@@ -1613,7 +1613,7 @@ extension TestChatTransportState {
 
         transport.emit(
             .chat(
-                OpenClawChatEventPayload(
+                AikaClawChatEventPayload(
                     runId: "other-run",
                     sessionKey: "main",
                     state: "error",
@@ -1624,7 +1624,7 @@ extension TestChatTransportState {
     }
 
     @Test func stripsInboundMetadataFromHistoryMessages() async throws {
-        let history = OpenClawChatHistoryPayload(
+        let history = AikaClawChatHistoryPayload(
             sessionKey: "main",
             sessionId: "sess-main",
             messages: [
@@ -1633,7 +1633,7 @@ extension TestChatTransportState {
                     "content": [["type": "text", "text": """
 Conversation info (untrusted metadata):
 ```json
-{ \"sender\": \"openclaw-ios\" }
+{ \"sender\": \"aikaclaw-ios\" }
 ```
 
 Hello?
@@ -1643,7 +1643,7 @@ Hello?
             ],
             thinkingLevel: "off")
         let transport = TestChatTransport(historyResponses: [history])
-        let vm = await MainActor.run { OpenClawChatViewModel(sessionKey: "main", transport: transport) }
+        let vm = await MainActor.run { AikaClawChatViewModel(sessionKey: "main", transport: transport) }
 
         await MainActor.run { vm.load() }
         try await waitUntil("history loaded") { await MainActor.run { !vm.messages.isEmpty } }
@@ -1674,7 +1674,7 @@ Hello?
 
         transport.emit(
             .chat(
-                OpenClawChatEventPayload(
+                AikaClawChatEventPayload(
                     runId: runId,
                     sessionKey: "main",
                     state: "aborted",

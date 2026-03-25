@@ -1,6 +1,6 @@
-package ai.openclaw.app.node
+package ai.aikaclaw.app.node
 
-import ai.openclaw.app.gateway.parseInvokeErrorFromThrowable
+import ai.aikaclaw.app.gateway.parseInvokeErrorFromThrowable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonNull

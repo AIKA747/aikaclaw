@@ -1,4 +1,4 @@
-import OpenClawKit
+import AikaClawKit
 import Foundation
 
 enum ChatPayloadDecoding {

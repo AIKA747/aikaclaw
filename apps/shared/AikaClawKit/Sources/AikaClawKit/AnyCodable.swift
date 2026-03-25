@@ -1,4 +1,4 @@
-import OpenClawProtocol
+import AikaClawProtocol
 
-public typealias AnyCodable = OpenClawProtocol.AnyCodable
+public typealias AnyCodable = AikaClawProtocol.AnyCodable
 

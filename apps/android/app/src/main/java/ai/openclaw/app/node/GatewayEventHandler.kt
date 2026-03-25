@@ -1,7 +1,7 @@
-package ai.openclaw.app.node
+package ai.aikaclaw.app.node
 
-import ai.openclaw.app.SecurePrefs
-import ai.openclaw.app.gateway.GatewaySession
+import ai.aikaclaw.app.SecurePrefs
+import ai.aikaclaw.app.gateway.GatewaySession
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay

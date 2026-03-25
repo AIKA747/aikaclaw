@@ -275,7 +275,7 @@ async function aikaclawCliJson<T>(params: { aikaclawBin: string; args: string[] 
   return JSON.parse(stdout) as T;
 }
 
-async function readMessagesWithOpenclaw(params: {
+async function readMessagesWithAikaclaw(params: {
   aikaclawBin: string;
   target: string;
   limit: number;
@@ -467,7 +467,7 @@ async function loadParentRecentMessages(params: {
   readAuthHeader: string;
 }): Promise<DiscordMessage[]> {
   if (params.args.driverMode === "aikaclaw") {
-    return await readMessagesWithOpenclaw({
+    return await readMessagesWithAikaclaw({
       aikaclawBin: params.args.aikaclawBin,
       target: params.args.channelId,
       limit: 20,
@@ -735,7 +735,7 @@ async function run(): Promise<SuccessResult | FailureResult> {
       try {
         const threadMessages =
           args.driverMode === "aikaclaw"
-            ? await readMessagesWithOpenclaw({
+            ? await readMessagesWithAikaclaw({
                 aikaclawBin: args.aikaclawBin,
                 target: threadId,
                 limit: 50,

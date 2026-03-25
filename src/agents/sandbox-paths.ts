@@ -194,11 +194,11 @@ async function resolveAllowedTmpMediaPath(params: {
     return undefined;
   }
   const resolved = path.resolve(resolveSandboxInputPath(params.candidate, params.sandboxRoot));
-  const openClawTmpDir = path.resolve(resolvePreferredAikaClawTmpDir());
-  if (!isPathInside(openClawTmpDir, resolved)) {
+  const aikaClawTmpDir = path.resolve(resolvePreferredAikaClawTmpDir());
+  if (!isPathInside(aikaClawTmpDir, resolved)) {
     return undefined;
   }
-  await assertNoTmpAliasEscape({ filePath: resolved, tmpRoot: openClawTmpDir });
+  await assertNoTmpAliasEscape({ filePath: resolved, tmpRoot: aikaClawTmpDir });
   return resolved;
 }
 

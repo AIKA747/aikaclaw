@@ -1,17 +1,17 @@
-package ai.openclaw.app.node
+package ai.aikaclaw.app.node
 
-import ai.openclaw.app.protocol.OpenClawCalendarCommand
-import ai.openclaw.app.protocol.OpenClawCameraCommand
-import ai.openclaw.app.protocol.OpenClawCallLogCommand
-import ai.openclaw.app.protocol.OpenClawCapability
-import ai.openclaw.app.protocol.OpenClawContactsCommand
-import ai.openclaw.app.protocol.OpenClawDeviceCommand
-import ai.openclaw.app.protocol.OpenClawLocationCommand
-import ai.openclaw.app.protocol.OpenClawMotionCommand
-import ai.openclaw.app.protocol.OpenClawNotificationsCommand
-import ai.openclaw.app.protocol.OpenClawPhotosCommand
-import ai.openclaw.app.protocol.OpenClawSmsCommand
-import ai.openclaw.app.protocol.OpenClawSystemCommand
+import ai.aikaclaw.app.protocol.AikaClawCalendarCommand
+import ai.aikaclaw.app.protocol.AikaClawCameraCommand
+import ai.aikaclaw.app.protocol.AikaClawCallLogCommand
+import ai.aikaclaw.app.protocol.AikaClawCapability
+import ai.aikaclaw.app.protocol.AikaClawContactsCommand
+import ai.aikaclaw.app.protocol.AikaClawDeviceCommand
+import ai.aikaclaw.app.protocol.AikaClawLocationCommand
+import ai.aikaclaw.app.protocol.AikaClawMotionCommand
+import ai.aikaclaw.app.protocol.AikaClawNotificationsCommand
+import ai.aikaclaw.app.protocol.AikaClawPhotosCommand
+import ai.aikaclaw.app.protocol.AikaClawSmsCommand
+import ai.aikaclaw.app.protocol.AikaClawSystemCommand
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -19,52 +19,52 @@ import org.junit.Test
 class InvokeCommandRegistryTest {
   private val coreCapabilities =
     setOf(
-      OpenClawCapability.Canvas.rawValue,
-      OpenClawCapability.Device.rawValue,
-      OpenClawCapability.Notifications.rawValue,
-      OpenClawCapability.System.rawValue,
-      OpenClawCapability.Photos.rawValue,
-      OpenClawCapability.Contacts.rawValue,
-      OpenClawCapability.Calendar.rawValue,
+      AikaClawCapability.Canvas.rawValue,
+      AikaClawCapability.Device.rawValue,
+      AikaClawCapability.Notifications.rawValue,
+      AikaClawCapability.System.rawValue,
+      AikaClawCapability.Photos.rawValue,
+      AikaClawCapability.Contacts.rawValue,
+      AikaClawCapability.Calendar.rawValue,
     )
 
   private val optionalCapabilities =
     setOf(
-      OpenClawCapability.Camera.rawValue,
-      OpenClawCapability.Location.rawValue,
-      OpenClawCapability.Sms.rawValue,
-      OpenClawCapability.CallLog.rawValue,
-      OpenClawCapability.VoiceWake.rawValue,
-      OpenClawCapability.Motion.rawValue,
+      AikaClawCapability.Camera.rawValue,
+      AikaClawCapability.Location.rawValue,
+      AikaClawCapability.Sms.rawValue,
+      AikaClawCapability.CallLog.rawValue,
+      AikaClawCapability.VoiceWake.rawValue,
+      AikaClawCapability.Motion.rawValue,
     )
 
   private val coreCommands =
     setOf(
-      OpenClawDeviceCommand.Status.rawValue,
-      OpenClawDeviceCommand.Info.rawValue,
-      OpenClawDeviceCommand.Permissions.rawValue,
-      OpenClawDeviceCommand.Health.rawValue,
-      OpenClawNotificationsCommand.List.rawValue,
-      OpenClawNotificationsCommand.Actions.rawValue,
-      OpenClawSystemCommand.Notify.rawValue,
-      OpenClawPhotosCommand.Latest.rawValue,
-      OpenClawContactsCommand.Search.rawValue,
-      OpenClawContactsCommand.Add.rawValue,
-      OpenClawCalendarCommand.Events.rawValue,
-      OpenClawCalendarCommand.Add.rawValue,
+      AikaClawDeviceCommand.Status.rawValue,
+      AikaClawDeviceCommand.Info.rawValue,
+      AikaClawDeviceCommand.Permissions.rawValue,
+      AikaClawDeviceCommand.Health.rawValue,
+      AikaClawNotificationsCommand.List.rawValue,
+      AikaClawNotificationsCommand.Actions.rawValue,
+      AikaClawSystemCommand.Notify.rawValue,
+      AikaClawPhotosCommand.Latest.rawValue,
+      AikaClawContactsCommand.Search.rawValue,
+      AikaClawContactsCommand.Add.rawValue,
+      AikaClawCalendarCommand.Events.rawValue,
+      AikaClawCalendarCommand.Add.rawValue,
     )
 
   private val optionalCommands =
     setOf(
-      OpenClawCameraCommand.Snap.rawValue,
-      OpenClawCameraCommand.Clip.rawValue,
-      OpenClawCameraCommand.List.rawValue,
-      OpenClawLocationCommand.Get.rawValue,
-      OpenClawMotionCommand.Activity.rawValue,
-      OpenClawMotionCommand.Pedometer.rawValue,
-      OpenClawSmsCommand.Send.rawValue,
-      OpenClawSmsCommand.Search.rawValue,
-      OpenClawCallLogCommand.Search.rawValue,
+      AikaClawCameraCommand.Snap.rawValue,
+      AikaClawCameraCommand.Clip.rawValue,
+      AikaClawCameraCommand.List.rawValue,
+      AikaClawLocationCommand.Get.rawValue,
+      AikaClawMotionCommand.Activity.rawValue,
+      AikaClawMotionCommand.Pedometer.rawValue,
+      AikaClawSmsCommand.Send.rawValue,
+      AikaClawSmsCommand.Search.rawValue,
+      AikaClawCallLogCommand.Search.rawValue,
     )
 
   private val debugCommands = setOf("debug.logs", "debug.ed25519")
@@ -140,8 +140,8 @@ class InvokeCommandRegistryTest {
         ),
       )
 
-    assertTrue(commands.contains(OpenClawMotionCommand.Activity.rawValue))
-    assertFalse(commands.contains(OpenClawMotionCommand.Pedometer.rawValue))
+    assertTrue(commands.contains(AikaClawMotionCommand.Activity.rawValue))
+    assertFalse(commands.contains(AikaClawMotionCommand.Pedometer.rawValue))
   }
 
   @Test
@@ -155,10 +155,10 @@ class InvokeCommandRegistryTest {
         defaultFlags(sendSmsAvailable = true),
       )
 
-    assertTrue(readOnlyCommands.contains(OpenClawSmsCommand.Search.rawValue))
-    assertFalse(readOnlyCommands.contains(OpenClawSmsCommand.Send.rawValue))
-    assertTrue(sendOnlyCommands.contains(OpenClawSmsCommand.Send.rawValue))
-    assertFalse(sendOnlyCommands.contains(OpenClawSmsCommand.Search.rawValue))
+    assertTrue(readOnlyCommands.contains(AikaClawSmsCommand.Search.rawValue))
+    assertFalse(readOnlyCommands.contains(AikaClawSmsCommand.Send.rawValue))
+    assertTrue(sendOnlyCommands.contains(AikaClawSmsCommand.Send.rawValue))
+    assertFalse(sendOnlyCommands.contains(AikaClawSmsCommand.Search.rawValue))
   }
 
   @Test
@@ -172,22 +172,22 @@ class InvokeCommandRegistryTest {
         defaultFlags(sendSmsAvailable = true),
       )
 
-    assertTrue(readOnlyCapabilities.contains(OpenClawCapability.Sms.rawValue))
-    assertTrue(sendOnlyCapabilities.contains(OpenClawCapability.Sms.rawValue))
+    assertTrue(readOnlyCapabilities.contains(AikaClawCapability.Sms.rawValue))
+    assertTrue(sendOnlyCapabilities.contains(AikaClawCapability.Sms.rawValue))
   }
 
   @Test
   fun advertisedCommands_excludesCallLogWhenUnavailable() {
     val commands = InvokeCommandRegistry.advertisedCommands(defaultFlags(callLogAvailable = false))
 
-    assertFalse(commands.contains(OpenClawCallLogCommand.Search.rawValue))
+    assertFalse(commands.contains(AikaClawCallLogCommand.Search.rawValue))
   }
 
   @Test
   fun advertisedCapabilities_excludesCallLogWhenUnavailable() {
     val capabilities = InvokeCommandRegistry.advertisedCapabilities(defaultFlags(callLogAvailable = false))
 
-    assertFalse(capabilities.contains(OpenClawCapability.CallLog.rawValue))
+    assertFalse(capabilities.contains(AikaClawCapability.CallLog.rawValue))
   }
 
   private fun defaultFlags(

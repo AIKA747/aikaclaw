@@ -1,4 +1,4 @@
-import OpenClawProtocol
+import AikaClawProtocol
 import Foundation
 
 public enum GatewayConnectAuthDetailCode: String, Sendable {

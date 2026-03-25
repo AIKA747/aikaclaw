@@ -1,4 +1,4 @@
-package ai.openclaw.app.voice
+package ai.aikaclaw.app.voice
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull

@@ -1,4 +1,4 @@
-package ai.openclaw.app.gateway
+package ai.aikaclaw.app.gateway
 
 import android.annotation.SuppressLint
 import kotlinx.coroutines.Dispatchers

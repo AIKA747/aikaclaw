@@ -1,4 +1,4 @@
-package ai.openclaw.app.ui
+package ai.aikaclaw.app.ui
 
 import android.Manifest
 import android.content.Context
@@ -93,10 +93,10 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import ai.openclaw.app.BuildConfig
-import ai.openclaw.app.LocationMode
-import ai.openclaw.app.MainViewModel
-import ai.openclaw.app.node.DeviceNotificationListenerService
+import ai.aikaclaw.app.BuildConfig
+import ai.aikaclaw.app.LocationMode
+import ai.aikaclaw.app.MainViewModel
+import ai.aikaclaw.app.node.DeviceNotificationListenerService
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.codescanner.GmsBarcodeScannerOptions
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
@@ -239,10 +239,10 @@ fun OnboardingFlow(viewModel: MainViewModel, modifier: Modifier = Modifier) {
 
   val smsAvailable =
     remember(context) {
-      BuildConfig.OPENCLAW_ENABLE_SMS &&
+      BuildConfig.AIKACLAW_ENABLE_SMS &&
         context.packageManager?.hasSystemFeature(PackageManager.FEATURE_TELEPHONY) == true
     }
-  val callLogAvailable = remember { BuildConfig.OPENCLAW_ENABLE_CALL_LOG }
+  val callLogAvailable = remember { BuildConfig.AIKACLAW_ENABLE_CALL_LOG }
   val motionAvailable =
     remember(context) {
       hasMotionCapabilities(context)
@@ -530,7 +530,7 @@ fun OnboardingFlow(viewModel: MainViewModel, modifier: Modifier = Modifier) {
           verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
           Text(
-            "OpenClaw",
+            "AikaClaw",
             style = onboardingDisplayStyle,
             color = onboardingText,
           )
@@ -1023,11 +1023,11 @@ private fun GatewayStep(
 
   StepShell(title = "Gateway Connection") {
     Text(
-      "Run `openclaw qr` on your gateway host, then scan the code with this device.",
+      "Run `aikaclaw qr` on your gateway host, then scan the code with this device.",
       style = onboardingCalloutStyle,
       color = onboardingTextSecondary,
     )
-    CommandBlock("openclaw qr")
+    CommandBlock("aikaclaw qr")
     Button(
       onClick = onScanQrClick,
       modifier = Modifier.fillMaxWidth().height(48.dp),
@@ -1074,7 +1074,7 @@ private fun GatewayStep(
           OutlinedTextField(
             value = setupCode,
             onValueChange = onSetupCodeChange,
-            placeholder = { Text("Paste code from `openclaw qr --setup-code-only`", color = onboardingTextTertiary, style = onboardingBodyStyle) },
+            placeholder = { Text("Paste code from `aikaclaw qr --setup-code-only`", color = onboardingTextTertiary, style = onboardingBodyStyle) },
             modifier = Modifier.fillMaxWidth(),
             minLines = 3,
             maxLines = 5,
@@ -1693,7 +1693,7 @@ private fun FinalStep(
               )
             }
             Text(
-              "OpenClaw Android ${openClawAndroidVersionLabel()}",
+              "AikaClaw Android ${aikaclawAndroidVersionLabel()}",
               style = onboardingCaption1Style,
               color = onboardingTextSecondary,
             )
@@ -1717,8 +1717,8 @@ private fun FinalStep(
             }
           }
           if (pairingRequired) {
-            CommandBlock("openclaw devices list")
-            CommandBlock("openclaw devices approve <requestId>")
+            CommandBlock("aikaclaw devices list")
+            CommandBlock("aikaclaw devices approve <requestId>")
             Text("Then tap Connect again.", style = onboardingCalloutStyle, color = onboardingTextSecondary)
           }
         }

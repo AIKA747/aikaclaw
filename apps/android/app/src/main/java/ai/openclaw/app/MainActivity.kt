@@ -1,4 +1,4 @@
-package ai.openclaw.app
+package ai.aikaclaw.app
 
 import android.os.Bundle
 import android.view.WindowManager
@@ -11,8 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import ai.openclaw.app.ui.RootScreen
-import ai.openclaw.app.ui.OpenClawTheme
+import ai.aikaclaw.app.ui.RootScreen
+import ai.aikaclaw.app.ui.AikaClawTheme
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -53,7 +53,7 @@ class MainActivity : ComponentActivity() {
     }
 
     setContent {
-      OpenClawTheme {
+      AikaClawTheme {
         Surface(modifier = Modifier) {
           RootScreen(viewModel = viewModel)
         }

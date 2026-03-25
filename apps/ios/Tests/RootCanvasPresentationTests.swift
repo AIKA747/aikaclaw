@@ -1,5 +1,5 @@
 import Testing
-@testable import OpenClaw
+@testable import AikaClaw
 
 @Suite struct RootCanvasPresentationTests {
     @Test func quickSetupDoesNotPresentWhenGatewayAlreadyConfigured() {

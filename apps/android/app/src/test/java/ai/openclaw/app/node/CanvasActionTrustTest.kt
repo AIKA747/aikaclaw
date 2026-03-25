@@ -1,4 +1,4 @@
-package ai.openclaw.app.node
+package ai.aikaclaw.app.node
 
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -14,8 +14,8 @@ class CanvasActionTrustTest {
   fun acceptsTrustedA2uiPageOnAdvertisedCanvasHost() {
     assertTrue(
       CanvasActionTrust.isTrustedCanvasActionUrl(
-        rawUrl = "https://canvas.example.com:9443/__openclaw__/cap/token/__openclaw__/a2ui/?platform=android",
-        trustedA2uiUrls = listOf("https://canvas.example.com:9443/__openclaw__/cap/token/__openclaw__/a2ui/?platform=android"),
+        rawUrl = "https://canvas.example.com:9443/__aikaclaw__/cap/token/__aikaclaw__/a2ui/?platform=android",
+        trustedA2uiUrls = listOf("https://canvas.example.com:9443/__aikaclaw__/cap/token/__aikaclaw__/a2ui/?platform=android"),
       ),
     )
   }
@@ -24,8 +24,8 @@ class CanvasActionTrustTest {
   fun rejectsDifferentOriginEvenIfPathMatches() {
     assertFalse(
       CanvasActionTrust.isTrustedCanvasActionUrl(
-        rawUrl = "https://evil.example.com:9443/__openclaw__/cap/token/__openclaw__/a2ui/?platform=android",
-        trustedA2uiUrls = listOf("https://canvas.example.com:9443/__openclaw__/cap/token/__openclaw__/a2ui/?platform=android"),
+        rawUrl = "https://evil.example.com:9443/__aikaclaw__/cap/token/__aikaclaw__/a2ui/?platform=android",
+        trustedA2uiUrls = listOf("https://canvas.example.com:9443/__aikaclaw__/cap/token/__aikaclaw__/a2ui/?platform=android"),
       ),
     )
   }
@@ -35,7 +35,7 @@ class CanvasActionTrustTest {
     assertFalse(
       CanvasActionTrust.isTrustedCanvasActionUrl(
         rawUrl = "https://canvas.example.com:9443/untrusted/index.html",
-        trustedA2uiUrls = listOf("https://canvas.example.com:9443/__openclaw__/cap/token/__openclaw__/a2ui/?platform=android"),
+        trustedA2uiUrls = listOf("https://canvas.example.com:9443/__aikaclaw__/cap/token/__aikaclaw__/a2ui/?platform=android"),
       ),
     )
   }

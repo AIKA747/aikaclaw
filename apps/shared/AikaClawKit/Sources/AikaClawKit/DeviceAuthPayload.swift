@@ -1,5 +1,5 @@
 import Foundation
-import OpenClawProtocol
+import AikaClawProtocol
 
 public enum GatewayDeviceAuthPayload {
     public static func buildV3(
@@ -58,7 +58,7 @@ public enum GatewayDeviceAuthPayload {
         payload: String,
         identity: DeviceIdentity,
         signedAtMs: Int,
-        nonce: String) -> [String: OpenClawProtocol.AnyCodable]?
+        nonce: String) -> [String: AikaClawProtocol.AnyCodable]?
     {
         guard let signature = DeviceIdentityStore.signPayload(payload, identity: identity),
               let publicKey = DeviceIdentityStore.publicKeyBase64Url(identity)
@@ -66,11 +66,11 @@ public enum GatewayDeviceAuthPayload {
             return nil
         }
         return [
-            "id": OpenClawProtocol.AnyCodable(identity.deviceId),
-            "publicKey": OpenClawProtocol.AnyCodable(publicKey),
-            "signature": OpenClawProtocol.AnyCodable(signature),
-            "signedAt": OpenClawProtocol.AnyCodable(signedAtMs),
-            "nonce": OpenClawProtocol.AnyCodable(nonce),
+            "id": AikaClawProtocol.AnyCodable(identity.deviceId),
+            "publicKey": AikaClawProtocol.AnyCodable(publicKey),
+            "signature": AikaClawProtocol.AnyCodable(signature),
+            "signedAt": AikaClawProtocol.AnyCodable(signedAtMs),
+            "nonce": AikaClawProtocol.AnyCodable(nonce),
         ]
     }
 }

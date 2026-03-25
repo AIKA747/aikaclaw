@@ -1,4 +1,4 @@
-package ai.openclaw.app.ui.chat
+package ai.aikaclaw.app.ui.chat
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -25,26 +25,26 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ai.openclaw.app.chat.ChatMessage
-import ai.openclaw.app.chat.ChatMessageContent
-import ai.openclaw.app.chat.ChatPendingToolCall
-import ai.openclaw.app.tools.ToolDisplayRegistry
-import ai.openclaw.app.ui.mobileAccent
-import ai.openclaw.app.ui.mobileAccentSoft
-import ai.openclaw.app.ui.mobileBorder
-import ai.openclaw.app.ui.mobileBorderStrong
-import ai.openclaw.app.ui.mobileCallout
-import ai.openclaw.app.ui.mobileCaption1
-import ai.openclaw.app.ui.mobileCaption2
-import ai.openclaw.app.ui.mobileCardSurface
-import ai.openclaw.app.ui.mobileCodeBg
-import ai.openclaw.app.ui.mobileCodeBorder
-import ai.openclaw.app.ui.mobileCodeText
-import ai.openclaw.app.ui.mobileHeadline
-import ai.openclaw.app.ui.mobileText
-import ai.openclaw.app.ui.mobileTextSecondary
-import ai.openclaw.app.ui.mobileWarning
-import ai.openclaw.app.ui.mobileWarningSoft
+import ai.aikaclaw.app.chat.ChatMessage
+import ai.aikaclaw.app.chat.ChatMessageContent
+import ai.aikaclaw.app.chat.ChatPendingToolCall
+import ai.aikaclaw.app.tools.ToolDisplayRegistry
+import ai.aikaclaw.app.ui.mobileAccent
+import ai.aikaclaw.app.ui.mobileAccentSoft
+import ai.aikaclaw.app.ui.mobileBorder
+import ai.aikaclaw.app.ui.mobileBorderStrong
+import ai.aikaclaw.app.ui.mobileCallout
+import ai.aikaclaw.app.ui.mobileCaption1
+import ai.aikaclaw.app.ui.mobileCaption2
+import ai.aikaclaw.app.ui.mobileCardSurface
+import ai.aikaclaw.app.ui.mobileCodeBg
+import ai.aikaclaw.app.ui.mobileCodeBorder
+import ai.aikaclaw.app.ui.mobileCodeText
+import ai.aikaclaw.app.ui.mobileHeadline
+import ai.aikaclaw.app.ui.mobileText
+import ai.aikaclaw.app.ui.mobileTextSecondary
+import ai.aikaclaw.app.ui.mobileWarning
+import ai.aikaclaw.app.ui.mobileWarningSoft
 import java.util.Locale
 
 private data class ChatBubbleStyle(
@@ -190,7 +190,7 @@ fun ChatPendingToolsBubble(toolCalls: List<ChatPendingToolCall>) {
 fun ChatStreamingAssistantBubble(text: String) {
   ChatBubbleContainer(
     style = bubbleStyle("assistant").copy(borderColor = mobileAccent),
-    roleLabel = "OpenClaw · Live",
+    roleLabel = "AikaClaw · Live",
   ) {
     ChatMarkdown(text = text, textColor = mobileText)
   }
@@ -229,7 +229,7 @@ private fun roleLabel(role: String): String {
   return when (role) {
     "user" -> "You"
     "system" -> "System"
-    else -> "OpenClaw"
+    else -> "AikaClaw"
   }
 }
 

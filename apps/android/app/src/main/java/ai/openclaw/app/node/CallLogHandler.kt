@@ -1,10 +1,10 @@
-package ai.openclaw.app.node
+package ai.aikaclaw.app.node
 
 import android.Manifest
 import android.content.Context
 import android.provider.CallLog
 import androidx.core.content.ContextCompat
-import ai.openclaw.app.gateway.GatewaySession
+import ai.aikaclaw.app.gateway.GatewaySession
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject

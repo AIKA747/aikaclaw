@@ -4,17 +4,17 @@
 
 #include "Config/Version.xcconfig"
 
-OPENCLAW_CODE_SIGN_STYLE = Manual
-OPENCLAW_DEVELOPMENT_TEAM = Y5PE65HELJ
+AIKACLAW_CODE_SIGN_STYLE = Manual
+AIKACLAW_DEVELOPMENT_TEAM = Y5PE65HELJ
 
-OPENCLAW_APP_BUNDLE_ID = ai.openclaw.client
-OPENCLAW_SHARE_BUNDLE_ID = ai.openclaw.client.share
-OPENCLAW_WATCH_APP_BUNDLE_ID = ai.openclaw.client.watchkitapp
-OPENCLAW_WATCH_EXTENSION_BUNDLE_ID = ai.openclaw.client.watchkitapp.extension
-OPENCLAW_ACTIVITY_WIDGET_BUNDLE_ID = ai.openclaw.client.activitywidget
+AIKACLAW_APP_BUNDLE_ID = ai.aikaclaw.client
+AIKACLAW_SHARE_BUNDLE_ID = ai.aikaclaw.client.share
+AIKACLAW_WATCH_APP_BUNDLE_ID = ai.aikaclaw.client.watchkitapp
+AIKACLAW_WATCH_EXTENSION_BUNDLE_ID = ai.aikaclaw.client.watchkitapp.extension
+AIKACLAW_ACTIVITY_WIDGET_BUNDLE_ID = ai.aikaclaw.client.activitywidget
 
-OPENCLAW_APP_PROFILE = ai.openclaw.client Development
-OPENCLAW_SHARE_PROFILE = ai.openclaw.client.share Development
+AIKACLAW_APP_PROFILE = ai.aikaclaw.client Development
+AIKACLAW_SHARE_PROFILE = ai.aikaclaw.client.share Development
 
 // Keep local includes after defaults: xcconfig is evaluated top-to-bottom,
 // so later assignments in local files override the defaults above.

@@ -1,4 +1,4 @@
-package ai.openclaw.app.node
+package ai.aikaclaw.app.node
 
 import android.Manifest
 import android.app.ActivityManager
@@ -15,8 +15,8 @@ import android.os.PowerManager
 import android.os.StatFs
 import android.os.SystemClock
 import androidx.core.content.ContextCompat
-import ai.openclaw.app.BuildConfig
-import ai.openclaw.app.gateway.GatewaySession
+import ai.aikaclaw.app.BuildConfig
+import ai.aikaclaw.app.gateway.GatewaySession
 import java.util.Locale
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonArray
@@ -25,8 +25,8 @@ import kotlinx.serialization.json.put
 
 class DeviceHandler(
   private val appContext: Context,
-  private val smsEnabled: Boolean = BuildConfig.OPENCLAW_ENABLE_SMS,
-  private val callLogEnabled: Boolean = BuildConfig.OPENCLAW_ENABLE_CALL_LOG,
+  private val smsEnabled: Boolean = BuildConfig.AIKACLAW_ENABLE_SMS,
+  private val callLogEnabled: Boolean = BuildConfig.AIKACLAW_ENABLE_CALL_LOG,
 ) {
   private data class BatterySnapshot(
     val status: Int,

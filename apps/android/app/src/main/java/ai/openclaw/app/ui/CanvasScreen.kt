@@ -1,4 +1,4 @@
-package ai.openclaw.app.ui
+package ai.aikaclaw.app.ui
 
 import android.annotation.SuppressLint
 import android.util.Log
@@ -21,7 +21,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebViewFeature
-import ai.openclaw.app.MainViewModel
+import ai.aikaclaw.app.MainViewModel
 import java.util.concurrent.atomic.AtomicReference
 
 @SuppressLint("SetJavaScriptEnabled")
@@ -62,7 +62,7 @@ fun CanvasScreen(viewModel: MainViewModel, visible: Boolean, modifier: Modifier 
           disableForceDarkIfSupported(settings)
         }
         if (isDebuggable) {
-          Log.d("OpenClawWebView", "userAgent: ${settings.userAgentString}")
+          Log.d("AikaClawWebView", "userAgent: ${settings.userAgentString}")
         }
         isScrollContainer = true
         overScrollMode = View.OVER_SCROLL_IF_CONTENT_SCROLLS
@@ -84,7 +84,7 @@ fun CanvasScreen(viewModel: MainViewModel, visible: Boolean, modifier: Modifier 
               error: WebResourceError,
             ) {
               if (!isDebuggable || !request.isForMainFrame) return
-              Log.e("OpenClawWebView", "onReceivedError: ${error.errorCode} ${error.description} ${request.url}")
+              Log.e("AikaClawWebView", "onReceivedError: ${error.errorCode} ${error.description} ${request.url}")
             }
 
             override fun onReceivedHttpError(
@@ -94,7 +94,7 @@ fun CanvasScreen(viewModel: MainViewModel, visible: Boolean, modifier: Modifier 
             ) {
               if (!isDebuggable || !request.isForMainFrame) return
               Log.e(
-                "OpenClawWebView",
+                "AikaClawWebView",
                 "onReceivedHttpError: ${errorResponse.statusCode} ${errorResponse.reasonPhrase} ${request.url}",
               )
             }
@@ -102,7 +102,7 @@ fun CanvasScreen(viewModel: MainViewModel, visible: Boolean, modifier: Modifier 
             override fun onPageFinished(view: WebView, url: String?) {
               currentPageUrlRef.set(url)
               if (isDebuggable) {
-                Log.d("OpenClawWebView", "onPageFinished: $url")
+                Log.d("AikaClawWebView", "onPageFinished: $url")
               }
               viewModel.canvas.onPageFinished()
             }
@@ -113,7 +113,7 @@ fun CanvasScreen(viewModel: MainViewModel, visible: Boolean, modifier: Modifier 
             ): Boolean {
               if (isDebuggable) {
                 Log.e(
-                  "OpenClawWebView",
+                  "AikaClawWebView",
                   "onRenderProcessGone didCrash=${detail.didCrash()} priorityAtExit=${detail.rendererPriorityAtExit()}",
                 )
               }
@@ -126,7 +126,7 @@ fun CanvasScreen(viewModel: MainViewModel, visible: Boolean, modifier: Modifier 
               if (!isDebuggable) return false
               val msg = consoleMessage ?: return false
               Log.d(
-                "OpenClawWebView",
+                "AikaClawWebView",
                 "console ${msg.messageLevel()} @ ${msg.sourceId()}:${msg.lineNumber()} ${msg.message()}",
               )
               return false
@@ -176,6 +176,6 @@ private class CanvasA2UIActionBridge(
   }
 
   companion object {
-    const val interfaceName: String = "openclawCanvasA2UIAction"
+    const val interfaceName: String = "aikaclawCanvasA2UIAction"
   }
 }

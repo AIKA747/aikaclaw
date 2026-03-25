@@ -1,4 +1,4 @@
-package ai.openclaw.app
+package ai.aikaclaw.app
 
 import android.Manifest
 import android.content.Context
@@ -6,22 +6,22 @@ import android.content.pm.PackageManager
 import android.os.SystemClock
 import android.util.Log
 import androidx.core.content.ContextCompat
-import ai.openclaw.app.chat.ChatController
-import ai.openclaw.app.chat.ChatMessage
-import ai.openclaw.app.chat.ChatPendingToolCall
-import ai.openclaw.app.chat.ChatSessionEntry
-import ai.openclaw.app.chat.OutgoingAttachment
-import ai.openclaw.app.gateway.DeviceAuthStore
-import ai.openclaw.app.gateway.DeviceIdentityStore
-import ai.openclaw.app.gateway.GatewayDiscovery
-import ai.openclaw.app.gateway.GatewayEndpoint
-import ai.openclaw.app.gateway.GatewaySession
-import ai.openclaw.app.gateway.probeGatewayTlsFingerprint
-import ai.openclaw.app.node.*
-import ai.openclaw.app.protocol.OpenClawCanvasA2UIAction
-import ai.openclaw.app.voice.MicCaptureManager
-import ai.openclaw.app.voice.TalkModeManager
-import ai.openclaw.app.voice.VoiceConversationEntry
+import ai.aikaclaw.app.chat.ChatController
+import ai.aikaclaw.app.chat.ChatMessage
+import ai.aikaclaw.app.chat.ChatPendingToolCall
+import ai.aikaclaw.app.chat.ChatSessionEntry
+import ai.aikaclaw.app.chat.OutgoingAttachment
+import ai.aikaclaw.app.gateway.DeviceAuthStore
+import ai.aikaclaw.app.gateway.DeviceIdentityStore
+import ai.aikaclaw.app.gateway.GatewayDiscovery
+import ai.aikaclaw.app.gateway.GatewayEndpoint
+import ai.aikaclaw.app.gateway.GatewaySession
+import ai.aikaclaw.app.gateway.probeGatewayTlsFingerprint
+import ai.aikaclaw.app.node.*
+import ai.aikaclaw.app.protocol.AikaClawCanvasA2UIAction
+import ai.aikaclaw.app.voice.MicCaptureManager
+import ai.aikaclaw.app.voice.TalkModeManager
+import ai.aikaclaw.app.voice.VoiceConversationEntry
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -89,8 +89,8 @@ class NodeRuntime(
 
   private val deviceHandler: DeviceHandler = DeviceHandler(
     appContext = appContext,
-    smsEnabled = BuildConfig.OPENCLAW_ENABLE_SMS,
-    callLogEnabled = BuildConfig.OPENCLAW_ENABLE_CALL_LOG,
+    smsEnabled = BuildConfig.AIKACLAW_ENABLE_SMS,
+    callLogEnabled = BuildConfig.AIKACLAW_ENABLE_CALL_LOG,
   )
 
   private val notificationsHandler: NotificationsHandler = NotificationsHandler(
@@ -139,9 +139,9 @@ class NodeRuntime(
     voiceWakeMode = { VoiceWakeMode.Off },
     motionActivityAvailable = { motionHandler.isActivityAvailable() },
     motionPedometerAvailable = { motionHandler.isPedometerAvailable() },
-    sendSmsAvailable = { BuildConfig.OPENCLAW_ENABLE_SMS && sms.canSendSms() },
-    readSmsAvailable = { BuildConfig.OPENCLAW_ENABLE_SMS && sms.canReadSms() },
-    callLogAvailable = { BuildConfig.OPENCLAW_ENABLE_CALL_LOG },
+    sendSmsAvailable = { BuildConfig.AIKACLAW_ENABLE_SMS && sms.canSendSms() },
+    readSmsAvailable = { BuildConfig.AIKACLAW_ENABLE_SMS && sms.canReadSms() },
+    callLogAvailable = { BuildConfig.AIKACLAW_ENABLE_CALL_LOG },
     hasRecordAudioPermission = { hasRecordAudioPermission() },
     manualTls = { manualTls.value },
   )
@@ -164,9 +164,9 @@ class NodeRuntime(
     isForeground = { _isForeground.value },
     cameraEnabled = { cameraEnabled.value },
     locationEnabled = { locationMode.value != LocationMode.Off },
-    sendSmsAvailable = { BuildConfig.OPENCLAW_ENABLE_SMS && sms.canSendSms() },
-    readSmsAvailable = { BuildConfig.OPENCLAW_ENABLE_SMS && sms.canReadSms() },
-    callLogAvailable = { BuildConfig.OPENCLAW_ENABLE_CALL_LOG },
+    sendSmsAvailable = { BuildConfig.AIKACLAW_ENABLE_SMS && sms.canSendSms() },
+    readSmsAvailable = { BuildConfig.AIKACLAW_ENABLE_SMS && sms.canReadSms() },
+    callLogAvailable = { BuildConfig.AIKACLAW_ENABLE_CALL_LOG },
     debugBuild = { BuildConfig.DEBUG },
     refreshNodeCanvasCapability = { nodeSession.refreshNodeCanvasCapability() },
     onCanvasA2uiPush = {
@@ -501,7 +501,7 @@ class NodeRuntime(
           _canvasRehydratePending.value = false
           _canvasRehydrateErrorText.value = "Failed to request restore. Tap to retry."
         }
-        Log.w("OpenClawCanvas", "canvas rehydrate request failed ($source): transport unavailable")
+        Log.w("AikaClawCanvas", "canvas rehydrate request failed ($source): transport unavailable")
         return@launch
       }
       scope.launch {
@@ -848,7 +848,7 @@ class NodeRuntime(
       val actionId = (userActionObj["id"] as? JsonPrimitive)?.content?.trim().orEmpty().ifEmpty {
         java.util.UUID.randomUUID().toString()
       }
-      val name = OpenClawCanvasA2UIAction.extractActionName(userActionObj) ?: return@launch
+      val name = AikaClawCanvasA2UIAction.extractActionName(userActionObj) ?: return@launch
 
       val surfaceId =
         (userActionObj["surfaceId"] as? JsonPrimitive)?.content?.trim().orEmpty().ifEmpty { "main" }
@@ -858,7 +858,7 @@ class NodeRuntime(
 
       val sessionKey = resolveMainSessionKey()
       val message =
-        OpenClawCanvasA2UIAction.formatAgentMessage(
+        AikaClawCanvasA2UIAction.formatAgentMessage(
           actionName = name,
           sessionKey = sessionKey,
           surfaceId = surfaceId,
@@ -892,7 +892,7 @@ class NodeRuntime(
 
       try {
         canvas.eval(
-          OpenClawCanvasA2UIAction.jsDispatchA2UIActionStatus(
+          AikaClawCanvasA2UIAction.jsDispatchA2UIActionStatus(
             actionId = actionId,
             ok = connected && error == null,
             error = error,
@@ -1040,7 +1040,7 @@ class NodeRuntime(
         HomeCanvasPayload(
           gatewayState = "connecting",
           eyebrow = "Reconnecting",
-          title = "OpenClaw is syncing back up",
+          title = "AikaClaw is syncing back up",
           subtitle =
             "The gateway session is coming back online. Agent shortcuts should settle automatically in a moment.",
           gatewayLabel = gatewayLabel,
@@ -1054,7 +1054,7 @@ class NodeRuntime(
       HomeCanvasGatewayState.Error, HomeCanvasGatewayState.Offline ->
         HomeCanvasPayload(
           gatewayState = if (state == HomeCanvasGatewayState.Error) "error" else "offline",
-          eyebrow = "Welcome to OpenClaw",
+          eyebrow = "Welcome to AikaClaw",
           title = "Your phone stays quiet until it is needed",
           subtitle =
             "Pair this device to your gateway to wake it only for real work, keep a live agent overview handy, and avoid battery-draining background loops.",

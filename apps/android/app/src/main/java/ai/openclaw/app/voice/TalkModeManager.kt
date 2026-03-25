@@ -1,4 +1,4 @@
-package ai.openclaw.app.voice
+package ai.aikaclaw.app.voice
 
 import android.Manifest
 import android.content.Context
@@ -18,8 +18,8 @@ import android.speech.SpeechRecognizer
 import android.util.Base64
 import android.util.Log
 import androidx.core.content.ContextCompat
-import ai.openclaw.app.gateway.GatewaySession
-import ai.openclaw.app.isCanonicalMainSessionKey
+import ai.aikaclaw.app.gateway.GatewaySession
+import ai.aikaclaw.app.isCanonicalMainSessionKey
 import java.io.File
 import java.util.UUID
 import java.util.concurrent.atomic.AtomicLong

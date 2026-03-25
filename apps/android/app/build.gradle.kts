@@ -28,7 +28,7 @@ if (wantsAndroidReleaseBuild && !hasAndroidReleaseSigning) {
     error(
         "Missing Android release signing properties. Set AIKACLAW_ANDROID_STORE_FILE, " +
             "AIKACLAW_ANDROID_STORE_PASSWORD, AIKACLAW_ANDROID_KEY_ALIAS, and " +
-            "OPENCLAW_ANDROID_KEY_PASSWORD in ~/.gradle/gradle.properties.",
+            "AIKACLAW_ANDROID_KEY_PASSWORD in ~/.gradle/gradle.properties.",
     )
 }
 
@@ -40,7 +40,7 @@ plugins {
 }
 
 android {
-    namespace = "ai.openclaw.app"
+    namespace = "ai.aikaclaw.app"
     compileSdk = 36
 
     // Release signing is local-only; keep the keystore path and passwords out of the repo.
@@ -57,12 +57,12 @@ android {
 
     sourceSets {
         getByName("main") {
-            assets.directories.add("../../shared/OpenClawKit/Sources/OpenClawKit/Resources")
+            assets.directories.add("../../shared/AikaClawKit/Sources/AikaClawKit/Resources")
         }
     }
 
     defaultConfig {
-        applicationId = "ai.openclaw.app"
+        applicationId = "ai.aikaclaw.app"
         minSdk = 31
         targetSdk = 36
         versionCode = 2026032400
@@ -78,13 +78,13 @@ android {
     productFlavors {
         create("play") {
             dimension = "store"
-            buildConfigField("boolean", "OPENCLAW_ENABLE_SMS", "false")
-            buildConfigField("boolean", "OPENCLAW_ENABLE_CALL_LOG", "false")
+            buildConfigField("boolean", "AIKACLAW_ENABLE_SMS", "false")
+            buildConfigField("boolean", "AIKACLAW_ENABLE_CALL_LOG", "false")
         }
         create("thirdParty") {
             dimension = "store"
-            buildConfigField("boolean", "OPENCLAW_ENABLE_SMS", "true")
-            buildConfigField("boolean", "OPENCLAW_ENABLE_CALL_LOG", "true")
+            buildConfigField("boolean", "AIKACLAW_ENABLE_SMS", "true")
+            buildConfigField("boolean", "AIKACLAW_ENABLE_CALL_LOG", "true")
         }
     }
 
@@ -158,9 +158,9 @@ androidComponents {
                 val flavorName = variant.flavorName?.takeIf { it.isNotBlank() }
                 val outputFileName =
                     if (flavorName == null) {
-                        "openclaw-$versionName-$buildType.apk"
+                        "aikaclaw-$versionName-$buildType.apk"
                     } else {
-                        "openclaw-$versionName-$flavorName-$buildType.apk"
+                        "aikaclaw-$versionName-$flavorName-$buildType.apk"
                     }
                 output.outputFileName = outputFileName
             }

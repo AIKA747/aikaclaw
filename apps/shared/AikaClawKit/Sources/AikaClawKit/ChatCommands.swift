@@ -1,10 +1,10 @@
 import Foundation
 
-public enum OpenClawChatCommand: String, Codable, Sendable {
+public enum AikaClawChatCommand: String, Codable, Sendable {
     case push = "chat.push"
 }
 
-public struct OpenClawChatPushParams: Codable, Sendable, Equatable {
+public struct AikaClawChatPushParams: Codable, Sendable, Equatable {
     public var text: String
     public var speak: Bool?
 
@@ -14,7 +14,7 @@ public struct OpenClawChatPushParams: Codable, Sendable, Equatable {
     }
 }
 
-public struct OpenClawChatPushPayload: Codable, Sendable, Equatable {
+public struct AikaClawChatPushPayload: Codable, Sendable, Equatable {
     public var messageId: String?
 
     public init(messageId: String? = nil) {

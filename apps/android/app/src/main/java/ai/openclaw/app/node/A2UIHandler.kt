@@ -1,6 +1,6 @@
-package ai.openclaw.app.node
+package ai.aikaclaw.app.node
 
-import ai.openclaw.app.gateway.GatewaySession
+import ai.aikaclaw.app.gateway.GatewaySession
 import kotlinx.coroutines.delay
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
@@ -26,7 +26,7 @@ class A2UIHandler(
     val raw = if (nodeRaw.isNotBlank()) nodeRaw else operatorRaw
     if (raw.isBlank()) return null
     val base = raw.trimEnd('/')
-    return "${base}/__openclaw__/a2ui/?platform=android"
+    return "${base}/__aikaclaw__/a2ui/?platform=android"
   }
 
   suspend fun ensureA2uiReady(a2uiUrl: String): Boolean {
@@ -114,7 +114,7 @@ class A2UIHandler(
       """
       (() => {
         try {
-          const host = globalThis.openclawA2UI;
+          const host = globalThis.aikaclawA2UI;
           return !!host && typeof host.applyMessages === 'function';
         } catch (_) {
           return false;
@@ -126,8 +126,8 @@ class A2UIHandler(
       """
       (() => {
         try {
-          const host = globalThis.openclawA2UI;
-          if (!host) return { ok: false, error: "missing openclawA2UI" };
+          const host = globalThis.aikaclawA2UI;
+          if (!host) return { ok: false, error: "missing aikaclawA2UI" };
           return host.reset();
         } catch (e) {
           return { ok: false, error: String(e?.message ?? e) };
@@ -139,8 +139,8 @@ class A2UIHandler(
       return """
         (() => {
           try {
-            const host = globalThis.openclawA2UI;
-            if (!host) return { ok: false, error: "missing openclawA2UI" };
+            const host = globalThis.aikaclawA2UI;
+            if (!host) return { ok: false, error: "missing aikaclawA2UI" };
             const messages = $messagesJson;
             return host.applyMessages(messages);
           } catch (e) {

@@ -1,5 +1,5 @@
 import Foundation
-import OpenClawKit
+import AikaClawKit
 import Testing
 
 private struct TalkConfigContractFixture: Decodable {
