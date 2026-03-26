@@ -10,6 +10,6 @@
     "rootDir": ".",
     "tsBuildInfoFile": "dist/plugin-sdk/.tsbuildinfo"
   },
-  "include": ["src/plugin-sdk/**/*.ts", "src/types/**/*.d.ts"],
-  "exclude": ["node_modules", "dist", "src/**/*.test.ts"]
+  "include": ["src/**/*.ts", "src/types/**/*.d.ts"],
+  "exclude": ["node_modules", "dist", "src/**/*.test.ts", "src/auto-reply/reply/get-reply-inline-actions.ts"]
 }
