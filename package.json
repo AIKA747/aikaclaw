@@ -1,6 +1,6 @@
 {
   "name": "aikaclaw",
-  "version": "2026.3.26",
+  "version": "2026.3.27",
   "description": "Multi-channel AI gateway with extensible messaging integrations",
   "keywords": [],
   "homepage": "https://github.com/AIKA747/aikaclaw#readme",
@@ -577,6 +577,8 @@
     "./cli-entry": "./aikaclaw.mjs"
   },
   "scripts": {
+    "aikaclaw": "node scripts/run-node.mjs",
+    "aikaclaw:rpc": "node scripts/run-node.mjs agent --mode rpc --json",
     "android:assemble": "cd apps/android && ./gradlew :app:assemblePlayDebug",
     "android:assemble:third-party": "cd apps/android && ./gradlew :app:assembleThirdPartyDebug",
     "android:bundle:release": "bun apps/android/scripts/build-release-aab.ts",
@@ -674,8 +676,6 @@
     "mac:package": "bash scripts/package-mac-app.sh",
     "mac:restart": "bash scripts/restart-mac.sh",
     "moltbot:rpc": "node scripts/run-node.mjs agent --mode rpc --json",
-    "aikaclaw": "node scripts/run-node.mjs",
-    "aikaclaw:rpc": "node scripts/run-node.mjs agent --mode rpc --json",
     "plugin-sdk:api:check": "node --import tsx scripts/generate-plugin-sdk-api-baseline.ts --check",
     "plugin-sdk:api:gen": "node --import tsx scripts/generate-plugin-sdk-api-baseline.ts --write",
     "plugin-sdk:check-exports": "node scripts/sync-plugin-sdk-exports.mjs --check",
@@ -686,9 +686,9 @@
     "protocol:check": "pnpm protocol:gen && pnpm protocol:gen:swift && git diff --exit-code -- dist/protocol.schema.json apps/macos/Sources/AikaClawProtocol/GatewayModels.swift apps/shared/AikaClawKit/Sources/AikaClawProtocol/GatewayModels.swift",
     "protocol:gen": "node --import tsx scripts/protocol-gen.ts",
     "protocol:gen:swift": "node --import tsx scripts/protocol-gen-swift.ts",
-    "release:check": "pnpm config:docs:check && pnpm plugin-sdk:api:check && node scripts/stage-bundled-plugin-runtime-deps.mjs && pnpm ui:build && node --import tsx scripts/release-check.ts",
     "release:aikaclaw:npm:check": "node --import tsx scripts/aikaclaw-npm-release-check.ts",
     "release:aikaclaw:npm:verify-published": "node --import tsx scripts/aikaclaw-npm-postpublish-verify.ts",
+    "release:check": "pnpm config:docs:check && pnpm plugin-sdk:api:check && node scripts/stage-bundled-plugin-runtime-deps.mjs && pnpm ui:build && node --import tsx scripts/release-check.ts",
     "release:plugins:npm:check": "node --import tsx scripts/plugin-npm-release-check.ts",
     "release:plugins:npm:plan": "node --import tsx scripts/plugin-npm-release-plan.ts",
     "stage:bundled-plugin-runtime-deps": "node scripts/stage-bundled-plugin-runtime-deps.mjs",
