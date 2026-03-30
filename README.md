@@ -1,71 +1,64 @@
-# AikaClaw - Personal AI Assistant
+# AikaClaw - Персональный AI-ассистент
 
-A personal AI assistant that runs on your own devices and connects to your favorite messaging platforms.
+Персональный AI-ассистент, который работает на ваших устройствах и подключается к вашим любимым мессенджерам.
 
-## Quick Installation
+## Быстрая установка
 
-### Prerequisites
-- **Node.js**: Version 24 (recommended) or Node 22.16+
-- **Package Manager**: npm, pnpm, or bun
+### Предварительные требования
+- **Node.js**: Версия 24 (рекомендуется) или Node 22.16+
+- **Менеджер пакетов**: npm, pnpm или bun
 
-### Install via npm (recommended)
+### Установка через npm (рекомендуется)
 ```bash
 npm install -g aikaclaw@latest
-# or
+# или
 pnpm add -g aikaclaw@latest
 ```
 
-### Run Onboarding Wizard
+### Запуск мастера начальной настройки
 ```bash
 aikaclaw onboard --install-daemon
 ```
 
-The onboarding wizard will guide you through setting up:
-- Gateway configuration
-- Workspace setup  
-- Channel connections
-- Skills installation
+Мастер настройки проведёт вас через:
+- Конфигурацию шлюза
+- Настройку рабочего пространства
+- Подключение каналов
+- Установку навыков
 
-## Basic Usage
+## Основное использование
 
-### Start the Gateway
+### Запуск шлюза
 ```bash
 aikaclaw gateway --port 18789 --verbose
 ```
 
-### Send a Message
+### Отправка сообщения
 ```bash
-aikaclaw message send --to +1234567890 --message "Hello from AikaClaw"
+aikaclaw message send --to +1234567890 --message "Привет от AikaClaw"
 ```
 
-### Interact with the Assistant
+### Взаимодействие с ассистентом
 ```bash
-aikaclaw agent --message "Your question here" --thinking high
+aikaclaw agent --message "Ваш вопрос здесь" --thinking high
 ```
 
-## Supported Channels
+## Поддерживаемые каналы
 
-AikaClaw supports multiple messaging platforms:
+AikaClaw поддерживает множество мессенджеров:
 - WhatsApp, Telegram, Slack, Discord
 - Google Chat, Signal, iMessage
 - Microsoft Teams, Matrix, LINE
-- WebChat, and many more
+- WebChat и многие другие
 
-## Documentation
+## Обновление
 
-For detailed documentation, visit:
-- **Website**: [https://aikaclaw.ai](https://aikaclaw.ai)
-- **Docs**: [https://docs.aikaclaw.ai](https://docs.aikaclaw.ai)
-- **Getting Started**: [https://docs.aikaclaw.ai/start/getting-started](https://docs.aikaclaw.ai/start/getting-started)
-
-## Updating
-
-To update to the latest version:
+Для обновления до последней версии:
 ```bash
 npm install -g aikaclaw@latest
 aikaclaw doctor
 ```
 
-## License
+## Лицензия
 
 MIT License
