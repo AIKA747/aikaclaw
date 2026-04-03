@@ -8,11 +8,11 @@ const shouldWarnExtensionApiImport =
 
 if (shouldWarnExtensionApiImport) {
   process.emitWarning(
-    "aikaclaw/extension-api is deprecated. Migrate to api.runtime.agent.* or focused aikaclaw/plugin-sdk/<subpath> imports. See https://docs.aikaclaw.ai/plugins/sdk-migration",
+    "aikaclaw/extension-api is deprecated. Migrate to api.runtime.agent.* or focused aikaclaw/plugin-sdk/<subpath> imports.",
     {
       code: "AIKACLAW_EXTENSION_API_DEPRECATED",
       detail:
-        "This compatibility bridge is temporary. Bundled plugins should use the injected plugin runtime instead of importing host-side agent helpers directly. Migration guide: https://docs.aikaclaw.ai/plugins/sdk-migration",
+        "This compatibility bridge is temporary. Bundled plugins should use the injected plugin runtime instead of importing host-side agent helpers directly.",
     },
   );
 }

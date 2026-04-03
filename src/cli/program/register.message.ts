@@ -1,5 +1,4 @@
 import type { Command } from "commander";
-import { formatDocsLink } from "../../terminal/links.js";
 import { theme } from "../../terminal/theme.js";
 import { formatHelpExamples } from "../help-format.js";
 import type { ProgramContext } from "./context.js";
@@ -45,8 +44,7 @@ ${formatHelpExamples([
     "React to a message.",
   ],
 ])}
-
-${theme.muted("Docs:")} ${formatDocsLink("/cli/message", "docs.aikaclaw.ai/cli/message")}`,
+`,
     )
     .action(() => {
       message.help({ error: true });

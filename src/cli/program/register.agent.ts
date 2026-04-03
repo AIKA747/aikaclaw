@@ -11,7 +11,6 @@ import {
 } from "../../commands/agents.js";
 import { setVerbose } from "../../globals.js";
 import { defaultRuntime } from "../../runtime.js";
-import { formatDocsLink } from "../../terminal/links.js";
 import { theme } from "../../terminal/theme.js";
 import { runCommandWithRuntime } from "../cli-utils.js";
 import { hasExplicitOptions } from "../command-options.js";
@@ -69,8 +68,7 @@ ${formatHelpExamples([
     "Send reply to a different channel/target.",
   ],
 ])}
-
-${theme.muted("Docs:")} ${formatDocsLink("/cli/agent", "docs.aikaclaw.ai/cli/agent")}`,
+`,
     )
     .action(async (opts) => {
       const verboseLevel = typeof opts.verbose === "string" ? opts.verbose.toLowerCase() : "";
@@ -84,12 +82,7 @@ ${theme.muted("Docs:")} ${formatDocsLink("/cli/agent", "docs.aikaclaw.ai/cli/age
 
   const agents = program
     .command("agents")
-    .description("Manage isolated agents (workspaces + auth + routing)")
-    .addHelpText(
-      "after",
-      () =>
-        `\n${theme.muted("Docs:")} ${formatDocsLink("/cli/agents", "docs.aikaclaw.ai/cli/agents")}\n`,
-    );
+    .description("Manage isolated agents (workspaces + auth + routing)");
 
   agents
     .command("list")

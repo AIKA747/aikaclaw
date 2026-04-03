@@ -17,18 +17,9 @@ import {
   DEFAULT_GMAIL_TOPIC,
 } from "../hooks/gmail.js";
 import { defaultRuntime } from "../runtime.js";
-import { formatDocsLink } from "../terminal/links.js";
-import { theme } from "../terminal/theme.js";
 
 export function registerWebhooksCli(program: Command) {
-  const webhooks = program
-    .command("webhooks")
-    .description("Webhook helpers and integrations")
-    .addHelpText(
-      "after",
-      () =>
-        `\n${theme.muted("Docs:")} ${formatDocsLink("/cli/webhooks", "docs.aikaclaw.ai/cli/webhooks")}\n`,
-    );
+  const webhooks = program.command("webhooks").description("Webhook helpers and integrations");
 
   const gmail = webhooks.command("gmail").description("Gmail Pub/Sub hooks (via gogcli)");
 

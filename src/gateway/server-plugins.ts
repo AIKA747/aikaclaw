@@ -157,8 +157,7 @@ function authorizeFallbackModelOverride(params: {
       allowed: false,
       reason:
         `plugin "${pluginId}" is not trusted for fallback provider/model override requests. ` +
-        "See https://docs.aikaclaw.ai/tools/plugin#runtime-helpers and search for: " +
-        "plugins.entries.<id>.subagent.allowModelOverride",
+        "Set plugins.entries.<id>.subagent.allowModelOverride in your config.",
     };
   }
   if (policy.allowAnyModel) {

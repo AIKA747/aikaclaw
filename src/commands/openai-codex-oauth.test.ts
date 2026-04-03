@@ -130,7 +130,7 @@ describe("loginOpenAICodexOAuth", () => {
     expect(spin.stop).toHaveBeenCalledWith("OpenAI OAuth failed");
     expect(runtime.error).toHaveBeenCalledWith(expect.stringContaining("oauth failed"));
     expect(prompter.note).toHaveBeenCalledWith(
-      "Trouble with OAuth? See https://docs.aikaclaw.ai/start/faq",
+      "Trouble with OAuth? Run `aikaclaw doctor` for diagnostics.",
       "OAuth help",
     );
   });

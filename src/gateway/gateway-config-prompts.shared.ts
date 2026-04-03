@@ -24,11 +24,7 @@ export const TAILSCALE_MISSING_BIN_NOTE_LINES = [
   "You can continue setup, but serve/funnel will fail at runtime.",
 ] as const;
 
-export const TAILSCALE_DOCS_LINES = [
-  "Docs:",
-  "https://docs.aikaclaw.ai/gateway/tailscale",
-  "https://docs.aikaclaw.ai/web",
-] as const;
+export const TAILSCALE_DOCS_LINES = [] as const;
 
 function normalizeTailnetHostForUrl(rawHost: string): string | null {
   const trimmed = rawHost.trim().replace(/\.$/, "");

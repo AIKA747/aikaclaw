@@ -8,8 +8,6 @@ import {
 } from "../agents/skills-clawhub.js";
 import { loadConfig } from "../config/config.js";
 import { defaultRuntime } from "../runtime.js";
-import { formatDocsLink } from "../terminal/links.js";
-import { theme } from "../terminal/theme.js";
 import { formatSkillInfo, formatSkillsCheck, formatSkillsList } from "./skills-cli.format.js";
 
 export type {
@@ -49,14 +47,7 @@ function resolveActiveWorkspaceDir(): string {
  * Register the skills CLI commands
  */
 export function registerSkillsCli(program: Command) {
-  const skills = program
-    .command("skills")
-    .description("List and inspect available skills")
-    .addHelpText(
-      "after",
-      () =>
-        `\n${theme.muted("Docs:")} ${formatDocsLink("/cli/skills", "docs.aikaclaw.ai/cli/skills")}\n`,
-    );
+  const skills = program.command("skills").description("List and inspect available skills");
 
   skills
     .command("search")

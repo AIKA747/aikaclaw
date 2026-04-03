@@ -1,7 +1,6 @@
 import type { Command } from "commander";
 import { danger } from "../globals.js";
 import { defaultRuntime } from "../runtime.js";
-import { formatDocsLink } from "../terminal/links.js";
 import { theme } from "../terminal/theme.js";
 import { runChannelLogin, runChannelLogout } from "./channel-auth.js";
 import { formatCliChannelOptions } from "./channel-options.js";
@@ -76,10 +75,7 @@ export function registerChannelsCli(program: Command) {
             "Add or update a channel account non-interactively.",
           ],
           ["aikaclaw channels login --channel whatsapp", "Link a WhatsApp Web account."],
-        ])}\n\n${theme.muted("Docs:")} ${formatDocsLink(
-          "/cli/channels",
-          "docs.aikaclaw.ai/cli/channels",
-        )}\n`,
+        ])}\n`,
     );
 
   channels

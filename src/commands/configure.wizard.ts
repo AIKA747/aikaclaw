@@ -101,14 +101,6 @@ async function runGatewayHealthCheck(params: {
     await healthCommand({ json: false, timeoutMs: 10_000 }, params.runtime);
   } catch (err) {
     params.runtime.error(formatHealthCheckFailure(err));
-    note(
-      [
-        "Docs:",
-        "https://docs.aikaclaw.ai/gateway/health",
-        "https://docs.aikaclaw.ai/gateway/troubleshooting",
-      ].join("\n"),
-      "Health check help",
-    );
   }
 }
 
@@ -195,7 +187,6 @@ async function promptWebToolsConfig(
     [
       "Web search lets your agent look things up online using the `web_search` tool.",
       "Choose a provider. Some providers need an API key, and some work key-free.",
-      "Docs: https://docs.aikaclaw.ai/tools/web",
     ].join("\n"),
     "Web search",
   );
@@ -221,7 +212,6 @@ async function promptWebToolsConfig(
         [
           "No web search providers are currently available under this plugin policy.",
           "Enable plugins or remove deny rules, then rerun configure.",
-          "Docs: https://docs.aikaclaw.ai/tools/web",
         ].join("\n"),
         "Web search",
       );
@@ -270,7 +260,6 @@ async function promptWebToolsConfig(
           [
             `${entry.label} works without an API key.`,
             "AikaClaw enabled the plugin and selected it as your web_search provider.",
-            `Docs: ${entry.docsUrl ?? "https://docs.aikaclaw.ai/tools/web"}`,
           ].join("\n"),
           "Web search",
         );
@@ -303,7 +292,6 @@ async function promptWebToolsConfig(
               "No key stored yet — web_search won't work until a key is available.",
               `Store your ${credentialLabel} here or set ${envVarNames} in the Gateway environment.`,
               `Get your API key at: ${entry.signupUrl}`,
-              "Docs: https://docs.aikaclaw.ai/tools/web",
             ].join("\n"),
             "Web search",
           );
@@ -354,11 +342,7 @@ export async function runConfigureWizard(
       note(summarizeExistingConfig(baseConfig), title);
       if (!snapshot.valid && snapshot.issues.length > 0) {
         note(
-          [
-            ...snapshot.issues.map((iss) => `- ${iss.path}: ${iss.message}`),
-            "",
-            "Docs: https://docs.aikaclaw.ai/gateway/configuration",
-          ].join("\n"),
+          snapshot.issues.map((iss) => `- ${iss.path}: ${iss.message}`).join("\n"),
           "Config issues",
         );
       }
@@ -710,12 +694,7 @@ export async function runConfigureWizard(
       : `Gateway: not detected${gatewayProbe.detail ? ` (${gatewayProbe.detail})` : ""}`;
 
     note(
-      [
-        `Web UI: ${links.httpUrl}`,
-        `Gateway WS: ${links.wsUrl}`,
-        gatewayStatusLine,
-        "Docs: https://docs.aikaclaw.ai/web/control-ui",
-      ].join("\n"),
+      [`Web UI: ${links.httpUrl}`, `Gateway WS: ${links.wsUrl}`, gatewayStatusLine].join("\n"),
       "Control UI",
     );
 

@@ -4,12 +4,7 @@ import type { ProgramContext } from "./context.js";
 
 const hasEmittedCliBannerMock = vi.fn(() => false);
 const formatCliBannerLineMock = vi.fn(() => "BANNER-LINE");
-const formatDocsLinkMock = vi.fn((_path: string, full: string) => `https://${full}`);
 const resolveCommitHashMock = vi.fn<() => string | null>(() => "abc1234");
-
-vi.mock("../../terminal/links.js", () => ({
-  formatDocsLink: formatDocsLinkMock,
-}));
 
 vi.mock("../../terminal/theme.js", () => ({
   isRich: () => false,
@@ -127,7 +122,7 @@ describe("configureProgramHelp", () => {
     const help = captureHelpOutput(program);
     expect(help).toContain("BANNER-LINE");
     expect(help).toContain("Examples:");
-    expect(help).toContain("https://docs.aikaclaw.ai/cli");
+    expect(help).not.toContain("https://docs.aikaclaw.ai");
   });
 
   it("prints version and exits immediately when version flags are present", () => {

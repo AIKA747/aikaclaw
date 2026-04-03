@@ -1,24 +1,13 @@
-import { formatTerminalLink } from "../utils.js";
+export const DOCS_ROOT = "";
 
-export const DOCS_ROOT = "https://docs.aikaclaw.ai";
-
-export function formatDocsLink(
-  path: string,
-  label?: string,
-  opts?: { fallback?: string; force?: boolean },
-): string {
+export function formatDocsLink(path: string, label?: string): string {
+  if (label) {
+    return label;
+  }
   const trimmed = path.trim();
-  const url = trimmed.startsWith("http")
-    ? trimmed
-    : `${DOCS_ROOT}${trimmed.startsWith("/") ? trimmed : `/${trimmed}`}`;
-  return formatTerminalLink(label ?? url, url, {
-    fallback: opts?.fallback ?? url,
-    force: opts?.force,
-  });
+  return trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
 }
 
 export function formatDocsRootLink(label?: string): string {
-  return formatTerminalLink(label ?? DOCS_ROOT, DOCS_ROOT, {
-    fallback: DOCS_ROOT,
-  });
+  return label ?? "";
 }

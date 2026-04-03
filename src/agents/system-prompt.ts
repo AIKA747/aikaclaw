@@ -163,7 +163,6 @@ function buildDocsSection(params: { docsPath?: string; isMinimal: boolean; readT
   return [
     "## Documentation",
     `AikaClaw docs: ${docsPath}`,
-    "Mirror: https://docs.aikaclaw.ai",
     "Source: https://github.com/aikaclaw/aikaclaw",
     "Community: https://discord.com/invite/clawd",
     "Find new skills: https://clawhub.ai",
