@@ -1,5 +1,4 @@
 import type { Command } from "commander";
-import { formatDocsLink } from "../../terminal/links.js";
 import { theme } from "../../terminal/theme.js";
 import {
   registerCronAddCommand,
@@ -16,7 +15,7 @@ export function registerCronCli(program: Command) {
     .addHelpText(
       "after",
       () =>
-        `\n${theme.muted("Docs:")} ${formatDocsLink("/cli/cron", "docs.aikaclaw.ai/cli/cron")}\n${theme.muted("Upgrade tip:")} run \`aikaclaw doctor --fix\` to normalize legacy cron job storage.\n`,
+        `\n${theme.muted("Upgrade tip:")} run \`aikaclaw doctor --fix\` to normalize legacy cron job storage.\n`,
     );
 
   registerCronStatusCommand(cron);

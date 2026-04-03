@@ -12,7 +12,6 @@ import type { HookEntry } from "../hooks/types.js";
 import { loadWorkspaceHookEntries } from "../hooks/workspace.js";
 import { buildPluginStatusReport } from "../plugins/status.js";
 import { defaultRuntime } from "../runtime.js";
-import { formatDocsLink } from "../terminal/links.js";
 import { getTerminalTableWidth, renderTable } from "../terminal/table.js";
 import { theme } from "../terminal/theme.js";
 import { shortenHomePath } from "../utils.js";
@@ -444,14 +443,7 @@ export async function disableHook(hookName: string): Promise<void> {
 }
 
 export function registerHooksCli(program: Command): void {
-  const hooks = program
-    .command("hooks")
-    .description("Manage internal agent hooks")
-    .addHelpText(
-      "after",
-      () =>
-        `\n${theme.muted("Docs:")} ${formatDocsLink("/cli/hooks", "docs.aikaclaw.ai/cli/hooks")}\n`,
-    );
+  const hooks = program.command("hooks").description("Manage internal agent hooks");
 
   hooks
     .command("list")

@@ -72,7 +72,6 @@ describe("setupWizardCommand", () => {
           "Windows detected - AikaClaw runs great on WSL2!",
           "Native Windows might be trickier.",
           "Quick setup: wsl --install (one command, one reboot)",
-          "Guide: https://docs.aikaclaw.ai/windows",
         ].join("\n"),
       );
     } finally {

@@ -1,7 +1,6 @@
 import type { Command } from "commander";
 import { danger } from "../globals.js";
 import { defaultRuntime } from "../runtime.js";
-import { formatDocsLink } from "../terminal/links.js";
 import { theme } from "../terminal/theme.js";
 import { registerBrowserActionInputCommands } from "./browser-cli-actions-input.js";
 import { registerBrowserActionObserveCommands } from "./browser-cli-actions-observe.js";
@@ -27,9 +26,6 @@ export function registerBrowserCli(program: Command) {
         `\n${theme.heading("Examples:")}\n${formatHelpExamples(
           [...browserCoreExamples, ...browserActionExamples].map((cmd) => [cmd, ""]),
           true,
-        )}\n\n${theme.muted("Docs:")} ${formatDocsLink(
-          "/cli/browser",
-          "docs.aikaclaw.ai/cli/browser",
         )}\n`,
     )
     .action(() => {

@@ -2,8 +2,6 @@ import type { Command } from "commander";
 import { setupWizardCommand } from "../../commands/onboard.js";
 import { setupCommand } from "../../commands/setup.js";
 import { defaultRuntime } from "../../runtime.js";
-import { formatDocsLink } from "../../terminal/links.js";
-import { theme } from "../../terminal/theme.js";
 import { runCommandWithRuntime } from "../cli-utils.js";
 import { hasExplicitOptions } from "../command-options.js";
 
@@ -11,11 +9,6 @@ export function registerSetupCommand(program: Command) {
   program
     .command("setup")
     .description("Initialize ~/.aikaclaw/aikaclaw.json and the agent workspace")
-    .addHelpText(
-      "after",
-      () =>
-        `\n${theme.muted("Docs:")} ${formatDocsLink("/cli/setup", "docs.aikaclaw.ai/cli/setup")}\n`,
-    )
     .option(
       "--workspace <dir>",
       "Agent workspace directory (default: ~/.aikaclaw/workspace; stored as agents.defaults.workspace)",

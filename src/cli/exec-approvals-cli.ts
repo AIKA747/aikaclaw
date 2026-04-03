@@ -9,7 +9,6 @@ import {
 } from "../infra/exec-approvals.js";
 import { formatTimeAgo } from "../infra/format-time/format-relative.ts";
 import { defaultRuntime } from "../runtime.js";
-import { formatDocsLink } from "../terminal/links.js";
 import { getTerminalTableWidth, renderTable } from "../terminal/table.js";
 import { isRich, theme } from "../terminal/theme.js";
 import { describeUnknownError } from "./gateway-cli/shared.js";
@@ -349,12 +348,7 @@ export function registerExecApprovalsCli(program: Command) {
   const approvals = program
     .command("approvals")
     .alias("exec-approvals")
-    .description("Manage exec approvals (gateway or node host)")
-    .addHelpText(
-      "after",
-      () =>
-        `\n${theme.muted("Docs:")} ${formatDocsLink("/cli/approvals", "docs.aikaclaw.ai/cli/approvals")}\n`,
-    );
+    .description("Manage exec approvals (gateway or node host)");
 
   const getCmd = approvals
     .command("get")
@@ -433,7 +427,7 @@ export function registerExecApprovalsCli(program: Command) {
         )}\n${formatExample(
           'aikaclaw approvals allowlist remove "~/Projects/**/bin/rg"',
           "Remove an allowlist pattern.",
-        )}\n\n${theme.muted("Docs:")} ${formatDocsLink("/cli/approvals", "docs.aikaclaw.ai/cli/approvals")}\n`,
+        )}\n`,
     );
 
   registerAllowlistMutationCommand({

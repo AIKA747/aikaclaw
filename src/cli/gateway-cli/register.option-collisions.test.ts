@@ -77,10 +77,6 @@ vi.mock("../../terminal/health-style.js", () => ({
   styleHealthChannelLine: (line: string) => line,
 }));
 
-vi.mock("../../terminal/links.js", () => ({
-  formatDocsLink: () => "docs.aikaclaw.ai/cli/gateway",
-}));
-
 vi.mock("../../terminal/theme.js", () => ({
   colorize: (_rich: boolean, _fn: (value: string) => string, value: string) => value,
   isRich: () => false,

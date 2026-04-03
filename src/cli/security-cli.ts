@@ -3,7 +3,6 @@ import { loadConfig } from "../config/config.js";
 import { defaultRuntime } from "../runtime.js";
 import { runSecurityAudit } from "../security/audit.js";
 import { fixSecurityFootguns } from "../security/fix.js";
-import { formatDocsLink } from "../terminal/links.js";
 import { isRich, theme } from "../terminal/theme.js";
 import { shortenHomeInString, shortenHomePath } from "../utils.js";
 import { formatCliCommand } from "./command-format.js";
@@ -48,7 +47,7 @@ export function registerSecurityCli(program: Command) {
           ],
           ["aikaclaw security audit --fix", "Apply safe remediations and file-permission fixes."],
           ["aikaclaw security audit --json", "Output machine-readable JSON."],
-        ])}\n\n${theme.muted("Docs:")} ${formatDocsLink("/cli/security", "docs.aikaclaw.ai/cli/security")}\n`,
+        ])}\n`,
     );
 
   security

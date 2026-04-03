@@ -20,7 +20,6 @@ import {
   resolveAgentIdFromSessionKey,
 } from "../routing/session-key.js";
 import { type RuntimeEnv, writeRuntimeJson } from "../runtime.js";
-import { formatDocsLink } from "../terminal/links.js";
 import { colorize, isRich, theme } from "../terminal/theme.js";
 import { INTERNAL_MESSAGE_CHANNEL } from "../utils/message-channel.js";
 
@@ -29,8 +28,6 @@ type SandboxExplainOptions = {
   agent?: string;
   json: boolean;
 };
-
-const SANDBOX_DOCS_URL = "https://docs.aikaclaw.ai/sandbox";
 
 function normalizeExplainSessionKey(params: {
   cfg: AikaClawConfig;
@@ -230,7 +227,6 @@ export async function sandboxExplainCommand(
   }
 
   const payload = {
-    docsUrl: SANDBOX_DOCS_URL,
     agentId: resolvedAgentId,
     sessionKey,
     mainSessionKey,
@@ -330,8 +326,6 @@ export async function sandboxExplainCommand(
   for (const key of payload.fixIt) {
     lines.push(`  - ${key}`);
   }
-  lines.push("");
-  lines.push(`${key("Docs:")} ${formatDocsLink("/sandbox", "docs.aikaclaw.ai/sandbox")}`);
 
   runtime.log(`${lines.join("\n")}\n`);
 }

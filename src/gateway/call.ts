@@ -255,7 +255,7 @@ export function buildGatewayConnectionDetails(
           ? undefined
           : "Break-glass (trusted private networks only): set AIKACLAW_ALLOW_INSECURE_PRIVATE_WS=1",
         "Doctor: aikaclaw doctor --fix",
-        "Docs: https://docs.aikaclaw.ai/gateway/remote",
+        'Run "aikaclaw doctor --fix" for remote access setup help.',
       ].join("\n"),
     );
   }

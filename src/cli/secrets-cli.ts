@@ -7,8 +7,6 @@ import { runSecretsApply } from "../secrets/apply.js";
 import { resolveSecretsAuditExitCode, runSecretsAudit } from "../secrets/audit.js";
 import { runSecretsConfigureInteractive } from "../secrets/configure.js";
 import { isSecretsApplyPlan, type SecretsApplyPlan } from "../secrets/plan.js";
-import { formatDocsLink } from "../terminal/links.js";
-import { theme } from "../terminal/theme.js";
 import { addGatewayClientOptions, callGatewayFromCli, type GatewayRpcOpts } from "./gateway-rpc.js";
 
 type SecretsReloadOptions = GatewayRpcOpts & { json?: boolean };
@@ -44,14 +42,7 @@ function readPlanFile(pathname: string): SecretsApplyPlan {
 }
 
 export function registerSecretsCli(program: Command) {
-  const secrets = program
-    .command("secrets")
-    .description("Secrets runtime controls")
-    .addHelpText(
-      "after",
-      () =>
-        `\n${theme.muted("Docs:")} ${formatDocsLink("/gateway/security", "docs.aikaclaw.ai/gateway/security")}\n`,
-    );
+  const secrets = program.command("secrets").description("Secrets runtime controls");
 
   addGatewayClientOptions(
     secrets

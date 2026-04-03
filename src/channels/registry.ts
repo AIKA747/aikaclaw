@@ -7,8 +7,6 @@ export type { ChatChannelId } from "./ids.js";
 
 export type ChatChannelMeta = ChannelMeta;
 
-const WEBSITE_URL = "https://aikaclaw.ai";
-
 type RegisteredChannelPluginEntry = {
   plugin: {
     id?: string | null;
@@ -48,7 +46,7 @@ const CHAT_CHANNEL_META: Record<ChatChannelId, ChannelMeta> = {
     systemImage: "paperplane",
     selectionDocsPrefix: "",
     selectionDocsOmitLabel: true,
-    selectionExtras: [WEBSITE_URL],
+    selectionExtras: [],
   },
   whatsapp: {
     id: "whatsapp",

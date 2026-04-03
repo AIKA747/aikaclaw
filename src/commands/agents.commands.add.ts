@@ -333,10 +333,7 @@ export async function agentsAddCommand(
         }
       } else {
         await prompter.note(
-          [
-            "Routing unchanged. Add bindings when you're ready.",
-            "Docs: https://docs.aikaclaw.ai/concepts/multi-agent",
-          ].join("\n"),
+          ["Routing unchanged. Add bindings when you're ready."].join("\n"),
           "Routing",
         );
       }

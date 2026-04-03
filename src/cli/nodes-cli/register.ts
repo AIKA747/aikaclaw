@@ -1,5 +1,4 @@
 import type { Command } from "commander";
-import { formatDocsLink } from "../../terminal/links.js";
 import { theme } from "../../terminal/theme.js";
 import { formatHelpExamples } from "../help-format.js";
 import { registerNodesCameraCommands } from "./register.camera.js";
@@ -24,7 +23,7 @@ export function registerNodesCli(program: Command) {
           ["aikaclaw nodes pairing pending", "Show pending node pairing requests."],
           ['aikaclaw nodes run --node <id> --raw "uname -a"', "Run a shell command on a node."],
           ["aikaclaw nodes camera snap --node <id>", "Capture a photo from a node camera."],
-        ])}\n\n${theme.muted("Docs:")} ${formatDocsLink("/cli/nodes", "docs.aikaclaw.ai/cli/nodes")}\n`,
+        ])}\n`,
     );
 
   registerNodesStatusCommands(nodes);

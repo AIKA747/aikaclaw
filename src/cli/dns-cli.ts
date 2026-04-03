@@ -6,7 +6,6 @@ import { loadConfig } from "../config/config.js";
 import { pickPrimaryTailnetIPv4, pickPrimaryTailnetIPv6 } from "../infra/tailnet.js";
 import { getWideAreaZonePath, resolveWideAreaDiscoveryDomain } from "../infra/widearea-dns.js";
 import { defaultRuntime } from "../runtime.js";
-import { formatDocsLink } from "../terminal/links.js";
 import { getTerminalTableWidth, renderTable } from "../terminal/table.js";
 import { theme } from "../terminal/theme.js";
 
@@ -102,11 +101,7 @@ function ensureImportLine(corefilePath: string, importGlob: string): boolean {
 export function registerDnsCli(program: Command) {
   const dns = program
     .command("dns")
-    .description("DNS helpers for wide-area discovery (Tailscale + CoreDNS)")
-    .addHelpText(
-      "after",
-      () => `\n${theme.muted("Docs:")} ${formatDocsLink("/cli/dns", "docs.aikaclaw.ai/cli/dns")}\n`,
-    );
+    .description("DNS helpers for wide-area discovery (Tailscale + CoreDNS)");
 
   dns
     .command("setup")

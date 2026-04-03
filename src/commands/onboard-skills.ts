@@ -194,7 +194,6 @@ export async function setupSkills(
       runtime.log(
         `Tip: run \`${formatCliCommand("aikaclaw doctor")}\` to review skills + requirements.`,
       );
-      runtime.log("Docs: https://docs.aikaclaw.ai/skills");
     }
   }
 

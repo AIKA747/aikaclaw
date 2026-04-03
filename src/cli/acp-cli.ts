@@ -4,8 +4,6 @@ import { readSecretFromFile } from "../acp/secret-file.js";
 import { serveAcpGateway } from "../acp/server.js";
 import { normalizeAcpProvenanceMode } from "../acp/types.js";
 import { defaultRuntime } from "../runtime.js";
-import { formatDocsLink } from "../terminal/links.js";
-import { theme } from "../terminal/theme.js";
 import { inheritOptionFromParent } from "./command-options.js";
 
 function resolveSecretOption(params: {
@@ -48,10 +46,6 @@ export function registerAcpCli(program: Command) {
     .option("--no-prefix-cwd", "Do not prefix prompts with the working directory", false)
     .option("--provenance <mode>", "ACP provenance mode: off, meta, or meta+receipt")
     .option("-v, --verbose", "Verbose logging to stderr", false)
-    .addHelpText(
-      "after",
-      () => `\n${theme.muted("Docs:")} ${formatDocsLink("/cli/acp", "docs.aikaclaw.ai/cli/acp")}\n`,
-    )
     .action(async (opts) => {
       try {
         const gatewayToken = resolveSecretOption({
