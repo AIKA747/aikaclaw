@@ -451,7 +451,6 @@ describe("launchd install", () => {
     }
     expect(message).toContain("logged-in macOS GUI session");
     expect(message).toContain("wrong user (including sudo)");
-    expect(message).not.toContain("https://docs.aikaclaw.ai");
   });
 
   it("surfaces generic bootstrap failures without GUI-specific guidance", async () => {

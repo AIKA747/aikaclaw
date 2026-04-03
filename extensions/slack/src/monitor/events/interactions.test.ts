@@ -1473,7 +1473,7 @@ describe("registerSlackInteractionEvents", () => {
               email_block: {
                 email_input: {
                   type: "email_text_input",
-                  value: "team@aikaclaw.ai",
+                  value: "aika@aikavision.com",
                 },
               },
               url_block: {
@@ -1570,7 +1570,7 @@ describe("registerSlackInteractionEvents", () => {
         expect.objectContaining({
           actionId: "email_input",
           inputKind: "email",
-          inputEmail: "team@aikaclaw.ai",
+          inputEmail: "aika@aikavision.ai",
         }),
         expect.objectContaining({
           actionId: "url_input",
