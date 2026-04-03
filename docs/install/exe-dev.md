@@ -31,7 +31,7 @@ Shelley, [exe.dev](https://exe.dev)'s agent, can install AikaClaw instantly with
 prompt. The prompt used is as below:
 
 ```
-Set up AikaClaw (https://docs.aikaclaw.ai/install) on this VM. Use the non-interactive and accept-risk flags for aikaclaw onboarding. Add the supplied auth or token as needed. Configure nginx to forward from the default port 18789 to the root location on the default enabled site config, making sure to enable Websocket support. Pairing is done by "aikaclaw devices list" and "aikaclaw devices approve <request id>". Make sure the dashboard shows that AikaClaw's health is OK. exe.dev handles forwarding from port 8000 to port 80/443 and HTTPS for us, so the final "reachable" should be <vm-name>.exe.xyz, without port specification.
+Set up AikaClaw (/install) on this VM. Use the non-interactive and accept-risk flags for aikaclaw onboarding. Add the supplied auth or token as needed. Configure nginx to forward from the default port 18789 to the root location on the default enabled site config, making sure to enable Websocket support. Pairing is done by "aikaclaw devices list" and "aikaclaw devices approve <request id>". Make sure the dashboard shows that AikaClaw's health is OK. exe.dev handles forwarding from port 8000 to port 80/443 and HTTPS for us, so the final "reachable" should be <vm-name>.exe.xyz, without port specification.
 ```
 
 ## Manual installation
@@ -64,7 +64,7 @@ sudo apt-get install -y git curl jq ca-certificates openssl
 Run the AikaClaw install script:
 
 ```bash
-curl -fsSL https://aikaclaw.ai/install.sh | bash
+curl -fsSL /install.sh | bash
 ```
 
 ## 4) Setup nginx to proxy AikaClaw to port 8000

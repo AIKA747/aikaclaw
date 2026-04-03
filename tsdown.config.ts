@@ -117,7 +117,7 @@ function buildCoreDistEntries(): Record<string, string> {
     "cli/daemon-cli": "src/cli/daemon-cli.ts",
     // Ensure memory-cli is a stable entry so the runtime tools plugin can import
     // it by a deterministic path instead of a content-hashed chunk name.
-    // See https://github.com/aikaclaw/aikaclaw/issues/51676
+    // See https://github.com/AIKA747/aikaclaw/issues/51676
     "cli/memory-cli": "src/cli/memory-cli.ts",
     // Keep long-lived lazy runtime boundaries on stable filenames so rebuilt
     // dist/ trees do not strand already-running gateways on stale hashed chunks.

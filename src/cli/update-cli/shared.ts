@@ -53,7 +53,7 @@ export function parseTimeoutMsOrExit(timeout?: string): number | undefined | nul
   return timeoutMs;
 }
 
-const AIKACLAW_REPO_URL = "https://github.com/aikaclaw/aikaclaw.git";
+const AIKACLAW_REPO_URL = "https://github.com/AIKA747/aikaclaw.git";
 const MAX_LOG_CHARS = 8000;
 
 export const DEFAULT_PACKAGE_NAME = "aikaclaw";

@@ -80,7 +80,7 @@ Multi-account config (advanced):
 
 ## Full documentation
 
-See https://docs.aikaclaw.ai/channels/twitch for:
+See /channels/twitch for:
 
 - Token refresh setup
 - Access control patterns

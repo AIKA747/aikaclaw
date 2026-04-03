@@ -256,7 +256,7 @@ This guide sets up an Azure Linux VM with the Azure CLI, applies Network Securit
 
   <Step title="Install AikaClaw (in the VM shell)">
     ```bash
-    curl -fsSL https://aikaclaw.ai/install.sh -o /tmp/install.sh
+    curl -fsSL /install.sh -o /tmp/install.sh
     bash /tmp/install.sh
     rm -f /tmp/install.sh
     ```

@@ -40,8 +40,8 @@ AikaClaw 有三个公开发布渠道：
 
 ## 公开参考
 
-- [`.github/workflows/aikaclaw-npm-release.yml`](https://github.com/aikaclaw/aikaclaw/blob/main/.github/workflows/aikaclaw-npm-release.yml)
-- [`scripts/aikaclaw-npm-release-check.ts`](https://github.com/aikaclaw/aikaclaw/blob/main/scripts/aikaclaw-npm-release-check.ts)
+- [`.github/workflows/aikaclaw-npm-release.yml`](https://github.com/AIKA747/aikaclaw/blob/main/.github/workflows/aikaclaw-npm-release.yml)
+- [`scripts/aikaclaw-npm-release-check.ts`](https://github.com/AIKA747/aikaclaw/blob/main/scripts/aikaclaw-npm-release-check.ts)
 
 维护者使用
 [`aikaclaw/maintainers/release/README.md`](https://github.com/aikaclaw/maintainers/blob/main/release/README.md)

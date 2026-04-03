@@ -38,7 +38,7 @@ Shelley 是 [exe.dev](https://exe.dev) 的智能体，可以使用我们的提�
 使用的提示词如下：
 
 ```
-Set up AikaClaw (https://docs.aikaclaw.ai/install) on this VM. Use the non-interactive and accept-risk flags for aikaclaw onboarding. Add the supplied auth or token as needed. Configure nginx to forward from the default port 18789 to the root location on the default enabled site config, making sure to enable Websocket support. Pairing is done by "aikaclaw devices list" and "aikaclaw devices approve <request id>". Make sure the dashboard shows that AikaClaw's health is OK. exe.dev handles forwarding from port 8000 to port 80/443 and HTTPS for us, so the final "reachable" should be <vm-name>.exe.xyz, without port specification.
+Set up AikaClaw (/install) on this VM. Use the non-interactive and accept-risk flags for aikaclaw onboarding. Add the supplied auth or token as needed. Configure nginx to forward from the default port 18789 to the root location on the default enabled site config, making sure to enable Websocket support. Pairing is done by "aikaclaw devices list" and "aikaclaw devices approve <request id>". Make sure the dashboard shows that AikaClaw's health is OK. exe.dev handles forwarding from port 8000 to port 80/443 and HTTPS for us, so the final "reachable" should be <vm-name>.exe.xyz, without port specification.
 ```
 
 ## 手动安装
@@ -71,7 +71,7 @@ sudo apt-get install -y git curl jq ca-certificates openssl
 运行 AikaClaw 安装脚本：
 
 ```bash
-curl -fsSL https://aikaclaw.ai/install.sh | bash
+curl -fsSL /install.sh | bash
 ```
 
 ## 4）设置 nginx，将 AikaClaw 代理到端口 8000

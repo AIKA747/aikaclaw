@@ -45,12 +45,12 @@ x-i18n:
     <Tabs>
       <Tab title="macOS / Linux / WSL2">
         ```bash
-        curl -fsSL https://aikaclaw.ai/install.sh | bash
+        curl -fsSL /install.sh | bash
         ```
       </Tab>
       <Tab title="Windows (PowerShell)">
         ```powershell
-        iwr -useb https://aikaclaw.ai/install.ps1 | iex
+        iwr -useb /install.ps1 | iex
         ```
       </Tab>
     </Tabs>
@@ -62,12 +62,12 @@ x-i18n:
     <Tabs>
       <Tab title="macOS / Linux / WSL2">
         ```bash
-        curl -fsSL https://aikaclaw.ai/install.sh | bash -s -- --no-onboard
+        curl -fsSL /install.sh | bash -s -- --no-onboard
         ```
       </Tab>
       <Tab title="Windows (PowerShell)">
         ```powershell
-        & ([scriptblock]::Create((iwr -useb https://aikaclaw.ai/install.ps1))) -NoOnboard
+        & ([scriptblock]::Create((iwr -useb /install.ps1))) -NoOnboard
         ```
       </Tab>
     </Tabs>
@@ -126,10 +126,10 @@ x-i18n:
 
     <Steps>
       <Step title="克隆并构建">
-        克隆 [AikaClaw 仓库](https://github.com/aikaclaw/aikaclaw) 并构建：
+        克隆 [AikaClaw 仓库](https://github.com/AIKA747/aikaclaw) 并构建：
 
         ```bash
-        git clone https://github.com/aikaclaw/aikaclaw.git
+        git clone https://github.com/AIKA747/aikaclaw.git
         cd aikaclaw
         pnpm install
         pnpm ui:build

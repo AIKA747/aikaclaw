@@ -45,7 +45,7 @@ npm install -g aikaclaw@latest
 从源代码（开发）：
 
 ```bash
-git clone https://github.com/aikaclaw/aikaclaw.git
+git clone https://github.com/AIKA747/aikaclaw.git
 cd aikaclaw
 pnpm install
 pnpm ui:build # 首次运行时自动安装 UI 依赖

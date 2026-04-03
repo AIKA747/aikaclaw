@@ -9,10 +9,10 @@ title: "Ansible"
 
 # Ansible Installation
 
-Deploy AikaClaw to production servers with **[aikaclaw-ansible](https://github.com/aikaclaw/aikaclaw-ansible)** -- an automated installer with security-first architecture.
+Deploy AikaClaw to production servers with **[aikaclaw-ansible](https://github.com/AIKA747/aikaclaw-ansible)** -- an automated installer with security-first architecture.
 
 <Info>
-The [aikaclaw-ansible](https://github.com/aikaclaw/aikaclaw-ansible) repo is the source of truth for Ansible deployment. This page is a quick overview.
+The [aikaclaw-ansible](https://github.com/AIKA747/aikaclaw-ansible) repo is the source of truth for Ansible deployment. This page is a quick overview.
 </Info>
 
 ## Prerequisites
@@ -132,7 +132,7 @@ If you prefer manual control over the automation:
   </Step>
   <Step title="Clone the repository">
     ```bash
-    git clone https://github.com/aikaclaw/aikaclaw-ansible.git
+    git clone https://github.com/AIKA747/aikaclaw-ansible.git
     cd aikaclaw-ansible
     ```
   </Step>
@@ -218,13 +218,13 @@ This is idempotent and safe to run multiple times.
 
 For detailed security architecture and troubleshooting, see the aikaclaw-ansible repo:
 
-- [Security Architecture](https://github.com/aikaclaw/aikaclaw-ansible/blob/main/docs/security.md)
-- [Technical Details](https://github.com/aikaclaw/aikaclaw-ansible/blob/main/docs/architecture.md)
-- [Troubleshooting Guide](https://github.com/aikaclaw/aikaclaw-ansible/blob/main/docs/troubleshooting.md)
+- [Security Architecture](https://github.com/AIKA747/aikaclaw-ansible/blob/main/docs/security.md)
+- [Technical Details](https://github.com/AIKA747/aikaclaw-ansible/blob/main/docs/architecture.md)
+- [Troubleshooting Guide](https://github.com/AIKA747/aikaclaw-ansible/blob/main/docs/troubleshooting.md)
 
 ## Related
 
-- [aikaclaw-ansible](https://github.com/aikaclaw/aikaclaw-ansible) -- full deployment guide
+- [aikaclaw-ansible](https://github.com/AIKA747/aikaclaw-ansible) -- full deployment guide
 - [Docker](/install/docker) -- containerized gateway setup
 - [Sandboxing](/gateway/sandboxing) -- agent sandbox configuration
 - [Multi-Agent Sandbox and Tools](/tools/multi-agent-sandbox-tools) -- per-agent isolation

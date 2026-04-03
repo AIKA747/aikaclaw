@@ -106,7 +106,7 @@ tailscale status
 ## 5) 安装 AikaClaw
 
 ```bash
-curl -fsSL https://aikaclaw.ai/install.sh | bash
+curl -fsSL /install.sh | bash
 source ~/.bashrc
 ```
 

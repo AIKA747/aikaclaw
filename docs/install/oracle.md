@@ -75,7 +75,7 @@ Run a persistent AikaClaw Gateway on Oracle Cloud's **Always Free** ARM tier (up
 
   <Step title="Install AikaClaw">
     ```bash
-    curl -fsSL https://aikaclaw.ai/install.sh | bash
+    curl -fsSL /install.sh | bash
     source ~/.bashrc
     ```
 

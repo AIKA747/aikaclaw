@@ -6,7 +6,7 @@
  * that are still tracked as active in the subagent registry) and sends a
  * synthetic resume message to restart their work.
  *
- * @see https://github.com/aikaclaw/aikaclaw/issues/47711
+ * @see https://github.com/AIKA747/aikaclaw/issues/47711
  */
 
 import crypto from "node:crypto";

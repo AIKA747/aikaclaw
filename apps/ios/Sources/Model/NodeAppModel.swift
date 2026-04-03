@@ -2229,7 +2229,7 @@ extension NodeAppModel {
 
         let payload = SharedContentPayload(
             title: "AikaClaw Share Self-Test",
-            url: URL(string: "https://aikaclaw.ai/share-self-test"),
+            url: URL(string: "https://github.com/AIKA747/aikaclaw"),
             text: "Validate iOS share->deep-link->gateway forwarding.")
         guard let deepLink = ShareToAgentDeepLink.buildURL(
             from: payload,

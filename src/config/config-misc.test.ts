@@ -12,11 +12,11 @@ import { AikaClawSchema } from "./zod-schema.js";
 describe("$schema key in config (#14998)", () => {
   it("accepts config with $schema string", () => {
     const result = AikaClawSchema.safeParse({
-      $schema: "https://aikaclaw.ai/config.json",
+      $schema: "config.json",
     });
     expect(result.success).toBe(true);
     if (result.success) {
-      expect(result.data.$schema).toBe("https://aikaclaw.ai/config.json");
+      expect(result.data.$schema).toBe("config.json");
     }
   });
 

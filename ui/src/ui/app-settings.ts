@@ -580,7 +580,7 @@ function buildAttentionItems(host: AikaClawApp) {
       title: "Missing operator.read scope",
       description:
         "This connection does not have the operator.read scope. Some features may be unavailable.",
-      href: "https://docs.aikaclaw.ai/web/dashboard",
+      href: "/web/dashboard",
       external: true,
     });
   }

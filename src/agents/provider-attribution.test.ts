@@ -33,7 +33,6 @@ describe("provider attribution", () => {
       product: "AikaClaw",
       version: "2026.3.22",
       headers: {
-        "HTTP-Referer": "https://aikaclaw.ai",
         "X-OpenRouter-Title": "AikaClaw",
         "X-OpenRouter-Categories": "cli-agent",
       },
@@ -46,7 +45,6 @@ describe("provider attribution", () => {
         AIKACLAW_VERSION: "2026.3.22",
       }),
     ).toEqual({
-      "HTTP-Referer": "https://aikaclaw.ai",
       "X-OpenRouter-Title": "AikaClaw",
       "X-OpenRouter-Categories": "cli-agent",
     });

@@ -46,7 +46,7 @@ Run a persistent AikaClaw Gateway on a DigitalOcean Droplet.
     apt install -y nodejs
 
     # Install AikaClaw
-    curl -fsSL https://aikaclaw.ai/install.sh | bash
+    curl -fsSL /install.sh | bash
     aikaclaw --version
     ```
 

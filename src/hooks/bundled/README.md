@@ -81,7 +81,7 @@ session-memory/
 ---
 name: my-hook
 description: "Short description"
-homepage: https://docs.aikaclaw.ai/automation/hooks#my-hook
+homepage: /automation/hooks#my-hook
 metadata:
   { "aikaclaw": { "emoji": "🔗", "events": ["command:new"], "requires": { "bins": ["node"] } } }
 ---
@@ -220,4 +220,4 @@ Test your hooks by:
 
 ## Documentation
 
-Full documentation: https://docs.aikaclaw.ai/automation/hooks
+Full documentation: /automation/hooks

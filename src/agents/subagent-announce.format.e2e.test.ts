@@ -196,7 +196,7 @@ describe("subagent announce formatting", () => {
     // Set FAST_TEST_MODE before importing the module to ensure the module-level
     // constant picks it up. This fixes flaky Windows CI failures where the test
     // timeout budget is too tight without fast mode enabled.
-    // See: https://github.com/aikaclaw/aikaclaw/issues/31298
+    // See: https://github.com/AIKA747/aikaclaw/issues/31298
     previousFastTestEnv = process.env.AIKACLAW_TEST_FAST;
     process.env.AIKACLAW_TEST_FAST = "1";
     ({ matrixPlugin } = await import("../../extensions/matrix/src/channel.js"));

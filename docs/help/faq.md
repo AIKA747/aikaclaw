@@ -91,7 +91,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
     the hackable (git) install:
 
     ```bash
-    curl -fsSL https://aikaclaw.ai/install.sh | bash -s -- --install-method git
+    curl -fsSL /install.sh | bash -s -- --install-method git
     ```
 
     This installs AikaClaw **from a git checkout**, so the agent can read the code + docs and
@@ -102,8 +102,8 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
     necessary commands. That keeps changes small and easier to audit.
 
     If you discover a real bug or fix, please file a GitHub issue or send a PR:
-    [https://github.com/aikaclaw/aikaclaw/issues](https://github.com/aikaclaw/aikaclaw/issues)
-    [https://github.com/aikaclaw/aikaclaw/pulls](https://github.com/aikaclaw/aikaclaw/pulls)
+    [https://github.com/AIKA747/aikaclaw/issues](https://github.com/AIKA747/aikaclaw/issues)
+    [https://github.com/AIKA747/aikaclaw/pulls](https://github.com/AIKA747/aikaclaw/pulls)
 
     Start with these commands (share outputs when asking for help):
 
@@ -131,7 +131,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
     The repo recommends running from source and using onboarding:
 
     ```bash
-    curl -fsSL https://aikaclaw.ai/install.sh | bash
+    curl -fsSL /install.sh | bash
     aikaclaw onboard --install-daemon
     ```
 
@@ -140,7 +140,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
     From source (contributors/dev):
 
     ```bash
-    git clone https://github.com/aikaclaw/aikaclaw.git
+    git clone https://github.com/AIKA747/aikaclaw.git
     cd aikaclaw
     pnpm install
     pnpm build
@@ -256,7 +256,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
 
   <Accordion title="Where do I see what is new in the latest version?">
     Check the GitHub changelog:
-    [https://github.com/aikaclaw/aikaclaw/blob/main/CHANGELOG.md](https://github.com/aikaclaw/aikaclaw/blob/main/CHANGELOG.md)
+    [https://github.com/AIKA747/aikaclaw/blob/main/CHANGELOG.md](https://github.com/AIKA747/aikaclaw/blob/main/CHANGELOG.md)
 
     Newest entries are at the top. If the top section is marked **Unreleased**, the next dated
     section is the latest shipped version. Entries are grouped by **Highlights**, **Changes**, and
@@ -264,14 +264,14 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
 
   </Accordion>
 
-  <Accordion title="Cannot access docs.aikaclaw.ai (SSL error)">
-    Some Comcast/Xfinity connections incorrectly block `docs.aikaclaw.ai` via Xfinity
-    Advanced Security. Disable it or allowlist `docs.aikaclaw.ai`, then retry. More
-    detail: [Troubleshooting](/help/faq#cannot-access-docsaikaclaw-ai-ssl-error).
+  <Accordion title="Cannot access the docs site (SSL error)">
+    Some Comcast/Xfinity connections incorrectly block the docs site via Xfinity
+    Advanced Security. Disable it or allowlist the docs domain, then retry. More
+    detail: [Troubleshooting](/help/faq#cannot-access-the-docs-site-ssl-error).
     Please help us unblock it by reporting here: [https://spa.xfinity.com/check_url_status](https://spa.xfinity.com/check_url_status).
 
     If you still can't reach the site, the docs are mirrored on GitHub:
-    [https://github.com/aikaclaw/aikaclaw/tree/main/docs](https://github.com/aikaclaw/aikaclaw/tree/main/docs)
+    [https://github.com/AIKA747/aikaclaw/tree/main/docs](https://github.com/AIKA747/aikaclaw/tree/main/docs)
 
   </Accordion>
 
@@ -286,7 +286,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
     **same version**.
 
     See what changed:
-    [https://github.com/aikaclaw/aikaclaw/blob/main/CHANGELOG.md](https://github.com/aikaclaw/aikaclaw/blob/main/CHANGELOG.md)
+    [https://github.com/AIKA747/aikaclaw/blob/main/CHANGELOG.md](https://github.com/AIKA747/aikaclaw/blob/main/CHANGELOG.md)
 
   </Accordion>
 
@@ -297,15 +297,15 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
     One-liners (macOS/Linux):
 
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash -s -- --beta
+    curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash -s -- --beta
     ```
 
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash -s -- --install-method git
+    curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash -s -- --install-method git
     ```
 
     Windows installer (PowerShell):
-    [https://aikaclaw.ai/install.ps1](https://aikaclaw.ai/install.ps1)
+    [/install.ps1](/install.ps1)
 
     More detail: [Development channels](/install/development-channels) and [Installer flags](/install/installer).
 
@@ -325,7 +325,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
     2. **Hackable install (from the installer site):**
 
     ```bash
-    curl -fsSL https://aikaclaw.ai/install.sh | bash -s -- --install-method git
+    curl -fsSL /install.sh | bash -s -- --install-method git
     ```
 
     That gives you a local repo you can edit, then update via git.
@@ -333,7 +333,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
     If you prefer a clean clone manually, use:
 
     ```bash
-    git clone https://github.com/aikaclaw/aikaclaw.git
+    git clone https://github.com/AIKA747/aikaclaw.git
     cd aikaclaw
     pnpm install
     pnpm build
@@ -359,19 +359,19 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
     Re-run the installer with **verbose output**:
 
     ```bash
-    curl -fsSL https://aikaclaw.ai/install.sh | bash -s -- --verbose
+    curl -fsSL /install.sh | bash -s -- --verbose
     ```
 
     Beta install with verbose:
 
     ```bash
-    curl -fsSL https://aikaclaw.ai/install.sh | bash -s -- --beta --verbose
+    curl -fsSL /install.sh | bash -s -- --beta --verbose
     ```
 
     For a hackable (git) install:
 
     ```bash
-    curl -fsSL https://aikaclaw.ai/install.sh | bash -s -- --install-method git --verbose
+    curl -fsSL /install.sh | bash -s -- --install-method git --verbose
     ```
 
     Windows (PowerShell) equivalent:
@@ -379,7 +379,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
     ```powershell
     # install.ps1 has no dedicated -Verbose flag yet.
     Set-PSDebug -Trace 1
-    & ([scriptblock]::Create((iwr -useb https://aikaclaw.ai/install.ps1))) -NoOnboard
+    & ([scriptblock]::Create((iwr -useb /install.ps1))) -NoOnboard
     Set-PSDebug -Trace 0
     ```
 
@@ -437,7 +437,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
 
     If you still reproduce this on latest AikaClaw, track/report it in:
 
-    - [Issue #30640](https://github.com/aikaclaw/aikaclaw/issues/30640)
+    - [Issue #30640](https://github.com/AIKA747/aikaclaw/issues/30640)
 
   </Accordion>
 
@@ -446,7 +446,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
     your bot (or Claude/Codex) _from that folder_ so it can read the repo and answer precisely.
 
     ```bash
-    curl -fsSL https://aikaclaw.ai/install.sh | bash -s -- --install-method git
+    curl -fsSL /install.sh | bash -s -- --install-method git
     ```
 
     More detail: [Install](/install) and [Installer flags](/install/installer).
@@ -746,7 +746,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
     From npm to git:
 
     ```bash
-    git clone https://github.com/aikaclaw/aikaclaw.git
+    git clone https://github.com/AIKA747/aikaclaw.git
     cd aikaclaw
     pnpm install
     pnpm build
@@ -908,7 +908,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
     - **Always-on Gateway** (run on a VPS, interact from anywhere)
     - **Nodes** for local browser/screen/camera/exec
 
-    Showcase: [https://aikaclaw.ai/showcase](https://aikaclaw.ai/showcase)
+    Showcase: [/showcase](/showcase)
 
   </Accordion>
 </AccordionGroup>
@@ -2993,4 +2993,4 @@ Related: [/concepts/oauth](/concepts/oauth) (OAuth flows, token storage, multi-a
 
 ---
 
-Still stuck? Ask in [Discord](https://discord.com/invite/clawd) or open a [GitHub discussion](https://github.com/aikaclaw/aikaclaw/discussions).
+Still stuck? Ask in [Discord](https://discord.com/invite/clawd) or open a [GitHub discussion](https://github.com/AIKA747/aikaclaw/discussions).

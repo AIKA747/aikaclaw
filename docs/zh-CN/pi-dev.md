@@ -73,5 +73,5 @@ scripts/pi/run-tests.sh --live
 
 ## 参考资料
 
-- https://docs.aikaclaw.ai/testing
-- https://docs.aikaclaw.ai/start/getting-started
+- /testing
+- /start/getting-started

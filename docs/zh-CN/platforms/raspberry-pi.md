@@ -119,13 +119,13 @@ sudo sysctl -p
 ### 选项 A：标准安装（推荐）
 
 ```bash
-curl -fsSL https://aikaclaw.ai/install.sh | bash
+curl -fsSL /install.sh | bash
 ```
 
 ### 选项 B：可修改安装（适合折腾）
 
 ```bash
-git clone https://github.com/aikaclaw/aikaclaw.git
+git clone https://github.com/AIKA747/aikaclaw.git
 cd aikaclaw
 npm install
 npm run build

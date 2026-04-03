@@ -448,7 +448,7 @@ export async function monitorTlonProvider(opts: MonitorTlonOpts = {}): Promise<v
             `This can leak conversation context between users.\n\n` +
             `Fix: Add to your AikaClaw config:\n` +
             `session:\n  dmScope: "per-channel-peer"\n\n` +
-            `Docs: https://docs.aikaclaw.ai/concepts/session#secure-dm-mode`;
+            `Docs: /concepts/session#secure-dm-mode`;
 
           // Send async, don't block message processing
           sendDm({

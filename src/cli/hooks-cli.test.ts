@@ -17,7 +17,7 @@ const report: HookStatusReport = {
       handlerPath: "/tmp/hooks/session-memory/handler.js",
       hookKey: "session-memory",
       emoji: "💾",
-      homepage: "https://docs.aikaclaw.ai/automation/hooks#session-memory",
+      homepage: "/automation/hooks#session-memory",
       events: ["command:new"],
       always: false,
       enabledByConfig: true,

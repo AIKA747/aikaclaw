@@ -553,7 +553,7 @@ export async function resolveModelAsync(
  * error.  This detects known providers that require opt-in auth and adds
  * a hint.
  *
- * See: https://github.com/aikaclaw/aikaclaw/issues/17328
+ * See: https://github.com/AIKA747/aikaclaw/issues/17328
  */
 const LOCAL_PROVIDER_HINTS: Record<string, string> = {
   ollama:

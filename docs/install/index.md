@@ -16,12 +16,12 @@ The fastest way to install. It detects your OS, installs Node if needed, install
 <Tabs>
   <Tab title="macOS / Linux / WSL2">
     ```bash
-    curl -fsSL https://aikaclaw.ai/install.sh | bash
+    curl -fsSL /install.sh | bash
     ```
   </Tab>
   <Tab title="Windows (PowerShell)">
     ```powershell
-    iwr -useb https://aikaclaw.ai/install.ps1 | iex
+    iwr -useb /install.ps1 | iex
     ```
   </Tab>
 </Tabs>
@@ -31,12 +31,12 @@ To install without running onboarding:
 <Tabs>
   <Tab title="macOS / Linux / WSL2">
     ```bash
-    curl -fsSL https://aikaclaw.ai/install.sh | bash -s -- --no-onboard
+    curl -fsSL /install.sh | bash -s -- --no-onboard
     ```
   </Tab>
   <Tab title="Windows (PowerShell)">
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://aikaclaw.ai/install.ps1))) -NoOnboard
+    & ([scriptblock]::Create((iwr -useb /install.ps1))) -NoOnboard
     ```
   </Tab>
 </Tabs>
@@ -90,7 +90,7 @@ SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install -g aikaclaw@latest
 For contributors or anyone who wants to run from a local checkout:
 
 ```bash
-git clone https://github.com/aikaclaw/aikaclaw.git
+git clone https://github.com/AIKA747/aikaclaw.git
 cd aikaclaw
 pnpm install && pnpm ui:build && pnpm build
 pnpm link --global

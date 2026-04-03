@@ -28,7 +28,7 @@ read_when:
   <Step title="Create the Fly app">
     ```bash
     # Clone the repo
-    git clone https://github.com/aikaclaw/aikaclaw.git
+    git clone https://github.com/AIKA747/aikaclaw.git
     cd aikaclaw
 
     # Create a new Fly app (pick your own name)

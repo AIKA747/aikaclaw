@@ -79,7 +79,7 @@ Run a persistent, always-on AikaClaw Gateway on a Raspberry Pi. Since the Pi is 
 
   <Step title="Install AikaClaw">
     ```bash
-    curl -fsSL https://aikaclaw.ai/install.sh | bash
+    curl -fsSL /install.sh | bash
     ```
   </Step>
 

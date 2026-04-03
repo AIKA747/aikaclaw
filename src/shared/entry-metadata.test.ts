@@ -5,12 +5,12 @@ describe("shared/entry-metadata", () => {
   it("prefers metadata emoji and homepage when present", () => {
     expect(
       resolveEmojiAndHomepage({
-        metadata: { emoji: "🦀", homepage: " https://aikaclaw.ai " },
+        metadata: { emoji: "🦀", homepage: " https://example.com " },
         frontmatter: { emoji: "🙂", homepage: "https://example.com" },
       }),
     ).toEqual({
       emoji: "🦀",
-      homepage: "https://aikaclaw.ai",
+      homepage: "https://example.com",
     });
   });
 
@@ -26,11 +26,11 @@ describe("shared/entry-metadata", () => {
   it("falls back through frontmatter homepage aliases and drops blanks", () => {
     expect(
       resolveEmojiAndHomepage({
-        frontmatter: { emoji: "🙂", website: " https://docs.aikaclaw.ai " },
+        frontmatter: { emoji: "🙂", website: " https://docs.example.com " },
       }),
     ).toEqual({
       emoji: "🙂",
-      homepage: "https://docs.aikaclaw.ai",
+      homepage: "https://docs.example.com",
     });
     expect(
       resolveEmojiAndHomepage({
@@ -40,10 +40,10 @@ describe("shared/entry-metadata", () => {
     ).toEqual({});
     expect(
       resolveEmojiAndHomepage({
-        frontmatter: { url: " https://aikaclaw.ai/install " },
+        frontmatter: { url: " https://example.com/install " },
       }),
     ).toEqual({
-      homepage: "https://aikaclaw.ai/install",
+      homepage: "https://example.com/install",
     });
   });
 
@@ -52,8 +52,8 @@ describe("shared/entry-metadata", () => {
       resolveEmojiAndHomepage({
         frontmatter: {
           homepage: " ",
-          website: "https://docs.aikaclaw.ai",
-          url: "https://aikaclaw.ai/install",
+          website: "https://docs.example.com",
+          url: "https://example.com/install",
         },
       }),
     ).toEqual({});

@@ -1,6 +1,6 @@
 # AikaClaw Installer for Windows (PowerShell)
-# Usage: iwr -useb https://aikaclaw.ai/install.ps1 | iex
-# Or: & ([scriptblock]::Create((iwr -useb https://aikaclaw.ai/install.ps1))) -NoOnboard
+# Usage: iwr -useb /install.ps1 | iex
+# Or: & ([scriptblock]::Create((iwr -useb /install.ps1))) -NoOnboard
 
 param(
     [string]$InstallMethod = "npm",
@@ -224,7 +224,7 @@ function Install-AikaClawGit {
     
     if (!(Test-Path $RepoDir)) {
         Write-Host "  Cloning repository..." -Level info
-        git clone https://github.com/aikaclaw/aikaclaw.git $RepoDir 2>&1
+        git clone https://github.com/AIKA747/aikaclaw.git $RepoDir 2>&1
     } elseif ($Update) {
         Write-Host "  Updating repository..." -Level info
         git -C $RepoDir pull --rebase 2>&1

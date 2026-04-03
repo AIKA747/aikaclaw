@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # AikaClaw Installer for macOS and Linux
-# Usage: curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash
+# Usage: curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash
 
 BOLD='\033[1m'
 ACCENT='\033[38;2;255;77;77m'       # coral-bright  #ff4d4d
@@ -262,7 +262,7 @@ detect_os_or_die() {
     if [[ "$OS" == "unknown" ]]; then
         ui_error "Unsupported operating system"
         echo "This installer supports macOS and Linux (including WSL)."
-        echo "For Windows, use: iwr -useb https://aikaclaw.ai/install.ps1 | iex"
+        echo "For Windows, use: iwr -useb /install.ps1 | iex"
         exit 1
     fi
 
@@ -374,7 +374,7 @@ show_install_plan() {
 }
 
 show_footer_links() {
-    local faq_url="https://docs.aikaclaw.ai/start/faq"
+    local faq_url="/start/faq"
     if [[ -n "$GUM" ]]; then
         local content
         content="$(printf '%s\n%s' "Need help?" "FAQ: ${faq_url}")"
@@ -983,7 +983,7 @@ print_usage() {
 AikaClaw installer (macOS + Linux)
 
 Usage:
-  curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash -s -- [options]
+  curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash -s -- [options]
 
 Options:
   --install-method, --method npm|git   Install via npm (default) or from a git checkout
@@ -1015,11 +1015,11 @@ Environment variables:
   SHARP_IGNORE_GLOBAL_LIBVIPS=0|1    Default: 1 (avoid sharp building against global libvips)
 
 Examples:
-  curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash
-  curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash -s -- --no-onboard
-  curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash -s -- --no-onboard --verify
-  curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash -s -- --version main
-  curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash -s -- --install-method git --no-onboard
+  curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash
+  curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash -s -- --no-onboard
+  curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash -s -- --no-onboard --verify
+  curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash -s -- --version main
+  curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash -s -- --install-method git --no-onboard
 EOF
 }
 
@@ -1211,7 +1211,7 @@ print_homebrew_admin_fix() {
     echo "  2) Ask an Administrator to grant admin rights, then sign out/in:"
     echo "     sudo dseditgroup -o edit -a ${current_user} -t user admin"
     echo "Then retry:"
-    echo "  curl -fsSL https://aikaclaw.ai/install.sh | bash"
+    echo "  curl -fsSL /install.sh | bash"
 }
 
 install_homebrew() {
@@ -1365,7 +1365,7 @@ ensure_default_node_active_shell() {
         echo "  nvm use ${NODE_DEFAULT_MAJOR}"
         echo "  nvm alias default ${NODE_DEFAULT_MAJOR}"
         echo "Then open a new shell and rerun:"
-        echo "  curl -fsSL https://aikaclaw.ai/install.sh | bash"
+        echo "  curl -fsSL /install.sh | bash"
     else
         echo "Install/select Node.js ${NODE_DEFAULT_MAJOR} (or Node ${NODE_MIN_VERSION}+ minimum) and ensure it is first on PATH, then rerun installer."
     fi
@@ -1884,7 +1884,7 @@ resolve_aikaclaw_bin() {
 
 install_aikaclaw_from_git() {
     local repo_dir="$1"
-    local repo_url="https://github.com/aikaclaw/aikaclaw.git"
+    local repo_url="https://github.com/AIKA747/aikaclaw.git"
 
     if [[ -d "$repo_dir/.git" ]]; then
         ui_info "Installing AikaClaw from git checkout: ${repo_dir}"
@@ -2452,7 +2452,7 @@ main() {
         ui_kv "Checkout" "$final_git_dir"
         ui_kv "Wrapper" "$HOME/.local/bin/aikaclaw"
         ui_kv "Update command" "aikaclaw update --restart"
-        ui_kv "Switch to npm" "curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash -s -- --install-method npm"
+        ui_kv "Switch to npm" "curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash -s -- --install-method npm"
     elif [[ "$is_upgrade" == "true" ]]; then
         ui_info "Upgrade complete"
         if [[ -r /dev/tty && -w /dev/tty ]]; then

@@ -1265,7 +1265,6 @@ describe("applyExtraParamsToAgent", () => {
 
     expect(calls).toHaveLength(1);
     expect(calls[0]?.headers).toEqual({
-      "HTTP-Referer": "https://aikaclaw.ai",
       "X-OpenRouter-Title": "AikaClaw",
       "X-OpenRouter-Categories": "cli-agent",
       "X-Custom": "1",

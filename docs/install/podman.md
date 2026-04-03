@@ -7,7 +7,7 @@ title: "Podman"
 
 # Podman
 
-Run the AikaClaw Gateway in a **rootless** Podman container. Uses the same image as Docker (built from the repo [Dockerfile](https://github.com/aikaclaw/aikaclaw/blob/main/Dockerfile)).
+Run the AikaClaw Gateway in a **rootless** Podman container. Uses the same image as Docker (built from the repo [Dockerfile](https://github.com/AIKA747/aikaclaw/blob/main/Dockerfile)).
 
 ## Prerequisites
 

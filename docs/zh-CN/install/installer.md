@@ -1,6 +1,6 @@
 ---
 read_when:
-  - 你想了解 `aikaclaw.ai/install.sh`
+  - 你想了解安装脚本
   - 你想自动化安装（CI / 无头）
   - 你想从 GitHub 检出安装
 summary: 安装脚本的工作原理（install.sh、install-cli.sh、install.ps1）、标志和自动化
@@ -16,7 +16,7 @@ x-i18n:
 
 # 安装器内部机制
 
-AikaClaw 提供三个安装脚本，由 `aikaclaw.ai` 提供。
+AikaClaw 提供三个安装脚本。
 
 | 脚本                               | 平台                  | 功能                                                                          |
 | ---------------------------------- | --------------------- | ----------------------------------------------------------------------------- |
@@ -29,31 +29,31 @@ AikaClaw 提供三个安装脚本，由 `aikaclaw.ai` 提供。
 <Tabs>
   <Tab title="install.sh">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash
+    curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash
     ```
 
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash -s -- --help
+    curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash -s -- --help
     ```
 
   </Tab>
   <Tab title="install-cli.sh">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install-cli.sh | bash
+    curl -fsSL --proto '=https' --tlsv1.2 /install-cli.sh | bash
     ```
 
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install-cli.sh | bash -s -- --help
+    curl -fsSL --proto '=https' --tlsv1.2 /install-cli.sh | bash -s -- --help
     ```
 
   </Tab>
   <Tab title="install.ps1">
     ```powershell
-    iwr -useb https://aikaclaw.ai/install.ps1 | iex
+    iwr -useb /install.ps1 | iex
     ```
 
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://aikaclaw.ai/install.ps1))) -Tag beta -NoOnboard -DryRun
+    & ([scriptblock]::Create((iwr -useb /install.ps1))) -Tag beta -NoOnboard -DryRun
     ```
 
   </Tab>
@@ -110,27 +110,27 @@ AikaClaw 提供三个安装脚本，由 `aikaclaw.ai` 提供。
 <Tabs>
   <Tab title="默认">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash
+    curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash
     ```
   </Tab>
   <Tab title="跳过新手引导">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash -s -- --no-onboard
+    curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash -s -- --no-onboard
     ```
   </Tab>
   <Tab title="Git 安装">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash -s -- --install-method git
+    curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash -s -- --install-method git
     ```
   </Tab>
   <Tab title="通过 npm 安装 GitHub main">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash -s -- --version main
+    curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash -s -- --version main
     ```
   </Tab>
   <Tab title="试运行">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash -s -- --dry-run
+    curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash -s -- --dry-run
     ```
   </Tab>
 </Tabs>
@@ -202,22 +202,22 @@ AikaClaw 提供三个安装脚本，由 `aikaclaw.ai` 提供。
 <Tabs>
   <Tab title="默认">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install-cli.sh | bash
+    curl -fsSL --proto '=https' --tlsv1.2 /install-cli.sh | bash
     ```
   </Tab>
   <Tab title="自定义前缀 + 版本">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install-cli.sh | bash -s -- --prefix /opt/aikaclaw --version latest
+    curl -fsSL --proto '=https' --tlsv1.2 /install-cli.sh | bash -s -- --prefix /opt/aikaclaw --version latest
     ```
   </Tab>
   <Tab title="自动化 JSON 输出">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install-cli.sh | bash -s -- --json --prefix /opt/aikaclaw
+    curl -fsSL --proto '=https' --tlsv1.2 /install-cli.sh | bash -s -- --json --prefix /opt/aikaclaw
     ```
   </Tab>
   <Tab title="运行新手引导">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install-cli.sh | bash -s -- --onboard
+    curl -fsSL --proto '=https' --tlsv1.2 /install-cli.sh | bash -s -- --onboard
     ```
   </Tab>
 </Tabs>
@@ -280,34 +280,34 @@ AikaClaw 提供三个安装脚本，由 `aikaclaw.ai` 提供。
 <Tabs>
   <Tab title="默认">
     ```powershell
-    iwr -useb https://aikaclaw.ai/install.ps1 | iex
+    iwr -useb /install.ps1 | iex
     ```
   </Tab>
   <Tab title="Git 安装">
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://aikaclaw.ai/install.ps1))) -InstallMethod git
+    & ([scriptblock]::Create((iwr -useb /install.ps1))) -InstallMethod git
     ```
   </Tab>
   <Tab title="通过 npm 安装 GitHub main">
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://aikaclaw.ai/install.ps1))) -Tag main
+    & ([scriptblock]::Create((iwr -useb /install.ps1))) -Tag main
     ```
   </Tab>
   <Tab title="自定义 git 目录">
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://aikaclaw.ai/install.ps1))) -InstallMethod git -GitDir "C:\aikaclaw"
+    & ([scriptblock]::Create((iwr -useb /install.ps1))) -InstallMethod git -GitDir "C:\aikaclaw"
     ```
   </Tab>
   <Tab title="试运行">
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://aikaclaw.ai/install.ps1))) -DryRun
+    & ([scriptblock]::Create((iwr -useb /install.ps1))) -DryRun
     ```
   </Tab>
   <Tab title="调试跟踪">
     ```powershell
     # install.ps1 目前还没有专门的 -Verbose 标志。
     Set-PSDebug -Trace 1
-    & ([scriptblock]::Create((iwr -useb https://aikaclaw.ai/install.ps1))) -NoOnboard
+    & ([scriptblock]::Create((iwr -useb /install.ps1))) -NoOnboard
     Set-PSDebug -Trace 0
     ```
   </Tab>
@@ -353,23 +353,23 @@ AikaClaw 提供三个安装脚本，由 `aikaclaw.ai` 提供。
 <Tabs>
   <Tab title="install.sh（非交互式 npm）">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash -s -- --no-prompt --no-onboard
+    curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash -s -- --no-prompt --no-onboard
     ```
   </Tab>
   <Tab title="install.sh（非交互式 git）">
     ```bash
     AIKACLAW_INSTALL_METHOD=git AIKACLAW_NO_PROMPT=1 \
-      curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash
+      curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash
     ```
   </Tab>
   <Tab title="install-cli.sh（JSON）">
     ```bash
-    curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install-cli.sh | bash -s -- --json --prefix /opt/aikaclaw
+    curl -fsSL --proto '=https' --tlsv1.2 /install-cli.sh | bash -s -- --json --prefix /opt/aikaclaw
     ```
   </Tab>
   <Tab title="install.ps1（跳过新手引导）">
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://aikaclaw.ai/install.ps1))) -NoOnboard
+    & ([scriptblock]::Create((iwr -useb /install.ps1))) -NoOnboard
     ```
   </Tab>
 </Tabs>
@@ -391,7 +391,7 @@ AikaClaw 提供三个安装脚本，由 `aikaclaw.ai` 提供。
     这些脚本默认设置 `SHARP_IGNORE_GLOBAL_LIBVIPS=1`，以避免 sharp 针对系统 libvips 进行构建。若要覆盖：
 
     ```bash
-    SHARP_IGNORE_GLOBAL_LIBVIPS=0 curl -fsSL --proto '=https' --tlsv1.2 https://aikaclaw.ai/install.sh | bash
+    SHARP_IGNORE_GLOBAL_LIBVIPS=0 curl -fsSL --proto '=https' --tlsv1.2 /install.sh | bash
     ```
 
   </Accordion>
@@ -410,7 +410,7 @@ AikaClaw 提供三个安装脚本，由 `aikaclaw.ai` 提供。
 
     ```powershell
     Set-PSDebug -Trace 1
-    & ([scriptblock]::Create((iwr -useb https://aikaclaw.ai/install.ps1))) -NoOnboard
+    & ([scriptblock]::Create((iwr -useb /install.ps1))) -NoOnboard
     Set-PSDebug -Trace 0
     ```
 

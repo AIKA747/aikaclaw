@@ -148,7 +148,7 @@ The `HOOK.md` file contains metadata in YAML frontmatter plus Markdown documenta
 ---
 name: my-hook
 description: "Short description of what this hook does"
-homepage: https://docs.aikaclaw.ai/automation/hooks#my-hook
+homepage: /automation/hooks#my-hook
 metadata:
   { "aikaclaw": { "emoji": "🔗", "events": ["command:new"], "requires": { "bins": ["node"] } } }
 ---
@@ -1088,6 +1088,6 @@ node -e "import('./path/to/handler.ts').then(console.log)"
 ## See Also
 
 - [CLI Reference: hooks](/cli/hooks)
-- [Bundled Hooks README](https://github.com/aikaclaw/aikaclaw/tree/main/src/hooks/bundled)
+- [Bundled Hooks README](https://github.com/AIKA747/aikaclaw/tree/main/src/hooks/bundled)
 - [Webhook Hooks](/automation/webhook)
 - [Configuration](/gateway/configuration-reference#hooks)
