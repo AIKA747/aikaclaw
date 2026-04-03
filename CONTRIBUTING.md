@@ -182,8 +182,6 @@ We take security reports seriously. Report vulnerabilities directly to the repos
 - **ClawHub** — [AIKA747/clawhub](https://github.com/AIKA747/clawhub)
 - **Trust and threat model** — [AIKA747/trust](https://github.com/AIKA747/trust)
 
-For issues that don't fit a specific repo, or if you're unsure, email **security@aikaclaw.ai** and we'll route it.
-
 ### Required in Reports
 
 1. **Title**
