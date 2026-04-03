@@ -71,7 +71,7 @@ curl -fsSL https://deb.nodesource.com/setup_24.x | bash -
 apt install -y nodejs
 
 # Install AikaClaw
-curl -fsSL https://aikaclaw.ai/install.sh | bash
+curl -fsSL /install.sh | bash
 
 # Verify
 aikaclaw --version

@@ -22,7 +22,7 @@ AikaClaw 发展迅速（尚未到"1.0"）。将更新视为发布基础设施：
 **首选**的更新路径是重新运行网站上的安装程序。它会检测现有安装、原地升级，并在需要时运行 `aikaclaw doctor`。
 
 ```bash
-curl -fsSL https://aikaclaw.ai/install.sh | bash
+curl -fsSL /install.sh | bash
 ```
 
 说明：
@@ -30,7 +30,7 @@ curl -fsSL https://aikaclaw.ai/install.sh | bash
 - 如果你不想再次运行新手引导向导，添加 `--no-onboard`。
 - 对于**源码安装**，使用：
   ```bash
-  curl -fsSL https://aikaclaw.ai/install.sh | bash -s -- --install-method git --no-onboard
+  curl -fsSL /install.sh | bash -s -- --install-method git --no-onboard
   ```
   安装程序**仅**在仓库干净时才会执行 `git pull --rebase`。
 - 对于**全局安装**，脚本底层使用 `npm install -g aikaclaw@latest`。
@@ -137,7 +137,7 @@ aikaclaw health
 
 说明：
 
-- 当你运行打包的 `aikaclaw` 二进制文件（[`aikaclaw.mjs`](https://github.com/aikaclaw/aikaclaw/blob/main/aikaclaw.mjs)）或使用 Node 运行 `dist/` 时，`pnpm build` 很重要。
+- 当你运行打包的 `aikaclaw` 二进制文件（[`aikaclaw.mjs`](https://github.com/AIKA747/aikaclaw/blob/main/aikaclaw.mjs)）或使用 Node 运行 `dist/` 时，`pnpm build` 很重要。
 - 如果你从仓库 checkout 运行而没有全局安装，CLI 命令使用 `pnpm aikaclaw ...`。
 - 如果你直接从 TypeScript 运行（`pnpm aikaclaw ...`），通常不需要重新构建，但**配置迁移仍然适用** → 运行 doctor。
 - 在全局和 git 安装之间切换很容易：安装另一种方式，然后运行 `aikaclaw doctor` 以便将 Gateway 网关服务入口点重写为当前安装。

@@ -53,7 +53,6 @@ function buildOpenRouterAttributionPolicy(
     reviewNote: "Documented app attribution headers. Verified in AikaClaw runtime wrapper.",
     ...identity,
     headers: {
-      "HTTP-Referer": "https://aikaclaw.ai",
       "X-OpenRouter-Title": identity.product,
       "X-OpenRouter-Categories": "cli-agent",
     },

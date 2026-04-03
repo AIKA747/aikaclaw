@@ -798,7 +798,7 @@ describe("web_search kimi provider", () => {
               },
             ],
             search_results: [
-              { title: "AikaClaw", url: "https://aikaclaw.ai/docs", content: "docs" },
+              { title: "AikaClaw", url: "https://example.com/docs", content: "docs" },
             ],
           }),
           { status: 200, headers: { "content-type": "application/json" } },
@@ -834,7 +834,7 @@ describe("web_search kimi provider", () => {
       | undefined;
     expect(toolMessage?.tool_call_id).toBe("call_1");
     expect(JSON.parse(toolMessage?.content ?? "{}")).toMatchObject({
-      search_results: [{ url: "https://aikaclaw.ai/docs" }],
+      search_results: [{ url: "https://example.com/docs" }],
     });
 
     const details = result?.details as {
@@ -843,7 +843,7 @@ describe("web_search kimi provider", () => {
       provider?: string;
     };
     expect(details.provider).toBe("kimi");
-    expect(details.citations).toEqual(["https://aikaclaw.ai/docs"]);
+    expect(details.citations).toEqual(["https://example.com/docs"]);
     expect(details.content).toContain("final answer");
   });
 });

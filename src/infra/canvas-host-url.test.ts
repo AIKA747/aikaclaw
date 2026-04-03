@@ -11,11 +11,11 @@ describe("resolveCanvasHostUrl", () => {
     expect(
       resolveCanvasHostUrl({
         canvasPort: 3000,
-        hostOverride: " canvas.aikaclaw.ai ",
+        hostOverride: " canvas.example.com ",
         requestHost: "gateway.local:9000",
         localAddress: "192.168.1.10",
       }),
-    ).toBe("http://canvas.aikaclaw.ai:3000");
+    ).toBe("http://canvas.example.com:3000");
   });
 
   it("falls back from rejected loopback overrides to request hosts", () => {

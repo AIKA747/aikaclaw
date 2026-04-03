@@ -119,10 +119,10 @@ ARG AIKACLAW_DOCKER_APT_UPGRADE
 # OCI base-image metadata for downstream image consumers.
 # If you change these annotations, also update:
 # - docs/install/docker.md ("Base image metadata" section)
-# - https://docs.aikaclaw.ai/install/docker
-LABEL org.opencontainers.image.source="https://github.com/aikaclaw/aikaclaw" \
-  org.opencontainers.image.url="https://aikaclaw.ai" \
-  org.opencontainers.image.documentation="https://docs.aikaclaw.ai/install/docker" \
+# - /install/docker
+LABEL org.opencontainers.image.source="https://github.com/AIKA747/aikaclaw" \
+  org.opencontainers.image.url="https://github.com/AIKA747/aikaclaw" \
+  org.opencontainers.image.documentation="/install/docker" \
   org.opencontainers.image.licenses="MIT" \
   org.opencontainers.image.title="AikaClaw" \
   org.opencontainers.image.description="AikaClaw gateway and CLI runtime container image"

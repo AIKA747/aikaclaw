@@ -31,7 +31,7 @@ Need to install Node? See [Node setup](/install/node).
     <Tabs>
       <Tab title="macOS / Linux">
         ```bash
-        curl -fsSL https://aikaclaw.ai/install.sh | bash
+        curl -fsSL /install.sh | bash
         ```
         <img
   src="/assets/install-script.svg"
@@ -41,7 +41,7 @@ Need to install Node? See [Node setup](/install/node).
       </Tab>
       <Tab title="Windows (PowerShell)">
         ```powershell
-        iwr -useb https://aikaclaw.ai/install.ps1 | iex
+        iwr -useb /install.ps1 | iex
         ```
       </Tab>
     </Tabs>

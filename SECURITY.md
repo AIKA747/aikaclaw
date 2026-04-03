@@ -6,16 +6,16 @@ If you believe you've found a security issue in AikaClaw, please report it priva
 
 Report vulnerabilities directly to the repository where the issue lives:
 
-- **Core CLI and gateway** — [aikaclaw/aikaclaw](https://github.com/aikaclaw/aikaclaw)
-- **macOS desktop app** — [aikaclaw/aikaclaw](https://github.com/aikaclaw/aikaclaw) (apps/macos)
-- **iOS app** — [aikaclaw/aikaclaw](https://github.com/aikaclaw/aikaclaw) (apps/ios)
-- **Android app** — [aikaclaw/aikaclaw](https://github.com/aikaclaw/aikaclaw) (apps/android)
+- **Core CLI and gateway** — [aikaclaw/aikaclaw](https://github.com/AIKA747/aikaclaw)
+- **macOS desktop app** — [aikaclaw/aikaclaw](https://github.com/AIKA747/aikaclaw) (apps/macos)
+- **iOS app** — [aikaclaw/aikaclaw](https://github.com/AIKA747/aikaclaw) (apps/ios)
+- **Android app** — [aikaclaw/aikaclaw](https://github.com/AIKA747/aikaclaw) (apps/android)
 - **ClawHub** — [aikaclaw/clawhub](https://github.com/aikaclaw/clawhub)
 - **Trust and threat model** — [aikaclaw/trust](https://github.com/aikaclaw/trust)
 
 For issues that don't fit a specific repo, or if you're unsure, email **[security@aikaclaw.ai](mailto:security@aikaclaw.ai)** and we'll route it.
 
-For full reporting instructions see our [Trust page](https://trust.aikaclaw.ai).
+For full reporting instructions see our Trust page.
 
 ### Required in Reports
 
@@ -213,7 +213,7 @@ Security boundary notes:
 
 For threat model + hardening guidance (including `aikaclaw security audit --deep` and `--fix`), see:
 
-- `https://docs.aikaclaw.ai/gateway/security`
+- `/gateway/security`
 
 ### Tool filesystem hardening
 

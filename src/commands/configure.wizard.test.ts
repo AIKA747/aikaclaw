@@ -411,7 +411,7 @@ describe("runConfigureWizard", () => {
         envVars: [],
         placeholder: "(no key needed)",
         signupUrl: "https://duckduckgo.com/",
-        docsUrl: "https://docs.aikaclaw.ai/tools/web",
+        docsUrl: "/tools/web",
         credentialPath: "",
       }),
     ]);

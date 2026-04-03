@@ -522,7 +522,7 @@ echo "Telegram (bot token):"
 echo "  ${COMPOSE_HINT} run --rm aikaclaw-cli channels add --channel telegram --token <token>"
 echo "Discord (bot token):"
 echo "  ${COMPOSE_HINT} run --rm aikaclaw-cli channels add --channel discord --token <token>"
-echo "Docs: https://docs.aikaclaw.ai/channels"
+echo "Docs: /channels"
 
 echo ""
 echo "==> Starting gateway"
@@ -606,7 +606,7 @@ if [[ -n "$SANDBOX_ENABLED" ]]; then
 
   if [[ "$sandbox_config_ok" == true ]]; then
     echo "Sandbox enabled: mode=non-main, scope=agent, workspaceAccess=none"
-    echo "Docs: https://docs.aikaclaw.ai/gateway/sandboxing"
+    echo "Docs: /gateway/sandboxing"
     # Restart gateway with sandbox compose overlay to pick up socket mount + config.
     docker compose "${COMPOSE_ARGS[@]}" up -d aikaclaw-gateway
   else

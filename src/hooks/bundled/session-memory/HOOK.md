@@ -1,7 +1,7 @@
 ---
 name: session-memory
 description: "Save session context to memory when /new or /reset command is issued"
-homepage: https://docs.aikaclaw.ai/automation/hooks#session-memory
+homepage: /automation/hooks#session-memory
 metadata:
   {
     "aikaclaw":

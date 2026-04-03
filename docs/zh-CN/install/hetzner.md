@@ -106,7 +106,7 @@ docker compose version
 ## 3) 克隆 AikaClaw 仓库
 
 ```bash
-git clone https://github.com/aikaclaw/aikaclaw.git
+git clone https://github.com/AIKA747/aikaclaw.git
 cd aikaclaw
 ```
 

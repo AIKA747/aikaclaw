@@ -222,11 +222,7 @@ export function renderAgentChannels(params: {
                             summary.configured === 0
                               ? html`
                                   <div>
-                                    <a
-                                      href="https://docs.aikaclaw.ai/channels"
-                                      target="_blank"
-                                      rel="noopener"
-                                      style="color: var(--accent); font-size: 12px"
+                                    <a href="/channels" target="_blank" rel="noopener" style="color: var(--accent); font-size: 12px"
                                       >Setup guide</a
                                     >
                                   </div>

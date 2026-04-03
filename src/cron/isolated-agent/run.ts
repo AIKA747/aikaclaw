@@ -468,7 +468,7 @@ export async function runCronIsolatedAgentTurn(params: {
             // Passing an existing ID activates the resume watchdog profile
             // (noOutputTimeoutRatio 0.3, maxMs 180 s) instead of the fresh profile
             // (ratio 0.8, maxMs 600 s), causing jobs to time out at roughly 1/3 of
-            // the configured timeoutSeconds. See: https://github.com/aikaclaw/aikaclaw/issues/29774
+            // the configured timeoutSeconds. See: https://github.com/AIKA747/aikaclaw/issues/29774
             const cliSessionId = cronSession.isNewSession
               ? undefined
               : getCliSessionId(cronSession.sessionEntry, providerOverride);

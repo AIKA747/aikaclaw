@@ -143,7 +143,7 @@ Hook 包可以携带依赖；它们会安装到 `~/.aikaclaw/hooks/<id>` 下。
 ---
 name: my-hook
 description: "关于此 hook 功能的简短描述"
-homepage: https://docs.aikaclaw.ai/automation/hooks#my-hook
+homepage: /automation/hooks#my-hook
 metadata:
   { "aikaclaw": { "emoji": "🔗", "events": ["command:new"], "requires": { "bins": ["node"] } } }
 ---
@@ -1046,6 +1046,6 @@ node -e "import('./path/to/handler.ts').then(console.log)"
 ## 另请参阅
 
 - [CLI Reference: hooks](/cli/hooks)
-- [Bundled Hooks README](https://github.com/aikaclaw/aikaclaw/tree/main/src/hooks/bundled)
+- [Bundled Hooks README](https://github.com/AIKA747/aikaclaw/tree/main/src/hooks/bundled)
 - [Webhook Hooks](/automation/webhook)
 - [Configuration](/gateway/configuration#hooks)

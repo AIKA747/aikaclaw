@@ -407,7 +407,7 @@ export async function dispatchCronDelivery(
           // Keep all attempts out of the write-ahead delivery queue so a
           // late-successful first send cannot leave behind a failed queue
           // entry that replays on the next restart.
-          // See: https://github.com/aikaclaw/aikaclaw/issues/40545
+          // See: https://github.com/AIKA747/aikaclaw/issues/40545
           skipQueue: true,
         });
       const deliveryResults = options?.retryTransient

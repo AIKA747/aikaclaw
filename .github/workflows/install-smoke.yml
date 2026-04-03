@@ -186,8 +186,8 @@ jobs:
 
       - name: Run installer docker tests
         env:
-          AIKACLAW_INSTALL_URL: https://aikaclaw.ai/install.sh
-          AIKACLAW_INSTALL_CLI_URL: https://aikaclaw.ai/install-cli.sh
+          AIKACLAW_INSTALL_URL: /install.sh
+          AIKACLAW_INSTALL_CLI_URL: /install-cli.sh
           AIKACLAW_NO_ONBOARD: "1"
           AIKACLAW_INSTALL_SMOKE_SKIP_CLI: "1"
           AIKACLAW_INSTALL_SMOKE_SKIP_IMAGE_BUILD: "1"

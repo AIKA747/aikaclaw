@@ -27,7 +27,6 @@ describe("proxy stream wrappers", () => {
     expect(calls).toEqual([
       {
         headers: {
-          "HTTP-Referer": "https://aikaclaw.ai",
           "X-OpenRouter-Title": "AikaClaw",
           "X-OpenRouter-Categories": "cli-agent",
           "X-Custom": "1",

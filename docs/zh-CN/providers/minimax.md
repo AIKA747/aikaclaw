@@ -58,7 +58,7 @@ aikaclaw onboard --auth-choice minimax-portal
 - **Global** - 国际用户（`api.minimax.io`）
 - **CN** - 中国用户（`api.minimaxi.com`）
 
-详情请参阅 [MiniMax plugin README](https://github.com/aikaclaw/aikaclaw/tree/main/extensions/minimax)。
+详情请参阅 [MiniMax plugin README](https://github.com/AIKA747/aikaclaw/tree/main/extensions/minimax)。
 
 ### MiniMax M2.5（API key）
 

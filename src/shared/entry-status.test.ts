@@ -26,7 +26,7 @@ describe("shared/entry-status", () => {
       always: false,
       metadata: {
         emoji: "🦀",
-        homepage: "https://aikaclaw.ai",
+        homepage: "https://example.com",
         requires: {
           bins: ["bun"],
           anyBins: ["ffmpeg", "sox"],
@@ -37,7 +37,7 @@ describe("shared/entry-status", () => {
       },
       frontmatter: {
         emoji: "🙂",
-        homepage: "https://docs.aikaclaw.ai",
+        homepage: "https://docs.example.com",
       },
       hasLocalBin: (bin) => bin === "bun",
       localPlatform: "linux",
@@ -50,7 +50,7 @@ describe("shared/entry-status", () => {
 
     expect(result).toEqual({
       emoji: "🦀",
-      homepage: "https://aikaclaw.ai",
+      homepage: "https://example.com",
       required: {
         bins: ["bun"],
         anyBins: ["ffmpeg", "sox"],
@@ -99,7 +99,7 @@ describe("shared/entry-status", () => {
           },
         },
         frontmatter: {
-          website: " https://docs.aikaclaw.ai ",
+          website: " https://docs.example.com ",
           emoji: "🙂",
         },
       },
@@ -110,7 +110,7 @@ describe("shared/entry-status", () => {
 
     expect(result).toEqual({
       emoji: "🙂",
-      homepage: "https://docs.aikaclaw.ai",
+      homepage: "https://docs.example.com",
       required: {
         bins: ["missing-bin"],
         anyBins: [],

@@ -32,7 +32,7 @@ export function createFirecrawlWebSearchProvider(): WebSearchProviderPlugin {
     envVars: ["FIRECRAWL_API_KEY"],
     placeholder: "fc-...",
     signupUrl: "https://www.firecrawl.dev/",
-    docsUrl: "https://docs.aikaclaw.ai/tools/firecrawl",
+    docsUrl: "/tools/firecrawl",
     autoDetectOrder: 60,
     credentialPath: "plugins.entries.firecrawl.config.webSearch.apiKey",
     inactiveSecretPaths: ["plugins.entries.firecrawl.config.webSearch.apiKey"],

@@ -39,9 +39,9 @@
 <li>Gateway/auth: require auth for canvas routes and admin scope for agent session reset, so anonymous canvas access and non-admin reset requests fail closed.</li>
 <li>Release/install: keep previously released bundled plugins and Control UI assets in published aikaclaw npm installs, and fail release checks when those shipped artifacts are missing. Thanks @vincentkoc.</li>
 </ul>
-<p><a href="https://github.com/aikaclaw/aikaclaw/blob/main/CHANGELOG.md">View full changelog</a></p>
+<p><a href="https://github.com/AIKA747/aikaclaw/blob/main/CHANGELOG.md">View full changelog</a></p>
 ]]></description>
-            <enclosure url="https://github.com/aikaclaw/aikaclaw/releases/download/v2026.3.23/AikaClaw-2026.3.23.zip" length="24522883" type="application/octet-stream" sparkle:edSignature="ptBgHYLBqq/TSdONYCfIB5d6aP/ij/9G0gYQ5mJI9jf8Y31sbQIh5CqpJVxEEWLTMIGQKsHQir/kXZjtRvvZAg=="/>
+            <enclosure url="https://github.com/AIKA747/aikaclaw/releases/download/v2026.3.23/AikaClaw-2026.3.23.zip" length="24522883" type="application/octet-stream" sparkle:edSignature="ptBgHYLBqq/TSdONYCfIB5d6aP/ij/9G0gYQ5mJI9jf8Y31sbQIh5CqpJVxEEWLTMIGQKsHQir/kXZjtRvvZAg=="/>
         </item>
         <item>
             <title>2026.3.13</title>
@@ -115,9 +115,9 @@
 <li>Config/discovery: accept <code>discovery.wideArea.domain</code> in strict config validation so unicast DNS-SD gateway configs no longer fail with an unrecognized-key error. (#35615) Thanks @ingyukoh.</li>
 <li>Telegram/media errors: redact Telegram file URLs before building media fetch errors so failed inbound downloads do not leak bot tokens into logs. Thanks @space08.</li>
 </ul>
-<p><a href="https://github.com/aikaclaw/aikaclaw/blob/main/CHANGELOG.md">View full changelog</a></p>
+<p><a href="https://github.com/AIKA747/aikaclaw/blob/main/CHANGELOG.md">View full changelog</a></p>
 ]]></description>
-            <enclosure url="https://github.com/aikaclaw/aikaclaw/releases/download/v2026.3.13/AikaClaw-2026.3.13.zip" length="23640917" type="application/octet-stream" sparkle:edSignature="Me63UHSpFLocTo5Lt7Iqsl0Hq61y3jTcZ9DUkiFl9xQvTE0+ORuqRMFWqPgYwfaKMgcgQmUbrV/uFzEoTIRHBA=="/>
+            <enclosure url="https://github.com/AIKA747/aikaclaw/releases/download/v2026.3.13/AikaClaw-2026.3.13.zip" length="23640917" type="application/octet-stream" sparkle:edSignature="Me63UHSpFLocTo5Lt7Iqsl0Hq61y3jTcZ9DUkiFl9xQvTE0+ORuqRMFWqPgYwfaKMgcgQmUbrV/uFzEoTIRHBA=="/>
         </item>
         <item>
             <title>2026.3.12</title>
@@ -207,9 +207,9 @@
 <li>ACP/client final-message delivery: preserve terminal assistant text snapshots before resolving <code>end_turn</code>, so ACP clients no longer drop the last visible reply when the gateway sends the final message body on the terminal chat event. (#17615) Thanks @pjeby.</li>
 <li>Telegram/Discord status reactions: show a temporary compacting reaction during auto-compaction pauses and restore thinking afterward so the bot no longer appears frozen while context is being compacted. (#35474) thanks @Cypherm.</li>
 </ul>
-<p><a href="https://github.com/aikaclaw/aikaclaw/blob/main/CHANGELOG.md">View full changelog</a></p>
+<p><a href="https://github.com/AIKA747/aikaclaw/blob/main/CHANGELOG.md">View full changelog</a></p>
 ]]></description>
-            <enclosure url="https://github.com/aikaclaw/aikaclaw/releases/download/v2026.3.12/AikaClaw-2026.3.12.zip" length="23628700" type="application/octet-stream" sparkle:edSignature="o6Zdcw36l3I0jUg14H+RBqNwrhuuSsq1WMDi4tBRa1+5TC3VCVdFKZ2hzmH2Xjru9lDEzVMP8v2A6RexSbOCBQ=="/>
+            <enclosure url="https://github.com/AIKA747/aikaclaw/releases/download/v2026.3.12/AikaClaw-2026.3.12.zip" length="23628700" type="application/octet-stream" sparkle:edSignature="o6Zdcw36l3I0jUg14H+RBqNwrhuuSsq1WMDi4tBRa1+5TC3VCVdFKZ2hzmH2Xjru9lDEzVMP8v2A6RexSbOCBQ=="/>
         </item>
     </channel>
 </rss>

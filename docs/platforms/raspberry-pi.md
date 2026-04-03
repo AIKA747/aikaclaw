@@ -112,13 +112,13 @@ sudo sysctl -p
 ### Option A: Standard Install (Recommended)
 
 ```bash
-curl -fsSL https://aikaclaw.ai/install.sh | bash
+curl -fsSL /install.sh | bash
 ```
 
 ### Option B: Hackable Install (For tinkering)
 
 ```bash
-git clone https://github.com/aikaclaw/aikaclaw.git
+git clone https://github.com/AIKA747/aikaclaw.git
 cd aikaclaw
 npm install
 npm run build

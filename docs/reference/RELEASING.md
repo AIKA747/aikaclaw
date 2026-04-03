@@ -62,10 +62,10 @@ AikaClaw has three public release lanes:
 
 ## Public references
 
-- [`.github/workflows/aikaclaw-npm-release.yml`](https://github.com/aikaclaw/aikaclaw/blob/main/.github/workflows/aikaclaw-npm-release.yml)
-- [`scripts/aikaclaw-npm-release-check.ts`](https://github.com/aikaclaw/aikaclaw/blob/main/scripts/aikaclaw-npm-release-check.ts)
-- [`scripts/package-mac-dist.sh`](https://github.com/aikaclaw/aikaclaw/blob/main/scripts/package-mac-dist.sh)
-- [`scripts/make_appcast.sh`](https://github.com/aikaclaw/aikaclaw/blob/main/scripts/make_appcast.sh)
+- [`.github/workflows/aikaclaw-npm-release.yml`](https://github.com/AIKA747/aikaclaw/blob/main/.github/workflows/aikaclaw-npm-release.yml)
+- [`scripts/aikaclaw-npm-release-check.ts`](https://github.com/AIKA747/aikaclaw/blob/main/scripts/aikaclaw-npm-release-check.ts)
+- [`scripts/package-mac-dist.sh`](https://github.com/AIKA747/aikaclaw/blob/main/scripts/package-mac-dist.sh)
+- [`scripts/make_appcast.sh`](https://github.com/AIKA747/aikaclaw/blob/main/scripts/make_appcast.sh)
 
 Maintainers use the private release docs in
 [`aikaclaw/maintainers/release/README.md`](https://github.com/aikaclaw/maintainers/blob/main/release/README.md)

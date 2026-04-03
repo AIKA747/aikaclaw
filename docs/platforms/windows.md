@@ -225,7 +225,7 @@ systemctl --user status
 Follow the Linux Getting Started flow inside WSL:
 
 ```bash
-git clone https://github.com/aikaclaw/aikaclaw.git
+git clone https://github.com/AIKA747/aikaclaw.git
 cd aikaclaw
 pnpm install
 pnpm ui:build # auto-installs UI deps on first run

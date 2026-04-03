@@ -38,7 +38,7 @@ You will be prompted to select an endpoint:
 - **Global** - International users (`api.minimax.io`)
 - **CN** - Users in China (`api.minimaxi.com`)
 
-See [MiniMax plugin README](https://github.com/aikaclaw/aikaclaw/tree/main/extensions/minimax) for details.
+See [MiniMax plugin README](https://github.com/AIKA747/aikaclaw/tree/main/extensions/minimax) for details.
 
 ### MiniMax M2.7 (API key)
 

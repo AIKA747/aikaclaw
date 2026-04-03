@@ -116,10 +116,10 @@ Moltbot never quite rolled off the tongue. And so, at 4am GMT, the team gathered
 
 In just 3 hours:
 
-- GitHub renamed: `github.com/aikaclaw/aikaclaw` ✅
+- GitHub renamed: `github.com/AIKA747/aikaclaw` ✅
 - X handle `@aikaclaw` secured with GOLD CHECKMARK 💰
 - npm packages released under new name
-- Docs migrated to `docs.aikaclaw.ai`
+- Docs migrated to Mintlify
 - 200K+ views on announcement in 90 minutes
 
 **The Heroes:**

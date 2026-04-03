@@ -186,7 +186,7 @@ For the generic Docker flow, see [Docker](/install/docker).
 
   <Step title="Clone the AikaClaw repository">
     ```bash
-    git clone https://github.com/aikaclaw/aikaclaw.git
+    git clone https://github.com/AIKA747/aikaclaw.git
     cd aikaclaw
     ```
 

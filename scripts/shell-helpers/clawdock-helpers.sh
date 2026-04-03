@@ -113,7 +113,7 @@ _clawdock_ensure_dir() {
     echo ""
     echo "Clone it first:"
     echo ""
-    echo "  git clone https://github.com/aikaclaw/aikaclaw.git ~/aikaclaw"
+    echo "  git clone https://github.com/AIKA747/aikaclaw.git ~/aikaclaw"
     echo "  cd ~/aikaclaw && ./scripts/docker/setup.sh"
     echo ""
     echo "Or set CLAWDOCK_DIR if it's elsewhere:"
@@ -412,6 +412,6 @@ clawdock-help() {
   echo ""
 
   echo -e "${_CLR_CYAN}💡 All commands guide you through next steps!${_CLR_RESET}"
-  echo -e "${_CLR_BLUE}📚 Docs: ${_CLR_RESET}${_CLR_CYAN}https://docs.aikaclaw.ai${_CLR_RESET}"
+  echo -e "${_CLR_BLUE}📚 Docs${_CLR_RESET}"
   echo ""
 }

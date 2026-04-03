@@ -1479,7 +1479,7 @@ describe("registerSlackInteractionEvents", () => {
               url_block: {
                 url_input: {
                   type: "url_text_input",
-                  value: "https://docs.aikaclaw.ai",
+                  value: "https://docs.example.com",
                 },
               },
               richtext_block: {
@@ -1575,7 +1575,7 @@ describe("registerSlackInteractionEvents", () => {
         expect.objectContaining({
           actionId: "url_input",
           inputKind: "url",
-          inputUrl: "https://docs.aikaclaw.ai/",
+          inputUrl: "https://docs.example.com/",
         }),
         expect.objectContaining({
           actionId: "richtext_input",

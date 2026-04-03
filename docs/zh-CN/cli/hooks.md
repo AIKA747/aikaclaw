@@ -96,7 +96,7 @@ Details:
   Source: aikaclaw-bundled
   Path: /path/to/aikaclaw/hooks/bundled/session-memory/HOOK.md
   Handler: /path/to/aikaclaw/hooks/bundled/session-memory/handler.ts
-  Homepage: https://docs.aikaclaw.ai/automation/hooks#session-memory
+  Homepage: /automation/hooks#session-memory
   Events: command:new
 
 Requirements:

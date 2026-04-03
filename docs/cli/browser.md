@@ -57,7 +57,7 @@ aikaclaw browser --browser-profile work tabs
 
 ```bash
 aikaclaw browser tabs
-aikaclaw browser open https://docs.aikaclaw.ai
+aikaclaw browser open https://example.com
 aikaclaw browser focus <targetId>
 aikaclaw browser close <targetId>
 ```

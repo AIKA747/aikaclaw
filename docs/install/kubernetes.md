@@ -138,7 +138,7 @@ AIKACLAW_NAMESPACE=my-namespace ./scripts/k8s/deploy.sh
 Edit the `image` field in `scripts/k8s/manifests/deployment.yaml`:
 
 ```yaml
-image: ghcr.io/aikaclaw/aikaclaw:latest # or pin to a specific version from https://github.com/aikaclaw/aikaclaw/releases
+image: ghcr.io/aikaclaw/aikaclaw:latest # or pin to a specific version from https://github.com/AIKA747/aikaclaw/releases
 ```
 
 ### Expose beyond port-forward

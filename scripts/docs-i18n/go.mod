@@ -1,4 +1,4 @@
-module github.com/aikaclaw/aikaclaw/scripts/docs-i18n
+module github.com/AIKA747/aikaclaw/scripts/docs-i18n
 
 go 1.24.0
 
