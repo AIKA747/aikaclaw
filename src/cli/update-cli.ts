@@ -1,6 +1,5 @@
 import type { Command } from "commander";
 import { defaultRuntime } from "../runtime.js";
-import { formatDocsLink } from "../terminal/links.js";
 import { theme } from "../terminal/theme.js";
 import { inheritOptionFromParent } from "./command-options.js";
 import { formatHelpExamples } from "./help-format.js";
@@ -86,8 +85,7 @@ ${theme.heading("Notes:")}
   - For global installs: auto-updates via detected package manager when possible (see docs/install/updating.md)
   - Downgrades require confirmation (can break configuration)
   - Skips update if the working directory has uncommitted changes
-
-${theme.muted("Docs:")} ${formatDocsLink("/cli/update", "docs.aikaclaw.ai/cli/update")}`;
+`;
     })
     .action(async (opts) => {
       try {
@@ -110,10 +108,6 @@ ${theme.muted("Docs:")} ${formatDocsLink("/cli/update", "docs.aikaclaw.ai/cli/up
     .command("wizard")
     .description("Interactive update wizard")
     .option("--timeout <seconds>", "Timeout for each update step in seconds (default: 1200)")
-    .addHelpText(
-      "after",
-      `\n${theme.muted("Docs:")} ${formatDocsLink("/cli/update", "docs.aikaclaw.ai/cli/update")}\n`,
-    )
     .action(async (opts, command) => {
       try {
         await updateWizardCommand({
@@ -139,9 +133,7 @@ ${theme.muted("Docs:")} ${formatDocsLink("/cli/update", "docs.aikaclaw.ai/cli/up
           ["aikaclaw update status --timeout 10", "Custom timeout."],
         ])}\n\n${theme.heading("Notes:")}\n${theme.muted(
           "- Shows current update channel (stable/beta/dev) and source",
-        )}\n${theme.muted("- Includes git tag/branch/SHA for source checkouts")}\n\n${theme.muted(
-          "Docs:",
-        )} ${formatDocsLink("/cli/update", "docs.aikaclaw.ai/cli/update")}`,
+        )}\n${theme.muted("- Includes git tag/branch/SHA for source checkouts")}`,
     )
     .action(async (opts, command) => {
       try {

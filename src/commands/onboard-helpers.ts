@@ -219,9 +219,6 @@ export function formatControlUiSshHint(params: {
     "Then open:",
     localUrl,
     authedUrl,
-    "Docs:",
-    "https://docs.aikaclaw.ai/gateway/remote",
-    "https://docs.aikaclaw.ai/web/control-ui",
   ]
     .filter(Boolean)
     .join("\n");

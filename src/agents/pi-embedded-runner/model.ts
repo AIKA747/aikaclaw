@@ -559,11 +559,11 @@ const LOCAL_PROVIDER_HINTS: Record<string, string> = {
   ollama:
     "Ollama requires authentication to be registered as a provider. " +
     'Set OLLAMA_API_KEY="ollama-local" (any value works) or run "aikaclaw configure". ' +
-    "See: https://docs.aikaclaw.ai/providers/ollama",
+    'Run "aikaclaw configure" or "aikaclaw doctor" for setup help.',
   vllm:
     "vLLM requires authentication to be registered as a provider. " +
     'Set VLLM_API_KEY (any value works) or run "aikaclaw configure". ' +
-    "See: https://docs.aikaclaw.ai/providers/vllm",
+    'Run "aikaclaw configure" or "aikaclaw doctor" for setup help.',
 };
 
 function buildUnknownModelError(provider: string, modelId: string): string {

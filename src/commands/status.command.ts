@@ -701,9 +701,6 @@ export async function statusCommand(
   }
 
   runtime.log("");
-  runtime.log("FAQ: https://docs.aikaclaw.ai/faq");
-  runtime.log("Troubleshooting: https://docs.aikaclaw.ai/troubleshooting");
-  runtime.log("");
   const updateHint = formatUpdateAvailableHint(update);
   if (updateHint) {
     runtime.log(theme.warn(updateHint));

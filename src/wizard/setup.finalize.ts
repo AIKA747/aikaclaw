@@ -242,11 +242,7 @@ export async function finalizeSetupWizard(
     } catch (err) {
       runtime.error(formatHealthCheckFailure(err));
       await prompter.note(
-        [
-          "Docs:",
-          "https://docs.aikaclaw.ai/gateway/health",
-          "https://docs.aikaclaw.ai/gateway/troubleshooting",
-        ].join("\n"),
+        "See the health and troubleshooting documentation for help.",
         "Health check help",
       );
     }
@@ -329,7 +325,6 @@ export async function finalizeSetupWizard(
         : undefined,
       `Gateway WS: ${links.wsUrl}`,
       gatewayStatusLine,
-      "Docs: https://docs.aikaclaw.ai/web/control-ui",
     ]
       .filter(Boolean)
       .join("\n"),
@@ -429,16 +424,10 @@ export async function finalizeSetupWizard(
     await prompter.note("Skipping Control UI/TUI prompts.", "Control UI");
   }
 
-  await prompter.note(
-    [
-      "Back up your agent workspace.",
-      "Docs: https://docs.aikaclaw.ai/concepts/agent-workspace",
-    ].join("\n"),
-    "Workspace backup",
-  );
+  await prompter.note(["Back up your agent workspace."].join("\n"), "Workspace backup");
 
   await prompter.note(
-    "Running agents on your computer is risky — harden your setup: https://docs.aikaclaw.ai/security",
+    "Running agents on your computer is risky — harden your setup by reviewing the security documentation.",
     "Security",
   );
 
@@ -507,8 +496,6 @@ export async function finalizeSetupWizard(
           `Web search provider ${label} is selected but unavailable under the current plugin policy.`,
           "web_search will not work until the provider is re-enabled or a different provider is selected.",
           `  ${formatCliCommand("aikaclaw configure --section web")}`,
-          "",
-          "Docs: https://docs.aikaclaw.ai/tools/web",
         ].join("\n"),
         "Web search",
       );
@@ -519,7 +506,6 @@ export async function finalizeSetupWizard(
           "",
           `Provider: ${label}`,
           ...(keySource ? [keySource] : []),
-          "Docs: https://docs.aikaclaw.ai/tools/web",
         ].join("\n"),
         "Web search",
       );
@@ -530,8 +516,7 @@ export async function finalizeSetupWizard(
           "web_search will not work until a key is added.",
           `  ${formatCliCommand("aikaclaw configure --section web")}`,
           "",
-          `Get your key at: ${entry?.signupUrl ?? "https://docs.aikaclaw.ai/tools/web"}`,
-          "Docs: https://docs.aikaclaw.ai/tools/web",
+          ...(entry?.signupUrl ? [`Get your key at: ${entry.signupUrl}`] : []),
         ].join("\n"),
         "Web search",
       );
@@ -540,8 +525,6 @@ export async function finalizeSetupWizard(
         [
           `Web search (${label}) is configured but disabled.`,
           `Re-enable: ${formatCliCommand("aikaclaw configure --section web")}`,
-          "",
-          "Docs: https://docs.aikaclaw.ai/tools/web",
         ].join("\n"),
         "Web search",
       );
@@ -555,10 +538,7 @@ export async function finalizeSetupWizard(
     );
     if (legacyDetected) {
       await prompter.note(
-        [
-          `Web search is available via ${legacyDetected.label} (auto-detected).`,
-          "Docs: https://docs.aikaclaw.ai/tools/web",
-        ].join("\n"),
+        [`Web search is available via ${legacyDetected.label} (auto-detected).`].join("\n"),
         "Web search",
       );
     } else {
@@ -566,18 +546,11 @@ export async function finalizeSetupWizard(
         [
           "Web search was skipped. You can enable it later:",
           `  ${formatCliCommand("aikaclaw configure --section web")}`,
-          "",
-          "Docs: https://docs.aikaclaw.ai/tools/web",
         ].join("\n"),
         "Web search",
       );
     }
   }
-
-  await prompter.note(
-    'What now: https://aikaclaw.ai/showcase ("What People Are Building").',
-    "What now",
-  );
 
   await prompter.outro(
     controlUiOpened

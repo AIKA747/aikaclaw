@@ -59,7 +59,7 @@ async function requireRiskAcknowledgement(params: {
       "aikaclaw security audit --deep",
       "aikaclaw security audit --fix",
       "",
-      "Must read: https://docs.aikaclaw.ai/gateway/security",
+      "Must read the security documentation.",
     ].join("\n"),
     "Security",
   );
@@ -91,11 +91,7 @@ export async function runSetupWizard(
     await prompter.note(onboardHelpers.summarizeExistingConfig(baseConfig), "Invalid config");
     if (snapshot.issues.length > 0) {
       await prompter.note(
-        [
-          ...snapshot.issues.map((iss) => `- ${iss.path}: ${iss.message}`),
-          "",
-          "Docs: https://docs.aikaclaw.ai/gateway/configuration",
-        ].join("\n"),
+        snapshot.issues.map((iss) => `- ${iss.path}: ${iss.message}`).join("\n"),
         "Config issues",
       );
     }

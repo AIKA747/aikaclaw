@@ -8,11 +8,11 @@ const shouldWarnCompatImport =
 
 if (shouldWarnCompatImport) {
   process.emitWarning(
-    "aikaclaw/plugin-sdk/compat is deprecated for new plugins. Migrate to focused aikaclaw/plugin-sdk/<subpath> imports. See https://docs.aikaclaw.ai/plugins/sdk-migration",
+    "aikaclaw/plugin-sdk/compat is deprecated for new plugins. Migrate to focused aikaclaw/plugin-sdk/<subpath> imports.",
     {
       code: "AIKACLAW_PLUGIN_SDK_COMPAT_DEPRECATED",
       detail:
-        "Bundled plugins must use scoped plugin-sdk subpaths. External plugins may keep compat temporarily while migrating. Migration guide: https://docs.aikaclaw.ai/plugins/sdk-migration",
+        "Bundled plugins must use scoped plugin-sdk subpaths. External plugins may keep compat temporarily while migrating.",
     },
   );
 }

@@ -264,7 +264,7 @@ describe("packNpmSpecToArchive", () => {
     if (!result.ok) {
       expect(result.error).toContain("Package not found on npm");
       expect(result.error).toContain("@aikaclaw/whatsapp");
-      expect(result.error).toContain("docs.aikaclaw.ai/tools/plugin");
+      expect(result.error).toContain("aikaclaw plugins marketplace");
     }
   });
 

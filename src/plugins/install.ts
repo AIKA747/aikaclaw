@@ -30,7 +30,7 @@ type PackageManifest = PluginPackageManifest & {
 };
 
 const MISSING_EXTENSIONS_ERROR =
-  'package.json missing aikaclaw.extensions; update the plugin package to include aikaclaw.extensions (for example ["./dist/index.js"]). See https://docs.aikaclaw.ai/help/troubleshooting#plugin-install-fails-with-missing-aikaclaw-extensions';
+  'package.json missing aikaclaw.extensions; update the plugin package to include aikaclaw.extensions (for example ["./dist/index.js"]).';
 const PLUGIN_ARCHIVE_ROOT_MARKERS = [
   "package.json",
   "aikaclaw.plugin.json",

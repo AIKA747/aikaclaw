@@ -33,8 +33,6 @@ import {
   discoverConfigSecretTargets,
   resolveConfigSecretTargetByPath,
 } from "../secrets/target-registry.js";
-import { formatDocsLink } from "../terminal/links.js";
-import { theme } from "../terminal/theme.js";
 import { shortenHomePath } from "../utils.js";
 import { formatCliCommand } from "./command-format.js";
 import type {
@@ -1251,11 +1249,6 @@ export function registerConfigCli(program: Command) {
     .command("config")
     .description(
       "Non-interactive config helpers (get/set/unset/file/validate). Run without subcommand for guided setup.",
-    )
-    .addHelpText(
-      "after",
-      () =>
-        `\n${theme.muted("Docs:")} ${formatDocsLink("/cli/config", "docs.aikaclaw.ai/cli/config")}\n`,
     )
     .option(
       "--section <section>",

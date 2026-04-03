@@ -19,7 +19,6 @@ import {
 } from "../plugins/status.js";
 import { resolveUninstallDirectoryTarget, uninstallPlugin } from "../plugins/uninstall.js";
 import { defaultRuntime } from "../runtime.js";
-import { formatDocsLink } from "../terminal/links.js";
 import { getTerminalTableWidth, renderTable } from "../terminal/table.js";
 import { theme } from "../terminal/theme.js";
 import { shortenHomeInString, shortenHomePath } from "../utils.js";
@@ -203,14 +202,7 @@ function formatInstallLines(install: PluginInstallRecord | undefined): string[] 
 }
 
 export function registerPluginsCli(program: Command) {
-  const plugins = program
-    .command("plugins")
-    .description("Manage AikaClaw plugins and extensions")
-    .addHelpText(
-      "after",
-      () =>
-        `\n${theme.muted("Docs:")} ${formatDocsLink("/cli/plugins", "docs.aikaclaw.ai/cli/plugins")}\n`,
-    );
+  const plugins = program.command("plugins").description("Manage AikaClaw plugins and extensions");
 
   plugins
     .command("list")
@@ -770,9 +762,6 @@ export function registerPluginsCli(program: Command) {
           lines.push(`- ${formatPluginCompatibilityNotice(notice)} [${marker}]`);
         }
       }
-      const docs = formatDocsLink("/plugin", "docs.aikaclaw.ai/plugin");
-      lines.push("");
-      lines.push(`${theme.muted("Docs:")} ${docs}`);
       defaultRuntime.log(lines.join("\n"));
     });
 

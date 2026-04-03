@@ -63,10 +63,7 @@ export async function promptRemoteGatewayConfig(
 
   if (!hasBonjourTool) {
     await prompter.note(
-      [
-        "Bonjour discovery requires dns-sd (macOS) or avahi-browse (Linux).",
-        "Docs: https://docs.aikaclaw.ai/gateway/discovery",
-      ].join("\n"),
+      ["Bonjour discovery requires dns-sd (macOS) or avahi-browse (Linux)."].join("\n"),
       "Discovery",
     );
   }
@@ -127,7 +124,6 @@ export async function promptRemoteGatewayConfig(
           [
             "Start a tunnel before using the CLI:",
             `ssh -N -L 18789:127.0.0.1:18789 <user>@${host}${target.sshPort ? ` -p ${target.sshPort}` : ""}`,
-            "Docs: https://docs.aikaclaw.ai/gateway/remote",
           ].join("\n"),
           "SSH tunnel",
         );

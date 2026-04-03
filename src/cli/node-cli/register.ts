@@ -1,7 +1,6 @@
 import type { Command } from "commander";
 import { loadNodeHostConfig } from "../../node-host/config.js";
 import { runNodeHost } from "../../node-host/runner.js";
-import { formatDocsLink } from "../../terminal/links.js";
 import { theme } from "../../terminal/theme.js";
 import { parsePort } from "../daemon-cli/shared.js";
 import { formatHelpExamples } from "../help-format.js";
@@ -33,7 +32,7 @@ export function registerNodeCli(program: Command) {
           ["aikaclaw node status", "Check node host service status."],
           ["aikaclaw node install", "Install the node host service."],
           ["aikaclaw node restart", "Restart the installed node host service."],
-        ])}\n\n${theme.muted("Docs:")} ${formatDocsLink("/cli/node", "docs.aikaclaw.ai/cli/node")}\n`,
+        ])}\n`,
     );
 
   node

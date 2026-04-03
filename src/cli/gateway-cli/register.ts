@@ -7,7 +7,6 @@ import type { CostUsageSummary } from "../../infra/session-cost-usage.js";
 import { resolveWideAreaDiscoveryDomain } from "../../infra/widearea-dns.js";
 import { defaultRuntime } from "../../runtime.js";
 import { styleHealthChannelLine } from "../../terminal/health-style.js";
-import { formatDocsLink } from "../../terminal/links.js";
 import { colorize, isRich, theme } from "../../terminal/theme.js";
 import { formatTokenCount, formatUsd } from "../../utils/usage-format.js";
 import { runCommandWithRuntime } from "../cli-utils.js";
@@ -99,7 +98,7 @@ export function registerGatewayCli(program: Command) {
             ["aikaclaw gateway status", "Show service status and probe reachability."],
             ["aikaclaw gateway discover", "Find local and wide-area gateway beacons."],
             ["aikaclaw gateway call health", "Call a gateway RPC method directly."],
-          ])}\n\n${theme.muted("Docs:")} ${formatDocsLink("/cli/gateway", "docs.aikaclaw.ai/cli/gateway")}\n`,
+          ])}\n`,
       ),
   );
 

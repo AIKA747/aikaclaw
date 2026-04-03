@@ -5,7 +5,7 @@ import type { RuntimeEnv } from "../runtime.js";
 import { formatDocsLink } from "../terminal/links.js";
 import { isRich, theme } from "../terminal/theme.js";
 
-const SEARCH_TOOL = "https://docs.aikaclaw.ai/mcp.SearchAikaClaw";
+const SEARCH_TOOL = "mcp.SearchAikaClaw";
 const SEARCH_TIMEOUT_MS = 30_000;
 const DEFAULT_SNIPPET_MAX = 220;
 
@@ -160,14 +160,8 @@ async function renderMarkdown(markdown: string, runtime: RuntimeEnv) {
 export async function docsSearchCommand(queryParts: string[], runtime: RuntimeEnv) {
   const query = queryParts.join(" ").trim();
   if (!query) {
-    const docs = formatDocsLink("/", "docs.aikaclaw.ai");
-    if (isRich()) {
-      runtime.log(`${theme.muted("Docs:")} ${docs}`);
-      runtime.log(`${theme.muted("Search:")} ${formatCliCommand('aikaclaw docs "your query"')}`);
-    } else {
-      runtime.log("Docs: https://docs.aikaclaw.ai/");
-      runtime.log(`Search: ${formatCliCommand('aikaclaw docs "your query"')}`);
-    }
+    runtime.log(`${theme.muted("Search:")} ${formatCliCommand('aikaclaw docs "your query"')}`);
+
     return;
   }
 

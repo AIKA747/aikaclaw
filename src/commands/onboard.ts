@@ -60,7 +60,7 @@ export async function setupWizardCommand(
     runtime.error(
       [
         "Non-interactive setup requires explicit risk acknowledgement.",
-        "Read: https://docs.aikaclaw.ai/security",
+        "Read the security documentation.",
         `Re-run with: ${formatCliCommand("aikaclaw onboard --non-interactive --accept-risk ...")}`,
       ].join("\n"),
     );
@@ -83,7 +83,6 @@ export async function setupWizardCommand(
         "Windows detected - AikaClaw runs great on WSL2!",
         "Native Windows might be trickier.",
         "Quick setup: wsl --install (one command, one reboot)",
-        "Guide: https://docs.aikaclaw.ai/windows",
       ].join("\n"),
     );
   }

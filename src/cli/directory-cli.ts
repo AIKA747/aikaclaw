@@ -6,7 +6,6 @@ import { loadConfig, writeConfigFile } from "../config/config.js";
 import { danger } from "../globals.js";
 import { resolveMessageChannelSelection } from "../infra/outbound/channel-selection.js";
 import { defaultRuntime } from "../runtime.js";
-import { formatDocsLink } from "../terminal/links.js";
 import { getTerminalTableWidth, renderTable } from "../terminal/table.js";
 import { theme } from "../terminal/theme.js";
 import { formatHelpExamples } from "./help-format.js";
@@ -81,10 +80,7 @@ export function registerDirectoryCli(program: Command) {
             "aikaclaw directory groups members --channel discord --group-id <id>",
             "List members for a specific group.",
           ],
-        ])}\n\n${theme.muted("Docs:")} ${formatDocsLink(
-          "/cli/directory",
-          "docs.aikaclaw.ai/cli/directory",
-        )}\n`,
+        ])}\n`,
     )
     .action(() => {
       directory.help({ error: true });
