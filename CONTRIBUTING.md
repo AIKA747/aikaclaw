@@ -167,15 +167,6 @@ If you're an experienced contributor who wants to help shape AikaClaw's directio
 
 Being a maintainer is a responsibility, not an honorary title. We expect active, consistent involvement — triaging issues, reviewing PRs, and helping move the project forward.
 
-Still interested? Email contributing@aikaclaw.ai with:
-
-- Links to your PRs on AikaClaw (if you don't have any, start there first)
-- Links to open source projects you maintain or actively contribute to
-- Your GitHub, Discord, and X/Twitter handles
-- A brief intro: background, experience, and areas of interest
-- Languages you speak and where you're based
-- How much time you can realistically commit
-
 We welcome people across all skill sets — engineering, documentation, community management, and more.
 We review every human-only-written application carefully and add maintainers slowly and deliberately.
 Please allow a few weeks for a response.

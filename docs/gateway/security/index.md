@@ -1212,11 +1212,3 @@ otherwise. If it fails, there are new candidates not yet in the baseline.
    file is reference-only; detect-secrets doesn’t read it automatically).
 
 Commit the updated `.secrets.baseline` once it reflects the intended state.
-
-## Reporting Security Issues
-
-Found a vulnerability in AikaClaw? Please report responsibly:
-
-1. Email: [security@aikaclaw.ai](mailto:security@aikaclaw.ai)
-2. Don't post publicly until fixed
-3. We'll credit you (unless you prefer anonymity)
