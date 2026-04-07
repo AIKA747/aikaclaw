@@ -1,6 +1,6 @@
 {
   "name": "aikaclaw",
-  "version": "2026.04.02",
+  "version": "2026.4.7",
   "description": "Multi-channel AI gateway with extensible messaging integrations",
   "keywords": [],
   "homepage": "https://github.com/AIKA747/aikaclaw#readme",
@@ -827,7 +827,7 @@
   },
   "peerDependencies": {
     "@napi-rs/canvas": "^0.1.89",
-    "node-llama-cpp": "3.18.1"
+    "node-llama-cpp": "3.16.2"
   },
   "peerDependenciesMeta": {
     "node-llama-cpp": {
