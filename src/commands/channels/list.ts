@@ -5,7 +5,6 @@ import type { ChannelAccountSnapshot, ChannelPlugin } from "../../channels/plugi
 import { withProgress } from "../../cli/progress.js";
 import { formatUsageReportLines, loadProviderUsageSummary } from "../../infra/provider-usage.js";
 import { defaultRuntime, type RuntimeEnv, writeRuntimeJson } from "../../runtime.js";
-import { formatDocsLink } from "../../terminal/links.js";
 import { theme } from "../../terminal/theme.js";
 import { formatChannelAccountLabel, requireValidConfig } from "./shared.js";
 
@@ -179,5 +178,5 @@ export async function channelsListCommand(
   }
 
   runtime.log("");
-  runtime.log(`Docs: ${formatDocsLink("/gateway/configuration", "gateway/configuration")}`);
+  runtime.log(`Run ${theme.command("aikaclaw configure")} to update gateway configuration.`);
 }
