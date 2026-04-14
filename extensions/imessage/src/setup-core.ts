@@ -17,7 +17,6 @@ import type {
   ChannelSetupWizard,
   ChannelSetupWizardTextInput,
 } from "aikaclaw/plugin-sdk/setup";
-import { formatDocsLink } from "aikaclaw/plugin-sdk/setup-tools";
 import {
   listIMessageAccountIds,
   resolveDefaultIMessageAccountId,
@@ -89,7 +88,6 @@ export async function promptIMessageAllowFrom(params: {
       "- chat_id:123",
       "- chat_guid:... or chat_identifier:...",
       "Multiple entries: comma-separated.",
-      `Docs: ${formatDocsLink("/imessage", "imessage")}`,
     ],
     message: "iMessage allowFrom (handle or chat_id)",
     placeholder: "+15555550123, user@example.com, chat_id:123",
@@ -145,7 +143,6 @@ export const imessageCompletionNote = {
     "Ensure AikaClaw has Full Disk Access to Messages DB.",
     "Grant Automation permission for Messages when prompted.",
     "List chats with: imsg chats --limit 20",
-    `Docs: ${formatDocsLink("/imessage", "imessage")}`,
   ],
 };
 

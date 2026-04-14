@@ -2,7 +2,6 @@ import {
   createAllowFromSection,
   createStandardChannelSetupStatus,
   DEFAULT_ACCOUNT_ID,
-  formatDocsLink,
   mergeAllowFromEntries,
   normalizeAccountId,
   setSetupChannelEnabled,
@@ -22,7 +21,6 @@ const SYNOLOGY_SETUP_HELP_LINES = [
   "2) Create an outgoing webhook and copy its secret token",
   `3) Point the outgoing webhook to https://<gateway-host>${DEFAULT_WEBHOOK_PATH}`,
   "4) Keep allowed user IDs handy for DM allowlisting",
-  `Docs: ${formatDocsLink("/channels/synology-chat", "channels/synology-chat")}`,
 ];
 
 const SYNOLOGY_ALLOW_FROM_HELP_LINES = [
@@ -31,7 +29,6 @@ const SYNOLOGY_ALLOW_FROM_HELP_LINES = [
   "- 123456",
   "- synology-chat:123456",
   "Multiple entries: comma-separated.",
-  `Docs: ${formatDocsLink("/channels/synology-chat", "channels/synology-chat")}`,
 ];
 
 function getChannelConfig(cfg: AikaClawConfig): SynologyChatChannelConfig {
@@ -310,7 +307,6 @@ export const synologyChatSetupWizard: ChannelSetupWizard = {
       `Default outgoing webhook path: ${DEFAULT_WEBHOOK_PATH}`,
       'Set allowed user IDs, or manually switch `channels.synology-chat.dmPolicy` to `"open"` for public DMs.',
       'With `dmPolicy="allowlist"`, an empty allowedUserIds list blocks the route from starting.',
-      `Docs: ${formatDocsLink("/channels/synology-chat", "channels/synology-chat")}`,
     ],
   },
   disable: (cfg) => setSetupChannelEnabled(cfg, channel, false),

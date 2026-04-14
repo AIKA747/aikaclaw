@@ -11,7 +11,6 @@ import {
 } from "./setup-core.js";
 import {
   DEFAULT_ACCOUNT_ID,
-  formatDocsLink,
   resolveLineAccount,
   setSetupChannelEnabled,
   splitSetupEntries,
@@ -26,7 +25,6 @@ const LINE_SETUP_HELP_LINES = [
   "2) Copy the channel access token and channel secret",
   "3) Enable Use webhook in the Messaging API settings",
   "4) Point the webhook at https://<gateway-host>/line/webhook",
-  `Docs: ${formatDocsLink("/channels/line", "channels/line")}`,
 ];
 
 const LINE_ALLOW_FROM_HELP_LINES = [
@@ -36,7 +34,6 @@ const LINE_ALLOW_FROM_HELP_LINES = [
   "- U1234567890abcdef1234567890abcdef",
   "- line:user:U1234567890abcdef1234567890abcdef",
   "Multiple entries: comma-separated.",
-  `Docs: ${formatDocsLink("/channels/line", "channels/line")}`,
 ];
 
 const lineDmPolicy: ChannelSetupDmPolicy = createTopLevelChannelDmPolicy({
@@ -183,7 +180,6 @@ export const lineSetupWizard: ChannelSetupWizard = {
       "Enable Use webhook in the LINE console after saving credentials.",
       "Default webhook URL: https://<gateway-host>/line/webhook",
       "If you set channels.line.webhookPath, update the URL to match.",
-      `Docs: ${formatDocsLink("/channels/line", "channels/line")}`,
     ],
   },
   disable: (cfg) => setSetupChannelEnabled(cfg, channel, false),

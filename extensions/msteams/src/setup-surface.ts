@@ -4,7 +4,6 @@ import {
   createTopLevelChannelGroupPolicySetter,
   createStandardChannelSetupStatus,
   DEFAULT_ACCOUNT_ID,
-  formatDocsLink,
   mergeAllowFromEntries,
   splitSetupEntries,
   type ChannelSetupDmPolicy,
@@ -131,7 +130,6 @@ async function noteMSTeamsCredentialHelp(prompter: WizardPrompter): Promise<void
       "2) Add a client secret (App Password)",
       "3) Set webhook URL + messaging endpoint",
       "Tip: you can also set MSTEAMS_APP_ID / MSTEAMS_APP_PASSWORD / MSTEAMS_TENANT_ID.",
-      `Docs: ${formatDocsLink("/channels/msteams", "msteams")}`,
     ].join("\n"),
     "MS Teams credentials",
   );

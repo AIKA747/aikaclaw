@@ -4,7 +4,6 @@ import {
   createNestedChannelDmPolicy,
   createStandardChannelSetupStatus,
   DEFAULT_ACCOUNT_ID,
-  formatDocsLink,
   mergeAllowFromEntries,
   migrateBaseNameToDefaultAccount,
   splitSetupEntries,
@@ -70,7 +69,6 @@ export const googlechatSetupWizard: ChannelSetupWizard = {
       "Google Chat apps use service-account auth and an HTTPS webhook.",
       "Set the Chat API scopes in your service account and configure the Chat app URL.",
       "Webhook verification requires audience type + audience value.",
-      `Docs: ${formatDocsLink("/channels/googlechat", "googlechat")}`,
     ],
   },
   prepare: async ({ cfg, accountId, credentialValues, prompter }) => {

@@ -12,7 +12,6 @@ import {
 } from "aikaclaw/plugin-sdk/setup";
 import type { ChannelSetupDmPolicy } from "aikaclaw/plugin-sdk/setup";
 import type { ChannelSetupWizard } from "aikaclaw/plugin-sdk/setup";
-import { formatDocsLink } from "aikaclaw/plugin-sdk/setup";
 import { DEFAULT_RELAYS } from "./default-relays.js";
 import { getPublicKeyFromPrivate, normalizePubkey } from "./nostr-bus.js";
 import { resolveNostrAccount } from "./types.js";
@@ -23,7 +22,6 @@ const NOSTR_SETUP_HELP_LINES = [
   "Use a Nostr private key in nsec or 64-character hex format.",
   "Relay URLs are optional. Leave blank to keep the default relay set.",
   "Env vars supported: NOSTR_PRIVATE_KEY (default account only).",
-  `Docs: ${formatDocsLink("/channels/nostr", "channels/nostr")}`,
 ];
 
 const NOSTR_ALLOW_FROM_HELP_LINES = [
@@ -33,7 +31,6 @@ const NOSTR_ALLOW_FROM_HELP_LINES = [
   "- nostr:npub1...",
   "- 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
   "Multiple entries: comma-separated.",
-  `Docs: ${formatDocsLink("/channels/nostr", "channels/nostr")}`,
 ];
 
 function parseRelayUrls(raw: string): { relays: string[]; error?: string } {

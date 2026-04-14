@@ -18,7 +18,7 @@ import type {
   ChannelSetupWizard,
   ChannelSetupWizardTextInput,
 } from "aikaclaw/plugin-sdk/setup";
-import { formatCliCommand, formatDocsLink } from "aikaclaw/plugin-sdk/setup-tools";
+import { formatCliCommand } from "aikaclaw/plugin-sdk/setup-tools";
 import {
   listSignalAccountIds,
   resolveDefaultSignalAccountId,
@@ -105,7 +105,6 @@ export async function promptSignalAllowFrom(params: {
       "- +15555550123",
       "- uuid:123e4567-e89b-12d3-a456-426614174000",
       "Multiple entries: comma-separated.",
-      `Docs: ${formatDocsLink("/signal", "signal")}`,
     ],
     message: "Signal allowFrom (E.164 or uuid)",
     placeholder: "+15555550123, uuid:123e4567-e89b-12d3-a456-426614174000",
@@ -185,7 +184,6 @@ export const signalCompletionNote = {
     'Link device with: signal-cli link -n "AikaClaw"',
     "Scan QR in Signal -> Linked Devices",
     `Then run: ${formatCliCommand("aikaclaw gateway call channels.status --params '{\"probe\":true}'")}`,
-    `Docs: ${formatDocsLink("/signal", "signal")}`,
   ],
 };
 

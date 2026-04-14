@@ -8,7 +8,7 @@ import {
   type WizardPrompter,
 } from "aikaclaw/plugin-sdk/setup";
 import type { ChannelSetupAdapter, ChannelSetupDmPolicy } from "aikaclaw/plugin-sdk/setup";
-import { formatCliCommand, formatDocsLink } from "aikaclaw/plugin-sdk/setup-tools";
+import { formatCliCommand } from "aikaclaw/plugin-sdk/setup-tools";
 import type { TelegramNetworkConfig } from "../runtime-api.js";
 import { resolveDefaultTelegramAccountId, resolveTelegramAccount } from "./accounts.js";
 import { lookupTelegramChatId } from "./api-fetch.js";
@@ -20,14 +20,12 @@ export const TELEGRAM_TOKEN_HELP_LINES = [
   "2) Run /newbot (or /mybots)",
   "3) Copy the token (looks like 123456:ABC...)",
   "Tip: you can also set TELEGRAM_BOT_TOKEN in your env.",
-  `Docs: ${formatDocsLink("/telegram")}`,
 ];
 
 export const TELEGRAM_USER_ID_HELP_LINES = [
   `1) DM your bot, then read from.id in \`${formatCliCommand("aikaclaw logs --follow")}\` (safest)`,
   "2) Or call https://api.telegram.org/bot<bot_token>/getUpdates and read message.from.id",
   "3) Third-party: DM @userinfobot or @getidsbot",
-  `Docs: ${formatDocsLink("/telegram")}`,
 ];
 
 export function normalizeTelegramAllowFromInput(raw: string): string {

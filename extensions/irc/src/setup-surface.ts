@@ -8,7 +8,6 @@ import {
 } from "aikaclaw/plugin-sdk/setup";
 import type { ChannelSetupDmPolicy } from "aikaclaw/plugin-sdk/setup";
 import type { ChannelSetupWizard } from "aikaclaw/plugin-sdk/setup";
-import { formatDocsLink } from "aikaclaw/plugin-sdk/setup";
 import type { WizardPrompter } from "aikaclaw/plugin-sdk/setup";
 import { listIrcAccountIds, resolveDefaultIrcAccountId, resolveIrcAccount } from "./accounts.js";
 import {
@@ -192,7 +191,6 @@ export const ircSetupWizard: ChannelSetupWizard = {
       'Set channels.irc.groupPolicy="allowlist" and channels.irc.groups for tighter channel control.',
       'Note: IRC channels are mention-gated by default. To allow unmentioned replies, set channels.irc.groups["#channel"].requireMention=false (or "*" for all).',
       "Env vars supported: IRC_HOST, IRC_PORT, IRC_TLS, IRC_NICK, IRC_USERNAME, IRC_REALNAME, IRC_PASSWORD, IRC_CHANNELS, IRC_NICKSERV_PASSWORD, IRC_NICKSERV_REGISTER_EMAIL.",
-      `Docs: ${formatDocsLink("/channels/irc", "channels/irc")}`,
     ],
     shouldShow: ({ cfg, accountId }) =>
       !resolveIrcAccount({ cfg: cfg as CoreConfig, accountId }).configured,
@@ -428,7 +426,6 @@ export const ircSetupWizard: ChannelSetupWizard = {
     lines: [
       "Next: restart gateway and verify status.",
       "Command: aikaclaw channels status --probe",
-      `Docs: ${formatDocsLink("/channels/irc", "channels/irc")}`,
     ],
   },
   dmPolicy: ircDmPolicy,

@@ -11,7 +11,7 @@ import {
   type AikaClawConfig,
 } from "aikaclaw/plugin-sdk/setup";
 import type { ChannelSetupWizard } from "aikaclaw/plugin-sdk/setup";
-import { formatCliCommand, formatDocsLink } from "aikaclaw/plugin-sdk/setup-tools";
+import { formatCliCommand } from "aikaclaw/plugin-sdk/setup-tools";
 import { listWhatsAppAccountIds, resolveWhatsAppAuthDir } from "./accounts.js";
 import { loginWeb } from "./login.js";
 import { whatsappSetupAdapter } from "./setup-core.js";
@@ -167,7 +167,6 @@ async function promptWhatsAppDmAccess(params: {
       "- disabled: ignore WhatsApp DMs",
       "",
       `Current: dmPolicy=${existingPolicy}, allowFrom=${existingLabel}`,
-      `Docs: ${formatDocsLink("/whatsapp", "whatsapp")}`,
     ].join("\n"),
     "WhatsApp DM access",
   );
@@ -323,7 +322,6 @@ export const whatsappSetupWizard: ChannelSetupWizard = {
         [
           "Scan the QR with WhatsApp on your phone.",
           `Credentials are stored under ${authDir}/ for future runs.`,
-          `Docs: ${formatDocsLink("/whatsapp", "whatsapp")}`,
         ].join("\n"),
         "WhatsApp linking",
       );
@@ -338,7 +336,6 @@ export const whatsappSetupWizard: ChannelSetupWizard = {
         await loginWeb(false, undefined, runtime, accountId);
       } catch (error) {
         runtime.error(`WhatsApp login failed: ${String(error)}`);
-        await prompter.note(`Docs: ${formatDocsLink("/whatsapp", "whatsapp")}`, "WhatsApp help");
       }
     } else if (!linked) {
       await prompter.note(

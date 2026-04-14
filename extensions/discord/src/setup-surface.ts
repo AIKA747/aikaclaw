@@ -3,7 +3,6 @@ import {
   type WizardPrompter,
   type ChannelSetupWizard,
 } from "aikaclaw/plugin-sdk/setup-runtime";
-import { formatDocsLink } from "aikaclaw/plugin-sdk/setup-tools";
 import { resolveDiscordChannelAllowlist } from "./resolve-channels.js";
 import { resolveDiscordUserAllowlist } from "./resolve-users.js";
 import {
@@ -67,7 +66,6 @@ async function promptDiscordAllowFrom(params: {
       "- @alice",
       "- alice#1234",
       "Multiple entries: comma-separated.",
-      `Docs: ${formatDocsLink("/discord", "discord")}`,
     ],
     message: "Discord allowFrom (usernames or ids)",
     placeholder: "@alice, 123456789012345678",

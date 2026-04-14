@@ -12,7 +12,6 @@ import type {
   ChannelSetupWizard,
   ChannelSetupWizardAllowFromEntry,
 } from "aikaclaw/plugin-sdk/setup";
-import { formatDocsLink } from "aikaclaw/plugin-sdk/setup-tools";
 import {
   resolveDefaultSlackAccountId,
   resolveSlackAccount,
@@ -80,7 +79,6 @@ async function promptSlackAllowFrom(params: {
       "- U12345678",
       "- @alice",
       "Multiple entries: comma-separated.",
-      `Docs: ${formatDocsLink("/slack", "slack")}`,
     ],
     message: "Slack allowFrom (usernames or ids)",
     placeholder: "@alice, U12345678",

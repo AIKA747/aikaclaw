@@ -3,7 +3,6 @@
  */
 
 import {
-  formatDocsLink,
   type ChannelSetupAdapter,
   type ChannelSetupDmPolicy,
   type ChannelSetupWizard,
@@ -65,7 +64,6 @@ async function noteTwitchSetupHelp(prompter: WizardPrompter): Promise<void> {
       "   Use https://twitchtokengenerator.com/ or https://twitchapps.com/tmi/",
       "3. Copy the token (starts with 'oauth:') and Client ID",
       "Env vars supported: AIKACLAW_TWITCH_ACCESS_TOKEN",
-      `Docs: ${formatDocsLink("/channels/twitch", "channels/twitch")}`,
     ].join("\n"),
     "Twitch setup",
   );

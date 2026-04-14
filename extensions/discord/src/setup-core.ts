@@ -8,7 +8,6 @@ import type {
   ChannelSetupWizard,
 } from "aikaclaw/plugin-sdk/setup-runtime";
 import { createStandardChannelSetupStatus } from "aikaclaw/plugin-sdk/setup-runtime";
-import { formatDocsLink } from "aikaclaw/plugin-sdk/setup-tools";
 import {
   inspectDiscordSetupAccount,
   listDiscordSetupAccountIds,
@@ -31,7 +30,6 @@ export const DISCORD_TOKEN_HELP_LINES = [
   "2) Bot -> Add Bot -> Reset Token -> copy token",
   "3) OAuth2 -> URL Generator -> scope 'bot' -> invite to your server",
   "Tip: enable Message Content Intent if you need message text. (Bot -> Privileged Gateway Intents -> Message Content Intent)",
-  `Docs: ${formatDocsLink("/discord", "discord")}`,
 ];
 
 export function setDiscordGuildChannelAllowlist(
@@ -183,7 +181,6 @@ export function createDiscordSetupWizardBase(handlers: {
         "- @alice",
         "- alice#1234",
         "Multiple entries: comma-separated.",
-        `Docs: ${formatDocsLink("/discord", "discord")}`,
       ],
       message: "Discord allowFrom (usernames or ids)",
       placeholder: "@alice, 123456789012345678",
