@@ -171,6 +171,12 @@ export type CommandOptions = {
   env?: NodeJS.ProcessEnv;
   windowsVerbatimArguments?: boolean;
   noOutputTimeoutMs?: number;
+  /**
+   * Decode captured stdout/stderr bytes into strings. Defaults to UTF-8.
+   * Used when a child (for example Windows schtasks.exe) emits text in a
+   * non-UTF-8 code page so we do not end up with replacement-char garble.
+   */
+  outputDecoder?: (bytes: Buffer) => string;
 };
 
 export function resolveCommandEnv(params: {
@@ -215,8 +221,9 @@ export async function runCommandWithTimeout(
 ): Promise<SpawnResult> {
   const options: CommandOptions =
     typeof optionsOrTimeout === "number" ? { timeoutMs: optionsOrTimeout } : optionsOrTimeout;
-  const { timeoutMs, cwd, input, env, noOutputTimeoutMs } = options;
+  const { timeoutMs, cwd, input, env, noOutputTimeoutMs, outputDecoder } = options;
   const { windowsVerbatimArguments } = options;
+  const decodeOutput = outputDecoder ?? ((bytes: Buffer) => bytes.toString("utf8"));
   const hasInput = input !== undefined;
   const resolvedEnv = resolveCommandEnv({ argv, env });
 
@@ -241,8 +248,8 @@ export async function runCommandWithTimeout(
   );
   // Spawn with inherited stdin (TTY) so tools like `pi` stay interactive when needed.
   return await new Promise((resolve, reject) => {
-    let stdout = "";
-    let stderr = "";
+    const stdoutChunks: Buffer[] = [];
+    const stderrChunks: Buffer[] = [];
     let settled = false;
     let timedOut = false;
     let noOutputTimedOut = false;
@@ -289,12 +296,12 @@ export async function runCommandWithTimeout(
       child.stdin.end();
     }
 
-    child.stdout?.on("data", (d) => {
-      stdout += d.toString();
+    child.stdout?.on("data", (d: Buffer) => {
+      stdoutChunks.push(d);
       armNoOutputTimer();
     });
-    child.stderr?.on("data", (d) => {
-      stderr += d.toString();
+    child.stderr?.on("data", (d: Buffer) => {
+      stderrChunks.push(d);
       armNoOutputTimer();
     });
     child.on("error", (err) => {
@@ -328,8 +335,8 @@ export async function runCommandWithTimeout(
           : code;
       resolve({
         pid: child.pid ?? undefined,
-        stdout,
-        stderr,
+        stdout: decodeOutput(Buffer.concat(stdoutChunks)),
+        stderr: decodeOutput(Buffer.concat(stderrChunks)),
         code: normalizedCode,
         signal,
         killed: child.killed,
