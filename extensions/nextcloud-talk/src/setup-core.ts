@@ -14,7 +14,6 @@ import {
 } from "aikaclaw/plugin-sdk/setup";
 import type { ChannelSetupDmPolicy } from "aikaclaw/plugin-sdk/setup";
 import { type ChannelSetupWizard } from "aikaclaw/plugin-sdk/setup";
-import { formatDocsLink } from "aikaclaw/plugin-sdk/setup";
 import type { WizardPrompter } from "aikaclaw/plugin-sdk/setup";
 import {
   listNextcloudTalkAccountIds,
@@ -122,7 +121,6 @@ async function promptNextcloudTalkAllowFrom(params: {
       "1) Check the Nextcloud admin panel for user IDs",
       "2) Or look at the webhook payload logs when someone messages",
       "3) User IDs are typically lowercase usernames in Nextcloud",
-      `Docs: ${formatDocsLink("/channels/nextcloud-talk", "nextcloud-talk")}`,
     ],
     message: "Nextcloud Talk allowFrom (user id)",
     placeholder: "username",

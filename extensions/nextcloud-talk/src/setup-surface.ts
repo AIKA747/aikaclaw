@@ -4,7 +4,6 @@ import { DEFAULT_ACCOUNT_ID } from "aikaclaw/plugin-sdk/routing";
 import { hasConfiguredSecretInput } from "aikaclaw/plugin-sdk/secret-input";
 import {
   createStandardChannelSetupStatus,
-  formatDocsLink,
   setSetupChannelEnabled,
   type ChannelSetupWizard,
 } from "aikaclaw/plugin-sdk/setup";
@@ -47,7 +46,6 @@ export const nextcloudTalkSetupWizard: ChannelSetupWizard = {
       "3) Copy the shared secret you used in the command",
       "4) Enable the bot in your Nextcloud Talk room settings",
       "Tip: you can also set NEXTCLOUD_TALK_BOT_SECRET in your env.",
-      `Docs: ${formatDocsLink("/channels/nextcloud-talk", "channels/nextcloud-talk")}`,
     ],
     shouldShow: ({ cfg, accountId }) => {
       const account = resolveNextcloudTalkAccount({ cfg: cfg as CoreConfig, accountId });

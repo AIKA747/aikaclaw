@@ -5,11 +5,7 @@ import {
   createScopedChannelConfigAdapter,
 } from "aikaclaw/plugin-sdk/channel-config-helpers";
 import { createChannelPluginBase } from "aikaclaw/plugin-sdk/core";
-import {
-  formatDocsLink,
-  hasConfiguredSecretInput,
-  patchChannelConfigForAccount,
-} from "aikaclaw/plugin-sdk/setup";
+import { hasConfiguredSecretInput, patchChannelConfigForAccount } from "aikaclaw/plugin-sdk/setup";
 import { inspectSlackAccount } from "./account-inspect.js";
 import {
   listSlackAccountIds,
@@ -105,7 +101,6 @@ export function buildSlackSetupLines(botName = "AikaClaw"): string[] {
     "4) Enable Event Subscriptions (socket) for message events",
     "5) App Home -> enable the Messages tab for DMs",
     "Tip: set SLACK_BOT_TOKEN + SLACK_APP_TOKEN in your env.",
-    `Docs: ${formatDocsLink("/slack", "slack")}`,
     "",
     "Manifest (JSON):",
     buildSlackManifest(botName),

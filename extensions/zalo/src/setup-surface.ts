@@ -3,7 +3,6 @@ import {
   createTopLevelChannelDmPolicy,
   createStandardChannelSetupStatus,
   DEFAULT_ACCOUNT_ID,
-  formatDocsLink,
   hasConfiguredSecretInput,
   mergeAllowFromEntries,
   normalizeAccountId,
@@ -105,7 +104,6 @@ async function noteZaloTokenHelp(
       "2) Create a bot and get the token",
       "3) Token looks like 12345689:abc-xyz",
       "Tip: you can also set ZALO_BOT_TOKEN in your env.",
-      `Docs: ${formatDocsLink("/channels/zalo", "zalo")}`,
     ].join("\n"),
     "Zalo bot token",
   );

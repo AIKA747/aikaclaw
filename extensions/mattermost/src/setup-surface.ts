@@ -1,6 +1,5 @@
 import {
   createStandardChannelSetupStatus,
-  formatDocsLink,
   type ChannelSetupWizard,
 } from "aikaclaw/plugin-sdk/setup";
 import { listMattermostAccountIds } from "./mattermost/accounts.js";
@@ -42,7 +41,6 @@ export const mattermostSetupWizard: ChannelSetupWizard = {
       "2) Create a bot + copy its token",
       "3) Use your server base URL (e.g., https://chat.example.com)",
       "Tip: the bot must be a member of any channel you want it to monitor.",
-      `Docs: ${formatDocsLink("/mattermost", "mattermost")}`,
     ],
     shouldShow: ({ cfg, accountId }) =>
       !isMattermostConfigured(resolveMattermostAccountWithSecrets(cfg, accountId)),

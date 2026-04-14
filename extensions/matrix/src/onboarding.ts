@@ -23,7 +23,6 @@ import { resolveMatrixTargets } from "./resolve-targets.js";
 import type { DmPolicy } from "./runtime-api.js";
 import {
   addWildcardAllowFrom,
-  formatDocsLink,
   isPrivateOrLoopbackHost,
   mergeAllowFromEntries,
   moveSingleAccountChannelSectionToDefaultAccount,
@@ -116,7 +115,6 @@ async function noteMatrixAuthHelp(prompter: WizardPrompter): Promise<void> {
       "With access token: user ID is fetched automatically.",
       "Env vars supported: MATRIX_HOMESERVER, MATRIX_USER_ID, MATRIX_ACCESS_TOKEN, MATRIX_PASSWORD, MATRIX_DEVICE_ID, MATRIX_DEVICE_NAME.",
       "Per-account env vars: MATRIX_<ACCOUNT_ID>_HOMESERVER, MATRIX_<ACCOUNT_ID>_USER_ID, MATRIX_<ACCOUNT_ID>_ACCESS_TOKEN, MATRIX_<ACCOUNT_ID>_PASSWORD, MATRIX_<ACCOUNT_ID>_DEVICE_ID, MATRIX_<ACCOUNT_ID>_DEVICE_NAME.",
-      `Docs: ${formatDocsLink("/channels/matrix", "channels/matrix")}`,
     ].join("\n"),
     "Matrix setup",
   );

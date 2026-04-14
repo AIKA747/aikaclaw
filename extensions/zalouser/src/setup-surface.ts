@@ -3,7 +3,6 @@ import {
   createTopLevelChannelDmPolicySetter,
   DEFAULT_ACCOUNT_ID,
   formatCliCommand,
-  formatDocsLink,
   formatResolvedUnresolvedNote,
   mergeAllowFromEntries,
   normalizeAccountId,
@@ -119,8 +118,6 @@ async function noteZalouserHelp(
       "Zalo Personal Account login via QR code.",
       "",
       "This plugin uses zca-js directly (no external CLI dependency).",
-      "",
-      `Docs: ${formatDocsLink("/channels/zalouser", "zalouser")}`,
     ].join("\n"),
     "Zalo Personal Setup",
   );

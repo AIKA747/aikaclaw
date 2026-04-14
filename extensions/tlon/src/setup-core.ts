@@ -1,6 +1,5 @@
 import {
   DEFAULT_ACCOUNT_ID,
-  formatDocsLink,
   normalizeAccountId,
   patchScopedAccountConfig,
   prepareScopedSetupConfig,
@@ -63,7 +62,6 @@ export function createTlonSetupWizardBase(params: TlonSetupWizardBaseParams): Ch
         "Example URL: https://your-ship-host",
         "Example ship: ~sampel-palnet",
         "If your ship URL is on a private network (LAN/localhost), you must explicitly allow it during setup.",
-        `Docs: ${formatDocsLink("/channels/tlon", "channels/tlon")}`,
       ],
     },
     credentials: [],

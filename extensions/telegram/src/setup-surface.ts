@@ -10,7 +10,7 @@ import {
   splitSetupEntries,
 } from "aikaclaw/plugin-sdk/setup";
 import type { ChannelSetupDmPolicy, ChannelSetupWizard } from "aikaclaw/plugin-sdk/setup";
-import { formatCliCommand, formatDocsLink } from "aikaclaw/plugin-sdk/setup-tools";
+import { formatCliCommand } from "aikaclaw/plugin-sdk/setup-tools";
 import { inspectTelegramAccount } from "./account-inspect.js";
 import {
   listTelegramAccountIds,
@@ -72,7 +72,6 @@ function buildTelegramDmAccessWarningLines(accountId: string): string[] {
     "For private use, configure an allowlist with your Telegram user id:",
     "  " + formatCliCommand(`aikaclaw config set ${configBase}.dmPolicy "allowlist"`),
     "  " + formatCliCommand(`aikaclaw config set ${configBase}.allowFrom '["YOUR_USER_ID"]'`),
-    `Docs: ${formatDocsLink("/channels/pairing", "channels/pairing")}`,
   ];
 }
 

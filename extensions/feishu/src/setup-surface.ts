@@ -5,7 +5,6 @@ import {
   createTopLevelChannelGroupPolicySetter,
   createTopLevelChannelParsedAllowFromPrompt,
   DEFAULT_ACCOUNT_ID,
-  formatDocsLink,
   hasConfiguredSecretInput,
   mergeAllowFromEntries,
   patchTopLevelChannelConfigSection,
@@ -121,7 +120,6 @@ async function noteFeishuCredentialHelp(
       "4) Enable required permissions: im:message, im:chat, contact:user.base:readonly",
       "5) Publish the app or add it to a test group",
       "Tip: you can also set FEISHU_APP_ID / FEISHU_APP_SECRET env vars.",
-      `Docs: ${formatDocsLink("/channels/feishu", "feishu")}`,
     ].join("\n"),
     "Feishu credentials",
   );

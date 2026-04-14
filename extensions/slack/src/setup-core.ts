@@ -18,7 +18,6 @@ import {
   type ChannelSetupWizard,
   type ChannelSetupWizardAllowFromEntry,
 } from "aikaclaw/plugin-sdk/setup";
-import { formatDocsLink } from "aikaclaw/plugin-sdk/setup-tools";
 import { inspectSlackAccount } from "./account-inspect.js";
 import { listSlackAccountIds, resolveSlackAccount, type ResolvedSlackAccount } from "./accounts.js";
 import {
@@ -217,7 +216,6 @@ export function createSlackSetupWizardBase(handlers: {
         "- U12345678",
         "- @alice",
         "Multiple entries: comma-separated.",
-        `Docs: ${formatDocsLink("/slack", "slack")}`,
       ],
       message: "Slack allowFrom (usernames or ids)",
       placeholder: "@alice, U12345678",
