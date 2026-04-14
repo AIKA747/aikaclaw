@@ -27,7 +27,7 @@ export async function maybeSeedControlUiAllowedOriginsAtStartup(params: {
 function buildSeededOriginsInfoLog(origins: string[], bind: GatewayNonLoopbackBindMode): string {
   return (
     `gateway: seeded gateway.controlUi.allowedOrigins ${JSON.stringify(origins)} ` +
-    `for bind=${bind} (required since v2026.2.26; see issue #29385). ` +
+    `for bind=${bind}. ` +
     "Add other origins to gateway.controlUi.allowedOrigins if needed."
   );
 }

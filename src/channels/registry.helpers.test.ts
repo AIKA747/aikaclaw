@@ -26,17 +26,14 @@ describe("channel registry helpers", () => {
     expect(channels.some((channel) => channel.id === "msteams")).toBe(false);
   });
 
-  it("formats selection lines with docs labels + website extras", () => {
+  it("formats selection lines with label and blurb", () => {
     const channels = listChatChannels();
     const first = channels[0];
     if (!first) {
       throw new Error("Missing channel metadata.");
     }
-    const line = formatChannelSelectionLine(first, (path, label) =>
-      [label, path].filter(Boolean).join(":"),
-    );
-    expect(line).not.toContain("Docs:");
-    expect(line).toContain("/channels/telegram");
+    const line = formatChannelSelectionLine(first);
     expect(line).toContain("Telegram");
+    expect(line).toContain(" — ");
   });
 });

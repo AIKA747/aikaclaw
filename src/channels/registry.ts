@@ -198,13 +198,8 @@ export function formatChannelPrimerLine(meta: ChatChannelMeta): string {
 
 export function formatChannelSelectionLine(
   meta: ChatChannelMeta,
-  docsLink: (path: string, label?: string) => string,
+  _docsLink?: (path: string, label?: string) => string,
 ): string {
-  const docsPrefix = meta.selectionDocsPrefix ?? "Docs:";
-  const docsLabel = meta.docsLabel ?? meta.id;
-  const docs = meta.selectionDocsOmitLabel
-    ? docsLink(meta.docsPath)
-    : docsLink(meta.docsPath, docsLabel);
   const extras = (meta.selectionExtras ?? []).filter(Boolean).join(" ");
-  return `${meta.label} — ${meta.blurb} ${docsPrefix ? `${docsPrefix} ` : ""}${docs}${extras ? ` ${extras}` : ""}`;
+  return `${meta.label} — ${meta.blurb}${extras ? ` ${extras}` : ""}`;
 }

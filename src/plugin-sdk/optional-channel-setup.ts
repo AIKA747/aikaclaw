@@ -1,7 +1,6 @@
 import type { ChannelSetupWizard } from "../channels/plugins/setup-wizard.js";
 import type { ChannelSetupAdapter } from "../channels/plugins/types.adapters.js";
 import { DEFAULT_ACCOUNT_ID } from "../routing/session-key.js";
-import { formatDocsLink } from "../terminal/links.js";
 
 type OptionalChannelSetupParams = {
   channel: string;
@@ -12,11 +11,7 @@ type OptionalChannelSetupParams = {
 
 function buildOptionalChannelSetupMessage(params: OptionalChannelSetupParams): string {
   const installTarget = params.npmSpec ?? `the ${params.label} plugin`;
-  const message = [`${params.label} setup requires ${installTarget} to be installed.`];
-  if (params.docsPath) {
-    message.push(`Docs: ${formatDocsLink(params.docsPath, params.docsPath.replace(/^\/+/u, ""))}`);
-  }
-  return message.join(" ");
+  return `${params.label} setup requires ${installTarget} to be installed.`;
 }
 
 export function createOptionalChannelSetupAdapter(
